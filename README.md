@@ -3,6 +3,9 @@
 
 ![keffi-dashboard](https://user-images.githubusercontent.com/72194611/163727489-9cbdf683-dadf-4893-a147-162bb7fc5c74.JPG)
 
+![keffi-dashboard2](https://user-images.githubusercontent.com/72194611/163727737-5e549143-dd0d-46ad-9220-50d436a00853.JPG)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
