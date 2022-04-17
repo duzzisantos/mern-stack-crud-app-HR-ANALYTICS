@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const AppraisalSchema = new Schema({
   month: String,
+  year: Number,
   department: String,
   staffID: Number,
   firstName: String,
@@ -12,6 +13,8 @@ const AppraisalSchema = new Schema({
   responsibility: Number,
   quantityOfWork: Number,
   punctuality: Number,
+  supervisorComment: String,
+  hrComment: String,
 });
 
 module.exports = mongoose.model("appraisal", AppraisalSchema);

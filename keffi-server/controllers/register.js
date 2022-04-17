@@ -18,6 +18,7 @@ exports.create = (req, res) => {
     dateBirth: req.body.dateBirth,
     contractType: req.body.contractType,
     dateEmployment: req.body.dateEmployment,
+    photo: req.body.photo,
   });
 
   registered
@@ -82,7 +83,7 @@ exports.delete = (req, res) => {
   const id = req.params.id;
   Registered.findByIdAndRemove(id)
     .then((data) => {
-      !data ? res.status(404).json() : res.status(200).json();
+      !data ? res.status(404).json({message: "Error in deleting object!"}) : res.status(200).json();
       console.log("Employee information was deleted successfully!");
     })
     .catch((err) => {

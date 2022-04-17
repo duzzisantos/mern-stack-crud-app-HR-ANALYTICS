@@ -11,6 +11,7 @@ exports.create = (req, res) => {
 
   const appraisal = new Appraisal({
     month: req.body.month,
+    year: req.body.year,
     department: req.body.department,
     staffID: req.body.staffID,
     firstName: req.body.firstName,
@@ -20,6 +21,8 @@ exports.create = (req, res) => {
     responsibility: req.body.responsibility,
     quantityOfWork: req.body.quantityOfWork,
     punctuality: req.body.punctuality,
+    supervisorComment: req.body.supervisorComment,
+    hrComment: req.body.hrComment,
   });
 
   appraisal
@@ -42,7 +45,7 @@ exports.findAll = (req, res) => {
   var condition = id ? { id: { $regex: new RegExp(id), $options: "i" } } : {};
   Appraisal.find(condition)
     .then((data) => {
-      res.status(200).json();
+      res.json(data)
       console.log(data);
     })
     .catch((err) => {
@@ -112,9 +115,9 @@ exports.deleteAll = (req, res) => {
       console.log(data);
     })
     .catch((err) => {
-        res.status(500).json({
-            message: "Error occurred in deleting all employees"
-        })
+      res.status(500).json({
+        message: "Error occurred in deleting all employees",
+      });
       console.log(err);
     });
 };

@@ -9,8 +9,9 @@ const RegisterSchema = new Schema({
     role: String,
     department: String,
     dateBirth: String,
-    contract_type: String,
+    contractType: String,
     dateEmployment: String,
+    photo: String,
 })
 
 module.exports = mongoose.model("register", RegisterSchema)
