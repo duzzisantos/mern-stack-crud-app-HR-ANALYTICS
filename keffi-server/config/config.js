@@ -1,3 +1,3 @@
 module.exports = {
-     ////// add url here
+     ////// add mongo url here
 }
