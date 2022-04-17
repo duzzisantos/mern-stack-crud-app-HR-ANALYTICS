@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+
+![keffi-dashboard](https://user-images.githubusercontent.com/72194611/163727489-9cbdf683-dadf-4893-a147-162bb7fc5c74.JPG)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
