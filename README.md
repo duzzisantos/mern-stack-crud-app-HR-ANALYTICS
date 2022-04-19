@@ -6,7 +6,8 @@
 ![keffi-employee](https://user-images.githubusercontent.com/72194611/164046369-b70cd9f2-2894-493c-91fe-8dce743f3275.JPG)
 ![keffi-appraisal](https://user-images.githubusercontent.com/72194611/164046400-d14a26cd-99b3-4ef9-be21-844f6915f65f.JPG)
 ![keffi-appraisal-ohne-daten](https://user-images.githubusercontent.com/72194611/164046436-24220ea9-2fea-480f-9876-95d376a9f4cd.JPG)
-![keffi-dashboard2](https://user-images.githubusercontent.com/72194611/164046485-ed0997bc-634b-413d-b4c3-ef8c7f004d94.JPG)
+
+![keffi-dashboard-appraisal](https://user-images.githubusercontent.com/72194611/164046674-fcc3c8c8-7d99-4ec1-b90c-c71b7f8b9882.JPG)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
