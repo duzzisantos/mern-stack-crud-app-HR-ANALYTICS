@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const RegisterSchema = new Schema({
-    staffID: Number,
+    ID: Number,
     firstName: String,
     lastName: String,
     email: String,

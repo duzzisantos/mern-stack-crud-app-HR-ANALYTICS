@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
 import axios from "axios";
+import {Link, Routes, Route} from "react-router-dom"
+import UpdateEmployee from "./update-employee";
 
 const EmployeeList = () => {
   const [list, setList] = useState([]);
@@ -11,6 +13,7 @@ const EmployeeList = () => {
     try {
       const res = await http.get(http.registerURL, http.headers);
       console.log(res.statusText);
+      console.log(res.data)
       setList(res.data);
     } catch (err) {
       console.log(err);
@@ -53,8 +56,8 @@ const EmployeeList = () => {
         </strong>
         <input
           type="search"
-          id="staffID"
-          name="staffID"
+          id="ID"
+          name="ID"
           placeholder="Enter Staff ID"
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -66,7 +69,7 @@ const EmployeeList = () => {
             selection === "default" || search === ""
               ? !item
               : selection.match(new RegExp(`${item.department}`), "gi") &&
-                search.match(new RegExp(`${item.staffID}`), "gi")
+                search.match(new RegExp(`${item.ID}`), "gi")
               ? item
               : !item
           )
@@ -77,7 +80,7 @@ const EmployeeList = () => {
               </legend>
               <b><span style={{marginLeft: "25%", color: "#730071"}}>{item.firstName}  {item.lastName}</span></b>
               <ul className="data-list">
-                <li><b>Staff ID</b>: {item.staffID}</li>
+                <li><b>Staff ID</b>: {item.ID}</li>
                 {/* <li><b>First name</b>: {item.firstName}</li>
                 <li><b>Last name</b>: {item.lastName}</li> */}
                 <li><b>Email</b>: {item.email}</li>
@@ -98,7 +101,14 @@ const EmployeeList = () => {
                 className="edit-btn"
                 type="button"
               >
-                Edit
+                <Link to={`/update-employee/${item._id}`} className="edit-link"> Edit</Link>
+                <Routes>
+                    <Route
+                      path="/edit-vendor/:ID"
+                      element={<UpdateEmployee />}
+                    />
+                  </Routes>
+               
               </button>
             </fieldset>
           ))}

@@ -9,7 +9,7 @@ exports.create = (req, res) => {
   }
 
   const registered = new Registered({
-    staffID: req.body.staffID,
+    ID: req.body.ID,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
@@ -37,7 +37,7 @@ exports.create = (req, res) => {
 //GET ALL
 
 exports.findAll = (req, res) => {
-  const id = req.query.staffID;
+  const id = req.query.id;
   var condition = id ? { id: { $regex: new RegExp(id), $options: "i" } } : {};
   Registered.find(condition)
     .then((data) => {
@@ -51,7 +51,7 @@ exports.findAll = (req, res) => {
 //GET BY ID
 
 exports.findOne = (req, res) => {
-  const id = req.params._id;
+  const id = req.params.id;
   Registered.findById(id)
     .then((data) => {
       res.json(data);
@@ -65,7 +65,7 @@ exports.findOne = (req, res) => {
 //UPDATE BY ID
 
 exports.update = (req, res) => {
-  const id = req.params._id;
+  const id = req.params.id;
   Registered.findByIdAndUpdate(id, { $set: req.body }, (err, data, next) => {
     if (err) {
       console.log(err);

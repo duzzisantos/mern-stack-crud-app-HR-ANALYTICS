@@ -4,7 +4,7 @@ import ButtonClass from "../components/buttons";
 
 const Register = () => {
   const [fillForm, setFillForm] = useState({
-    staffID: Date.now(),
+    ID: Date.now(),
     firstName: "",
     lastName: "",
     email: "",
@@ -35,15 +35,15 @@ const Register = () => {
           encType="multipart/formdata"
         >
           <h3>Register new employee</h3>
-          <label htmlFor="staffID">Staff ID</label>
+          <label htmlFor="ID">Staff ID</label>
           <input
-            id="staffID"
-            name="staffID"
+            id="ID"
+            name="ID"
             type="number"
             disabled
-            value={fillForm.staffID}
+            value={fillForm.ID}
             onChange={(e) =>
-              setFillForm({ ...fillForm, staffID: e.target.value })
+              setFillForm({ ...fillForm, ID: e.target.value })
             }
           />
           <label htmlFor="firstName">First Name</label>

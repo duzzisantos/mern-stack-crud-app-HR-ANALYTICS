@@ -9,7 +9,7 @@ const Appraisal = () => {
     month: "January",
     year: currentYear,
     department: "",
-    staffID: 0,
+    ID: 0,
     firstName: "",
     lastName: "",
     qualityOfWork: 0,
@@ -88,27 +88,27 @@ const Appraisal = () => {
             <option name="Operations">Operations</option>
             <option name="Customer service">Customer service</option>
           </select>
-        <label htmlFor="staffID1">Staff ID</label>
+        <label htmlFor="ID1">Staff ID</label>
         <input
-          id="staffID1"
-          name="staffID1"
+          id="ID"
+          name="ID"
           type="number"
-          value={appraise.staffID}
+          value={appraise.ID}
           onChange={(e) =>
-            setAppraise({ ...appraise, staffID: e.target.value })
+            setAppraise({ ...appraise, ID: e.target.value })
           }
         />
-        <label htmlFor="firstName1">First Name</label>
+        <label htmlFor="firstName">First Name</label>
         <input
-          id="firstName1"
-          name="firstName1"
+          id="firstName"
+          name="firstName"
           type="text"
           value={appraise.firstName}
           onChange={(e) =>
             setAppraise({ ...appraise, firstName: e.target.value })
           }
         />
-        <label htmlFor="lastName1">Last Name</label>
+        <label htmlFor="lastName">Last Name</label>
         <input
           id="lastName"
           name="lastName"
@@ -118,10 +118,10 @@ const Appraisal = () => {
             setAppraise({ ...appraise, lastName: e.target.value })
           }
         />
-        <label htmlFor="qtyWork1">Quality of Work</label>
+        <label htmlFor="qtyWork">Quality of Work</label>
         <input
-          id="qtyWork1"
-          name="qtyWork1"
+          id="qtyWork"
+          name="qtyWork"
           type="range"
           min={0}
           max={5}
@@ -131,10 +131,10 @@ const Appraisal = () => {
             setAppraise({ ...appraise, qualityOfWork: e.target.value })
           }
         />
-        <label htmlFor="delivery1">Delivery</label>
+        <label htmlFor="delivery">Delivery</label>
         <input
-          id="delivery1"
-          name="delivery1"
+          id="delivery"
+          name="delivery"
           type="range"
           min={0}
           max={5}
@@ -144,10 +144,10 @@ const Appraisal = () => {
             setAppraise({ ...appraise, delivery: e.target.value })
           }
         />
-        <label htmlFor="responsibility1">Responsibility</label>
+        <label htmlFor="responsibility">Responsibility</label>
         <input
-          id="responsibility1"
-          name="responsibility1"
+          id="responsibility"
+          name="responsibility"
           type="range"
           min={0}
           max={5}
@@ -157,10 +157,10 @@ const Appraisal = () => {
             setAppraise({ ...appraise, responsibility: e.target.value })
           }
         />
-        <label htmlFor="qntyWork1">Quantity of Work</label>
+        <label htmlFor="qntyWork">Quantity of Work</label>
         <input
-          id="qntyWork1"
-          name="qntyWork1"
+          id="qntyWork"
+          name="qntyWork"
           type="range"
           min={0}
           max={5}
@@ -170,10 +170,10 @@ const Appraisal = () => {
             setAppraise({ ...appraise, quantityOfWork: e.target.value })
           }
         />
-        <label htmlFor="qntyWork1">Punctuality</label>
+        <label htmlFor="punctuality">Punctuality</label>
         <input
-          id="punctuality1"
-          name="punctuality1"
+          id="punctuality"
+          name="punctuality"
           type="range"
           min={0}
           max={5}
@@ -183,19 +183,19 @@ const Appraisal = () => {
             setAppraise({ ...appraise, punctuality: e.target.value })
           }
         />
-        <label htmlFor="supervisor-comment1">Supervisor Comment</label>
+        <label htmlFor="superVisorComment">Supervisor Comment</label>
         <textarea
-          id="supervisor-comment1"
-          name="supervisor-comment1"
+          id="supervisorComment"
+          name="supervisorComment"
           value={appraise.supervisorComment}
           onChange={(e) =>
             setAppraise({ ...appraise, supervisorComment: e.target.value })
           }
         />
-        <label htmlFor="hr-comment1">HR Comment</label>
+        <label htmlFor="hrComment">HR Comment</label>
         <textarea
-          id="hr-comment1"
-          name="hr-comment1"
+          id="hrComment"
+          name="hrComment"
           value={appraise.hrComment}
           onChange={(e) =>
             setAppraise({ ...appraise, hrComment: e.target.value })

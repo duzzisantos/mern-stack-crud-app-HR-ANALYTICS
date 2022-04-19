@@ -33,6 +33,11 @@ summary {
   line-height: 4vh;
 }
 
+.edit-link{
+  color: #730071;
+  text-decoration-line: none;
+}
+
 .links:hover {
   color: gray;
 }
@@ -62,33 +67,29 @@ summary {
 }
 .delete-btn{
   padding: 5px;
-  width: 60px;
-  border: 1px solid #730071;
-  color: #730071;
-  border-radius: 10px;
-  background-color: transparent;
-  margin-left: 20px;
+  width: 55px;
+  border: 1px solid transparent;
+  background-color: #B91428;
+  color: white;
+  border-radius: 20px;
+  margin-left: 18px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 .edit-btn{
   padding: 5px;
-  width: 60px;
-  border: 1px solid #730071;
-  color: #730071;
-  border-radius: 10px;
-  background-color: transparent;
-  margin-left: 20px;
-}
-
-.delete-btn:hover {
-  border: 1px solid transparent;
-  background-color: #B91428;
-  color: white;
-}
-
-.edit-btn:hover{
+  width: 50px;
   border: 1px solid transparent;
   background-color: #25D366;
+  color: white;
+  border-radius: 20px;
+  margin-left: 18px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.edit-link{
   color: white;
 }
 

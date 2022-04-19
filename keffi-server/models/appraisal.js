@@ -5,7 +5,7 @@ const AppraisalSchema = new Schema({
   month: String,
   year: Number,
   department: String,
-  staffID: Number,
+  ID: Number,
   firstName: String,
   lastName: String,
   qualityOfWork: Number,

@@ -81,7 +81,7 @@ const DashBoard = () => {
               selectMonth === "default" ||
               selectYear === "default"
                 ? !data
-                : search.match(new RegExp(`${data.staffID}`), "gi") &&
+                : search.match(new RegExp(`${data.ID}`), "gi") &&
                   selectMonth.match(new RegExp(`${data.month}`), "gi") &&
                   selectYear.match(new RegExp(`${data.year}`), "gi")
                 ? data
@@ -192,7 +192,7 @@ const DashBoard = () => {
                         data.quantityOfWork +
                         data.punctuality +
                         data.responsibility) /
-                      5) - 0.1867549.toFixed(3)
+                      5) - 0.15
                     }
                     max={5}
                   >

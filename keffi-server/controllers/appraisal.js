@@ -13,7 +13,7 @@ exports.create = (req, res) => {
     month: req.body.month,
     year: req.body.year,
     department: req.body.department,
-    staffID: req.body.staffID,
+    ID: req.body.ID,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     qualityOfWork: req.body.qualityOfWork,
@@ -41,7 +41,7 @@ exports.create = (req, res) => {
 //GET ALL
 
 exports.findAll = (req, res) => {
-  const id = req.query.staffID;
+  const id = req.query.id;
   var condition = id ? { id: { $regex: new RegExp(id), $options: "i" } } : {};
   Appraisal.find(condition)
     .then((data) => {

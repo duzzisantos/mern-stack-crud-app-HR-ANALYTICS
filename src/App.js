@@ -5,6 +5,7 @@ import Register from "./menu/register";
 import Appraisal from "./menu/appraisal";
 import DashBoard from "./menu/dashboard";
 import EmployeeList from "./menu/table";
+import UpdateEmployee from "./menu/update-employee";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="appraisal" element={<Appraisal />} />
         <Route path="dashboard" element={<DashBoard />} />
-        <Route path="table" element={<EmployeeList />} />
+        <Route path="table/*" element={<EmployeeList />} />
+        <Route path="update-employee/:ID" element={<UpdateEmployee />} />
       </Routes>
     </div>
   );
