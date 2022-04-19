@@ -47,8 +47,9 @@ This is a Human Resources (HR) Management application which has full CRUD capabi
   - HR Comment
 
  # Employee list
- The employee list displays employees in the database - on individual cards that list their details . After the `GET` request is performed, the user is able to filter  employees based on `Staff ID and `department`.
- Furthermore, they are able to delete or modify an existing employer's records.
+ The employee list displays employees in the database - on individual cards that list their details . After the `GET` request is performed, the user is able to filter  employees based on `Staff ID` and `department`.
+ Furthermore, they are able to delete or modify an existing employer's records with the aid of the `DELETE` and `PUT` requests respectively.
+ 
  # Appraisal logic
  The appraisal will be done based on five pieces of numerical information viz:
   - Quality of work
@@ -61,7 +62,7 @@ This is a Human Resources (HR) Management application which has full CRUD capabi
   - Supervisor comment
   - HR Comment
   
-  Input for these numerical appraisals have a maximum of 5 points and minimum of 0.
+  Input for these numerical appraisals have a maximum of `5` points and minimum of `0`.
   After the appraisal page performs a `GET` request, the user can further filter information based on `Staff ID`, month and year, to get the precise appraisal
   information.
   
@@ -81,7 +82,7 @@ This is a Human Resources (HR) Management application which has full CRUD capabi
    - Mongo Sanitize
    - Helmet
    - Bcrypt
-   - REST APIs
+   - REST APIs (POST, GET, PUT, DELETE)
 
   # Testing
   
