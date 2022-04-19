@@ -11,69 +11,76 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Introducing Keffi
+This is a Human Resources (HR) Management application which has full CRUD capabilities - meaning that it creates new, reads existing, updates and deletes text files - which represent employee information - either as general profile information or appraisal records.
 
-In the project directory, you can run:
+# User story
+ - Users want to register newly recruited employees, and therefore would do that with the registration form
+ - They want to filter employee details, based on either their staff ID or department - the employee list fulfils this need.
+ - They want to appraise existing employees - by having their numbers ready, appraisal information is filled on the appraisal form.
+ - They want to read simple analytics that display HR key performance indices - by filtering based on staff ID, year, and month, the specific appraisal records will be      obtained.
 
-### `npm start`
+# Data model
+  ## Registration form
+  This form collects data which will be rendered on the employee list page. Besides the `Staff ID` which is automatically generated, and controlled, its content include   other information like:
+  - Full name
+  - Email
+  - Department
+  - Role
+  - Birthday
+  - Contract type
+  - Photo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  ## Appraisal form
+  This form collects data will be rendered on the analytics dashboard. It includes the following information:
+  - Month
+  - Year
+  - Department
+  - Staff ID
+  - Full name
+  - Quality of work
+  - Delivery
+  - Responsibility
+  - Quantity of work
+  - Punctuality
+  - Supervisor comment
+  - HR Comment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ # Appraisal logic
+ The appraisal will be done based on five pieces of numerical information viz:
+  - Quality of work
+  - Delivery
+  - Responsibility
+  - Quantity of work
+  - Punctuality
 
-### `npm test`
+ and two qualitative assessments:
+  - Supervisor comment
+  - HR Comment
+  
+  Input for these numerical appraisals have a maximum of 5 points and minimum of 0.
+  After the appraisal page performs a GET request, the user can further filter information based on Staff ID, month and year, to get the precise appraisal
+  information.
+  
+  # General requirements
+  
+   ## Frontend
+   - React JS
+   - CSS
+   - Axios
+   - React-router-DOM
+   - Bootstrap
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ## Backend
+   - Express JS
+   - Node JS
+   - MongoDB
+   - Mongo Sanitize
+   - Helmet
+   - Bcrypt
+   - REST APIs
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  # Testing
+  
+  - Testing was done with Jest and Mocha.
+  
