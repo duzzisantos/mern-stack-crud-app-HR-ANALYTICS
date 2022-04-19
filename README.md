@@ -48,7 +48,7 @@ This is a Human Resources (HR) Management application which has full CRUD capabi
 
  # Employee list
  The employee list displays employees in the database - on individual cards that list their details . After the `GET` request is performed, the user is able to filter  employees based on `Staff ID` and `department`.
- Furthermore, they are able to delete or modify an existing employer's records with the aid of the `DELETE` and `PUT` requests respectively.
+ Furthermore, they are able to delete or modify an existing employee's records with the aid of the `DELETE` and `PUT` requests respectively.
  
  # Appraisal logic
  The appraisal will be done based on five pieces of numerical information viz:
