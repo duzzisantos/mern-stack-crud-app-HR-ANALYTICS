@@ -18,7 +18,7 @@ This is a Human Resources (HR) Management application which has full CRUD capabi
  - Users want to register newly recruited employees, and therefore would do that with the registration form
  - They want to filter employee details, based on either their staff ID or department - the employee list fulfils this need.
  - They want to appraise existing employees - by having their numbers ready, appraisal information is filled on the appraisal form.
- - They want to read simple analytics that display HR key performance indices - by filtering based on staff ID, year, and month, the specific appraisal records will be      obtained.
+ - They want to read simple analytics that display HR key performance indicators - by filtering based on staff ID, year, and month, the specific appraisal records will be      obtained.
 
 # Data model
   ## Registration form
