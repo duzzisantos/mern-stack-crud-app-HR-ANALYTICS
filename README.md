@@ -1,10 +1,12 @@
 # Getting Started with Create React App
 
 
-![keffi-dashboard](https://user-images.githubusercontent.com/72194611/163727489-9cbdf683-dadf-4893-a147-162bb7fc5c74.JPG)
+![keffi-register](https://user-images.githubusercontent.com/72194611/164046336-f088be36-76f6-47da-8d73-e9b4263afad7.JPG)
 
-![keffi-dashboard2](https://user-images.githubusercontent.com/72194611/163727737-5e549143-dd0d-46ad-9220-50d436a00853.JPG)
-
+![keffi-employee](https://user-images.githubusercontent.com/72194611/164046369-b70cd9f2-2894-493c-91fe-8dce743f3275.JPG)
+![keffi-appraisal](https://user-images.githubusercontent.com/72194611/164046400-d14a26cd-99b3-4ef9-be21-844f6915f65f.JPG)
+![keffi-appraisal-ohne-daten](https://user-images.githubusercontent.com/72194611/164046436-24220ea9-2fea-480f-9876-95d376a9f4cd.JPG)
+![keffi-dashboard2](https://user-images.githubusercontent.com/72194611/164046485-ed0997bc-634b-413d-b4c3-ef8c7f004d94.JPG)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
