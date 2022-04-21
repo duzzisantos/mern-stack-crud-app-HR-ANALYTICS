@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This is a Human Resources (HR) Management application which has full CRUD capabilities - meaning that it creates new, reads existing, updates and deletes text files - which represent employee information - either as general profile information or appraisal records.
 
 # User story
+ - Who is the user? A HR or admin employee or manager.
  - Users want to register newly recruited employees, and therefore would do that with the registration form
  - They want to filter employee details, based on either their staff ID or department - the employee list fulfils this need.
  - They want to appraise existing employees - by having their numbers ready, appraisal information is filled on the appraisal form.
