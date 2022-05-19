@@ -6,8 +6,7 @@ import UpdateEmployee from "./update-employee";
 
 const EmployeeList = () => {
   const [list, setList] = useState([]);
-  const [search, setSearch] = useState("");
-  const [selection, setSelection] = useState("")
+  const [selection, setSelection] = useState("default")
 
   const getEmployeeData = async () => {
     try {
@@ -51,28 +50,17 @@ const EmployeeList = () => {
           <option name="Operations">Operations</option>
           <option name="Customer service">Customer service</option>
         </select>
-        <strong>
-          <label htmlFor="search-id">Filter by Staff ID: </label>
-        </strong>
-        <input
-          type="search"
-          id="ID"
-          name="ID"
-          placeholder="Enter Staff ID"
-          onChange={(e) => setSearch(e.target.value)}
-        />
       </div>
 
       <div className="boxes">
         {list
-          .filter((item) =>
-            selection === "default" || search === ""
-              ? !item
-              : selection.match(new RegExp(`${item.department}`), "gi") &&
-                search.match(new RegExp(`${item.ID}`), "gi")
-              ? item
-              : !item
-          )
+          .filter(item => 
+            selection === "default"
+            ? !item
+            : selection.match(new RegExp(`${item.department}`), "gi")
+            ? item
+            : !item
+            )
           .map((item) => (
             <fieldset className="fieldset-display" key={item._id}>
               <legend className="legend-display">
