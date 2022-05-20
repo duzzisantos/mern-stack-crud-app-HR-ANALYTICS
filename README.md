@@ -15,10 +15,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This is a Human Resources (HR) Management application which has full CRUD capabilities - meaning that it creates new, reads existing, updates and deletes text files - which represent employee information - either as general profile information or appraisal records.
 
 # User story
+ - Who is the user? A HR or admin employee or manager.
  - Users want to register newly recruited employees, and therefore would do that with the registration form
  - They want to filter employee details, based on either their staff ID or department - the employee list fulfils this need.
  - They want to appraise existing employees - by having their numbers ready, appraisal information is filled on the appraisal form.
- - They want to read simple analytics that display HR key performance indices - by filtering based on staff ID, year, and month, the specific appraisal records will be      obtained.
+ - They want to read simple analytics that display HR key performance indicators - by filtering based on staff ID, year, and month, the specific appraisal records will be      obtained.
 
 # Data model
   ## Registration form
@@ -48,7 +49,7 @@ This is a Human Resources (HR) Management application which has full CRUD capabi
 
  # Employee list
  The employee list displays employees in the database - on individual cards that list their details . After the `GET` request is performed, the user is able to filter  employees based on `Staff ID` and `department`.
- Furthermore, they are able to delete or modify an existing employer's records with the aid of the `DELETE` and `PUT` requests respectively.
+ Furthermore, they are able to delete or modify an existing employee's records with the aid of the `DELETE` and `PUT` requests respectively.
  
  # Appraisal logic
  The appraisal will be done based on five pieces of numerical information viz:
