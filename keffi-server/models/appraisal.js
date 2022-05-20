@@ -15,6 +15,6 @@ const AppraisalSchema = new Schema({
   punctuality: Number,
   supervisorComment: String,
   hrComment: String,
-});
+}, {timestamps: true});
 
 module.exports = mongoose.model("appraisal", AppraisalSchema);

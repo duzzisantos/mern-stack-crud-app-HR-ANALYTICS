@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import http from "../components/http-config";
 import ButtonClass from "../components/buttons";
+import Auth from "../auth/auth";
 
 const Register = () => {
   const [fillForm, setFillForm] = useState({
@@ -28,6 +29,7 @@ const Register = () => {
   };
   return (
     <>
+    <Auth/>
       <div className="page-wrapper">
         <form
           className="forms"

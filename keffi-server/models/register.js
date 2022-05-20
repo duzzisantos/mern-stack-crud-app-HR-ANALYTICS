@@ -1,7 +1,8 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const RegisterSchema = new Schema({
+const RegisterSchema = new Schema(
+  {
     ID: Number,
     firstName: String,
     lastName: String,
@@ -12,6 +13,8 @@ const RegisterSchema = new Schema({
     contractType: String,
     dateEmployment: String,
     photo: String,
-})
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("register", RegisterSchema)
+module.exports = mongoose.model("register", RegisterSchema);

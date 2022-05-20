@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ButtonClass from "../components/buttons";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Auth from "../auth/auth";
 
 const UpdateEmployee = () => {
   const params = useParams();
@@ -65,6 +66,7 @@ const UpdateEmployee = () => {
   };
   return (
     <>
+    <Auth/>
       <div className="page-wrapper">
         <form
           className="forms"
