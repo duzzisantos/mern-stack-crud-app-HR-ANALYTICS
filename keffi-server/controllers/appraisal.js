@@ -29,7 +29,6 @@ exports.create = (req, res) => {
     .save(appraisal)
     .then((data) => {
       res.json(data);
-      console.log(data);
     })
     .catch((err) => {
       if (err) {

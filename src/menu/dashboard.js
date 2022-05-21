@@ -6,6 +6,7 @@ import Auth from "../auth/auth";
 
 const DashBoard = () => {
   const [graphData, setGraphData] = useState([]);
+  const [employee, setEmployee] = useState([]);
   const [search, setSearch] = useState("");
   const [selectMonth, setSelectMonth] = useState("");
   const [selectYear, setSelectYear] = useState("");
@@ -14,7 +15,17 @@ const DashBoard = () => {
     try {
       const res = await axios.get(http.appraisalURL);
       setGraphData(res.data);
-      console.log(res.data);
+      console.log(res.status);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getEmployee = async () => {
+    try {
+      const res = await axios.get(http.registerURL);
+      setEmployee(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -22,7 +33,9 @@ const DashBoard = () => {
 
   useEffect(() => {
     getData();
+    getEmployee();
   }, []);
+
   return (
     <>
       <Auth />
@@ -163,13 +176,24 @@ const DashBoard = () => {
                   </div>
                   <div className="average-appraisal">
                     <div className="user-profile">
-                      <img
-                        src={
-                          "https://p0.pikist.com/photos/973/269/business-woman-professional-suit-elegant-female-person-business-people-women.jpg"
-                        }
-                        alt="Staff"
-                        id="dashboard-img"
-                      />
+                      {employee
+                        .filter((data) =>
+                          search === "" ||
+                          selectMonth === "default" ||
+                          selectYear === "default"
+                            ? !data
+                            : search.match(new RegExp(`${data.ID}`), "gi")
+                            ? data
+                            : !data
+                        )
+                        .map((data) => (
+                          <img
+                          key={data._id}
+                            src={data.photo}
+                            alt="Staff"
+                            id="dashboard-img"
+                          />
+                        ))}
                     </div>
                     <span className="dashboard-span">
                       {data.firstName} {data.lastName}
@@ -210,6 +234,44 @@ const DashBoard = () => {
                 </div>
               ))}
           </fieldset>
+        </div>
+        <div className="other-charts">
+          <h5 style={{ marginLeft: "10%" }}>Yearly appraisal score trend</h5>
+          {graphData
+            .filter((data) =>
+              search === "" ||
+              selectMonth === "default" ||
+              selectYear === "default"
+                ? !data
+                : search.match(new RegExp(`${data.ID}`), "gi")
+                ? data
+                : !data
+            )
+            .map((data) => (
+              <div className="bar-graph" key={data._id}>
+                <label style={{ marginLeft: "10%" }}>
+                  {data.month} -{" "}
+                  {(data.delivery +
+                    data.qualityOfWork +
+                    data.quantityOfWork +
+                    data.punctuality +
+                    data.responsibility) /
+                    5}
+                </label>
+                <progress
+                  className="bar"
+                  value={
+                    (data.delivery +
+                      data.qualityOfWork +
+                      data.quantityOfWork +
+                      data.punctuality +
+                      data.responsibility) /
+                    5
+                  }
+                  max={5}
+                ></progress>
+              </div>
+            ))}
         </div>
       </div>
     </>

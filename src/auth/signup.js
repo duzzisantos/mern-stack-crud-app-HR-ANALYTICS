@@ -34,7 +34,7 @@ const SignUp = () => {
     <div className="register">
       <h2>Keffi <FontAwesomeIcon icon={faRing}/></h2>
       <div className="register-container">
-        <h3>Register</h3>
+        <h3>Sign up</h3>
         <label htmlFor="fullName">Full Name</label>
         <input
           type="text"

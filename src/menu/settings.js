@@ -39,7 +39,7 @@ const Settings = () => {
       .delete(http.appraisalURL)
       .then((res) => {
         console.log(res.statusText);
-        alert("All appraisals have been deleted")
+        alert("All appraisals have been deleted");
         getAppraisalData();
       })
       .catch((err) => {
@@ -52,7 +52,7 @@ const Settings = () => {
       .delete(http.registerURL)
       .then((res) => {
         console.log(res.status);
-        alert("All employees have been deleted")
+        alert("All employees have been deleted");
         getEmployeeData();
       })
       .catch((err) => {
@@ -67,10 +67,11 @@ const Settings = () => {
         <hr></hr>
         <h4>Delete all employees</h4>
         <p>
-          Employee database currently has {employee.length} {employee.length === 1 ? "file": "files"} as at{" "}
+          Employee database currently has {employee.length}{" "}
+          {employee.length === 1 ? "file" : "files"} as at{" "}
           {new Date().toLocaleDateString()}.
         </p>
-        <p>
+        <p style={{ color: "tomato" }}>
           Warning! By clicking delete, you are taking full responsibility for
           this action.
         </p>
@@ -81,14 +82,19 @@ const Settings = () => {
         <hr></hr>
         <h4>Delete all appraisals</h4>
         <p>
-          Appraisal database currently has {appraisal.length} {appraisal.length === 1? "file": "files"} files as at{" "}
+          Appraisal database currently has {appraisal.length}{" "}
+          {appraisal.length === 1 ? "file" : "files"} as at{" "}
           {new Date().toLocaleDateString()}.
         </p>
-        <p>
+        <p style={{ color: "tomato" }}>
           Warning! By clicking delete, you are taking full responsibility for
           this action.
         </p>
-        <button type="button" className="wipe-btn" onClick={deleteAllAppraisals}>
+        <button
+          type="button"
+          className="wipe-btn"
+          onClick={deleteAllAppraisals}
+        >
           Delete All
         </button>
       </div>
