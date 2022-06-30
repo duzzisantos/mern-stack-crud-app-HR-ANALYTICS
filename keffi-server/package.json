@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Application for HR Management",
   "main": "server.js",
+  "engines": {
+    "node": "16.15.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
