@@ -8,7 +8,7 @@ const helmet = require("helmet");
 const db = require("./models");
 
 db.mongoose
-  .connect(db.url, {
+  .connect(process.env.MONGO_URI || db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -85,10 +85,16 @@ require("./routes/appraisal")(app);
 require("./routes/register")(app);
 
 //Connection
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, (err) => {
   console.log("Listening to port", PORT);
   if (err) {
     console.log(err);
   }
 });
+
+//production settings
+
+if(process.env.NODE_ENV === "production"){
+   app.use(express.static('keffi/build'))
+}
