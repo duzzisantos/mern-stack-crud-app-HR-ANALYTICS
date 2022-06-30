@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword } from "./firebase";
-// import { signInWithFacebook } from "./facebook-auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
