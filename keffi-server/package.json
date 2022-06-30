@@ -8,9 +8,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
     "build": "cd keffi && npm run build",
-    "install-client": "cd keffi && npm install"
+    "install-client": "cd keffi && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "node server.js",
+    "client": "cd keffi && npm start"
   },
   "keywords": [
     "mern stack",
