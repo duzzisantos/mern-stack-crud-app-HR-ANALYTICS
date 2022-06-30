@@ -29,8 +29,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "build": "ng build",
-    "install-client": "cd keffi && npm install",
+    
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
