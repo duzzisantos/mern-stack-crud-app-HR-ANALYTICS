@@ -10,8 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "build": "cd keffi && npm run build",
-    "install-client": "cd keffi && npm install",
-    "heroku-postbuild": "npm run install && npm run build"
+    "install-client": "cd keffi && npm install"
   },
   "keywords": [
     "mern stack",

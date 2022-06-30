@@ -31,7 +31,6 @@
     "start": "node index.js",
     "build": "ng build",
     "install-client": "cd keffi && npm install",
-    "heroku-postbuild": "npm run install && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
