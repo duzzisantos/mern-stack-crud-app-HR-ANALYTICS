@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import firebaseConfig from "../config";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -20,10 +19,22 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+};
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+
+
 
 //Pops up Google auth provider
 const googleProvider = new GoogleAuthProvider();
@@ -46,6 +57,8 @@ const signInWithGoogle = async () => {
   }
 };
 
+
+
 //Login with email and password already created
 const logInWithEmailAndPassword = async (email, password) => {
   try {
@@ -55,6 +68,7 @@ const logInWithEmailAndPassword = async (email, password) => {
     console.log(err);
   }
 };
+
 
 //Register a new account in Firebase
 const registerWithEmailAndPassword = async (name, email, password) => {
@@ -72,6 +86,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   }
 };
 
+
 //Reset password strored in user account in firebase
 const sendPasswordReset = async (email) => {
   try {
@@ -81,6 +96,7 @@ const sendPasswordReset = async (email) => {
     console.log(err);
   }
 };
+
 
 //log out the user
 const logout = () => {
