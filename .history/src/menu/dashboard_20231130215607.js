@@ -66,22 +66,19 @@ const DashBoard = () => {
       <Auth />
       <Container
         fluid
-        className="col-12 d-flex justify-content-center"
-        style={{ height: "fit-content" }}
+        className="col-12 bg-warning d-flex justify-content-center"
       >
-        <div className="col-lg-9 d-flex flex-column gap-3 py-4">
-          <h1 className="fs-3 fw-bold text-center">Appraisal Dashboard</h1>
-          <div className="d-flex justify-content-center gap-3">
+        <div className="col-lg-9 d-flex flex-column gap-3">
+          <h3>Appraisal Dashboard</h3>
+          <div className="bg-info d-flex justify-content-center">
             <Form.Control
-              size="sm"
-              className="w-25"
+              className="col-12"
               type="search"
               placeholder="Filter by Staff ID"
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Form.Select
-              size="sm"
-              className="w-25"
+            <select
+              className="month-select"
               id="select-month"
               name="selected-month"
               onChange={(e) => setSelectMonth(e.target.value)}
@@ -91,10 +88,9 @@ const DashBoard = () => {
                   {item}
                 </option>
               ))}
-            </Form.Select>
-            <Form.Select
-              size="sm"
-              className="w-25"
+            </select>
+            <select
+              className="year-select"
               id="selected-year"
               name="selected-year"
               onChange={(e) => setSelectYear(e.target.value)}
@@ -104,14 +100,11 @@ const DashBoard = () => {
                   {element}
                 </option>
               ))}
-            </Form.Select>
+            </select>
           </div>
 
-          <div
-            className="col-12 bg-light shadow-sm"
-            style={{ height: "600px" }}
-          >
-            <fieldset className="col-12">
+          <div className="dashboard-wrapper">
+            <fieldset className="dashboard-fieldset">
               {graphData
                 .filter((data) =>
                   search === "" ||
@@ -125,8 +118,8 @@ const DashBoard = () => {
                     : !data
                 )
                 .map((data) => (
-                  <div className="col-3 border border-secondary" key={data._id}>
-                    <div className="col-6">
+                  <div className="data-mapper" key={data._id}>
+                    <div className="progress-wrapper">
                       <label htmlFor="quality">
                         Quality of work -{" "}
                         <span className="label-span">{data.qualityOfWork}</span>
@@ -207,7 +200,7 @@ const DashBoard = () => {
                         </em>
                       </fieldset>
                     </div>
-                    <div className="col-3 border-info">
+                    <div className="average-appraisal">
                       <div className="user-profile">
                         {employee
                           .filter((data) =>
@@ -268,11 +261,8 @@ const DashBoard = () => {
                 ))}
             </fieldset>
           </div>
-          <div
-            className="col-12 bg-light shadow-sm py-2"
-            style={{ height: "400px" }}
-          >
-            <h5 className="fs-6 fw-bold">Yearly appraisal score trend</h5>
+          <div className="other-charts">
+            <h5 style={{ marginLeft: "10%" }}>Yearly appraisal score trend</h5>
             {graphData
               .filter((data) =>
                 search === "" ||

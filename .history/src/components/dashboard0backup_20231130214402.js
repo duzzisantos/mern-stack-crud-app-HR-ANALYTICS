@@ -1,45 +1,28 @@
-import React, { useState } from "react";
-import { Form } from "react-bootstrap";
-const DashBoard = () => {
-  const [selectedMonth, setSelectedMonth] = useState("");
-  const monthsArray = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+import React from "react";
 
+const DashBoard = () => {
   return (
     <div className="page-wrapper">
       <h3>Appraisal Dashboard</h3>
       <div className="filter-wrapper">
         <input type="search" placeholder="Filter by Staff ID" />
-        <Form.Label htmlFor="month-dashboard">Month</Form.Label>
-        <Form.Select
-          className="selection"
-          id="month-dashboard"
-          name="month"
-          onChange={(e) =>
-            setSelectedMonth({ ...selectedMonth, month: e.target.value })
-          }
-        >
+        <select className="month-select" id="month1" name="month1">
           <option name="Select" disabled>
             --Select--
           </option>
-          {monthsArray.map((element, i) => (
-            <option key={i} value={element}>
-              {element}
-            </option>
-          ))}
-        </Form.Select>
+          <option name="January">January</option>
+          <option name="February">February</option>
+          <option name="March">March</option>
+          <option name="April">April</option>
+          <option name="May">May</option>
+          <option name="June">June</option>
+          <option name="July">July</option>
+          <option name="August">August</option>
+          <option name="September">September</option>
+          <option name="October">October</option>
+          <option name="November">November</option>
+          <option name="December">December</option>
+        </select>
         <select className="month-select" id="year-sel" name="year-sel">
           <option name="Select" disabled>
             --Select--

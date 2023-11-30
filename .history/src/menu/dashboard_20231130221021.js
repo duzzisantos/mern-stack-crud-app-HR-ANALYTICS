@@ -272,7 +272,7 @@ const DashBoard = () => {
             className="col-12 bg-light shadow-sm py-2"
             style={{ height: "400px" }}
           >
-            <h5 className="fs-6 fw-bold">Yearly appraisal score trend</h5>
+            <h5 className="fs-6">Yearly appraisal score trend</h5>
             {graphData
               .filter((data) =>
                 search === "" ||
