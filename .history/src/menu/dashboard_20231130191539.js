@@ -51,7 +51,6 @@ const DashBoard = () => {
     "December",
   ];
 
-  //Get years you want to map on options element for querying appraisal period
   const startYear = 2015;
   const nextFifteenYears = 2030;
   const years = [];
@@ -89,11 +88,7 @@ const DashBoard = () => {
             name="selected-year"
             onChange={(e) => setSelectYear(e.target.value)}
           >
-            {years.map((element, index) => (
-              <option key={index} value={element}>
-                {element}
-              </option>
-            ))}
+            {}
           </select>
         </div>
 

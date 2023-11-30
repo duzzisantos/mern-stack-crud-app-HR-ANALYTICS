@@ -51,15 +51,6 @@ const DashBoard = () => {
     "December",
   ];
 
-  //Get years you want to map on options element for querying appraisal period
-  const startYear = 2015;
-  const nextFifteenYears = 2030;
-  const years = [];
-
-  for (let year = startYear; year <= nextFifteenYears; year++) {
-    years.push(year);
-  }
-
   return (
     <>
       <Auth />
@@ -74,7 +65,7 @@ const DashBoard = () => {
           <select
             className="month-select"
             id="select-month"
-            name="selected-month"
+            value={selectMonth}
             onChange={(e) => setSelectMonth(e.target.value)}
           >
             {monthsArray.map((item) => (
@@ -85,15 +76,23 @@ const DashBoard = () => {
           </select>
           <select
             className="year-select"
-            id="selected-year"
-            name="selected-year"
+            id="year"
+            name="year"
             onChange={(e) => setSelectYear(e.target.value)}
           >
-            {years.map((element, index) => (
-              <option key={index} value={element}>
-                {element}
-              </option>
-            ))}
+            <option name="default">--Year--</option>
+            <option name="2015">2015</option>
+            <option name="2016">2016</option>
+            <option name="2017">2017</option>
+            <option name="2018">2018</option>
+            <option name="2019">2019</option>
+            <option name="2020">2020</option>
+            <option name="2021">2021</option>
+            <option name="2022">2022</option>
+            <option name="2023">2023</option>
+            <option name="2024">2024</option>
+            <option name="2025">2025</option>
+            <option name="2026">2026</option>
           </select>
         </div>
 
