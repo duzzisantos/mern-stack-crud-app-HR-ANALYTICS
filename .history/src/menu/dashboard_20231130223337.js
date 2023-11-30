@@ -109,7 +109,7 @@ const DashBoard = () => {
 
           <div
             className="col-12 bg-light shadow-sm"
-            style={{ height: "600px" }}
+            style={{ height: "fit-content" }}
           ></div>
           <div
             className="col-12 bg-light shadow-sm py-2"

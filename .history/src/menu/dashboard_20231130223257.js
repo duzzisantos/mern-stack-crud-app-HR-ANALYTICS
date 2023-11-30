@@ -109,12 +109,49 @@ const DashBoard = () => {
 
           <div
             className="col-12 bg-light shadow-sm"
-            style={{ height: "600px" }}
+            style={{ height: "fit-content" }}
           ></div>
           <div
             className="col-12 bg-light shadow-sm py-2"
             style={{ height: "600px" }}
-          ></div>
+          >
+            <h5 className="fs-6 fw-bold">Yearly appraisal score trend</h5>
+            {graphData
+              .filter((data) =>
+                search === "" ||
+                selectMonth === "default" ||
+                selectYear === "default"
+                  ? !data
+                  : search.match(new RegExp(`${data.ID}`), "gi")
+                  ? data
+                  : !data
+              )
+              .map((data) => (
+                <div className="bar-graph" key={data._id}>
+                  <label style={{ marginLeft: "10%" }}>
+                    {data.month} -{" "}
+                    {(data.delivery +
+                      data.qualityOfWork +
+                      data.quantityOfWork +
+                      data.punctuality +
+                      data.responsibility) /
+                      5}
+                  </label>
+                  <progress
+                    className="bar"
+                    value={
+                      (data.delivery +
+                        data.qualityOfWork +
+                        data.quantityOfWork +
+                        data.punctuality +
+                        data.responsibility) /
+                      5
+                    }
+                    max={5}
+                  ></progress>
+                </div>
+              ))}
+          </div>
         </div>
       </Container>
     </>
