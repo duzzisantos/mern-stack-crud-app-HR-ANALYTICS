@@ -144,13 +144,13 @@ const EmployeeList = () => {
                 </Stack>
               </fieldset>
             ))}
-          {!list.filter((el) =>
-            selection.match(new RegExp(`${el.department}`), "gi")
-          ).length && (
-            <Alert variant="warning" className="col-12">
-              No data to display in this selected department. Please contact the
-              administrator, or give it time until the data is ready. If you are
-              admin, you may start adding data!
+          {(!list.length ||
+            !list.filter(
+              (el) => !selection.match(new RegExp(el.department, "i"))
+            ).length) && (
+            <Alert variant="warning">
+              No data to display in this department. Please contact the
+              administrator.
             </Alert>
           )}
         </div>

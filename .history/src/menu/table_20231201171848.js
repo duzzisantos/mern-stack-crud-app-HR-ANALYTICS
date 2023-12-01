@@ -149,8 +149,7 @@ const EmployeeList = () => {
           ).length && (
             <Alert variant="warning" className="col-12">
               No data to display in this selected department. Please contact the
-              administrator, or give it time until the data is ready. If you are
-              admin, you may start adding data!
+              administrator, or make sure give it time until the data is ready.
             </Alert>
           )}
         </div>
