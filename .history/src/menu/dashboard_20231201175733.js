@@ -18,6 +18,7 @@ const DashBoard = () => {
     try {
       const res = await axios.get(http.appraisalURL);
       setGraphData(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -27,6 +28,7 @@ const DashBoard = () => {
     try {
       const res = await axios.get(http.registerURL);
       setEmployee(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -74,7 +76,7 @@ const DashBoard = () => {
   );
 
   const noItemsFoundYet =
-    !filteredAppraisal.length && !filteredEmployees.length;
+    !filteredAppraisal.length || !filteredEmployees.length;
 
   return (
     <>

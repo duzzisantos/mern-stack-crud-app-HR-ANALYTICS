@@ -165,7 +165,7 @@ const Register = () => {
             />
           </div>
           <div className="col-9">
-            <Button variant="success">Submit</Button>
+            <Button>Submit</Button>
           </div>
         </form>
       </Container>

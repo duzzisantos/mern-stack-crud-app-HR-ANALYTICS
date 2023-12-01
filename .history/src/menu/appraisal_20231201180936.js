@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import http from "../components/http-config";
+import ButtonClass from "../components/buttons";
 import Auth from "../auth/auth";
 import { Button, Container, Form } from "react-bootstrap";
 
@@ -249,9 +250,8 @@ const Appraisal = () => {
               }
             />
           </div>
-          <div className="col-9">
-            <Button className="btn-success">Submit</Button>
-          </div>
+
+          <Button className="btn-success">Submit</Button>
         </form>
       </Container>
     </>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import http from "../components/http-config";
 import ButtonClass from "../components/buttons";
 import Auth from "../auth/auth";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 
 const Register = () => {
   const [fillForm, setFillForm] = useState({
@@ -116,57 +116,47 @@ const Register = () => {
               <option name="Customer service">Customer service</option>
             </Form.Select>
           </div>
-          <div className="col-9">
-            <Form.Label htmlFor="dateBirth">Date of Birth</Form.Label>
-            <Form.Control
-              id="dateBirth"
-              name="dateBirth"
-              type="date"
-              value={fillForm.dateBirth}
-              onChange={(e) =>
-                setFillForm({ ...fillForm, dateBirth: e.target.value })
-              }
-            />
-          </div>
-          <div className="col-9">
-            <Form.Label htmlFor="contractType">Contract Type</Form.Label>
-            <Form.Control
-              id="contractType"
-              name="contractType"
-              type="text"
-              value={fillForm.contractType}
-              onChange={(e) =>
-                setFillForm({ ...fillForm, contractType: e.target.value })
-              }
-            />
-          </div>
-          <div className="col-9">
-            <Form.Label htmlFor="dateEmployment">Date of Employment</Form.Label>
-            <Form.Control
-              id="dateEmployment"
-              name="dateEmployment"
-              type="date"
-              value={fillForm.dateEmployment}
-              onChange={(e) =>
-                setFillForm({ ...fillForm, dateEmployment: e.target.value })
-              }
-            />
-          </div>
-          <div className="col-9">
-            <Form.Label htmlFor="photo">Photo</Form.Label>
-            <Form.Control
-              id="photo"
-              name="photo"
-              type="text"
-              value={fillForm.photo}
-              onChange={(e) =>
-                setFillForm({ ...fillForm, photo: e.target.value })
-              }
-            />
-          </div>
-          <div className="col-9">
-            <Button variant="success">Submit</Button>
-          </div>
+          <Form.Label htmlFor="dateBirth">Date of Birth</Form.Label>
+          <Form.Control
+            id="dateBirth"
+            name="dateBirth"
+            type="date"
+            value={fillForm.dateBirth}
+            onChange={(e) =>
+              setFillForm({ ...fillForm, dateBirth: e.target.value })
+            }
+          />
+          <Form.Label htmlFor="contractType">Contract Type</Form.Label>
+          <Form.Control
+            id="contractType"
+            name="contractType"
+            type="text"
+            value={fillForm.contractType}
+            onChange={(e) =>
+              setFillForm({ ...fillForm, contractType: e.target.value })
+            }
+          />
+          <Form.Label htmlFor="dateEmployment">Date of Employment</Form.Label>
+          <Form.Control
+            id="dateEmployment"
+            name="dateEmployment"
+            type="date"
+            value={fillForm.dateEmployment}
+            onChange={(e) =>
+              setFillForm({ ...fillForm, dateEmployment: e.target.value })
+            }
+          />
+          <Form.Label htmlFor="photo">Photo</Form.Label>
+          <Form.Control
+            id="photo"
+            name="photo"
+            type="text"
+            value={fillForm.photo}
+            onChange={(e) =>
+              setFillForm({ ...fillForm, photo: e.target.value })
+            }
+          />
+          <ButtonClass.Primary />
         </form>
       </Container>
     </>

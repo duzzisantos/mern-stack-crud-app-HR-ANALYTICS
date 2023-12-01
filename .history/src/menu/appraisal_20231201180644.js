@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import http from "../components/http-config";
+import ButtonClass from "../components/buttons";
 import Auth from "../auth/auth";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 
 const Appraisal = () => {
   const today = new Date();
@@ -249,8 +250,8 @@ const Appraisal = () => {
               }
             />
           </div>
-          <div className="col-9">
-            <Button className="btn-success">Submit</Button>
+          <div className="justify-content-start">
+            <ButtonClass.Primary className={"btn btn-success"} />
           </div>
         </form>
       </Container>

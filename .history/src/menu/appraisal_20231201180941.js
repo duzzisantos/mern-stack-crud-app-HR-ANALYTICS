@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import http from "../components/http-config";
+import ButtonClass from "../components/buttons";
 import Auth from "../auth/auth";
 import { Button, Container, Form } from "react-bootstrap";
 

@@ -18,6 +18,7 @@ const DashBoard = () => {
     try {
       const res = await axios.get(http.appraisalURL);
       setGraphData(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -27,6 +28,7 @@ const DashBoard = () => {
     try {
       const res = await axios.get(http.registerURL);
       setEmployee(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -74,7 +76,7 @@ const DashBoard = () => {
   );
 
   const noItemsFoundYet =
-    !filteredAppraisal.length && !filteredEmployees.length;
+    !filteredAppraisal.length || !filteredEmployees.length;
 
   return (
     <>
@@ -88,7 +90,9 @@ const DashBoard = () => {
           <h1 className="fs-3 fw-bold text-center">Appraisal Dashboard</h1>
           <div className="d-flex justify-content-center gap-3 fw-bold">
             <div className="col-2">
-              <Form.Label htmlFor="employee-id">Employee ID</Form.Label>
+              <Form.Label className="mx-3" htmlFor="employee-id">
+                Employee ID
+              </Form.Label>
               <Form.Control
                 size="sm"
                 id="employee-id"
@@ -132,8 +136,8 @@ const DashBoard = () => {
 
           <div>
             {noItemsFoundYet ? (
-              <Alert variant="warning" className="col-12">
-                Search for employees by their correct ID. Either that or ensure
+              <Alert variant="info" className="col-12">
+                Start searching for employees by their ID. Either that or ensure
                 that the employee ID, year and month values are correct.
               </Alert>
             ) : (

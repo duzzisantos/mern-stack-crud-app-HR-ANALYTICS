@@ -74,7 +74,7 @@ const DashBoard = () => {
   );
 
   const noItemsFoundYet =
-    !filteredAppraisal.length && !filteredEmployees.length;
+    !filteredAppraisal.length || !filteredEmployees.length;
 
   return (
     <>

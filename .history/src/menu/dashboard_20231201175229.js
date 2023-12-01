@@ -18,6 +18,7 @@ const DashBoard = () => {
     try {
       const res = await axios.get(http.appraisalURL);
       setGraphData(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -27,6 +28,7 @@ const DashBoard = () => {
     try {
       const res = await axios.get(http.registerURL);
       setEmployee(res.data);
+      console.log(res.status);
     } catch (err) {
       console.log(err);
     }
@@ -74,7 +76,7 @@ const DashBoard = () => {
   );
 
   const noItemsFoundYet =
-    !filteredAppraisal.length && !filteredEmployees.length;
+    !filteredAppraisal.length || !filteredEmployees.length;
 
   return (
     <>
@@ -86,22 +88,24 @@ const DashBoard = () => {
       >
         <div className="col-lg-9 d-flex flex-column gap-3 py-4">
           <h1 className="fs-3 fw-bold text-center">Appraisal Dashboard</h1>
-          <div className="d-flex justify-content-center gap-3 fw-bold">
-            <div className="col-2">
+          <div className="d-flex justify-content-center gap-3">
+            <div>
               <Form.Label htmlFor="employee-id">Employee ID</Form.Label>
               <Form.Control
                 size="sm"
+                className="w-25"
                 id="employee-id"
                 type="search"
                 placeholder="Filter by Staff ID"
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <div className="col-2">
+            <div>
               {" "}
               <Form.Label htmlFor="employee-month">Month</Form.Label>
               <Form.Select
                 size="sm"
+                className="w-25"
                 id="employee-month"
                 name="selected-month"
                 onChange={(e) => setSelectMonth(e.target.value)}
@@ -113,10 +117,11 @@ const DashBoard = () => {
                 ))}
               </Form.Select>
             </div>
-            <div className="col-2">
+            <div>
               <Form.Label htmlFor="employee-year">Year</Form.Label>
               <Form.Select
                 size="sm"
+                className="w-25"
                 id="employee-year"
                 name="selected-year"
                 onChange={(e) => setSelectYear(e.target.value)}
@@ -132,8 +137,8 @@ const DashBoard = () => {
 
           <div>
             {noItemsFoundYet ? (
-              <Alert variant="warning" className="col-12">
-                Search for employees by their correct ID. Either that or ensure
+              <Alert variant="info" className="col-12">
+                Start searching for employees by their ID. Either that or ensure
                 that the employee ID, year and month values are correct.
               </Alert>
             ) : (

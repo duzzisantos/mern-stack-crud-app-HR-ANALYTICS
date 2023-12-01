@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import http from "../components/http-config";
 import ButtonClass from "../components/buttons";
 import Auth from "../auth/auth";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 
 const Register = () => {
   const [fillForm, setFillForm] = useState({
@@ -164,9 +164,7 @@ const Register = () => {
               }
             />
           </div>
-          <div className="col-9">
-            <Button variant="success">Submit</Button>
-          </div>
+          <ButtonClass.Primary />
         </form>
       </Container>
     </>
