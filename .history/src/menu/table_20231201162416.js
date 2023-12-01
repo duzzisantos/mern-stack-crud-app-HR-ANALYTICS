@@ -3,7 +3,7 @@ import http from "../components/http-config";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Auth from "../auth/auth";
-import { Button, Form, Stack } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const EmployeeList = () => {
   const [list, setList] = useState([]);
@@ -49,9 +49,9 @@ const EmployeeList = () => {
       <Auth />
       <div className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center">
         <h1 className="fs-2 fw-bold">Employee List</h1>
-        <div className="col-lg-6 col-md-10 d-flex justify-content-center">
-          <div className="hstack gap-2 col-lg-6 col-md-12 mt-3">
-            <Form.Label className="fw-bold w-75" htmlFor="department">
+        <div className=" col-6 d-flex justify-content-center">
+          <div className="hstack gap-2 col-6">
+            <Form.Label className="fw-bold" htmlFor="department">
               Filter by department:{" "}
             </Form.Label>
 
@@ -79,34 +79,21 @@ const EmployeeList = () => {
                 : !item
             )
             .map((item) => (
-              <fieldset
-                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm border border-secondary-subtle p-3"
-                key={item._id}
-              >
-                <legend
-                  className="border border-secondary-subtle justify-content-center d-flex px-0 py-2"
-                  style={{
-                    height: "90px",
-                    width: "90px",
-                    float: "none",
-                  }}
-                >
-                  <img
-                    src={item.photo}
-                    alt="Staff"
-                    style={{ height: "60px", width: "85px" }}
-                  />
+              <fieldset className="fieldset-display" key={item._id}>
+                <legend className="legend-display">
+                  <img src={item.photo} alt="Staff" />
                 </legend>
-
-                <span className="text-dark fw-bold">
-                  {item.firstName} {item.lastName}
-                </span>
-
-                <ul className="data-list lh-lg">
+                <b>
+                  <span style={{ marginLeft: "25%", color: "#730071" }}>
+                    {item.firstName} {item.lastName}
+                  </span>
+                </b>
+                <ul className="data-list">
                   <li>
                     <b>Staff ID</b>: {item.ID}
                   </li>
-
+                  {/* <li><b>First name</b>: {item.firstName}</li>
+                <li><b>Last name</b>: {item.lastName}</li> */}
                   <li>
                     <b>Email</b>: {item.email}
                   </li>
@@ -126,22 +113,22 @@ const EmployeeList = () => {
                     <b>Date of employment</b>: {item.dateEmployment}
                   </li>
                 </ul>
-                <Stack direction="horizontal" gap={2}>
-                  <Button className="bg-transparent tetx-dark border border-secondary">
-                    <Link
-                      to={`update-employee/${item._id}`}
-                      className="text-dark text-decoration-none"
-                    >
-                      Edit
-                    </Link>
-                  </Button>
-                  <Button
-                    className="btn-danger"
-                    onClick={(_id) => handleDelete(item._id)}
+                <button
+                  className="delete-btn"
+                  type="button"
+                  onClick={(e) => handleDelete(item._id)}
+                >
+                  Delete
+                </button>
+                <button className="edit-btn" type="button">
+                  <Link
+                    to={`update-employee/${item._id}`}
+                    className="edit-link"
                   >
-                    Delete
-                  </Button>
-                </Stack>
+                    {" "}
+                    Edit
+                  </Link>
+                </button>
               </fieldset>
             ))}
         </div>

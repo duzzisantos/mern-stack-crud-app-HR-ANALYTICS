@@ -80,7 +80,7 @@ const EmployeeList = () => {
             )
             .map((item) => (
               <fieldset
-                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm border border-secondary-subtle p-3"
+                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm border border-secondary p-3"
                 key={item._id}
               >
                 <legend

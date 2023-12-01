@@ -80,21 +80,14 @@ const EmployeeList = () => {
             )
             .map((item) => (
               <fieldset
-                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm border border-secondary-subtle p-3"
+                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm border border-secondary p-3"
                 key={item._id}
               >
-                <legend
-                  className="border border-secondary-subtle justify-content-center d-flex px-0 py-2"
-                  style={{
-                    height: "90px",
-                    width: "90px",
-                    float: "none",
-                  }}
-                >
+                <legend className="legend-display">
                   <img
                     src={item.photo}
                     alt="Staff"
-                    style={{ height: "60px", width: "85px" }}
+                    style={{ height: "120px", width: "120px" }}
                   />
                 </legend>
 
