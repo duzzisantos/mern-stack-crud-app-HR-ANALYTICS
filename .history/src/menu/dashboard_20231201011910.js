@@ -64,15 +64,15 @@ const DashBoard = () => {
   }
 
   const filteredEmployees = employee.filter((element) =>
-    search === element.ID.toString() ? element : !element
-  );
-
-  const filteredAppraisal = graphData.filter((element) =>
     search === element.ID.toString() &&
     selectMonth.match(new RegExp(`${element.month}`, "i")) &&
     selectYear.match(new RegExp(`${element.year}`, "i"))
       ? element
       : !element
+  );
+
+  const filteredAppraisal = graphData.filter((element) =>
+    search === element.ID.toString() ? element : !element
   );
 
   return (
@@ -121,7 +121,7 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
+          <div className="col-12 bg-light shadow-sm d-flex flex-nowrap p-4 justify-content-between">
             {filteredAppraisal.map((item, index) => {
               const {
                 quantityOfWork,

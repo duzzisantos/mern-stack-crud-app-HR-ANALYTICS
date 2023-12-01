@@ -1,11 +1,10 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import http from "../components/http-config";
 import axios from "axios";
 import Auth from "../auth/auth";
 import { Container, Form } from "react-bootstrap";
 import ProgressComponent from "../components/ProgressComponent";
-import HRComments from "../components/HRComments";
-import EmployeeProfile from "../components/EmployeeProfile";
 
 const DashBoard = () => {
   const [graphData, setGraphData] = useState([]);
@@ -63,18 +62,15 @@ const DashBoard = () => {
     years.push(year);
   }
 
-  const filteredEmployees = employee.filter((element) =>
-    search === element.ID.toString() ? element : !element
+  console.log(
+    graphData.filter((element) =>
+      search.match(new RegExp(`${element.ID}`), "gi") &&
+      selectMonth.match(new RegExp(`${element.month}`), "gi") &&
+      selectYear.match(new RegExp(`${element.year}`), "gi")
+        ? element
+        : !element
+    )
   );
-
-  const filteredAppraisal = graphData.filter((element) =>
-    search === element.ID.toString() &&
-    selectMonth.match(new RegExp(`${element.month}`, "i")) &&
-    selectYear.match(new RegExp(`${element.year}`, "i"))
-      ? element
-      : !element
-  );
-
   return (
     <>
       <Auth />
@@ -121,38 +117,40 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
-            {filteredAppraisal.map((item, index) => {
-              const {
-                quantityOfWork,
-                qualityOfWork,
-                delivery,
-                responsibility,
-                punctuality,
-              } = item;
-              return (
-                <ProgressComponent
-                  key={index}
-                  quantityOfWork={quantityOfWork}
-                  qualityOfWork={qualityOfWork}
-                  delivery={delivery}
-                  responsibility={responsibility}
-                  punctuality={punctuality}
-                />
-              );
-            })}
-
-            {filteredAppraisal.map((item, i) => (
-              <HRComments
-                key={i}
-                hrComments={item.hrComment}
-                superVisorComments={item.supervisorComment}
-              />
-            ))}
-            <EmployeeProfile employee={filteredEmployees} />
+          <div
+            className="col-12 bg-light shadow-sm"
+            style={{ height: "600px" }}
+          >
+            {graphData
+              .filter((element) =>
+                search === element.ID.toString() &&
+                selectMonth.match(new RegExp(`${element.month}`, "i")) &&
+                selectYear.match(new RegExp(`${element.year}`, "i"))
+                  ? element
+                  : !element
+              )
+              .map((item, index) => {
+                const {
+                  quantityOfWork,
+                  qualityOfWork,
+                  delivery,
+                  responsibility,
+                  punctuality,
+                } = item;
+                return (
+                  <ProgressComponent
+                    key={index}
+                    quantityOfWork={quantityOfWork}
+                    qualityOfWork={qualityOfWork}
+                    delivery={delivery}
+                    responsibility={responsibility}
+                    punctuality={punctuality}
+                  />
+                );
+              })}
           </div>
           <div
-            className=" bg-light shadow-sm py-2"
+            className="col-12 bg-light shadow-sm py-2"
             style={{ height: "600px" }}
           ></div>
         </div>

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { useEffect, useState, useMemo } from "react";
 import http from "../components/http-config";
 import axios from "axios";
 import Auth from "../auth/auth";
 import { Container, Form } from "react-bootstrap";
 import ProgressComponent from "../components/ProgressComponent";
-import HRComments from "../components/HRComments";
-import EmployeeProfile from "../components/EmployeeProfile";
+import { getKeys } from "../utils/getMetric";
 
 const DashBoard = () => {
   const [graphData, setGraphData] = useState([]);
@@ -63,17 +63,15 @@ const DashBoard = () => {
     years.push(year);
   }
 
-  const filteredEmployees = employee.filter((element) =>
-    search === element.ID.toString() ? element : !element
-  );
-
-  const filteredAppraisal = graphData.filter((element) =>
-    search === element.ID.toString() &&
-    selectMonth.match(new RegExp(`${element.month}`, "i")) &&
-    selectYear.match(new RegExp(`${element.year}`, "i"))
-      ? element
-      : !element
-  );
+  const getFilteredData = (data) => {
+    data.filter((element) =>
+      search === element.ID.toString() &&
+      selectMonth.match(new RegExp(`${element.month}`, "i")) &&
+      selectYear.match(new RegExp(`${element.year}`, "i"))
+        ? element
+        : !element
+    );
+  };
 
   return (
     <>
@@ -121,8 +119,11 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
-            {filteredAppraisal.map((item, index) => {
+          <div
+            className="col-lg-3 bg-light shadow-sm"
+            style={{ height: "600px" }}
+          >
+            {getFilteredData(graphData).map((item, index) => {
               const {
                 quantityOfWork,
                 qualityOfWork,
@@ -141,18 +142,9 @@ const DashBoard = () => {
                 />
               );
             })}
-
-            {filteredAppraisal.map((item, i) => (
-              <HRComments
-                key={i}
-                hrComments={item.hrComment}
-                superVisorComments={item.supervisorComment}
-              />
-            ))}
-            <EmployeeProfile employee={filteredEmployees} />
           </div>
           <div
-            className=" bg-light shadow-sm py-2"
+            className="col-12 bg-light shadow-sm py-2"
             style={{ height: "600px" }}
           ></div>
         </div>

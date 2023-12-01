@@ -4,6 +4,7 @@ import axios from "axios";
 import Auth from "../auth/auth";
 import { Container, Form } from "react-bootstrap";
 import ProgressComponent from "../components/ProgressComponent";
+
 import HRComments from "../components/HRComments";
 import EmployeeProfile from "../components/EmployeeProfile";
 
@@ -64,7 +65,11 @@ const DashBoard = () => {
   }
 
   const filteredEmployees = employee.filter((element) =>
-    search === element.ID.toString() ? element : !element
+    search === element.ID.toString() &&
+    selectMonth.match(new RegExp(`${element.month}`, "i")) &&
+    selectYear.match(new RegExp(`${element.year}`, "i"))
+      ? element
+      : !element
   );
 
   const filteredAppraisal = graphData.filter((element) =>
@@ -74,7 +79,6 @@ const DashBoard = () => {
       ? element
       : !element
   );
-
   return (
     <>
       <Auth />
@@ -121,35 +125,59 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
-            {filteredAppraisal.map((item, index) => {
-              const {
-                quantityOfWork,
-                qualityOfWork,
-                delivery,
-                responsibility,
-                punctuality,
-              } = item;
-              return (
-                <ProgressComponent
-                  key={index}
-                  quantityOfWork={quantityOfWork}
-                  qualityOfWork={qualityOfWork}
-                  delivery={delivery}
-                  responsibility={responsibility}
-                  punctuality={punctuality}
-                />
-              );
-            })}
+          <div className="col-12 bg-light shadow-sm d-flex flex-nowrap p-4 justify-content-between">
+            {graphData
+              .filter((element) =>
+                search === element.ID.toString() &&
+                selectMonth.match(new RegExp(`${element.month}`, "i")) &&
+                selectYear.match(new RegExp(`${element.year}`, "i"))
+                  ? element
+                  : !element
+              )
+              .map((item, index) => {
+                const {
+                  quantityOfWork,
+                  qualityOfWork,
+                  delivery,
+                  responsibility,
+                  punctuality,
+                } = item;
+                return (
+                  <ProgressComponent
+                    key={index}
+                    quantityOfWork={quantityOfWork}
+                    qualityOfWork={qualityOfWork}
+                    delivery={delivery}
+                    responsibility={responsibility}
+                    punctuality={punctuality}
+                  />
+                );
+              })}
 
-            {filteredAppraisal.map((item, i) => (
-              <HRComments
-                key={i}
-                hrComments={item.hrComment}
-                superVisorComments={item.supervisorComment}
-              />
-            ))}
-            <EmployeeProfile employee={filteredEmployees} />
+            {graphData
+              .filter((element) =>
+                search === element.ID.toString() &&
+                selectMonth.match(new RegExp(`${element.month}`, "i")) &&
+                selectYear.match(new RegExp(`${element.year}`, "i"))
+                  ? element
+                  : !element
+              )
+              .map((item, i) => (
+                <HRComments
+                  key={i}
+                  hrComments={item.hrComment}
+                  superVisorComments={item.supervisorComment}
+                />
+              ))}
+            <EmployeeProfile
+              employee={employee.filter((element) =>
+                search === element.ID.toString() &&
+                selectMonth.match(new RegExp(`${element.month}`, "i")) &&
+                selectYear.match(new RegExp(`${element.year}`, "i"))
+                  ? element
+                  : !element
+              )}
+            />
           </div>
           <div
             className=" bg-light shadow-sm py-2"

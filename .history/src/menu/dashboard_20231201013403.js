@@ -121,7 +121,7 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
+          <div className="col-12  d-flex flex-nowrap p-1 gap-1 justify-content-between">
             {filteredAppraisal.map((item, index) => {
               const {
                 quantityOfWork,
