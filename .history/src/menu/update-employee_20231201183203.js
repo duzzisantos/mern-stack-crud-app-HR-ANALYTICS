@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import ButtonClass from "../components/buttons";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Auth from "../auth/auth";
-import { Button, Form } from "react-bootstrap";
-import { ArrowLeft } from "react-bootstrap-icons";
+import { Form } from "react-bootstrap";
 
 const UpdateEmployee = () => {
   const params = useParams();
@@ -66,27 +66,17 @@ const UpdateEmployee = () => {
         console.log(err);
       });
   };
-
-  const departments = [
-    "IT",
-    "Admin",
-    "Procurement",
-    "Finance",
-    "Operations",
-    "Customer service",
-  ];
-
   return (
     <>
       <Auth />
       <div className="d-flex justify-content-center py-4 container-fluid">
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="col-lg-6 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           onSubmit={(ID, e) => handleUpdate(ID, e)}
           encType="multipart/formdata"
         >
-          <h1 className="fs-3 fw-bold">Modify Employee Record</h1>
-          <div className="col-9 gap-3 d-flex flex-column justify-content-center">
+          <h1 className="fs-3 fw-bold">Update Employee</h1>
+          <div className="col-9">
             <Form.Label htmlFor="ID">Staff ID</Form.Label>
             <Form.Control
               id="ID"
@@ -129,17 +119,19 @@ const UpdateEmployee = () => {
               onChange={(e) => setRole(e.target.value)}
             />
             <Form.Label htmlFor="department">Department</Form.Label>
-            <Form.Select
+            <select
               id="department"
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
             >
-              {departments.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
-            </Form.Select>
+              <option name="default">--Select--</option>
+              <option name="IT">IT</option>
+              <option name="Admin">Admin</option>
+              <option name="Procurement">Procurement</option>
+              <option name="Finance">Finance</option>
+              <option name="Operations">Operations</option>
+              <option name="Customer service">Customer service</option>
+            </select>
             <Form.Label htmlFor="dateBirth">Date of Birth</Form.Label>
             <Form.Control
               id="dateBirth"
@@ -172,18 +164,7 @@ const UpdateEmployee = () => {
               value={photo}
               onChange={(e) => setPhoto(e.target.value)}
             />
-          </div>
-          <div className="col-9 justify-content-between d-flex">
-            <Button type="submit" variant="success">
-              Submit
-            </Button>
-            <Button
-              variant="transparent"
-              className="text-dark border border-secondary"
-              onClick={() => navigate(-1)}
-            >
-              <ArrowLeft /> Go back
-            </Button>
+            <ButtonClass.Primary />
           </div>
         </form>
       </div>

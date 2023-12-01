@@ -43,7 +43,7 @@ const Register = () => {
       <Auth />
       <Container fluid className="d-flex justify-content-center py-4">
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="col-lg-6 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
         >

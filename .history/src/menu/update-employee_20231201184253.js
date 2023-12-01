@@ -3,7 +3,6 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Auth from "../auth/auth";
 import { Button, Form } from "react-bootstrap";
-import { ArrowLeft } from "react-bootstrap-icons";
 
 const UpdateEmployee = () => {
   const params = useParams();
@@ -81,7 +80,7 @@ const UpdateEmployee = () => {
       <Auth />
       <div className="d-flex justify-content-center py-4 container-fluid">
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="col-lg-6 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           onSubmit={(ID, e) => handleUpdate(ID, e)}
           encType="multipart/formdata"
         >
@@ -173,16 +172,9 @@ const UpdateEmployee = () => {
               onChange={(e) => setPhoto(e.target.value)}
             />
           </div>
-          <div className="col-9 justify-content-between d-flex">
+          <div className="col-9">
             <Button type="submit" variant="success">
               Submit
-            </Button>
-            <Button
-              variant="transparent"
-              className="text-dark border border-secondary"
-              onClick={() => navigate(-1)}
-            >
-              <ArrowLeft /> Go back
             </Button>
           </div>
         </form>

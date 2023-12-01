@@ -173,10 +173,11 @@ const UpdateEmployee = () => {
               onChange={(e) => setPhoto(e.target.value)}
             />
           </div>
-          <div className="col-9 justify-content-between d-flex">
+          <div className="col-9">
             <Button type="submit" variant="success">
               Submit
             </Button>
+
             <Button
               variant="transparent"
               className="text-dark border border-secondary"

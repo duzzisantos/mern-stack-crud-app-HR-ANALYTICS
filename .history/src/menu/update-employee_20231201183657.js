@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Auth from "../auth/auth";
 import { Button, Form } from "react-bootstrap";
-import { ArrowLeft } from "react-bootstrap-icons";
 
 const UpdateEmployee = () => {
   const params = useParams();
@@ -66,22 +66,12 @@ const UpdateEmployee = () => {
         console.log(err);
       });
   };
-
-  const departments = [
-    "IT",
-    "Admin",
-    "Procurement",
-    "Finance",
-    "Operations",
-    "Customer service",
-  ];
-
   return (
     <>
       <Auth />
       <div className="d-flex justify-content-center py-4 container-fluid">
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="col-lg-6 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           onSubmit={(ID, e) => handleUpdate(ID, e)}
           encType="multipart/formdata"
         >
@@ -134,11 +124,13 @@ const UpdateEmployee = () => {
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
             >
-              {departments.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
+              <option name="default">--Select--</option>
+              <option name="IT">IT</option>
+              <option name="Admin">Admin</option>
+              <option name="Procurement">Procurement</option>
+              <option name="Finance">Finance</option>
+              <option name="Operations">Operations</option>
+              <option name="Customer service">Customer service</option>
             </Form.Select>
             <Form.Label htmlFor="dateBirth">Date of Birth</Form.Label>
             <Form.Control
@@ -173,17 +165,8 @@ const UpdateEmployee = () => {
               onChange={(e) => setPhoto(e.target.value)}
             />
           </div>
-          <div className="col-9 justify-content-between d-flex">
-            <Button type="submit" variant="success">
-              Submit
-            </Button>
-            <Button
-              variant="transparent"
-              className="text-dark border border-secondary"
-              onClick={() => navigate(-1)}
-            >
-              <ArrowLeft /> Go back
-            </Button>
+          <div className="col-9">
+            <Button variant="success">Submit</Button>
           </div>
         </form>
       </div>
