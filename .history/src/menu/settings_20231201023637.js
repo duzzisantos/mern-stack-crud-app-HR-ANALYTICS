@@ -80,11 +80,11 @@ const Settings = () => {
           </h2>
 
           <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
+            <small className="fs-6">Head Count</small>
             <div style={{ height: "fit-content" }}>
               {" "}
               {[...Array(employeeLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
+                <PersonFill key={element} className="fs-3" />
               ))}
             </div>
           </div>
@@ -92,7 +92,7 @@ const Settings = () => {
             {" "}
             <button
               type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
+              className="btn border border-2 text-dark btn-sm"
             >
               Show in table
             </button>
@@ -114,18 +114,18 @@ const Settings = () => {
           </h2>
 
           <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
+            <small className="fs-6">Count</small>
             <div style={{ height: "fit-content" }}>
               {" "}
               {[...Array(appraisalLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
+                <PersonFill key={element} className="fs-3" />
               ))}
             </div>
           </div>
           <div className="hstack gap-3">
             <button
               type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
+              className="btn border border-2 text-dark btn-sm"
             >
               Show in table
             </button>

@@ -3,7 +3,7 @@ import axios from "axios";
 import http from "../components/http-config";
 import Auth from "../auth/auth";
 import { Container } from "react-bootstrap";
-import { PersonFill } from "react-bootstrap-icons";
+import { PersonBadgeFill } from "react-bootstrap-icons";
 
 const Settings = () => {
   const [employee, setDeleteEmployee] = useState([]);
@@ -12,22 +12,22 @@ const Settings = () => {
   const getEmployeeData = async () => {
     try {
       const response = await axios.get(http.registerURL);
-      console.error(response.statusText);
+      console.log(response.statusText);
       setDeleteEmployee(response.data);
     } catch (err) {
-      console.error(err.statusText);
-      console.error(err.message);
+      console.log(err.statusText);
+      console.log(err.message);
     }
   };
 
   const getAppraisalData = async () => {
     try {
       const response = await axios.get(http.appraisalURL);
-      console.error(response.statusText);
+      console.log(response.statusText);
       setDeleteAppraisal(response.data);
     } catch (err) {
-      console.error(err.statusText);
-      console.error(err.message);
+      console.log(err.statusText);
+      console.log(err.message);
     }
   };
 
@@ -40,12 +40,12 @@ const Settings = () => {
     axios
       .delete(http.appraisalURL)
       .then((res) => {
-        console.error(res.statusText);
+        console.log(res.statusText);
         alert("All appraisals have been deleted");
         getAppraisalData();
       })
       .catch((err) => {
-        console.error(err.message);
+        console.log(err.message);
       });
   };
 
@@ -53,17 +53,14 @@ const Settings = () => {
     axios
       .delete(http.registerURL)
       .then((res) => {
-        console.error(res.status);
+        console.log(res.status);
         alert("All employees have been deleted");
         getEmployeeData();
       })
       .catch((err) => {
-        console.error(err.message);
+        console.log(err.message);
       });
   };
-
-  const employeeLength = employee.length;
-  const appraisalLength = appraisal.length;
   return (
     <>
       <Auth />
@@ -72,71 +69,54 @@ const Settings = () => {
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center col-9"
       >
         <h1 className="fw-bold fs-3">Settings</h1>
-        <div className="col-9 mb-3" style={{ height: "250px" }}>
+        <div className="col-9 mb-3">
           <h2 className="fs-6">
             Employee database currently has {employee.length}{" "}
             {employee.length === 1 ? "file" : "files"} as at{" "}
             {new Date().toLocaleDateString()}.
           </h2>
 
-          <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
+          <div className="py-2 rounded-1">
+            <small className="fs-6">Head Count</small>
             <div style={{ height: "fit-content" }}>
               {" "}
-              {[...Array(employeeLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
+              {Array(employee.length).map((element) => (
+                <PersonBadgeFill key={element} className="fs-3" />
               ))}
             </div>
           </div>
-          <div className="gap-3 hstack">
-            {" "}
-            <button
-              type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
-            >
-              Show in table
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger btn-sm"
-              onClick={deleteAllEmployees}
-            >
-              Delete All
-            </button>
-          </div>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={deleteAllEmployees}
+          >
+            Delete All
+          </button>
         </div>
 
-        <div className="col-9 mb-3" style={{ height: "250px" }}>
+        <div className="col-9 mb-3">
           <h2 className="fs-6">
             Appraisal database currently has {appraisal.length}{" "}
             {appraisal.length === 1 ? "file" : "files"} as at{" "}
             {new Date().toLocaleDateString()}.
           </h2>
 
-          <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
+          <div className="py-2 rounded-1">
+            <small className="fs-6">Head Count</small>
             <div style={{ height: "fit-content" }}>
               {" "}
-              {[...Array(appraisalLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
+              {Array(appraisal.length).map((element) => (
+                <PersonBadgeFill key={element} className="fs-3" />
               ))}
             </div>
           </div>
-          <div className="hstack gap-3">
-            <button
-              type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
-            >
-              Show in table
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger btn-sm"
-              onClick={deleteAllAppraisals}
-            >
-              Delete All
-            </button>
-          </div>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={deleteAllAppraisals}
+          >
+            Delete All
+          </button>
         </div>
       </Container>
     </>

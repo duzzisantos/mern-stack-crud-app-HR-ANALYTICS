@@ -80,30 +80,28 @@ const Settings = () => {
           </h2>
 
           <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
+            <small className="fs-6">Head Count</small>
             <div style={{ height: "fit-content" }}>
               {" "}
               {[...Array(employeeLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
+                <PersonFill key={element} className="fs-3" />
               ))}
             </div>
           </div>
-          <div className="gap-3 hstack">
-            {" "}
-            <button
-              type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
-            >
-              Show in table
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger btn-sm"
-              onClick={deleteAllEmployees}
-            >
-              Delete All
-            </button>
-          </div>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={deleteAllEmployees}
+          >
+            Show in table
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={deleteAllEmployees}
+          >
+            Delete All
+          </button>
         </div>
 
         <div className="col-9 mb-3" style={{ height: "250px" }}>
@@ -114,29 +112,21 @@ const Settings = () => {
           </h2>
 
           <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
+            <small className="fs-6">Count</small>
             <div style={{ height: "fit-content" }}>
               {" "}
               {[...Array(appraisalLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
+                <PersonFill key={element} className="fs-3" />
               ))}
             </div>
           </div>
-          <div className="hstack gap-3">
-            <button
-              type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
-            >
-              Show in table
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger btn-sm"
-              onClick={deleteAllAppraisals}
-            >
-              Delete All
-            </button>
-          </div>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={deleteAllAppraisals}
+          >
+            Delete All
+          </button>
         </div>
       </Container>
     </>

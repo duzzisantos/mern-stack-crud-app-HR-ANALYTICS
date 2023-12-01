@@ -84,7 +84,7 @@ const Settings = () => {
             <div style={{ height: "fit-content" }}>
               {" "}
               {[...Array(employeeLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
+                <PersonFill key={element} className="fs-3" />
               ))}
             </div>
           </div>
@@ -92,7 +92,7 @@ const Settings = () => {
             {" "}
             <button
               type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
+              className="btn border border-2 text-dark btn-sm"
             >
               Show in table
             </button>
@@ -125,7 +125,7 @@ const Settings = () => {
           <div className="hstack gap-3">
             <button
               type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
+              className="btn border border-2 text-dark btn-sm"
             >
               Show in table
             </button>
