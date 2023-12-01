@@ -162,7 +162,7 @@ const DashBoard = () => {
                   <EmployeeProfile employee={filteredEmployees} />
                 </div>
                 <div
-                  className=" bg-light shadow-sm py-2 mt-3"
+                  className=" bg-light shadow-sm py-2"
                   style={{ height: "600px" }}
                 ></div>
               </>

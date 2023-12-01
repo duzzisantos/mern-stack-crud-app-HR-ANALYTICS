@@ -124,45 +124,43 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div>
+          <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
             {noItemsFoundYet ? (
               <Alert variant="info" className="col-12">
                 Start searching for employees by their ID. Either that or ensure
                 that the employee ID, year and month values are correct.
               </Alert>
             ) : (
-              <>
-                <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
-                  {filteredAppraisal.map((item, index) => {
-                    const {
-                      quantityOfWork,
-                      qualityOfWork,
-                      delivery,
-                      responsibility,
-                      punctuality,
-                    } = item;
-                    return (
-                      <ProgressComponent
-                        key={index}
-                        quantityOfWork={quantityOfWork}
-                        qualityOfWork={qualityOfWork}
-                        delivery={delivery}
-                        responsibility={responsibility}
-                        punctuality={punctuality}
-                      />
-                    );
-                  })}
-                  {filteredAppraisal.map((item, i) => (
-                    <HRComments
-                      key={i}
-                      hrComments={item.hrComment}
-                      superVisorComments={item.supervisorComment}
+              <div className="d-flex flex-column gap-3">
+                {filteredAppraisal.map((item, index) => {
+                  const {
+                    quantityOfWork,
+                    qualityOfWork,
+                    delivery,
+                    responsibility,
+                    punctuality,
+                  } = item;
+                  return (
+                    <ProgressComponent
+                      key={index}
+                      quantityOfWork={quantityOfWork}
+                      qualityOfWork={qualityOfWork}
+                      delivery={delivery}
+                      responsibility={responsibility}
+                      punctuality={punctuality}
                     />
-                  ))}
-                  <EmployeeProfile employee={filteredEmployees} />
-                </div>
+                  );
+                })}
+                {filteredAppraisal.map((item, i) => (
+                  <HRComments
+                    key={i}
+                    hrComments={item.hrComment}
+                    superVisorComments={item.supervisorComment}
+                  />
+                ))}
+                <EmployeeProfile employee={filteredEmployees} />
                 <div
-                  className=" bg-light shadow-sm py-2 mt-3"
+                  className=" bg-light shadow-sm py-2"
                   style={{ height: "600px" }}
                 ></div>
               </>

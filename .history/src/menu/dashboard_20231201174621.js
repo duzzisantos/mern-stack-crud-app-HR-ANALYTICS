@@ -124,7 +124,7 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div>
+          <div className="col-12">
             {noItemsFoundYet ? (
               <Alert variant="info" className="col-12">
                 Start searching for employees by their ID. Either that or ensure

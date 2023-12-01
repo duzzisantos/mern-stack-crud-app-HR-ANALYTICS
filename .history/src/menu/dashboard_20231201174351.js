@@ -124,7 +124,7 @@ const DashBoard = () => {
             </Form.Select>
           </div>
 
-          <div>
+          <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
             {noItemsFoundYet ? (
               <Alert variant="info" className="col-12">
                 Start searching for employees by their ID. Either that or ensure
@@ -132,7 +132,7 @@ const DashBoard = () => {
               </Alert>
             ) : (
               <>
-                <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
+                <div>
                   {filteredAppraisal.map((item, index) => {
                     const {
                       quantityOfWork,
@@ -162,7 +162,7 @@ const DashBoard = () => {
                   <EmployeeProfile employee={filteredEmployees} />
                 </div>
                 <div
-                  className=" bg-light shadow-sm py-2 mt-3"
+                  className=" bg-light shadow-sm py-2 col-12"
                   style={{ height: "600px" }}
                 ></div>
               </>
