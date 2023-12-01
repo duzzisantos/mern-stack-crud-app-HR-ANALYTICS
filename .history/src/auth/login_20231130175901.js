@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Form } from "react-bootstrap";
 import { auth, logInWithEmailAndPassword } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "../App.css";
@@ -21,50 +20,48 @@ const Login = () => {
     if (user) navigate("/auth/register");
   });
   return (
-    <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h1 className="mt-3 fs-2">
+    <div className="login">
+      <h2>
         Keffi <FontAwesomeIcon icon={faRing} />
-      </h1>
-      <Form className="col-lg-6 col-sm-9 mt-3 p-4 shadow-lg rounded-2 gap-3 justify-content-center d-flex flex-column">
-        <h2 className="fs-3 text-center">Login</h2>
-        <Form.Label htmlFor="login-email">Email</Form.Label>
-        <Form.Control
+      </h2>
+      <div className="login-container">
+        <h3>Login</h3>
+        <label htmlFor="login-email">Email</label>
+        <input
           type="text"
           id="login-email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           title="Enter email address"
         />{" "}
-        <Form.Label htmlFor="login-password">Password</Form.Label>
-        <Form.Control
+        <label htmlFor="login-password">Password</label>
+        <input
           type="password"
           id="login-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           title="Enter password"
         />
-        <div className="d-flex justify-content-between hstack py-2">
-          <Button
-            className="btn-success"
+        <div className="sign-btns">
+          <button
+            className="login-btn"
             onClick={() => logInWithEmailAndPassword(email, password)}
             title="Login"
           >
             Login
-          </Button>
-          <div className="gap-3 hstack">
-            <span>
-              <Link to="reset" className="link" title="Reset password">
-                Forgot Password?
-              </Link>
-            </span>
-            <span>
-              <Link to="signup" className="link" title="Create an account">
-                Do not have an account?
-              </Link>
-            </span>
-          </div>
+          </button>
         </div>
-      </Form>
+        <span className="login-span">
+          <Link to="reset" className="link" title="Reset password">
+            Forgot Password?
+          </Link>
+        </span>
+        <span className="login-span">
+          <Link to="signup" className="link" title="Create an account">
+            Do not have an account?
+          </Link>
+        </span>
+      </div>
     </div>
   );
 };

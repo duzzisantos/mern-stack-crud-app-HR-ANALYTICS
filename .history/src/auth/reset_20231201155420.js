@@ -33,7 +33,7 @@ const Reset = () => {
         />
         <div className="d-flex justify-content-between py-2 hstack ">
           <Button
-            className="btn-success"
+            className="btn-success me-4"
             onClick={() => sendPasswordReset(email)}
           >
             Reset

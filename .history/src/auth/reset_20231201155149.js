@@ -6,7 +6,7 @@ import { auth, sendPasswordReset } from "./firebase";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRing } from "@fortawesome/free-solid-svg-icons";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 const Reset = () => {
   const [email, setEmail] = useState("");
@@ -31,20 +31,15 @@ const Reset = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
-        <div className="d-flex justify-content-between py-2 hstack ">
-          <Button
-            className="btn-success"
-            onClick={() => sendPasswordReset(email)}
-          >
-            Reset
-          </Button>
-          <span>
-            <Link to="/" className="link">
-              Back to Login
-            </Link>{" "}
-            now.
-          </span>
-        </div>
+        <button className="reset__btn" onClick={() => sendPasswordReset(email)}>
+          Reset
+        </button>
+        <span className="reset__span">
+          <Link to="/" className="link">
+            Back to Login
+          </Link>{" "}
+          now.
+        </span>
       </Form>
     </div>
   );

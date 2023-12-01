@@ -31,20 +31,18 @@ const Reset = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
-        <div className="d-flex justify-content-between py-2 hstack ">
-          <Button
-            className="btn-success"
-            onClick={() => sendPasswordReset(email)}
-          >
-            Reset
-          </Button>
-          <span>
-            <Link to="/" className="link">
-              Back to Login
-            </Link>{" "}
-            now.
-          </span>
-        </div>
+        <Button
+          className="btn-success"
+          onClick={() => sendPasswordReset(email)}
+        >
+          Reset
+        </Button>
+        <span className="reset__span">
+          <Link to="/" className="link">
+            Back to Login
+          </Link>{" "}
+          now.
+        </span>
       </Form>
     </div>
   );

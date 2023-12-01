@@ -31,7 +31,7 @@ const Reset = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
-        <div className="d-flex justify-content-between py-2 hstack ">
+        <div className="d-flex justify-content-between py-2 hstack">
           <Button
             className="btn-success"
             onClick={() => sendPasswordReset(email)}

@@ -51,7 +51,7 @@ const Login = () => {
           >
             Login
           </Button>
-          <div className="gap-3 hstack">
+          <div>
             <span>
               <Link to="reset" className="link" title="Reset password">
                 Forgot Password?

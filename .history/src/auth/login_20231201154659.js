@@ -51,18 +51,16 @@ const Login = () => {
           >
             Login
           </Button>
-          <div className="gap-3 hstack">
-            <span>
-              <Link to="reset" className="link" title="Reset password">
-                Forgot Password?
-              </Link>
-            </span>
-            <span>
-              <Link to="signup" className="link" title="Create an account">
-                Do not have an account?
-              </Link>
-            </span>
-          </div>
+          <span>
+            <Link to="reset" className="link" title="Reset password">
+              Forgot Password?
+            </Link>
+          </span>
+          <span>
+            <Link to="signup" className="link" title="Create an account">
+              Do not have an account?
+            </Link>
+          </span>
         </div>
       </Form>
     </div>

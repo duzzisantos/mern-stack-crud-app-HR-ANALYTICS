@@ -60,7 +60,7 @@ const SignUp = () => {
 
         <div className="d-flex justify-content-between py-2 hstack">
           <Button className="btn-success" onClick={register}>
-            Sign up
+            Signup
           </Button>
           <span>
             Already have an account?{" "}

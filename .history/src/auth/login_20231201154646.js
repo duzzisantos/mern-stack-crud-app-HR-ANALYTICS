@@ -43,7 +43,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           title="Enter password"
         />
-        <div className="d-flex justify-content-between hstack py-2">
+        <div className="d-flex justify-content-between py-2">
           <Button
             className="btn-success"
             onClick={() => logInWithEmailAndPassword(email, password)}
@@ -51,18 +51,16 @@ const Login = () => {
           >
             Login
           </Button>
-          <div className="gap-3 hstack">
-            <span>
-              <Link to="reset" className="link" title="Reset password">
-                Forgot Password?
-              </Link>
-            </span>
-            <span>
-              <Link to="signup" className="link" title="Create an account">
-                Do not have an account?
-              </Link>
-            </span>
-          </div>
+          <span>
+            <Link to="reset" className="link" title="Reset password">
+              Forgot Password?
+            </Link>
+          </span>
+          <span>
+            <Link to="signup" className="link" title="Create an account">
+              Do not have an account?
+            </Link>
+          </span>
         </div>
       </Form>
     </div>
