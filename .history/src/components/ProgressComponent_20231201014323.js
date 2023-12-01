@@ -8,7 +8,7 @@ const ProgressComponent = ({
   punctuality,
 }) => {
   return (
-    <div className="d-flex flex-column gap-4 p-4 shadow-sm col-lg-4 fw-bold">
+    <div className="d-flex flex-column gap-4 p-4 shadow-sm col-lg-4 col-sm-6 fw-bold">
       <small>Quality of work</small>
       <ProgressBar
         striped
