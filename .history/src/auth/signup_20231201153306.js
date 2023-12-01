@@ -30,7 +30,7 @@ const SignUp = () => {
   });
   return (
     <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h2 className="mt-3">
+      <h2>
         Keffi <FontAwesomeIcon icon={faRing} />
       </h2>
 

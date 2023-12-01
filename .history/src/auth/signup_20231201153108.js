@@ -30,11 +30,11 @@ const SignUp = () => {
   });
   return (
     <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h2 className="mt-3">
+      <h2>
         Keffi <FontAwesomeIcon icon={faRing} />
       </h2>
 
-      <Form className="col-lg-6 col-sm-9 mt-3 p-4 shadow-sm border border-secondary rounded-2 gap-3 justify-content-center d-flex flex-column">
+      <Form className="col-lg-6 col-sm-9 mt-3 p-4 gap-3 bg-warning justify-content-center d-flex flex-column">
         <h3>Sign up</h3>
         <Form.Label htmlFor="fullName">Full Name</Form.Label>
         <Form.Control
@@ -58,18 +58,18 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <div className="d-flex justify-content-between py-2">
+        <div className="d-flex justify-content-between">
           <Button className="btn-success" onClick={register}>
             Register
           </Button>
-          <span>
-            Already have an account?{" "}
-            <Link to="/" className="link">
-              Login
-            </Link>{" "}
-            now.
-          </span>
         </div>
+        <span>
+          Already have an account?{" "}
+          <Link to="/" className="link">
+            Login
+          </Link>{" "}
+          now.
+        </span>
       </Form>
     </div>
   );

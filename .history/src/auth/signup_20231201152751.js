@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword } from "./firebase";
 import "../App.css";
@@ -30,39 +30,41 @@ const SignUp = () => {
   });
   return (
     <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h2 className="mt-3">
+      <h2>
         Keffi <FontAwesomeIcon icon={faRing} />
       </h2>
 
-      <Form className="col-lg-6 col-sm-9 mt-3 p-4 shadow-sm border border-secondary rounded-2 gap-3 justify-content-center d-flex flex-column">
+      <Form className="col-lg-6 col-sm-9 mt-3 p-4 bg-warning justify-content-center d-flex flex-column">
         <h3>Sign up</h3>
         <Form.Label htmlFor="fullName">Full Name</Form.Label>
-        <Form.Control
+        <input
           type="text"
           id="fullName"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <Form.Label htmlFor="email">Email</Form.Label>
-        <Form.Control
+        <input
           type="text"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <Form.Label htmlFor="password">Password</Form.Label>
-        <Form.Control
+        <input
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <div className="d-flex justify-content-between py-2">
-          <Button className="btn-success" onClick={register}>
+        <div className="sign-btns">
+          <button className="register-btn" onClick={register}>
             Register
-          </Button>
-          <span>
+          </button>
+        </div>
+        <div>
+          <span className="register-span">
             Already have an account?{" "}
             <Link to="/" className="link">
               Login
