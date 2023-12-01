@@ -35,7 +35,7 @@ const SignUp = () => {
       </h1>
 
       <Form className="col-lg-6 col-sm-9 mt-3 p-4 shadow-lg rounded-2 gap-3 justify-content-center d-flex flex-column">
-        <h2 className="fs-3 text-center">Sign up</h2>
+        <h2 className="fs-3">Sign up</h2>
         <Form.Label htmlFor="fullName">Full Name</Form.Label>
         <Form.Control
           type="text"
