@@ -11,7 +11,7 @@ Keffi HR Analytics application
    - Quantity of work
    - Punctuality
    - Responsibility
-   - Deelivery
+   - Delivery
 6. Authentication and authorization with Firebase
 7. Appraisal Dasboard for displaying different instances of an employee's appraisal, and their changes in performace (top level overview)
 8. Analytics charts showing employee performance rankings, and offering training recommendations across different levels
