@@ -45,22 +45,16 @@ const Login = () => {
           title="Enter password"
         />
         <div className="d-flex justify-content-between hstack py-2">
-          <div className="gap-3 hstack">
-            <Button
-              className="btn-success"
-              onClick={() => logInWithEmailAndPassword(email, password)}
-              title="Login"
-            >
-              Login
-            </Button>
-            <Button
-              onClick={() => signInWithGoogle()}
-              variant="transparent"
-              className="text-dark border border-secondary border-2"
-            >
-              Login with <Google />
-            </Button>
-          </div>
+          <Button
+            className="btn-success"
+            onClick={() => logInWithEmailAndPassword(email, password)}
+            title="Login"
+          >
+            Login
+          </Button>
+          <Button variant="transparent" className="text-dark border-2">
+            Login with <Google />
+          </Button>
           <div className="gap-3 hstack">
             <span>
               <Link to="reset" className="link" title="Reset password">

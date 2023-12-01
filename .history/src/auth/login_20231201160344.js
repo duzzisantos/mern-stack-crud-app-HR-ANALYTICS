@@ -45,7 +45,7 @@ const Login = () => {
           title="Enter password"
         />
         <div className="d-flex justify-content-between hstack py-2">
-          <div className="gap-3 hstack">
+          <div className="gap-3">
             <Button
               className="btn-success"
               onClick={() => logInWithEmailAndPassword(email, password)}
@@ -54,7 +54,6 @@ const Login = () => {
               Login
             </Button>
             <Button
-              onClick={() => signInWithGoogle()}
               variant="transparent"
               className="text-dark border border-secondary border-2"
             >
