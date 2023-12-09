@@ -61,7 +61,7 @@ const getUniqueMonthlyAppraisals = (data, employeeId, selectedYear) => {
         selectedYear.match(new RegExp(`${element.year}`)) &&
         employeeId.match(new RegExp(`${element.ID}`))
     )
-    .map((item) => item.month);
+    .map((item) => item);
 
   const initialObject = {
     employeeId,
@@ -80,22 +80,25 @@ const getUniqueMonthlyAppraisals = (data, employeeId, selectedYear) => {
   );
 
   // Process the filtered data and push to the corresponding arrays
-
+  // Calculate the average for each property and push to the corresponding arrays
+  initialObject.delivery.push(filteredData.map((element) => element.delivery));
   initialObject.punctuality.push(
-    filteredData.map((element) => element.punctuality)
+    filteredData.map((element) => element.punctuality).flat((f) => f)
   );
 
-  initialObject.delivery.push(filteredData.map((element) => element.delivery));
+  initialObject.delivery.push(
+    filteredData.map((element) => element.delivery).flat((f) => f)
+  );
   initialObject.qualityOfWork.push(
-    filteredData.map((element) => element.qualityOfWork)
+    filteredData.map((element) => element.qualityOfWork).flat((f) => f)
   );
 
   initialObject.quantityOfWork.push(
-    filteredData.map((element) => element.quantityOfWork)
+    filteredData.map((element) => element.quantityOfWork).flat((f) => f)
   );
 
   initialObject.responsibility.push(
-    filteredData.map((element) => element.responsibility)
+    filteredData.map((element) => element.responsibility).flat((f) => f)
   );
 
   return initialObject;

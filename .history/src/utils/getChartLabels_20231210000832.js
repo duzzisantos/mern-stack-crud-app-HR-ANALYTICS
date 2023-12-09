@@ -66,11 +66,11 @@ const getUniqueMonthlyAppraisals = (data, employeeId, selectedYear) => {
   const initialObject = {
     employeeId,
     months: getExactMonths,
-    delivery: [],
-    punctuality: [],
-    qualityOfWork: [],
-    quantityOfWork: [],
-    responsibility: [],
+    delivery: [].flat(),
+    punctuality: [].flat(),
+    qualityOfWork: [].flat(),
+    quantityOfWork: [].flat(),
+    responsibility: [].flat(),
   };
 
   const filteredData = data.filter(
@@ -80,7 +80,8 @@ const getUniqueMonthlyAppraisals = (data, employeeId, selectedYear) => {
   );
 
   // Process the filtered data and push to the corresponding arrays
-
+  // Calculate the average for each property and push to the corresponding arrays
+  initialObject.delivery.push(filteredData.map((element) => element.delivery));
   initialObject.punctuality.push(
     filteredData.map((element) => element.punctuality)
   );

@@ -80,6 +80,7 @@ const getUniqueMonthlyAppraisals = (data, employeeId, selectedYear) => {
   );
 
   // Process the filtered data and push to the corresponding arrays
+  // Calculate the average for each property and push to the corresponding arrays
 
   initialObject.punctuality.push(
     filteredData.map((element) => element.punctuality)

@@ -35,7 +35,9 @@ const YearOnYear = ({ chartData, employeeId, years }) => {
     delivery,
   } = getUniqueAppraisals(chartData, employeeId, years);
 
-  const options = useChartOptions(`Year-on-Year`);
+  console.log(getUniqueAppraisals(chartData, employeeId, years));
+
+  const options = useChartOptions(`Year-on-Year `);
   const data = useChartData(
     years,
     qualityOfWork,

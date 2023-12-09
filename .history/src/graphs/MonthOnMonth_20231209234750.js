@@ -15,6 +15,7 @@ import { Form } from "react-bootstrap";
 import {
   getAvailableYears,
   getUniqueMonthlyAppraisals,
+  getUniqueMonths,
 } from "../utils/getChartLabels";
 import { useChartData } from "../utils/useChartData";
 import { useChartOptions } from "../utils/usechartOptions";
@@ -36,22 +37,21 @@ const MonthOnMonth = ({ chartData, employeeId, setGraphYear, graphYear }) => {
     responsibility,
     punctuality,
     delivery,
-    months,
   } = getUniqueMonthlyAppraisals(chartData, employeeId, graphYear);
 
   const options = useChartOptions("monthly");
 
+  const labels = getUniqueMonths(chartData);
   const uniqueYears = getAvailableYears(chartData);
   const data = useChartData(
-    months,
-    qualityOfWork[0],
-    quantityOfWork[0],
-    responsibility[0],
-    punctuality[0],
-    delivery[0]
+    labels,
+    qualityOfWork,
+    quantityOfWork,
+    responsibility,
+    punctuality,
+    delivery
   );
 
-  console.log(getUniqueMonthlyAppraisals(chartData, employeeId, graphYear));
   return (
     <div className="col-12 p-3">
       <div className="d-flex hstack gap-2 col-lg-3 col-md-6">

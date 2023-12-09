@@ -54,18 +54,9 @@ const getUniqueAppraisals = (data, employeeId, years) => {
 };
 
 //Monthly Appraisals per ID and month
-const getUniqueMonthlyAppraisals = (data, employeeId, selectedYear) => {
-  const getExactMonths = data
-    .filter(
-      (element) =>
-        selectedYear.match(new RegExp(`${element.year}`)) &&
-        employeeId.match(new RegExp(`${element.ID}`))
-    )
-    .map((item) => item.month);
-
+const getUniqueMonthlyAppraisals = (data, employeeId, years, selectedYear) => {
   const initialObject = {
     employeeId,
-    months: getExactMonths,
     delivery: [],
     punctuality: [],
     qualityOfWork: [],
@@ -73,31 +64,30 @@ const getUniqueMonthlyAppraisals = (data, employeeId, selectedYear) => {
     responsibility: [],
   };
 
-  const filteredData = data.filter(
-    (element) =>
-      selectedYear.match(new RegExp(`${element.year}`)) &&
-      employeeId.match(new RegExp(`${element.ID}`))
-  );
+  years.forEach((year) => {
+    const filteredData = data.filter((element) => {
+      const elementYear = selectedYear;
+      return elementYear === year && employeeId.match(RegExp(`${element.ID}`));
+    });
 
-  // Process the filtered data and push to the corresponding arrays
-
-  initialObject.punctuality.push(
-    filteredData.map((element) => element.punctuality)
-  );
-
-  initialObject.delivery.push(filteredData.map((element) => element.delivery));
-  initialObject.qualityOfWork.push(
-    filteredData.map((element) => element.qualityOfWork)
-  );
-
-  initialObject.quantityOfWork.push(
-    filteredData.map((element) => element.quantityOfWork)
-  );
-
-  initialObject.responsibility.push(
-    filteredData.map((element) => element.responsibility)
-  );
-
+    // Process the filtered data and push to the corresponding arrays
+    // Calculate the average for each property and push to the corresponding arrays
+    initialObject.delivery.push(
+      getAverage(filteredData.map((element) => element.delivery))
+    );
+    initialObject.punctuality.push(
+      getAverage(filteredData.map((element) => element.punctuality))
+    );
+    initialObject.qualityOfWork.push(
+      getAverage(filteredData.map((element) => element.qualityOfWork))
+    );
+    initialObject.quantityOfWork.push(
+      getAverage(filteredData.map((element) => element.quantityOfWork))
+    );
+    initialObject.responsibility.push(
+      getAverage(filteredData.map((element) => element.responsibility))
+    );
+  });
   return initialObject;
 };
 

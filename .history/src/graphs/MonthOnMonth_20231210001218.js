@@ -15,6 +15,7 @@ import { Form } from "react-bootstrap";
 import {
   getAvailableYears,
   getUniqueMonthlyAppraisals,
+  getUniqueMonths,
 } from "../utils/getChartLabels";
 import { useChartData } from "../utils/useChartData";
 import { useChartOptions } from "../utils/usechartOptions";
