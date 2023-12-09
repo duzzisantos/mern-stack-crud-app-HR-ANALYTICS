@@ -15,7 +15,6 @@ const DashBoard = () => {
   const [selectMonth, setSelectMonth] = useState("");
   const [selectYear, setSelectYear] = useState("");
   const [graphYear, setGraphYear] = useState("");
-  const [graphMonth, setGraphMonth] = useState("");
 
   const getData = async () => {
     try {
@@ -171,16 +170,15 @@ const DashBoard = () => {
                   <EmployeeProfile employee={filteredEmployees} />
                 </div>
                 <div
-                  className="shadow-sm py-2 mt-5"
-                  style={{ height: "fit-content" }}
+                  className=" bg-light shadow-sm py-2 mt-3"
+                  style={{ height: "600px" }}
                 >
                   <PerformanceHistory
-                    chartData={graphData}
+                    chartData={filteredAppraisal}
                     employeeId={search}
-                    graphYear={graphYear}
-                    graphMonth={graphMonth}
-                    setGraphYear={(e) => setGraphYear(e.target.value)}
-                    setGraphMonth={(e) => setGraphMonth(e.target.value)}
+                    year={graphYear}
+                    month={selectMonth}
+                    setGraphYear={setGraphYear}
                   />
                 </div>
               </>

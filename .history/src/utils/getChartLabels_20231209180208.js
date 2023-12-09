@@ -1,9 +1,11 @@
+import { getMonthAsString } from "./getMonthAsString";
+
 const getAvailableYears = (data) => {
-  return [...new Set(data.map((el) => el.year))];
+  return [...new Set(data.map((el) => new Date(el.updatedAt).getFullYear()))];
 };
 
 const getUniqueMonths = (data) => {
-  return [...new Set(data.map((el) => el.month))];
+  return [...new Set(data.map((el) => new Date(el.updatedAt).getMonth()))];
 };
 
 //Yearly appraisals filtered per ID and year
@@ -22,7 +24,7 @@ const getUniqueAppraisals = (data, employeeId, year) => {
         if (
           element[key] &&
           employeeId.match(new RegExp(`${element.ID}`)) &&
-          element.year === Number(year)
+          new Date(element.updatedAt).getFullYear() === Number(year)
         ) {
           value.push(element[key]);
         }
@@ -49,7 +51,7 @@ const getUniqueMonthlyAppraisals = (data, employeeId, month) => {
         if (
           element[key] &&
           employeeId.match(new RegExp(`${element.ID}`)) &&
-          element.month === month
+          getMonthAsString(element.updatedAt) === parseInt(month)
         ) {
           value.push(element[key]);
         }

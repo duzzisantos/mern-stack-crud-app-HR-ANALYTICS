@@ -17,7 +17,7 @@ import {
 } from "../utils/getChartLabels";
 import { useChartData } from "../utils/useChartData";
 import { useChartOptions } from "../utils/usechartOptions";
-// import { Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -29,15 +29,13 @@ ChartJS.register(
   Legend
 );
 
-const YearOnYear = ({ chartData, employeeId, graphYear, setGraphYear }) => {
-  const uniqueAppraisals = getUniqueAppraisals(
-    chartData,
-    employeeId,
-    graphYear
-  );
+const YearOnYear = ({ chartData, employeeId, year }) => {
+  const uniqueAppraisals = getUniqueAppraisals(chartData, employeeId, year);
+
+  console.log(uniqueAppraisals);
 
   const labels = getAvailableYears(chartData);
-  const options = useChartOptions("Annually");
+  const options = useChartOptions(year);
   const data = useChartData(
     labels,
     uniqueAppraisals.qualityOfWork,
@@ -48,17 +46,15 @@ const YearOnYear = ({ chartData, employeeId, graphYear, setGraphYear }) => {
   );
 
   return (
-    <div className="col-12 p-3">
-      {/* <div className="d-flex col-lg-3 col-md-6">
-        <Form.Label className="w-50 fw-semibold">Select Year</Form.Label>
-        <Form.Select size="sm" value={graphYear} onChange={setGraphYear}>
-          {labels.map((el, i) => (
-            <option key={i} value={el}>
-              {el}
-            </option>
-          ))}
-        </Form.Select>
-      </div> */}
+    <div className="col-12">
+      <Form.Label>Select Year</Form.Label>
+      <Form.Select>
+        {labels.map((el, i) => (
+          <option key={i} value={el}>
+            {el}
+          </option>
+        ))}
+      </Form.Select>
       <Line options={options} data={data} />
     </div>
   );

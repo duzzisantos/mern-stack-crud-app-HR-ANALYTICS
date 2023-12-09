@@ -13,7 +13,6 @@ import {
 import { Line } from "react-chartjs-2";
 import { Form } from "react-bootstrap";
 import {
-  getAvailableYears,
   getUniqueMonthlyAppraisals,
   getUniqueMonths,
 } from "../utils/getChartLabels";
@@ -30,24 +29,19 @@ ChartJS.register(
   Legend
 );
 
-const MonthOnMonth = ({
-  chartData,
-  employeeId,
-  graphMonth,
-  setGraphYear,
-  graphYear,
-}) => {
+const MonthOnMonth = ({ chartData, employeeId, graphMonth, setGraphMonth }) => {
   const uniqueAppraisals = getUniqueMonthlyAppraisals(
     chartData,
     employeeId,
     graphMonth
   );
 
-  const options = useChartOptions("monthly");
+  const options = useChartOptions(graphMonth);
 
   const labels = getUniqueMonths(chartData);
-  const uniqueYears = getAvailableYears(chartData);
+
   const data = useChartData(
+    labels,
     labels,
     uniqueAppraisals.qualityOfWork,
     uniqueAppraisals.quantityOfWork,
@@ -58,15 +52,15 @@ const MonthOnMonth = ({
 
   return (
     <div className="col-12 p-3">
-      <div className="d-flex hstack gap-2 col-lg-3 col-md-6">
-        <Form.Label>Select Year</Form.Label>
+      <div className="d-flex hstck gap-2 col-lg-3 col-md-6">
+        <Form.Label className="w-50 fw-semibold">Select Month</Form.Label>
         <Form.Select
           className="w-50"
           size="sm"
-          value={graphYear}
-          onChange={setGraphYear}
+          value={graphMonth}
+          onChange={(e) => setGraphMonth(e.target.value)}
         >
-          {uniqueYears.map((el, i) => (
+          {labels.map((el, i) => (
             <option key={i} value={el}>
               {el}
             </option>

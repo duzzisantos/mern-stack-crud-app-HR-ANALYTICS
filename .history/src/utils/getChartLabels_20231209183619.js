@@ -1,3 +1,5 @@
+import { getMonthAsString } from "./getMonthAsString";
+
 const getAvailableYears = (data) => {
   return [...new Set(data.map((el) => el.year))];
 };

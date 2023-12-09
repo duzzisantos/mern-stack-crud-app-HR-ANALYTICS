@@ -1,9 +1,11 @@
+import { getMonthAsString } from "./getMonthAsString";
+
 const getAvailableYears = (data) => {
-  return [...new Set(data.map((el) => el.year))];
+  return [...new Set(data.map((el) => new Date(el.updatedAt).getFullYear()))];
 };
 
 const getUniqueMonths = (data) => {
-  return [...new Set(data.map((el) => el.month))];
+  return [...new Set(data.map((el) => new Date(el.updatedAt).getMonth()))];
 };
 
 //Yearly appraisals filtered per ID and year

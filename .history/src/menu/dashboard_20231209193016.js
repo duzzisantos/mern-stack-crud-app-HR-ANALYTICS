@@ -177,8 +177,8 @@ const DashBoard = () => {
                   <PerformanceHistory
                     chartData={graphData}
                     employeeId={search}
-                    graphYear={graphYear}
-                    graphMonth={graphMonth}
+                    year={graphYear}
+                    month={graphMonth}
                     setGraphYear={(e) => setGraphYear(e.target.value)}
                     setGraphMonth={(e) => setGraphMonth(e.target.value)}
                   />

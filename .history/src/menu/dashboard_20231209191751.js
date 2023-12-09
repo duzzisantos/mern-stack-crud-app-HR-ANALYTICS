@@ -175,12 +175,12 @@ const DashBoard = () => {
                   style={{ height: "fit-content" }}
                 >
                   <PerformanceHistory
-                    chartData={graphData}
+                    chartData={filteredAppraisal}
                     employeeId={search}
-                    graphYear={graphYear}
-                    graphMonth={graphMonth}
-                    setGraphYear={(e) => setGraphYear(e.target.value)}
-                    setGraphMonth={(e) => setGraphMonth(e.target.value)}
+                    year={graphYear}
+                    month={graphMonth}
+                    setGraphYear={setGraphYear}
+                    setGraphMonth={setGraphMonth}
                   />
                 </div>
               </>

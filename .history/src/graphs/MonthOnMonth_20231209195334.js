@@ -13,7 +13,6 @@ import {
 import { Line } from "react-chartjs-2";
 import { Form } from "react-bootstrap";
 import {
-  getAvailableYears,
   getUniqueMonthlyAppraisals,
   getUniqueMonths,
 } from "../utils/getChartLabels";
@@ -46,7 +45,7 @@ const MonthOnMonth = ({
   const options = useChartOptions("monthly");
 
   const labels = getUniqueMonths(chartData);
-  const uniqueYears = getAvailableYears(chartData);
+
   const data = useChartData(
     labels,
     uniqueAppraisals.qualityOfWork,
@@ -66,7 +65,7 @@ const MonthOnMonth = ({
           value={graphYear}
           onChange={setGraphYear}
         >
-          {uniqueYears.map((el, i) => (
+          {labels.map((el, i) => (
             <option key={i} value={el}>
               {el}
             </option>

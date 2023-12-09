@@ -171,16 +171,16 @@ const DashBoard = () => {
                   <EmployeeProfile employee={filteredEmployees} />
                 </div>
                 <div
-                  className="shadow-sm py-2 mt-5"
+                  className="shadow-sm py-2 mt-3"
                   style={{ height: "fit-content" }}
                 >
                   <PerformanceHistory
-                    chartData={graphData}
+                    chartData={filteredAppraisal}
                     employeeId={search}
-                    graphYear={graphYear}
-                    graphMonth={graphMonth}
-                    setGraphYear={(e) => setGraphYear(e.target.value)}
-                    setGraphMonth={(e) => setGraphMonth(e.target.value)}
+                    year={graphYear}
+                    month={graphMonth}
+                    setGraphYear={setGraphYear}
+                    setGraphMonth={setGraphMonth}
                   />
                 </div>
               </>

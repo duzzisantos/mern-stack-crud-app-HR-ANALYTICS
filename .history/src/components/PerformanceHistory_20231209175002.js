@@ -2,14 +2,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import { useState } from "react";
 import YearOnYear from "../graphs/YearOnYear";
 import MonthOnMonth from "../graphs/MonthOnMonth";
-const PerformanceHistory = ({
-  chartData,
-  employeeId,
-  graphYear,
-  setGraphYear,
-  graphMonth,
-  setGraphMonth,
-}) => {
+const PerformanceHistory = ({ chartData, employeeId, year, month }) => {
   const [key, setKey] = useState("Annual");
 
   return (
@@ -19,8 +12,7 @@ const PerformanceHistory = ({
           <YearOnYear
             chartData={chartData}
             employeeId={employeeId}
-            year={graphYear}
-            setGraphYear={setGraphYear}
+            year={year}
           />
         </div>
       </Tab>
@@ -29,8 +21,7 @@ const PerformanceHistory = ({
           <MonthOnMonth
             chartData={chartData}
             employeeId={employeeId}
-            month={graphMonth}
-            setGraphMonth={setGraphMonth}
+            month={month}
           />
         </div>
       </Tab>

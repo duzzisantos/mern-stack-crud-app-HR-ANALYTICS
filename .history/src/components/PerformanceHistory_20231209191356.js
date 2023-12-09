@@ -15,24 +15,20 @@ const PerformanceHistory = ({
   return (
     <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
       <Tab eventKey="Annual" title="Year on Year">
-        <div className="col-12 d-flex justify-content-center">
-          <YearOnYear
-            chartData={chartData}
-            employeeId={employeeId}
-            year={graphYear}
-            setGraphYear={setGraphYear}
-          />
-        </div>
+        <YearOnYear
+          chartData={chartData}
+          employeeId={employeeId}
+          year={graphYear}
+          setGraphYear={setGraphYear}
+        />
       </Tab>
       <Tab eventKey="Monthly" title="Month on Month">
-        <div className="col-12 d-flex justify-content-center">
-          <MonthOnMonth
-            chartData={chartData}
-            employeeId={employeeId}
-            month={graphMonth}
-            setGraphMonth={setGraphMonth}
-          />
-        </div>
+        <MonthOnMonth
+          chartData={chartData}
+          employeeId={employeeId}
+          month={graphMonth}
+          setGraphMonth={setGraphMonth}
+        />
       </Tab>
     </Tabs>
   );
