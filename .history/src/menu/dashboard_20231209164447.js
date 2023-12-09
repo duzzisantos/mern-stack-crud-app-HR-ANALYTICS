@@ -169,14 +169,10 @@ const DashBoard = () => {
                   <EmployeeProfile employee={filteredEmployees} />
                 </div>
                 <div
-                  className=" bg-light shadow-sm py-2 mt-3"
+                  className=" bg-light shadow-sm py-2 mt-3 d-flex justify-content-center"
                   style={{ height: "600px" }}
                 >
-                  <PerformanceHistory
-                    chartData={filteredAppraisal}
-                    employeeId={search}
-                    year={selectYear}
-                  />
+                  <PerformanceHistory />
                 </div>
               </>
             )}

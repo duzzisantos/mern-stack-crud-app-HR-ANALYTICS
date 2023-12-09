@@ -175,7 +175,6 @@ const DashBoard = () => {
                   <PerformanceHistory
                     chartData={filteredAppraisal}
                     employeeId={search}
-                    year={selectYear}
                   />
                 </div>
               </>
