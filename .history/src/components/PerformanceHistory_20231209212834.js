@@ -7,7 +7,6 @@ const PerformanceHistory = ({
   employeeId,
   graphYear,
   setGraphYear,
-  years,
 }) => {
   const [key, setKey] = useState("Annual");
 
@@ -15,11 +14,7 @@ const PerformanceHistory = ({
     <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
       <Tab eventKey="Annual" title="Year on Year">
         <div className="col-12 d-flex justify-content-center">
-          <YearOnYear
-            chartData={chartData}
-            employeeId={employeeId}
-            years={years}
-          />
+          <YearOnYear chartData={chartData} employeeId={employeeId} />
         </div>
       </Tab>
       <Tab eventKey="Monthly" title="Month on Month">

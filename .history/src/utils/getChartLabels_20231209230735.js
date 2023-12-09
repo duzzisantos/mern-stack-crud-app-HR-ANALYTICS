@@ -32,6 +32,8 @@ const getUniqueAppraisals = (data, employeeId, years) => {
       );
     });
 
+    console.log(filteredData);
+
     // Process the filtered data and push to the corresponding arrays
     // Calculate the average for each property and push to the corresponding arrays
     initialObject.delivery.push(

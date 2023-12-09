@@ -6,12 +6,6 @@ const getUniqueMonths = (data) => {
   return [...new Set(data.map((el) => el.month))];
 };
 
-// Helper function to calculate the average of an array of numbers
-const getAverage = (array) => {
-  const sum = array.reduce((total, value) => total + value, 0);
-  return array.length > 0 ? sum / array.length : 0;
-};
-
 //Yearly appraisals filtered per ID and year
 const getUniqueAppraisals = (data, employeeId, years) => {
   const initialObject = {
@@ -33,22 +27,13 @@ const getUniqueAppraisals = (data, employeeId, years) => {
     });
 
     // Process the filtered data and push to the corresponding arrays
-    // Calculate the average for each property and push to the corresponding arrays
-    initialObject.delivery.push(
-      getAverage(filteredData.map((element) => element.delivery))
-    );
-    initialObject.punctuality.push(
-      getAverage(filteredData.map((element) => element.punctuality))
-    );
-    initialObject.qualityOfWork.push(
-      getAverage(filteredData.map((element) => element.qualityOfWork))
-    );
-    initialObject.quantityOfWork.push(
-      getAverage(filteredData.map((element) => element.quantityOfWork))
-    );
-    initialObject.responsibility.push(
-      getAverage(filteredData.map((element) => element.responsibility))
-    );
+    filteredData.forEach((element) => {
+      initialObject.delivery.push(element.delivery);
+      initialObject.punctuality.push(element.punctuality);
+      initialObject.qualityOfWork.push(element.qualityOfWork);
+      initialObject.quantityOfWork.push(element.quantityOfWork);
+      initialObject.responsibility.push(element.responsibility);
+    });
   });
   return initialObject;
 };

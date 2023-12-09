@@ -7,7 +7,7 @@ import ProgressComponent from "../components/ProgressComponent";
 import HRComments from "../components/HRComments";
 import EmployeeProfile from "../components/EmployeeProfile";
 import PerformanceHistory from "../components/PerformanceHistory";
-import { getAvailableYears } from "../utils/getChartLabels";
+
 const DashBoard = () => {
   const [graphData, setGraphData] = useState([]);
   const [employee, setEmployee] = useState([]);
@@ -15,6 +15,7 @@ const DashBoard = () => {
   const [selectMonth, setSelectMonth] = useState("");
   const [selectYear, setSelectYear] = useState("");
   const [graphYear, setGraphYear] = useState("");
+  const [graphMonth, setGraphMonth] = useState("");
 
   const getData = async () => {
     try {
@@ -78,7 +79,6 @@ const DashBoard = () => {
   const noItemsFoundYet =
     !filteredAppraisal.length && !filteredEmployees.length;
 
-  const labels = getAvailableYears(graphData);
   return (
     <>
       <Auth />
@@ -175,11 +175,12 @@ const DashBoard = () => {
                   style={{ height: "fit-content" }}
                 >
                   <PerformanceHistory
-                    years={labels}
-                    chartData={graphData}
+                    chartData={filteredAppraisal}
                     employeeId={search}
                     graphYear={graphYear}
+                    graphMonth={graphMonth}
                     setGraphYear={(e) => setGraphYear(e.target.value)}
+                    setGraphMonth={(e) => setGraphMonth(e.target.value)}
                   />
                 </div>
               </>

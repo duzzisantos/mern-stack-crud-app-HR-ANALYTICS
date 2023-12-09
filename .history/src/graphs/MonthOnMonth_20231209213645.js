@@ -30,7 +30,13 @@ ChartJS.register(
   Legend
 );
 
-const MonthOnMonth = ({ chartData, employeeId, setGraphYear, graphYear }) => {
+const MonthOnMonth = ({
+  chartData,
+  employeeId,
+
+  setGraphYear,
+  graphYear,
+}) => {
   const {
     qualityOfWork,
     quantityOfWork,

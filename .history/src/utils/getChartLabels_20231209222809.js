@@ -6,17 +6,10 @@ const getUniqueMonths = (data) => {
   return [...new Set(data.map((el) => el.month))];
 };
 
-// Helper function to calculate the average of an array of numbers
-const getAverage = (array) => {
-  const sum = array.reduce((total, value) => total + value, 0);
-  return array.length > 0 ? sum / array.length : 0;
-};
-
 //Yearly appraisals filtered per ID and year
-const getUniqueAppraisals = (data, employeeId, years) => {
+const getUniqueAppraisals = (data, employeeId, year) => {
   const initialObject = {
     employeeId,
-    years,
     delivery: [],
     punctuality: [],
     qualityOfWork: [],
@@ -24,33 +17,30 @@ const getUniqueAppraisals = (data, employeeId, years) => {
     responsibility: [],
   };
 
-  years.forEach((year) => {
+  const meanScores = {};
+  year.forEach((element) => {
     const filteredData = data.filter((element) => {
       const elementYear = element.year;
-      return (
-        elementYear === year && employeeId.match(new RegExp(`${element.ID}`))
-      );
+      return elementYear === year;
     });
 
-    // Process the filtered data and push to the corresponding arrays
-    // Calculate the average for each property and push to the corresponding arrays
-    initialObject.delivery.push(
-      getAverage(filteredData.map((element) => element.delivery))
+    const yearObject = Object.fromEntries(
+      Object.entries(initialObject).map(([key, value]) => {
+        const propValues = filteredData.map((item) =>
+          item[key].filter(Boolean)
+        );
+        const meanScore =
+          propValues.length > 0
+            ? propValues.reduce((sum, value) => sum + value, 0) /
+              propValues.length
+            : 0;
+
+        return [key, meanScore];
+      })
     );
-    initialObject.punctuality.push(
-      getAverage(filteredData.map((element) => element.punctuality))
-    );
-    initialObject.qualityOfWork.push(
-      getAverage(filteredData.map((element) => element.qualityOfWork))
-    );
-    initialObject.quantityOfWork.push(
-      getAverage(filteredData.map((element) => element.quantityOfWork))
-    );
-    initialObject.responsibility.push(
-      getAverage(filteredData.map((element) => element.responsibility))
-    );
+    meanScores[element] = yearObject;
   });
-  return initialObject;
+  return meanScores;
 };
 
 //Monthly Appraisals per ID and month

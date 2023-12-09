@@ -11,14 +11,13 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { Form } from "react-bootstrap";
 import {
   getAvailableYears,
-  getUniqueMonthlyAppraisals,
-  getUniqueMonths,
+  getUniqueAppraisals,
 } from "../utils/getChartLabels";
 import { useChartData } from "../utils/useChartData";
 import { useChartOptions } from "../utils/usechartOptions";
+// import { Form } from "react-bootstrap";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -30,19 +29,17 @@ ChartJS.register(
   Legend
 );
 
-const MonthOnMonth = ({ chartData, employeeId, setGraphYear, graphYear }) => {
+const YearOnYear = ({ chartData, employeeId }) => {
   const {
     qualityOfWork,
     quantityOfWork,
     responsibility,
     punctuality,
     delivery,
-  } = getUniqueMonthlyAppraisals(chartData, employeeId, graphYear);
+  } = getUniqueAppraisals(chartData, employeeId);
 
-  const options = useChartOptions("monthly");
-
-  const labels = getUniqueMonths(chartData);
-  const uniqueYears = getAvailableYears(chartData);
+  const labels = getAvailableYears(chartData);
+  const options = useChartOptions("Year-on-Year");
   const data = useChartData(
     labels,
     qualityOfWork,
@@ -52,26 +49,23 @@ const MonthOnMonth = ({ chartData, employeeId, setGraphYear, graphYear }) => {
     delivery
   );
 
+  console.log(data.datasets.data);
+
   return (
     <div className="col-12 p-3">
-      <div className="d-flex hstack gap-2 col-lg-3 col-md-6">
-        <Form.Label>Select Year</Form.Label>
-        <Form.Select
-          className="w-50"
-          size="sm"
-          value={graphYear}
-          onChange={setGraphYear}
-        >
-          {uniqueYears.map((el, i) => (
+      {/* <div className="d-flex col-lg-3 col-md-6">
+        <Form.Label className="w-50 fw-semibold">Select Year</Form.Label>
+        <Form.Select size="sm" value={graphYear} onChange={setGraphYear}>
+          {labels.map((el, i) => (
             <option key={i} value={el}>
               {el}
             </option>
           ))}
         </Form.Select>
-      </div>
+      </div> */}
       <Line options={options} data={data} />
     </div>
   );
 };
 
-export default MonthOnMonth;
+export default YearOnYear;

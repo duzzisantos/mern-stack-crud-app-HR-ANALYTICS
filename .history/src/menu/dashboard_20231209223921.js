@@ -15,6 +15,7 @@ const DashBoard = () => {
   const [selectMonth, setSelectMonth] = useState("");
   const [selectYear, setSelectYear] = useState("");
   const [graphYear, setGraphYear] = useState("");
+  const [graphMonth, setGraphMonth] = useState("");
 
   const getData = async () => {
     try {
@@ -179,7 +180,9 @@ const DashBoard = () => {
                     chartData={graphData}
                     employeeId={search}
                     graphYear={graphYear}
+                    graphMonth={graphMonth}
                     setGraphYear={(e) => setGraphYear(e.target.value)}
+                    setGraphMonth={(e) => setGraphMonth(e.target.value)}
                   />
                 </div>
               </>

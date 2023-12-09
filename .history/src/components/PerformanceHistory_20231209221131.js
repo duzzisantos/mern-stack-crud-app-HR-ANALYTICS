@@ -7,7 +7,6 @@ const PerformanceHistory = ({
   employeeId,
   graphYear,
   setGraphYear,
-  years,
 }) => {
   const [key, setKey] = useState("Annual");
 
@@ -18,7 +17,7 @@ const PerformanceHistory = ({
           <YearOnYear
             chartData={chartData}
             employeeId={employeeId}
-            years={years}
+            year={graphYear}
           />
         </div>
       </Tab>

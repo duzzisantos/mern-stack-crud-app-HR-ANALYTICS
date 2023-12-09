@@ -11,10 +11,13 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { getUniqueAppraisals } from "../utils/getChartLabels";
+import {
+  getAvailableYears,
+  getUniqueAppraisals,
+} from "../utils/getChartLabels";
 import { useChartData } from "../utils/useChartData";
 import { useChartOptions } from "../utils/usechartOptions";
-
+// import { Form } from "react-bootstrap";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -26,20 +29,19 @@ ChartJS.register(
   Legend
 );
 
-const YearOnYear = ({ chartData, employeeId, years }) => {
+const YearOnYear = ({ chartData, employeeId }) => {
   const {
     qualityOfWork,
     quantityOfWork,
     responsibility,
     punctuality,
     delivery,
-  } = getUniqueAppraisals(chartData, employeeId, years);
+  } = getUniqueAppraisals(chartData, employeeId);
 
-  console.log(getUniqueAppraisals(chartData, employeeId, years));
-
+  const labels = getAvailableYears(chartData);
   const options = useChartOptions("Year-on-Year");
   const data = useChartData(
-    years,
+    labels,
     qualityOfWork,
     quantityOfWork,
     responsibility,
