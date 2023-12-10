@@ -12,8 +12,10 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Form } from "react-bootstrap";
-import { getAvailableYears } from "../utils/getChartLabels";
-import { getUniqueMonthlyAppraisals } from "../utils/getUniqueMonthlyAppraisals";
+import {
+  getAvailableYears,
+  getUniqueMonthlyAppraisals,
+} from "../utils/getChartLabels";
 import { useChartData } from "../utils/useChartData";
 import { useChartOptions } from "../utils/usechartOptions";
 ChartJS.register(

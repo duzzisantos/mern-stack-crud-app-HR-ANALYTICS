@@ -12,8 +12,8 @@ export function useChartData(
       {
         label: "Quality of Work",
         data: qualityOfWork,
-        borderColor: "#2aa501",
-        backgroundColor: "#2aa501",
+        borderColor: "#2a0501",
+        backgroundColor: "#2a0501",
       },
       {
         label: "Quantity of work",
