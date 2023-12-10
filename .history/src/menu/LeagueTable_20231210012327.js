@@ -18,12 +18,12 @@ const LeagueTable = () => {
       <Auth />
       <Container
         fluid
-        className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center"
+        className="col-12 d-flex justify-content-center"
         style={{ height: "fit-content" }}
       >
-        <h1 className="fs-2 fw-bold">League Table</h1>
-        <div className="col-lg-6 col-md-10 d-flex justify-content-center">
-          <div className="hstack d-flex gap-2  col-lg-6 col-md-12 mt-3">
+        <div className="col-lg-9 d-flex flex-column gap-3 py-4 justify-content-center align-items-center">
+          <h1 className="fs-3 fw-bold text-center">League Table</h1>
+          <div className="hstack gap-2 col-lg-6 col-md-12 mt-3 bg-danger">
             <Form.Label className="fw-bold w-75" htmlFor="department">
               Filter by department:{" "}
             </Form.Label>

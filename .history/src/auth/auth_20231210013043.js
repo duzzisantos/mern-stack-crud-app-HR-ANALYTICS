@@ -48,7 +48,6 @@ const Auth = () => {
         expand="lg"
         className="bg-dark text-light w-100 shadow-sm"
         sticky="top"
-        style={{ height: "fit-content" }}
       >
         <Container>
           <Navbar.Brand href="/auth/dashboard" className="text-light">
