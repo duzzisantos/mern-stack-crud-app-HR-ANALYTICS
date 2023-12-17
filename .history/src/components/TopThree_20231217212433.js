@@ -1,4 +1,4 @@
-import { Alert, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { getEmployeeDetails } from "../utils/getEmployeeDetails";
 
 const TopThree = ({ filteredData, employeeData }) => {
@@ -30,7 +30,7 @@ const TopThree = ({ filteredData, employeeData }) => {
                           height: "100px",
                           width: "100px",
                           backgroundColor: `${
-                            index === 0
+                            index + 1 === 1
                               ? "gold"
                               : index === 1
                               ? "silver"
@@ -50,12 +50,6 @@ const TopThree = ({ filteredData, employeeData }) => {
           </Card.Body>
         </Card>
       ))}
-      {!filteredData.length && (
-        <Alert variant="warning" className="col-9">
-          Unfortunately, that query does not exist. Please try another filter
-          combination using the dropdown options above.
-        </Alert>
-      )}
     </div>
   );
 };

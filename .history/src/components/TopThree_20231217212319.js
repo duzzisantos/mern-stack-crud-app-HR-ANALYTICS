@@ -1,9 +1,9 @@
-import { Alert, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { getEmployeeDetails } from "../utils/getEmployeeDetails";
 
 const TopThree = ({ filteredData, employeeData }) => {
   return (
-    <div className="col-9 col-md-12 d-flex justify-content-center py-2 px-2 hstack gap-3 my-4">
+    <div className="col-9 bg-danger col-md-12 d-flex justify-content-center py-2 px-2 hstack gap-3 my-4">
       {filteredData.map((person, index) => (
         <Card
           key={index}
@@ -50,12 +50,6 @@ const TopThree = ({ filteredData, employeeData }) => {
           </Card.Body>
         </Card>
       ))}
-      {!filteredData.length && (
-        <Alert variant="warning" className="col-9">
-          Unfortunately, that query does not exist. Please try another filter
-          combination using the dropdown options above.
-        </Alert>
-      )}
     </div>
   );
 };
