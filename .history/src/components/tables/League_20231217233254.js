@@ -59,7 +59,7 @@ const League = ({ filteredData, employeeData }) => {
                         5}
                     </td>
                     <td>
-                      <Button variant="transparent" className="rounded-5">
+                      <Button variant="transparent">
                         <ThreeDotsVertical />
                       </Button>
                     </td>

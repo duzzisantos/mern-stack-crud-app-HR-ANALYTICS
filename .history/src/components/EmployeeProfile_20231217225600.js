@@ -32,7 +32,7 @@ const EmployeeProfile = ({ employee }) => {
               <ul key={i}>
                 <li>Role: {item.role}</li>
                 <li>Department: {item.department}</li>
-                <li>Employment Date: {item.dateEmployment}</li>
+                <li>Employment Date: {item.employmentDate}</li>
               </ul>
             ))}
           </article>

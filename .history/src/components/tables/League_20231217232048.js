@@ -1,5 +1,4 @@
-import { Button, Table } from "react-bootstrap";
-import { ThreeDotsVertical } from "react-bootstrap-icons";
+import { Table } from "react-bootstrap";
 
 const League = ({ filteredData, employeeData }) => {
   return (
@@ -57,11 +56,6 @@ const League = ({ filteredData, employeeData }) => {
                         delivery +
                         punctuality) /
                         5}
-                    </td>
-                    <td>
-                      <Button variant="transparent" className="rounded-5">
-                        <ThreeDotsVertical />
-                      </Button>
                     </td>
                   </tr>
                 );

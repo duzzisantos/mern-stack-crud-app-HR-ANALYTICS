@@ -63,7 +63,7 @@ const ShowEmployees = ({ employeeData }) => {
           ))}
         </Form.Select>
       </div>
-      <output className="my-3 bg-dark rounded-2">
+      <output className="my-3 bg-dark rounded-1">
         <ol className="my-3 mx-2 text-light">
           <li className="d-flex justify-content-between mb-2">
             {details?.employeeID}

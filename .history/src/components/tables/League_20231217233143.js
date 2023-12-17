@@ -1,5 +1,5 @@
 import { Button, Table } from "react-bootstrap";
-import { ThreeDotsVertical } from "react-bootstrap-icons";
+import { Eye } from "react-bootstrap-icons";
 
 const League = ({ filteredData, employeeData }) => {
   return (
@@ -59,8 +59,8 @@ const League = ({ filteredData, employeeData }) => {
                         5}
                     </td>
                     <td>
-                      <Button variant="transparent" className="rounded-5">
-                        <ThreeDotsVertical />
+                      <Button variant="transparent">
+                        <Eye />
                       </Button>
                     </td>
                   </tr>

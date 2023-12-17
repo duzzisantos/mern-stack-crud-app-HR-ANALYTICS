@@ -10,7 +10,7 @@ const League = ({ filteredData, employeeData }) => {
           <Table bordered responsive hover>
             <thead>
               <tr>
-                <th>Position</th>
+                <th>Pos</th>
                 <th>Employee</th>
                 <th>Role</th>
                 <th>Quality of work</th>

@@ -19,7 +19,7 @@ const League = ({ filteredData, employeeData }) => {
                 <th>Punctuality</th>
                 <th>Delivery</th>
                 <th>Average Score</th>
-                <th>Recommendation</th>
+                <th>Recommend</th>
               </tr>
             </thead>
             <tbody>
@@ -59,7 +59,7 @@ const League = ({ filteredData, employeeData }) => {
                         5}
                     </td>
                     <td>
-                      <Button variant="transparent" className="rounded-5">
+                      <Button variant="transparent">
                         <ThreeDotsVertical />
                       </Button>
                     </td>
