@@ -39,7 +39,7 @@ const Appraisal = () => {
     );
   } else if (isLoading) {
     return <Alert>Employee list and departments are loading</Alert>;
-  } else if (!data || data === undefined) {
+  } else if (!data || !data === undefined) {
     return <Alert>Data is unavailable at the moment</Alert>;
   }
 
@@ -61,10 +61,9 @@ const Appraisal = () => {
         fluid
         className="d-flex justify-content-center py-4 gap-4 overflow-hidden"
       >
-        <ShowEmployees
-          employeeData={(!isLoading || !isError || !data === undefined) && data}
-        />
-
+        {!isLoading && !isError && !data === undefined && (
+          <ShowEmployees employeeData={data} />
+        )}
         <form
           className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"

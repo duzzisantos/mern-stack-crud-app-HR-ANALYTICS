@@ -28,21 +28,6 @@ const Appraisal = () => {
 
   const { isError, isLoading, refetch, data } = getEmployees;
 
-  //Handle error before consuming data from use query hook
-
-  if (isError) {
-    return (
-      <Alert variant="warning">
-        Error in loading data{" "}
-        <Button onClick={() => refetch}>Reload data</Button>
-      </Alert>
-    );
-  } else if (isLoading) {
-    return <Alert>Employee list and departments are loading</Alert>;
-  } else if (!data || data === undefined) {
-    return <Alert>Data is unavailable at the moment</Alert>;
-  }
-
   const handleSubmit = () => {
     http
       .post(http.appraisalURL, appraise, http.headers)
@@ -54,6 +39,21 @@ const Appraisal = () => {
       });
   };
 
+  //Handle error before consuming data from use query hook
+
+  if (isError) {
+    return (
+      <Alert variant="warning">
+        Error in loading data{" "}
+        <Button onClick={() => refetch}>Reload data</Button>
+      </Alert>
+    );
+  } else if (isLoading) {
+    return <Alert>Employee list and departments are loading</Alert>;
+  } else if (!data || !data === undefined) {
+    return <Alert>Data is unavailable at the moment</Alert>;
+  }
+
   return (
     <>
       <Auth />
@@ -61,10 +61,7 @@ const Appraisal = () => {
         fluid
         className="d-flex justify-content-center py-4 gap-4 overflow-hidden"
       >
-        <ShowEmployees
-          employeeData={(!isLoading || !isError || !data === undefined) && data}
-        />
-
+        <ShowEmployees employeeData={data} />
         <form
           className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"

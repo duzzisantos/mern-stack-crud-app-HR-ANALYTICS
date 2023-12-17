@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { departments } from "../utils/dropDownOptions";
 import { Button, Form } from "react-bootstrap";
 import { Clipboard } from "react-bootstrap-icons";
@@ -15,11 +15,11 @@ const ShowEmployees = ({ employeeData }) => {
       .map((d) => `${d.firstName} ${d.lastName}`);
   };
 
-  const details = useMemo(() => {
+  const renderEmployeeDetails = () => {
     for (const employee of employeeData) {
       if (
-        selectedEmployee.includes(employee.firstName) &&
-        selectedEmployee.includes(employee.lastName)
+        selectedEmployee.startsWith(employee.firstName) &&
+        selectedEmployee.endsWith(employee.lastName)
       ) {
         return {
           firstName: employee.firstName,
@@ -28,8 +28,9 @@ const ShowEmployees = ({ employeeData }) => {
         };
       }
     }
-  }, [employeeData, selectedEmployee]);
+  };
 
+  console.log(renderEmployeeDetails());
   return (
     <div className="d-flex flex-column col-lg-3 gap-3 border border-secondary-subtle h-100 p-3 rounded-2">
       <h2 className="fs-5 fw-bold">Search and copy employee details</h2>
@@ -66,13 +67,13 @@ const ShowEmployees = ({ employeeData }) => {
       <output className="my-3 bg-dark">
         <ol className="my-3 mx-2 text-light">
           <li className="d-flex justify-content-between mb-2">
-            {details?.employeeID}
+            {/* {renderEmployeeDetails.employeeID} */}
             <Button variant="transparent" className="btn btn-sm text-secondary">
               <Clipboard />
             </Button>
           </li>
           <li className="d-flex justify-content-between">
-            {details?.firstName}{" "}
+            {/* {renderEmployeeDetails.firstName}{" "} */}
             <Button
               variant="transparent"
               className="btn btn-sm mb-2 text-secondary"
@@ -81,7 +82,7 @@ const ShowEmployees = ({ employeeData }) => {
             </Button>
           </li>
           <li className="d-flex justify-content-between">
-            {details?.lastName}{" "}
+            {/* {renderEmployeeDetails.lastName}{" "} */}
             <Button variant="transparent" className="btn btn-sm text-secondary">
               <Clipboard />
             </Button>

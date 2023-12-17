@@ -28,6 +28,17 @@ const Appraisal = () => {
 
   const { isError, isLoading, refetch, data } = getEmployees;
 
+  const handleSubmit = () => {
+    http
+      .post(http.appraisalURL, appraise, http.headers)
+      .then((res) => {
+        console.log(res.statusText);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   //Handle error before consuming data from use query hook
 
   if (isError) {
@@ -43,17 +54,6 @@ const Appraisal = () => {
     return <Alert>Data is unavailable at the moment</Alert>;
   }
 
-  const handleSubmit = () => {
-    http
-      .post(http.appraisalURL, appraise, http.headers)
-      .then((res) => {
-        console.log(res.statusText);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <>
       <Auth />
@@ -61,12 +61,9 @@ const Appraisal = () => {
         fluid
         className="d-flex justify-content-center py-4 gap-4 overflow-hidden"
       >
-        <ShowEmployees
-          employeeData={(!isLoading || !isError || !data === undefined) && data}
-        />
-
+        <ShowEmployees employeeData={data} />
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center position-absolute"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
         >
