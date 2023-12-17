@@ -7,7 +7,7 @@ const TopThree = ({ filteredData, employeeData }) => {
       {filteredData.map((person, outerIndex) => (
         <Card
           key={outerIndex}
-          className="col-lg-3 col-md-4 col-sm-12 p-2 shadow-sm border-0"
+          className="col-lg-3 col-md-4 col-sm-12 p-2 shadow-lg border-0"
         >
           <Card.Header className="text-center bg-transparent border-0 me-4">
             <h5 className="fs-6 fw-semibold text-secondary">
@@ -24,18 +24,18 @@ const TopThree = ({ filteredData, employeeData }) => {
                         {entity.role}
                       </p>
                       <div
-                        className="mx-auto fs-2 d-flex justify-content-center align-items-center fw-bold text-secondary"
+                        className="mx-auto fs-2 d-flex justify-content-center align-items-center border border-1 border-secondary"
                         style={{
                           borderRadius: "50%",
                           height: "100px",
                           width: "100px",
-                          border: `${
+                          backgroundColor: `${
                             outerIndex === 0
-                              ? "15px solid gold"
+                              ? "gold"
                               : outerIndex === 1
-                              ? "15px solid silver"
+                              ? "silver"
                               : outerIndex === 2
-                              ? "15px solid #cd7f32"
+                              ? "#cd7f32"
                               : "transparent"
                           }`,
                         }}

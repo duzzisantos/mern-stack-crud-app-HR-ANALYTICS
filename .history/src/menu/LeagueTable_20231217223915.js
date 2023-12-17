@@ -139,7 +139,9 @@ const LeagueTable = () => {
             filteredData={getSortedEmployees.slice(0, 3)}
             employeeData={data}
           />
-          <League filteredData={getSortedEmployees} employeeData={data} />
+          {getSortedEmployees && (
+            <League filteredData={getSortedEmployees} employeeData={data} />
+          )}
         </div>
       </Container>
     </>

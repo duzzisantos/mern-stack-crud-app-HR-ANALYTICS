@@ -134,13 +134,13 @@ const LeagueTable = () => {
           </div>
         </div>
 
-        <div className="col-10">
+        <div>
           <TopThree
             filteredData={getSortedEmployees.slice(0, 3)}
             employeeData={data}
           />
-          <League filteredData={getSortedEmployees} employeeData={data} />
         </div>
+        <League filteredData={getSortedEmployees} employeeData={data} />
       </Container>
     </>
   );

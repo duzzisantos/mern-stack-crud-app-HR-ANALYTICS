@@ -3,7 +3,7 @@ import { getEmployeeDetails } from "../utils/getEmployeeDetails";
 
 const TopThree = ({ filteredData, employeeData }) => {
   return (
-    <div className="col-9 col-md-12 d-flex justify-content-center py-2 px-2 hstack gap-3 my-4">
+    <div className="col-9 d-flex justify-content-center py-2 px-2 hstack gap-3 my-4">
       {filteredData.map((person, outerIndex) => (
         <Card
           key={outerIndex}
@@ -24,18 +24,18 @@ const TopThree = ({ filteredData, employeeData }) => {
                         {entity.role}
                       </p>
                       <div
-                        className="mx-auto fs-2 d-flex justify-content-center align-items-center fw-bold text-secondary"
+                        className="mx-auto fs-2 d-flex justify-content-center align-items-center fw-bold"
                         style={{
                           borderRadius: "50%",
                           height: "100px",
                           width: "100px",
-                          border: `${
+                          backgroundColor: `${
                             outerIndex === 0
-                              ? "15px solid gold"
+                              ? "gold"
                               : outerIndex === 1
-                              ? "15px solid silver"
+                              ? "silver"
                               : outerIndex === 2
-                              ? "15px solid #cd7f32"
+                              ? "#cd7f32"
                               : "transparent"
                           }`,
                         }}

@@ -24,18 +24,18 @@ const TopThree = ({ filteredData, employeeData }) => {
                         {entity.role}
                       </p>
                       <div
-                        className="mx-auto fs-2 d-flex justify-content-center align-items-center fw-bold text-secondary"
+                        className="mx-auto fs-2 d-flex justify-content-center align-items-center fw-bold"
                         style={{
                           borderRadius: "50%",
                           height: "100px",
                           width: "100px",
-                          border: `${
+                          backgroundColor: `${
                             outerIndex === 0
-                              ? "15px solid gold"
+                              ? "gold"
                               : outerIndex === 1
-                              ? "15px solid silver"
+                              ? "silver"
                               : outerIndex === 2
-                              ? "15px solid #cd7f32"
+                              ? "#cd7f32"
                               : "transparent"
                           }`,
                         }}

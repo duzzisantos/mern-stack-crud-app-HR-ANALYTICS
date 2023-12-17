@@ -71,7 +71,7 @@ const LeagueTable = () => {
         className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center"
         style={{ height: "fit-content" }}
       >
-        <h1 className="fs-2 fw-bold">League Table - {selectedDepartment}</h1>
+        <h1 className="fs-2 fw-bold">League Table</h1>
         <div className="d-flex justify-content-center mt-2">
           <div className="hstack gap-5">
             <div>
@@ -133,14 +133,12 @@ const LeagueTable = () => {
             </div>
           </div>
         </div>
-
-        <div className="col-10">
-          <TopThree
-            filteredData={getSortedEmployees.slice(0, 3)}
-            employeeData={data}
-          />
-          <League filteredData={getSortedEmployees} employeeData={data} />
-        </div>
+        <h2 className="my-3">{selectedDepartment}</h2>
+        <TopThree
+          filteredData={getSortedEmployees.slice(0, 3)}
+          employeeData={data}
+        />
+        <League filteredData={getSortedEmployees} employeeData={data} />
       </Container>
     </>
   );

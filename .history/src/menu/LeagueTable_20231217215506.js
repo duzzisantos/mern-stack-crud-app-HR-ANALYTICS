@@ -50,19 +50,6 @@ const LeagueTable = () => {
       selectedYear.toString().match(new RegExp(`${element.year}`), "gi")
   );
 
-  const getSortedEmployees = filteredDataByDepartment
-    .map((item) => ({
-      ...item,
-      averageScore:
-        (item.qualityOfWork +
-          item.quantityOfWork +
-          item.punctuality +
-          item.delivery +
-          item.responsibility) /
-        5,
-    }))
-    .sort((curr, prev) => prev.averageScore - curr.averageScore);
-
   return (
     <>
       <Auth />
@@ -71,7 +58,7 @@ const LeagueTable = () => {
         className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center"
         style={{ height: "fit-content" }}
       >
-        <h1 className="fs-2 fw-bold">League Table - {selectedDepartment}</h1>
+        <h1 className="fs-2 fw-bold">League Table</h1>
         <div className="d-flex justify-content-center mt-2">
           <div className="hstack gap-5">
             <div>
@@ -133,13 +120,9 @@ const LeagueTable = () => {
             </div>
           </div>
         </div>
-
-        <div className="col-10">
-          <TopThree
-            filteredData={getSortedEmployees.slice(0, 3)}
-            employeeData={data}
-          />
-          <League filteredData={getSortedEmployees} employeeData={data} />
+        <TopThree filteredData={filteredDataByDepartment} employeeData={data} />
+        <div>
+          <League filteredData={filteredDataByDepartment} />
         </div>
       </Container>
     </>

@@ -24,7 +24,7 @@ const TopThree = ({ filteredData, employeeData }) => {
                         {entity.role}
                       </p>
                       <div
-                        className="mx-auto fs-2 d-flex justify-content-center align-items-center fw-bold text-secondary"
+                        className="mx-auto fs-2 d-flex justify-content-center align-items-center fw-bold text-dark"
                         style={{
                           borderRadius: "50%",
                           height: "100px",
