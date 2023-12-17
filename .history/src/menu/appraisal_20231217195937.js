@@ -59,7 +59,7 @@ const Appraisal = () => {
       <Auth />
       <Container
         fluid
-        className="d-flex justify-content-center py-4 gap-4 overflow-hidden"
+        className="d-flex justify-content-center py-4 hstack gap-3 overflow-hidden"
       >
         <ShowEmployees employeeData={data} />
         <form

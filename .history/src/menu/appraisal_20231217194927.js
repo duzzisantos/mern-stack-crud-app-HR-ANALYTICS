@@ -4,7 +4,6 @@ import { monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import Auth from "../auth/auth";
 import { Alert, Button, Container, Form } from "react-bootstrap";
-import ShowEmployees from "../components/ShowEmployees";
 
 const Appraisal = () => {
   const today = new Date();
@@ -53,15 +52,10 @@ const Appraisal = () => {
   } else if (!data || data === undefined) {
     return <Alert>Data is unavailable at the moment</Alert>;
   }
-
   return (
     <>
       <Auth />
-      <Container
-        fluid
-        className="d-flex justify-content-center py-4 gap-4 overflow-hidden"
-      >
-        <ShowEmployees employeeData={data} />
+      <Container fluid className="d-flex justify-content-center py-4">
         <form
           className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
