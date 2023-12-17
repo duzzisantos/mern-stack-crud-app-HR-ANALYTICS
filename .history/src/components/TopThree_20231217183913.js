@@ -1,0 +1,58 @@
+import { Card } from "react-bootstrap";
+import { getEmployeeDetails } from "../utils/getEmployeeDetails";
+
+const TopThree = ({ filteredData, employeeData }) => {
+  return (
+    <div className="col-9 col-md-12 d-flex hstack gap-3 my-4">
+      {filteredData.map((person, index) => (
+        <Card
+          key={index}
+          className="col-lg-3 col-md-4 col-sm-12 p-2 shadow-lg border-0"
+        >
+          <Card.Header className="text-center bg-transparent border-0">
+            <h5 className="fs-6 fw-semibold">
+              {person.firstName} {person.lastName}
+            </h5>
+          </Card.Header>
+          <Card.Body>
+            <div className="d-flex justify-content-center">
+              {getEmployeeDetails(person.ID, filteredData, employeeData).map(
+                (entity, index) => (
+                  <div key={index} className="d-flex felx-column gap-2">
+                    <Card.Img
+                      src={entity.photo}
+                      alt={entity.ID}
+                      className="rounded-5"
+                      style={{ height: "120px", width: "120px" }}
+                    />
+                    <div>
+                      <p className="fw-semibold">{entity.role}</p>
+                      <div
+                        className="rounded-5"
+                        style={{
+                          height: "100px",
+                          width: "100px",
+                          backgroundColor: `${
+                            index + 1 === 1
+                              ? "gold"
+                              : index + 2 === 2
+                              ? "silver"
+                              : index + 1 === 3
+                              ? "bronze"
+                              : "transparent"
+                          }`,
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+          </Card.Body>
+        </Card>
+      ))}
+    </div>
+  );
+};
+
+export default TopThree;
