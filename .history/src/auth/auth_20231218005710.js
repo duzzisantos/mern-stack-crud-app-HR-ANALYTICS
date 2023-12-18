@@ -14,6 +14,7 @@ import {
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import {
+  Bank,
   CheckSquareFill,
   Gear,
   GearWide,
@@ -22,7 +23,6 @@ import {
   PersonPlus,
   PieChart,
   Power,
-  Screwdriver,
   Table,
 } from "react-bootstrap-icons";
 
@@ -91,16 +91,14 @@ const Auth = () => {
                   <Dropdown.Toggle variant="success" size="sm">
                     <Gear /> HR Policies
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className="bg-dark shadow-lg">
-                    <Nav.Link href="/auth/settings" className="text-light">
+                  <Dropdown.Menu className="bg-light text-dark">
+                    <Nav.Link href="/auth/settings">
                       <GearWide /> Settings
                     </Nav.Link>
-                    <Nav.Link href="/auth/training" className="text-light">
+                    <Nav.Link href="/auth/training">
                       <Mortarboard /> Training
                     </Nav.Link>
-                    <Nav.Link href="/auth/improvements" className="text-light">
-                      <Screwdriver /> Improvements
-                    </Nav.Link>
+                    <Nav.Link href="/auth/improvements">Improvements</Nav.Link>
                   </Dropdown.Menu>
                 </Dropdown>
               </Nav.Item>

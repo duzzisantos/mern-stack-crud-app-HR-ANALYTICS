@@ -14,15 +14,10 @@ import {
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import {
+  Bank,
   CheckSquareFill,
-  Gear,
-  GearWide,
-  Mortarboard,
   People,
-  PersonPlus,
   PieChart,
-  Power,
-  Screwdriver,
   Table,
 } from "react-bootstrap-icons";
 
@@ -72,7 +67,7 @@ const Auth = () => {
             <Nav className="d-flex py-3 col-12 px-3 hstack justify-content-between text-light">
               <Nav.Item className="hstack gap-3">
                 <Nav.Link href="/auth/register" className="text-light">
-                  <PersonPlus /> Add Employee
+                  Add Employee
                 </Nav.Link>
                 <Nav.Link href="/auth/table" className="text-light">
                   <People /> Employee Hub
@@ -89,18 +84,12 @@ const Auth = () => {
 
                 <Dropdown>
                   <Dropdown.Toggle variant="success" size="sm">
-                    <Gear /> HR Policies
+                    <Bank /> HR Policies
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className="bg-dark shadow-lg">
-                    <Nav.Link href="/auth/settings" className="text-light">
-                      <GearWide /> Settings
-                    </Nav.Link>
-                    <Nav.Link href="/auth/training" className="text-light">
-                      <Mortarboard /> Training
-                    </Nav.Link>
-                    <Nav.Link href="/auth/improvements" className="text-light">
-                      <Screwdriver /> Improvements
-                    </Nav.Link>
+                  <Dropdown.Menu className="bg-light text-dark">
+                    <Nav.Link href="/auth/settings">Settings</Nav.Link>
+                    <Nav.Link href="/auth/training">Training</Nav.Link>
+                    <Nav.Link href="/auth/improvements">Improvements</Nav.Link>
                   </Dropdown.Menu>
                 </Dropdown>
               </Nav.Item>
@@ -113,7 +102,7 @@ const Auth = () => {
                   className="text-light"
                   onClick={logout}
                 >
-                  <Power /> Logout
+                  Logout
                 </Button>
               </Nav.Item>
             </Nav>

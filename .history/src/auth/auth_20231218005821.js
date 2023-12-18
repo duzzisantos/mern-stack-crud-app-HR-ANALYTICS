@@ -14,6 +14,7 @@ import {
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import {
+  Bank,
   CheckSquareFill,
   Gear,
   GearWide,
@@ -91,14 +92,14 @@ const Auth = () => {
                   <Dropdown.Toggle variant="success" size="sm">
                     <Gear /> HR Policies
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className="bg-dark shadow-lg">
-                    <Nav.Link href="/auth/settings" className="text-light">
+                  <Dropdown.Menu className="bg-secondary text-dark">
+                    <Nav.Link href="/auth/settings">
                       <GearWide /> Settings
                     </Nav.Link>
-                    <Nav.Link href="/auth/training" className="text-light">
+                    <Nav.Link href="/auth/training">
                       <Mortarboard /> Training
                     </Nav.Link>
-                    <Nav.Link href="/auth/improvements" className="text-light">
+                    <Nav.Link href="/auth/improvements">
                       <Screwdriver /> Improvements
                     </Nav.Link>
                   </Dropdown.Menu>

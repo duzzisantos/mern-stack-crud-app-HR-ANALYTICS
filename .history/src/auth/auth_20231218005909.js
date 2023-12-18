@@ -14,6 +14,7 @@ import {
   faPowerOff,
 } from "@fortawesome/free-solid-svg-icons";
 import {
+  Bank,
   CheckSquareFill,
   Gear,
   GearWide,
@@ -91,7 +92,7 @@ const Auth = () => {
                   <Dropdown.Toggle variant="success" size="sm">
                     <Gear /> HR Policies
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className="bg-dark shadow-lg">
+                  <Dropdown.Menu className="bg-secondary text-light">
                     <Nav.Link href="/auth/settings" className="text-light">
                       <GearWide /> Settings
                     </Nav.Link>
