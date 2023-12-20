@@ -12,7 +12,10 @@ import { getFormLevel, getFormCategory } from "../../utils/editFormTitles";
 
 const RecommendationForm = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
-
+  const [index, setIndex] = useState(0);
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
   // State to hold form data
   const [formData, setFormData] = useState({
     qualityOfWork: {
@@ -140,12 +143,20 @@ const RecommendationForm = ({ user }) => {
               className="p-5 border border-1 shadow-sm rounded-2"
               controls="as button"
               variant="dark"
+              activeIndex={index}
+              onSelect={handleSelect}
             >
               {Object.entries(formData).map(([category, levels]) => (
                 <CarouselItem key={category} interval={300000}>
-                  <h2 className="fs-5 fw-bold text-capitalize text-center">
-                    {getFormCategory(category)}
-                  </h2>
+                  <div className="d-flex justify-content-between">
+                    <h2 className="fs-5 fw-bold text-capitalize text-center">
+                      {getFormCategory(category)}
+                    </h2>
+                    <small>
+                      {index + 1} of {Object.entries(formData).length}
+                    </small>
+                  </div>
+
                   {Object.entries(levels).map(([level, fields]) => (
                     <div key={level} className="p-5">
                       <h4 className="text-capitalize fs-6 fw-bold">
@@ -179,6 +190,11 @@ const RecommendationForm = ({ user }) => {
                       ))}
                     </div>
                   ))}
+                  <div className="d-flex justify-content-end">
+                    <small>
+                      {index + 1} of {Object.entries(formData).length}
+                    </small>
+                  </div>
                 </CarouselItem>
               ))}
             </Carousel>
