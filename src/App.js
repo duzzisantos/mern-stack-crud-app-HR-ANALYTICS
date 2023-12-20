@@ -39,7 +39,7 @@ function App() {
             <Route path="auth/league-table" element={<LeagueTable />} />
             <Route
               path="auth/recommendations"
-              element={<RecommendationForm />}
+              element={<RecommendationForm user={user} />}
             />
             <Route path="auth/table/*" element={<EmployeeList />} />
             <Route

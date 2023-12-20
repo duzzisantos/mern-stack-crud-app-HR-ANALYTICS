@@ -13,6 +13,7 @@ const http = {
   },
   registerURL: `http://localhost:${apiPort}/api/register`,
   appraisalURL: `http://localhost:${apiPort}/api/appraisal`,
+  recommendationURL: `http://localhost:${apiPort}/api/recommendations`,
 };
 
 export default http;

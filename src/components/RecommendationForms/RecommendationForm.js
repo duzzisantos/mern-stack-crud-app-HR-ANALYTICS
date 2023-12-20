@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import http from "../http-config";
 import {
   Form,
   Button,
@@ -6,113 +7,181 @@ import {
   Carousel,
   CarouselItem,
 } from "react-bootstrap";
-import QualityOfWork from "./QualityOfWork";
-import QuantityOfWork from "./QuantityOfWork";
-import Responsibility from "./Responsibility";
-import Punctuality from "./Punctuality";
-import Delivery from "./Delivery";
 import Auth from "../../auth/auth";
 
-const RecommendationForm = () => {
-  const [quality, setQuality] = useState({
-    highQualityOfWorkTraining: "",
-    highQualityOfWorkBehavioural: "",
-    averageQualityTraining: "",
-    averageQualityBehaviour: "",
-    lowQualityTraining: "",
-    lowQualityBehavioural: "",
+const RecommendationForm = ({ user }) => {
+  const [accessToken, setAccessToken] = useState("");
+
+  // State to hold form data
+  const [formData, setFormData] = useState({
+    qualityOfWork: {
+      highQuality: {
+        training: "",
+        behavioural: "",
+      },
+      averageQuality: {
+        training: "",
+        behavioural: "",
+      },
+      lowQuality: {
+        training: "",
+        behavioural: "",
+      },
+    },
+    quantityOfWork: {
+      highQuantity: {
+        training: "",
+        behavioural: "",
+      },
+      averageQuantity: {
+        training: "",
+        behavioural: "",
+      },
+      lowQuantity: {
+        training: "",
+        behavioural: "",
+      },
+    },
+    delivery: {
+      highDelivery: {
+        training: "",
+        behavioural: "",
+      },
+      averageDelivery: {
+        training: "",
+        behavioural: "",
+      },
+      lowDelivery: {
+        training: "",
+        behavioural: "",
+      },
+    },
+    responsibility: {
+      highResponsibility: {
+        training: "",
+        behavioural: "",
+      },
+      averageResponsibility: {
+        training: "",
+        behavioural: "",
+      },
+      lowResponsibility: {
+        training: "",
+        behavioural: "",
+      },
+    },
+    punctuality: {
+      highPunctuality: {
+        training: "",
+        behavioural: "",
+      },
+      averagePunctuality: {
+        training: "",
+        behavioural: "",
+      },
+      lowPunctuality: {
+        training: "",
+        behavioural: "",
+      },
+    },
   });
 
-  const [quantity, setQuantity] = useState({
-    highQuantityTraining: "",
-    highQuantityBehaviour: "",
-    averageQuantityTraining: "",
-    averageQuantityBehaviour: "",
-    lowQuantityTraining: "",
-    lowQuantityBehavioural: "",
+  useEffect(() => {
+    if (user) {
+      user.getIdToken().then((token) => setAccessToken(token));
+    }
   });
 
-  const [delivery, setDelivery] = useState({
-    highDeliveryTraining: "",
-    highDeliveryBehaviour: "",
-    averageDeliveryTraining: "",
-    averageDeliveryBehaviour: "",
-    lowDeliveryTraining: "",
-    lowDeliveryBehavioural: "",
-  });
-
-  const [responsibility, setResponsibility] = useState({
-    highResponsibilityTraining: "",
-    highResponsibilityBehaviour: "",
-    averageResponsibilityTraining: "",
-    averageResponsibilityBehaviour: "",
-    lowResponsibilityTraining: "",
-    lowResponsibilityBehavioural: "",
-  });
-
-  const [punctuality, setPunctuality] = useState({
-    highPunctualityTraining: "",
-    highPunctualityBehaviour: "",
-    averagePunctualityTraining: "",
-    averagePunctualityBehaviour: "",
-    lowPunctualityTraining: "",
-    lowPunctualityBehavioural: "",
-  });
-
-  const handleSubmit = () => {
-    console.log("That works");
+  // Handler function to update form data
+  const handleInputChange = (category, level, field, value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [category]: {
+        ...prevFormData[category],
+        [level]: {
+          ...prevFormData[category][level],
+          [field]: value,
+        },
+      },
+    }));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { post, recommendationURL } = http;
+    post(recommendationURL, JSON.stringify(formData), {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+  };
+
   return (
     <>
       <Auth />
       <Container className="col-12 col-md-10">
-        <h1 className="fs-2 text-center mt-3 fw-bold">
-          Recommendation Questionnaire
-        </h1>
+        <h1 className="fs-2 text-center mt-3 fw-bold">Recommendation Policy</h1>
+        <div className="d-flex justify-content-center">
+          <div className="col-6 p-2 my-3 shadow-sm border-5 border-start border-info">
+            <h2 className="fs-5 fw-bold">Tips</h2>
+            <p>
+              If you want to provide multiple recommendations per field, make
+              sure to separate them by commas. Note, this is HR management
+              policy. Fill it diligently.
+            </p>
+          </div>
+        </div>
         <div className="d-flex justify-content-center mt-3 p-3">
           <Form id="carousel-form" onSubmit={handleSubmit} className="col-9">
             <Carousel
               slide={false}
               text="Quality of work"
-              className="px-5"
+              className="p-5 border border-1 shadow-sm rounded-2"
               controls="as button"
               variant="dark"
             >
-              <CarouselItem className="p-5" interval={300000}>
-                <h2 className="fs-5 fw-bold">Quality of work</h2>
-                <QualityOfWork formData={quality} setFormData={setQuality} />
-              </CarouselItem>
-              <CarouselItem className="p-5" interval={300000}>
-                <h2 className="fs-5 fw-bold">Quantity of work</h2>
-                <QuantityOfWork formData={quantity} setFormData={setQuantity} />
-              </CarouselItem>
-              <CarouselItem className="p-5" interval={300000}>
-                <h2 className="fs-5 fw-bold">Responsibility</h2>
-                <Responsibility
-                  formData={responsibility}
-                  setFormData={setResponsibility}
-                />
-              </CarouselItem>
-              <CarouselItem className="p-5" interval={300000}>
-                <h2 className="fs-5 fw-bold">Punctuality</h2>
-                <Punctuality
-                  formData={punctuality}
-                  setFormData={setPunctuality}
-                />
-              </CarouselItem>
-              <CarouselItem className="p-5" interval={300000}>
-                <h2 className="fs-5 fw-bold">Delivery</h2>
-                <Delivery formData={delivery} setFormData={setDelivery} />
-                <Button
-                  variant="success"
-                  type="submit"
-                  className="my-3"
-                  interval={300000}
-                >
-                  Submit Questionnaire
-                </Button>
-              </CarouselItem>
+              {Object.entries(formData).map(([category, levels]) => (
+                <CarouselItem key={category} interval={300000}>
+                  <h2 className="fs-5 fw-bold text-capitalize text-center">
+                    {category}
+                  </h2>
+                  {Object.entries(levels).map(([level, fields]) => (
+                    <div key={level} className="p-5">
+                      <h4 className="text-capitalize fs-6 fw-bold">{level}</h4>
+                      {Object.entries(fields).map(([field, value]) => (
+                        <div key={field}>
+                          <Form.Label
+                            className="text-capitalize"
+                            htmlFor={`${category}-${level}-${field}`}
+                          >
+                            {field}
+                          </Form.Label>
+                          <Form.Control
+                            as={"textarea"}
+                            name={value}
+                            rows={4}
+                            type="text"
+                            value={value}
+                            onChange={(e) =>
+                              handleInputChange(
+                                category,
+                                level,
+                                field,
+                                e.target.value
+                              )
+                            }
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </CarouselItem>
+              ))}
             </Carousel>
+            <Button variant="success" type="submit" className="my-3">
+              Submit Questionnaire
+            </Button>
           </Form>
         </div>
       </Container>
