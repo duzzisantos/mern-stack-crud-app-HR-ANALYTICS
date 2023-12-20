@@ -8,6 +8,7 @@ import {
   CarouselItem,
 } from "react-bootstrap";
 import Auth from "../../auth/auth";
+import { getFormLevel, getFormCategory } from "../../utils/editFormTitles";
 
 const RecommendationForm = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -106,8 +107,7 @@ const RecommendationForm = ({ user }) => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     const { post, recommendationURL } = http;
     post(recommendationURL, JSON.stringify(formData), {
       headers: {
@@ -144,11 +144,13 @@ const RecommendationForm = ({ user }) => {
               {Object.entries(formData).map(([category, levels]) => (
                 <CarouselItem key={category} interval={300000}>
                   <h2 className="fs-5 fw-bold text-capitalize text-center">
-                    {category}
+                    {getFormCategory(category)}
                   </h2>
                   {Object.entries(levels).map(([level, fields]) => (
                     <div key={level} className="p-5">
-                      <h4 className="text-capitalize fs-6 fw-bold">{level}</h4>
+                      <h4 className="text-capitalize fs-6 fw-bold">
+                        {getFormLevel(level)}
+                      </h4>
                       {Object.entries(fields).map(([field, value]) => (
                         <div key={field}>
                           <Form.Label
