@@ -1,6 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { auth } from "./auth/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import Register from "./menu/register";
 import Appraisal from "./menu/appraisal";
 import DashBoard from "./menu/dashboard";
@@ -9,10 +11,9 @@ import UpdateEmployee from "./menu/update-employee";
 import Login from "./auth/login";
 import SignUp from "./auth/signup";
 import Reset from "./auth/reset";
-import { auth } from "./auth/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import Settings from "./menu/settings";
 import LeagueTable from "./menu/LeagueTable";
+import RecommendationForm from "./components/RecommendationForms/RecommendationForm";
 import { Alert } from "react-bootstrap";
 
 function App() {
@@ -22,9 +23,7 @@ function App() {
   return (
     <div className="App">
       {loading && (
-        <Alert className="fs-5 fw-semibold">
-          Authentication is processing....
-        </Alert>
+        <Alert className="fs-5 fw-semibold">Verifying Authentication....</Alert>
       )}
       {user && (
         <QueryClientProvider client={queryClient} contextSharing={true}>
@@ -38,6 +37,10 @@ function App() {
             <Route path="auth/appraisal" element={<Appraisal user={user} />} />
             <Route path="auth/dashboard" element={<DashBoard />} />
             <Route path="auth/league-table" element={<LeagueTable />} />
+            <Route
+              path="auth/recommendations"
+              element={<RecommendationForm />}
+            />
             <Route path="auth/table/*" element={<EmployeeList />} />
             <Route
               path="auth/table/update-employee/:ID"

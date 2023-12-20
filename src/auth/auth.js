@@ -16,9 +16,9 @@ import {
 import {
   CheckSquareFill,
   Gear,
-  GearWide,
   Mortarboard,
   People,
+  PeopleFill,
   PersonPlus,
   PieChart,
   Power,
@@ -89,17 +89,23 @@ const Auth = () => {
 
                 <Dropdown>
                   <Dropdown.Toggle variant="success" size="sm">
-                    <Gear /> HR Policies
+                    <Gear /> HR Manager
                   </Dropdown.Toggle>
-                  <Dropdown.Menu className="bg-dark shadow-lg">
+                  <Dropdown.Menu
+                    className="bg-dark shadow-lg"
+                    style={{ width: "200px" }}
+                  >
                     <Nav.Link href="/auth/settings" className="text-light">
-                      <GearWide /> Settings
+                      <PeopleFill /> Head Count
                     </Nav.Link>
-                    <Nav.Link href="/auth/training" className="text-light">
-                      <Mortarboard /> Training
+                    <Nav.Link
+                      href="/auth/recommendations"
+                      className="text-light"
+                    >
+                      <Mortarboard /> HR Recommendations
                     </Nav.Link>
-                    <Nav.Link href="/auth/improvements" className="text-light">
-                      <Screwdriver /> Improvements
+                    <Nav.Link href="/auth/auditors" className="text-light">
+                      <Screwdriver /> Auditors
                     </Nav.Link>
                   </Dropdown.Menu>
                 </Dropdown>
