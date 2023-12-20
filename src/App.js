@@ -13,6 +13,7 @@ import { auth } from "./auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Settings from "./menu/settings";
 import LeagueTable from "./menu/LeagueTable";
+import { Alert } from "react-bootstrap";
 
 function App() {
   const [user, loading] = useAuthState(auth);
@@ -20,7 +21,11 @@ function App() {
 
   return (
     <div className="App">
-      {loading && <div>Authentication is processing....</div>}
+      {loading && (
+        <Alert className="fs-5 fw-semibold">
+          Authentication is processing....
+        </Alert>
+      )}
       {user && (
         <QueryClientProvider client={queryClient} contextSharing={true}>
           <Routes>
