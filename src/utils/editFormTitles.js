@@ -11,19 +11,15 @@ function getFormCategory(category) {
 }
 
 function getFormLevel(level) {
-  const low = "low";
-  const high = "high";
-  const average = "average";
+  const [low, high, average] = ["low", "high", "average"];
+
   if (typeof level === "string" && level !== "") {
     if (level.includes(high)) {
-      const remainingPart = level.slice(high.length, level.length);
-      return `High ${remainingPart}`;
+      return `High ${level.slice(high.length, level.length)}`;
     } else if (level.includes(average)) {
-      const remainingPart = level.slice(average.length, level.length);
-      return `Average ${remainingPart}`;
+      return `Average ${level.slice(average.length, level.length)}`;
     } else if (level.includes(low)) {
-      const remainingPart = level.slice(low.length, level.length);
-      return `Low ${remainingPart}`;
+      return `Low ${level.slice(low.length, level.length)}`;
     }
   }
 }
