@@ -73,54 +73,29 @@ const EmployeeList = () => {
             )
             .map((item) => (
               <fieldset
-                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm border border-secondary-subtle p-3"
+                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm p-3"
                 key={item._id}
               >
-                <legend
-                  className="border border-secondary-subtle justify-content-center d-flex px-0 py-2"
-                  style={{
-                    height: "90px",
-                    width: "90px",
-                    float: "none",
-                  }}
-                >
-                  <img
-                    src={item.photo}
-                    alt="Staff"
-                    style={{ height: "60px", width: "85px" }}
-                  />
-                </legend>
-
                 <span className="text-dark fw-bold">
                   {item.firstName} {item.lastName}
                 </span>
 
                 <ul className="data-list lh-lg">
-                  <li>
-                    <b>Staff ID</b>: {item.ID}
-                  </li>
+                  <li>Staff ID: {item.ID}</li>
 
-                  <li>
-                    <b>Email</b>: {item.email}
-                  </li>
-                  <li>
-                    <b>Role</b>: {item.role}
-                  </li>
-                  <li>
-                    <b>Department</b>: {item.department}
-                  </li>
-                  <li>
-                    <b>Birthday</b>: {item.dateBirth}
-                  </li>
-                  <li>
-                    <b>Contract type</b>: {item.contractType}
-                  </li>
-                  <li>
-                    <b>Date of employment</b>: {item.dateEmployment}
-                  </li>
+                  <li>Email: {item.email}</li>
+                  <li>Role: {item.role}</li>
+                  <li>Department: {item.department}</li>
+                  <li>Birthday: {item.dateBirth}</li>
+                  <li>Contract type: {item.contractType}</li>
+                  <li>Date of employment: {item.dateEmployment}</li>
                 </ul>
                 <Stack direction="horizontal" gap={2}>
-                  <Button className="bg-transparent text-dark border border-secondary">
+                  <Button
+                    size="sm"
+                    className="bg-transparent text-dark border border-secondary btn-outline-success"
+                    title={`Update ${item.firstName}`}
+                  >
                     <Link
                       to={`update-employee/${item._id}`}
                       className="text-dark text-decoration-none"
@@ -129,8 +104,10 @@ const EmployeeList = () => {
                     </Link>
                   </Button>
                   <Button
-                    className="btn-danger"
+                    size="sm"
+                    className="btn-secondary text-light border-0 btn-outline-danger"
                     onClick={(_id) => handleDelete(item._id)}
+                    title={`Delete ${item.firstName}`}
                   >
                     Delete
                   </Button>

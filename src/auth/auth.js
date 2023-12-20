@@ -88,7 +88,11 @@ const Auth = () => {
                 </Nav.Link>
 
                 <Dropdown>
-                  <Dropdown.Toggle variant="success" size="sm">
+                  <Dropdown.Toggle
+                    variant="success"
+                    size="sm"
+                    title="HR Manager"
+                  >
                     <Gear /> HR Manager
                   </Dropdown.Toggle>
                   <Dropdown.Menu
@@ -116,8 +120,9 @@ const Auth = () => {
                 <Button
                   size="sm"
                   variant="secondary"
-                  className="text-light"
+                  className="text-light text-light btn-outline-danger border-0"
                   onClick={logout}
+                  title="Log out"
                 >
                   <Power /> Logout
                 </Button>

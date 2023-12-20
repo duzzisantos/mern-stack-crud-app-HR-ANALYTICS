@@ -71,7 +71,7 @@ const Settings = () => {
         fluid
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center col-9"
       >
-        <h1 className="fw-bold fs-2">Settings</h1>
+        <h1 className="fw-bold fs-2">Head Count</h1>
         <div className="col-9 mb-3" style={{ height: "250px" }}>
           <h2 className="fs-6">
             Employee database currently has {employee.length}{" "}
@@ -92,13 +92,13 @@ const Settings = () => {
             {" "}
             <button
               type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
+              className="btn border border border-secondary text-dark btn-sm"
             >
               Show in table
             </button>
             <button
               type="button"
-              className="btn btn-danger btn-sm"
+              className="btn btn-secondary border-0 text-light btn-outline-danger btn-sm"
               onClick={deleteAllEmployees}
             >
               Delete All
@@ -125,13 +125,13 @@ const Settings = () => {
           <div className="hstack gap-3">
             <button
               type="button"
-              className="btn border border-2 border-secondary text-dark btn-sm"
+              className="btn border border border-secondary text-dark btn-sm"
             >
               Show in table
             </button>
             <button
               type="button"
-              className="btn btn-danger btn-sm"
+              className="btn btn-secondary border-0 text-light btn-outline-danger btn-sm"
               onClick={deleteAllAppraisals}
             >
               Delete All
