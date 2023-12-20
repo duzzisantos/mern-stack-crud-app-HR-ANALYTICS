@@ -9,31 +9,38 @@ import UpdateEmployee from "./menu/update-employee";
 import Login from "./auth/login";
 import SignUp from "./auth/signup";
 import Reset from "./auth/reset";
+import { auth } from "./auth/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import Settings from "./menu/settings";
 import LeagueTable from "./menu/LeagueTable";
 
 function App() {
+  const [user, loading] = useAuthState(auth);
   const queryClient = new QueryClient();
+
   return (
     <div className="App">
-      <QueryClientProvider client={queryClient} contextSharing={true}>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="reset" element={<Reset />} />
-          <Route path="auth/settings" element={<Settings />} />
-          <Route path="auth/register" element={<Register />} />
-          <Route path="auth/appraisal" element={<Appraisal />} />
-          <Route path="auth/dashboard" element={<DashBoard />} />
-          <Route path="auth/league-table" element={<LeagueTable />} />
-          <Route path="auth/table/*" element={<EmployeeList />} />
-          <Route
-            path="auth/table/update-employee/:ID"
-            element={<UpdateEmployee />}
-          />
-        </Routes>
-      </QueryClientProvider>
+      {loading && <div>Authentication is processing....</div>}
+      {user && (
+        <QueryClientProvider client={queryClient} contextSharing={true}>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="reset" element={<Reset />} />
+            <Route path="auth/settings" element={<Settings />} />
+            <Route path="auth/register" element={<Register />} />
+            <Route path="auth/appraisal" element={<Appraisal user={user} />} />
+            <Route path="auth/dashboard" element={<DashBoard />} />
+            <Route path="auth/league-table" element={<LeagueTable />} />
+            <Route path="auth/table/*" element={<EmployeeList />} />
+            <Route
+              path="auth/table/update-employee/:ID"
+              element={<UpdateEmployee />}
+            />
+          </Routes>
+        </QueryClientProvider>
+      )}
     </div>
   );
 }

@@ -1,9 +1,14 @@
 import { useQuery } from "react-query";
-import axios from "axios";
+import http from "../components/http-config";
 
-const getEmployeeData = async () => {
+const getEmployeeData = async (accessToken) => {
+  const { get, registerURL } = http;
   try {
-    const response = await axios.get("http://localhost:8080/api/register");
+    const response = await get(registerURL, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     if (response.status !== 200) {
       throw new Error(`${response.status} cause: ${response.statusText}`);
     } else {
@@ -14,8 +19,8 @@ const getEmployeeData = async () => {
   }
 };
 
-const useGetEmployeeData = () => {
-  return useQuery(["EmployeeData"], () => getEmployeeData(), {
+const useGetEmployeeData = (accessToken) => {
+  return useQuery(["EmployeeData"], () => getEmployeeData(accessToken), {
     keepPreviousData: false,
     refetchInterval: false,
     refetchIntervalInBackground: false,

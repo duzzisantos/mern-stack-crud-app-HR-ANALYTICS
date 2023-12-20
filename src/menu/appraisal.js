@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
 import { monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import Auth from "../auth/auth";
+
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
 
-const Appraisal = () => {
+const Appraisal = ({ user }) => {
   const today = new Date();
+  const [accessToken, setAccessToken] = useState("");
+
   const currentYear = today.getFullYear();
-  const getEmployees = useGetEmployeeData();
+  const getEmployees = useGetEmployeeData(accessToken);
+
   const [appraise, setAppraise] = useState({
     month: "January",
     year: currentYear,
@@ -28,8 +32,31 @@ const Appraisal = () => {
 
   const { isError, isLoading, refetch, data } = getEmployees;
 
-  //Handle error before consuming data from use query hook
+  useEffect(() => {
+    user &&
+      user
+        .getIdToken()
+        .then((token) => setAccessToken(token))
+        .catch((err) => console.warn(err));
+  }, [user]);
 
+  const handleSubmit = () => {
+    http
+      .post(http.appraisalURL, appraise, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.statusText);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //Handle error before consuming data from use query hook
   if (isError) {
     return (
       <Alert variant="warning">
@@ -42,17 +69,6 @@ const Appraisal = () => {
   } else if (!data || data === undefined) {
     return <Alert>Data is unavailable at the moment</Alert>;
   }
-
-  const handleSubmit = () => {
-    http
-      .post(http.appraisalURL, appraise, http.headers)
-      .then((res) => {
-        console.log(res.statusText);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <>

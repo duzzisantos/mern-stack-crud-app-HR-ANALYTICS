@@ -1,10 +1,16 @@
 import { useQuery } from "react-query";
 import http from "../components/http-config";
 
-const getEmployeeAppraisal = async () => {
-  const { appraisalURL, get, headers } = http;
+const getEmployeeAppraisal = async (accessToken) => {
+  const { appraisalURL, get } = http;
+
   try {
-    const response = await get(appraisalURL, headers);
+    const response = await get(appraisalURL, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
     if (response.status !== 200) {
       throw new Error(`${response.status} cause: ${response.statusText}`);
     } else {
@@ -15,14 +21,18 @@ const getEmployeeAppraisal = async () => {
   }
 };
 
-const useGetEmployeeAppraisal = () => {
-  return useQuery(["EmployeeAppraisal"], () => getEmployeeAppraisal(), {
-    keepPreviousData: false,
-    refetchInterval: false,
-    refetchIntervalInBackground: false,
-    refetchOnMount: false,
-    staleTime: 30000,
-  });
+const useGetEmployeeAppraisal = (accessToken) => {
+  return useQuery(
+    ["EmployeeAppraisal"],
+    () => getEmployeeAppraisal(accessToken),
+    {
+      keepPreviousData: false,
+      refetchInterval: false,
+      refetchIntervalInBackground: false,
+      refetchOnMount: false,
+      staleTime: 30000,
+    }
+  );
 };
 
 export default useGetEmployeeAppraisal;
