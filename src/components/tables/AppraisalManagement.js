@@ -11,7 +11,7 @@ const AppraisalManagement = ({
   token,
 }) => {
   const [show, setShow] = useState(false);
-  const [chooseID, setChooseID] = useState(0);
+  const [chooseID, setChooseID] = useState("");
   const handleClose = () => {
     setShow(false);
   };
@@ -58,7 +58,7 @@ const AppraisalManagement = ({
                 <Button
                   variant="transparent"
                   className="btn btn-outline-success border-0 text-outline-light"
-                  onClick={(id) => handleShow(element.ID)}
+                  onClick={(id) => handleShow(element._id)}
                 >
                   <Pencil />
                 </Button>

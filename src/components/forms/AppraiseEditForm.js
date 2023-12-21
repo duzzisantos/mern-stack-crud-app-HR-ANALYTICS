@@ -1,34 +1,71 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { monthsArray } from "../../utils/dropDownOptions";
 import http from "../http-config";
 const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
-  const [appraise, setAppraise] = useState({
-    month: "",
-    year: 0,
-    department: "",
-    ID: 0,
-    firstName: "",
-    lastName: "",
-    qualityOfWork: 0,
-    delivery: 0,
-    responsibility: 0,
-    quantityOfWork: 0,
-    punctuality: 0,
-    supervisorComment: "",
-    hrComment: "",
-  });
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState(0);
+  const [department, setDepartment] = useState("");
+  const [ID, setID] = useState(0);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [qualityOfWork, setQualityOfWork] = useState(0);
+  const [delivery, setDelivery] = useState(0);
+  const [responsibility, setResponsibility] = useState(0);
+  const [quantityOfWork, setQuantityOfWork] = useState(0);
+  const [punctuality, setPunctuality] = useState(0);
+  const [supervisorComment, setSupervisorComment] = useState("");
+  const [hrComment, setHRComment] = useState("");
 
-  const found = appraisalData.filter((element) => element.ID === selectedID)[0];
+  const found = appraisalData.filter(
+    (element) => element._id === selectedID
+  )[0];
+
+  //set form values with found data from admin table, and afterwards change form data if you need to
+  useEffect(() => {
+    if (found) {
+      setMonth(found.month);
+      setYear(found.year);
+      setDepartment(found.department);
+      setID(found.ID);
+      setFirstName(found.firstName);
+      setLastName(found.lastName);
+      setQualityOfWork(found.qualityOfWork);
+      setQuantityOfWork(found.quantityOfWork);
+      setDelivery(found.delivery);
+      setResponsibility(found.responsibility);
+      setPunctuality(found.punctuality);
+      setSupervisorComment(found.supervisorComment);
+      setHRComment(found.hrComment);
+    }
+  }, [found]);
 
   const handleSubmit = () => {
-    const { update, appraise, appraisalURL } = http;
-    update(`${appraisalURL}/${selectedID}`, JSON.stringify(appraise), {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+    const { update, appraisalURL } = http;
+    update(
+      `${appraisalURL}/${selectedID}`,
+      {
+        month,
+        year,
+        department,
+        ID,
+        firstName,
+        lastName,
+        qualityOfWork,
+        delivery,
+        responsibility,
+        quantityOfWork,
+        punctuality,
+        supervisorComment,
+        hrComment,
       },
-    })
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    )
       .then((res) => {
         console.log(res.statusText);
       })
@@ -42,7 +79,6 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
       <form
         className="w-100 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
         encType="multipart/formdata"
-        onSubmit={handleSubmit}
       >
         <h1 className="fs-2 fw-bold">Update Appraisal</h1>
         <div className="col-9">
@@ -51,10 +87,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             className="selection"
             id="month"
             name="month"
-            value={found.month}
-            onChange={(e) =>
-              setAppraise({ ...appraise, month: e.target.value })
-            }
+            value={month}
+            onChange={(e) => setMonth(e.target.value)}
           >
             <option name="Select" disabled>
               --Select--
@@ -70,18 +104,16 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             id="year"
             name="year"
             type="text"
-            value={found.year}
-            onChange={(e) => setAppraise({ ...appraise, year: e.target.value })}
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
           />
         </div>
         <div className="col-9">
           <Form.Label htmlFor="department">Department</Form.Label>
           <Form.Select
             id="department"
-            value={found.department}
-            onChange={(e) =>
-              setAppraise({ ...appraise, department: e.target.value })
-            }
+            value={department}
+            onChange={(e) => setDepartment(e.target.value)}
           >
             <option name="default">--Select--</option>
             <option name="IT">IT</option>
@@ -98,8 +130,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             id="ID"
             name="ID"
             type="number"
-            value={found.ID}
-            onChange={(e) => setAppraise({ ...appraise, ID: e.target.value })}
+            value={ID}
+            onChange={(e) => setID(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -109,10 +141,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             id="firstName"
             name="firstName"
             type="text"
-            value={found.firstName}
-            onChange={(e) =>
-              setAppraise({ ...appraise, firstName: e.target.value })
-            }
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -121,10 +151,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             id="lastName"
             name="lastName"
             type="text"
-            value={found.lastName}
-            onChange={(e) =>
-              setAppraise({ ...appraise, lastName: e.target.value })
-            }
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -137,10 +165,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             min={0}
             max={5}
             step={1}
-            value={found.qualityOfWork}
-            onChange={(e) =>
-              setAppraise({ ...appraise, qualityOfWork: e.target.value })
-            }
+            value={qualityOfWork}
+            onChange={(e) => setQualityOfWork(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -153,10 +179,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             min={0}
             max={5}
             step={1}
-            value={found.delivery}
-            onChange={(e) =>
-              setAppraise({ ...appraise, delivery: e.target.value })
-            }
+            value={delivery}
+            onChange={(e) => setDelivery(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -169,10 +193,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             min={0}
             max={5}
             step={1}
-            value={found.responsibility}
-            onChange={(e) =>
-              setAppraise({ ...appraise, responsibility: e.target.value })
-            }
+            value={responsibility}
+            onChange={(e) => setResponsibility(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -185,10 +207,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             min={0}
             max={5}
             step={1}
-            value={found.quantityOfWork}
-            onChange={(e) =>
-              setAppraise({ ...appraise, quantityOfWork: e.target.value })
-            }
+            value={quantityOfWork}
+            onChange={(e) => setQuantityOfWork(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -201,10 +221,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             min={0}
             max={5}
             step={1}
-            value={found.punctuality}
-            onChange={(e) =>
-              setAppraise({ ...appraise, punctuality: e.target.value })
-            }
+            value={punctuality}
+            onChange={(e) => setPunctuality(e.target.value)}
           />
         </div>
         <div className="col-9">
@@ -215,10 +233,8 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             type="textarea"
             id="supervisorComment"
             name="supervisorComment"
-            value={found.supervisorComment}
-            onChange={(e) =>
-              setAppraise({ ...appraise, supervisorComment: e.target.value })
-            }
+            value={supervisorComment}
+            onChange={(e) => setSupervisorComment(e.target.value)}
           />
         </div>
         <div className="col-9 mb-3">
@@ -227,14 +243,12 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             type="textarea"
             id="hrComment"
             name="hrComment"
-            value={found.hrComment}
-            onChange={(e) =>
-              setAppraise({ ...appraise, hrComment: e.target.value })
-            }
+            value={hrComment}
+            onChange={(e) => setHRComment(e.target.value)}
           />
         </div>
         <div className="col-9">
-          <Button className="btn-success" type="submit">
+          <Button className="btn-success" type="button" onClick={handleSubmit}>
             Submit
           </Button>
         </div>

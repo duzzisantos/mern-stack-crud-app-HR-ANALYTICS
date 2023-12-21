@@ -17,7 +17,7 @@ const AppraisalEditModal = ({
       size="lg"
     >
       <Modal.Header closeButton>
-        <Modal.Title>Updating Appraisal for {selectedID}</Modal.Title>
+        <Modal.Title>Updating Appraisal</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <AppriaseEditForm
