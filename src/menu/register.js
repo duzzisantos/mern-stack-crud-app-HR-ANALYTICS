@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import http from "../components/http-config";
 
-import Auth from "../auth/auth";
 import { Button, Container, Form } from "react-bootstrap";
 
 const Register = () => {
@@ -40,7 +39,6 @@ const Register = () => {
 
   return (
     <>
-      <Auth />
       <Container fluid className="d-flex justify-content-center py-4">
         <form
           className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"

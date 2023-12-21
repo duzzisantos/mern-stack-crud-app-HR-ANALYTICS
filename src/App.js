@@ -3,18 +3,19 @@ import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { auth } from "./auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Register from "./menu/register";
-import Appraisal from "./menu/appraisal";
-import DashBoard from "./menu/dashboard";
-import EmployeeList from "./menu/table";
-import UpdateEmployee from "./menu/update-employee";
+import Register from "./menu/Register";
+import Appraisal from "./menu/Appraisal";
+import DashBoard from "./menu/Dashboard";
+import EmployeeList from "./menu/Employees";
+import UpdateEmployee from "./menu/ManageEmployees";
 import Login from "./auth/login";
 import SignUp from "./auth/signup";
 import Reset from "./auth/reset";
-import Settings from "./menu/settings";
+import Settings from "./menu/Settings";
 import LeagueTable from "./menu/LeagueTable";
-import RecommendationForm from "./components/RecommendationForms/RecommendationForm";
+import RecommendationForm from "./menu/RecommendationForm";
 import { Alert } from "react-bootstrap";
+import Auth from "./auth/auth";
 
 function App() {
   const [user, loading] = useAuthState(auth);
@@ -22,11 +23,14 @@ function App() {
 
   return (
     <div className="App">
-      {loading && (
-        <Alert className="fs-5 fw-semibold">Verifying Authentication....</Alert>
-      )}
-      {user && (
-        <QueryClientProvider client={queryClient} contextSharing={true}>
+      {user && <Auth />}
+      <QueryClientProvider client={queryClient} contextSharing={true}>
+        {loading && (
+          <Alert className="fs-5 fw-semibold">
+            Verifying Authentication....
+          </Alert>
+        )}
+        {user && (
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="login" element={<Login />} />
@@ -47,8 +51,8 @@ function App() {
               element={<UpdateEmployee />}
             />
           </Routes>
-        </QueryClientProvider>
-      )}
+        )}
+      </QueryClientProvider>
     </div>
   );
 }

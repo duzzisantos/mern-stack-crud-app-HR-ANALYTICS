@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import http from "../components/http-config";
 import axios from "axios";
-import Auth from "../auth/auth";
 import { Alert, Container, Form } from "react-bootstrap";
 import ProgressComponent from "../components/ProgressComponent";
 import HRComments from "../components/HRComments";
@@ -81,7 +80,6 @@ const DashBoard = () => {
   const labels = getAvailableYears(graphData);
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="col-12 d-flex justify-content-center"

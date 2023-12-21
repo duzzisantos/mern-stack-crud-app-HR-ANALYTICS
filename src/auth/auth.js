@@ -63,7 +63,7 @@ const Auth = () => {
         style={{ height: "fit-content" }}
       >
         <Container>
-          <Navbar.Brand href="/auth/dashboard" className="text-light">
+          <Navbar.Brand href="/auth/league-table" className="text-light">
             {" "}
             Keffi <FontAwesomeIcon icon={faRing} />
           </Navbar.Brand>

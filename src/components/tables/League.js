@@ -1,7 +1,44 @@
+import { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { ThreeDotsVertical } from "react-bootstrap-icons";
+import RecommendationModal from "../modals/Recommendationmodal";
 
 const League = ({ filteredData, employeeData }) => {
+  const [showmodal, setShowModal] = useState(false);
+  const [selectedProps, setSelectedProps] = useState({
+    employee: "",
+    employeeID: 0,
+    average: 0,
+  });
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const handleShow = (ID, firstName, lastName, average) => {
+    setShowModal(true);
+    setSelectedProps({
+      employee: `${firstName} ${lastName}`,
+      employeeID: ID,
+      average: average,
+    });
+  };
+
+  const getAverageScore = (
+    quantityOfWork,
+    qualityOfWork,
+    responsibility,
+    delivery,
+    punctuality
+  ) => {
+    return (
+      (quantityOfWork +
+        qualityOfWork +
+        responsibility +
+        delivery +
+        punctuality) /
+      5
+    );
+  };
   return (
     <>
       {filteredData.length ? (
@@ -51,15 +88,33 @@ const League = ({ filteredData, employeeData }) => {
                     <td>{punctuality}</td>
                     <td>{delivery}</td>
                     <td>
-                      {(quantityOfWork +
-                        qualityOfWork +
-                        responsibility +
-                        delivery +
-                        punctuality) /
-                        5}
+                      {getAverageScore(
+                        quantityOfWork,
+                        qualityOfWork,
+                        responsibility,
+                        delivery,
+                        punctuality
+                      )}
                     </td>
                     <td>
-                      <Button variant="transparent" className="rounded-5">
+                      <Button
+                        variant="transparent"
+                        className="rounded-5"
+                        onClick={(id) =>
+                          handleShow(
+                            ID,
+                            firstName,
+                            lastName,
+                            getAverageScore(
+                              quantityOfWork,
+                              qualityOfWork,
+                              responsibility,
+                              delivery,
+                              punctuality
+                            )
+                          )
+                        }
+                      >
                         <ThreeDotsVertical />
                       </Button>
                     </td>
@@ -68,6 +123,16 @@ const League = ({ filteredData, employeeData }) => {
               })}
             </tbody>
           </Table>
+          {showmodal && (
+            <RecommendationModal
+              show={showmodal}
+              handleClose={handleClose}
+              employeeID={selectedProps.employeeID}
+              employee={selectedProps.employee}
+              appraisalData={filteredData}
+              averageScore={selectedProps.average}
+            />
+          )}
         </section>
       ) : null}
     </>

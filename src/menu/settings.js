@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import http from "../components/http-config";
-import Auth from "../auth/auth";
 import { Container } from "react-bootstrap";
 import { PersonFill } from "react-bootstrap-icons";
 
@@ -66,7 +65,6 @@ const Settings = () => {
   const appraisalLength = appraisal.length;
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center col-9"

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import http from "../http-config";
+import http from "../components/http-config";
 import {
   Form,
   Button,
@@ -7,8 +7,7 @@ import {
   Carousel,
   CarouselItem,
 } from "react-bootstrap";
-import Auth from "../../auth/auth";
-import { getFormLevel, getFormCategory } from "../../utils/editFormTitles";
+import { getFormLevel, getFormCategory } from "../utils/editFormTitles";
 
 const RecommendationForm = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -122,7 +121,6 @@ const RecommendationForm = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <Container className="col-12 col-md-10">
         <h1 className="fs-2 text-center mt-3 fw-bold">Recommendation Policy</h1>
         <div className="d-flex justify-content-center">

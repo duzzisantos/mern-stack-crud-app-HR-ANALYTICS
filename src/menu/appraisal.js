@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
 import { monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
-import Auth from "../auth/auth";
 
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
@@ -72,7 +71,6 @@ const Appraisal = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="d-flex justify-content-center py-4 gap-4 overflow-hidden"

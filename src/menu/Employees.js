@@ -3,7 +3,7 @@ import http from "../components/http-config";
 import { departments } from "../utils/dropDownOptions";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Auth from "../auth/auth";
+
 import { Alert, Button, Form, Stack } from "react-bootstrap";
 
 const EmployeeList = () => {
@@ -39,7 +39,6 @@ const EmployeeList = () => {
 
   return (
     <>
-      <Auth />
       <div className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center">
         <h1 className="fs-2 fw-bold">Employee List</h1>
         <div className="col-lg-6 col-md-10 d-flex justify-content-center">

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import Auth from "../auth/auth";
 import { Button, Form } from "react-bootstrap";
 import { ArrowLeft } from "react-bootstrap-icons";
 
@@ -78,7 +77,6 @@ const UpdateEmployee = () => {
 
   return (
     <>
-      <Auth />
       <div className="d-flex justify-content-center py-4 container-fluid">
         <form
           className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"

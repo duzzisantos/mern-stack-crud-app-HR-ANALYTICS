@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Auth from "../auth/auth";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import {
   monthsArray,
@@ -65,7 +64,6 @@ const LeagueTable = () => {
 
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center"
