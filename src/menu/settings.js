@@ -1,141 +1,115 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import http from "../components/http-config";
-import { Container } from "react-bootstrap";
-import { PersonFill } from "react-bootstrap-icons";
+import { Container, Alert, Button, Form } from "react-bootstrap";
+import {
+  monthsArray,
+  generateYears,
+  departments,
+} from "../utils/dropDownOptions";
+import useEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
+import AppraisalManagement from "../components/tables/AppraisalManagement";
 
-const Settings = () => {
-  const [employee, setDeleteEmployee] = useState([]);
-  const [appraisal, setDeleteAppraisal] = useState([]);
-
-  const getEmployeeData = async () => {
-    try {
-      const response = await axios.get(http.registerURL);
-      console.error(response.statusText);
-      setDeleteEmployee(response.data);
-    } catch (err) {
-      console.error(err.statusText);
-      console.error(err.message);
-    }
-  };
-
-  const getAppraisalData = async () => {
-    try {
-      const response = await axios.get(http.appraisalURL);
-      console.error(response.statusText);
-      setDeleteAppraisal(response.data);
-    } catch (err) {
-      console.error(err.statusText);
-      console.error(err.message);
-    }
-  };
+const Settings = ({ user }) => {
+  const [accessToken, setAccessToken] = useState("");
+  const getAppraisal = useEmployeeAppraisal(accessToken);
+  const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
+  const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
+  const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
 
   useEffect(() => {
-    getEmployeeData();
-    getAppraisalData();
-  }, []);
+    user && user.getIdToken().then((token) => setAccessToken(token));
+  }, [user]);
 
-  const deleteAllAppraisals = () => {
-    axios
-      .delete(http.appraisalURL)
-      .then((res) => {
-        console.error(res.statusText);
-        alert("All appraisals have been deleted");
-        getAppraisalData();
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
-  };
+  const { isLoading, isError, data, refetch } = getAppraisal;
 
-  const deleteAllEmployees = () => {
-    axios
-      .delete(http.registerURL)
-      .then((res) => {
-        console.error(res.status);
-        alert("All employees have been deleted");
-        getEmployeeData();
-      })
-      .catch((err) => {
-        console.error(err.message);
-      });
-  };
+  //Handle error before consuming data from use query hook
+  if (isError) {
+    return (
+      <Alert variant="warning">
+        Error in loading data{" "}
+        <Button onClick={() => refetch}>Reload data</Button>
+      </Alert>
+    );
+  } else if (isLoading) {
+    return <Alert>Employee list and departments are loading</Alert>;
+  } else if (!data || data === undefined) {
+    return <Alert>Data is unavailable at the moment</Alert>;
+  }
 
-  const employeeLength = employee.length;
-  const appraisalLength = appraisal.length;
   return (
     <>
       <Container
         fluid
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center col-9"
       >
-        <h1 className="fw-bold fs-2">Head Count</h1>
-        <div className="col-9 mb-3" style={{ height: "250px" }}>
-          <h2 className="fs-6">
-            Employee database currently has {employee.length}{" "}
-            {employee.length === 1 ? "file" : "files"} as at{" "}
-            {new Date().toLocaleDateString()}.
-          </h2>
+        <h1 className="fw-bold fs-2">HR Management</h1>
+        <div className="d-flex justify-content-center mt-2">
+          <div className="hstack gap-5">
+            <div>
+              <Form.Label className="fw-bold w-75" htmlFor="department">
+                Department:{" "}
+              </Form.Label>
 
-          <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
-            <div style={{ height: "fit-content" }}>
+              <Form.Select
+                size="sm"
+                id="department"
+                name="department"
+                value={selectedDepartment}
+                onChange={(e) => setSelectedDepartment(e.target.value)}
+              >
+                {departments.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </Form.Select>
+            </div>
+            <div>
               {" "}
-              {[...Array(employeeLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
-              ))}
+              <Form.Label className="fw-bold w-75" htmlFor="league-month">
+                Month
+              </Form.Label>
+              <Form.Select
+                size="sm"
+                id="league-month"
+                name="league-month"
+                value={selectedMonth}
+                onChange={(e) => setSelectedMonth(e.target.value)}
+              >
+                {monthsArray.map((onwa) => (
+                  <option value={onwa} key={onwa}>
+                    {onwa}
+                  </option>
+                ))}
+              </Form.Select>
+            </div>
+
+            <div>
+              <Form.Label className="fw-bold w-75" htmlFor="league-year">
+                Year
+              </Form.Label>
+              <Form.Select
+                size="sm"
+                id="league-year"
+                name="league-year"
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+              >
+                {generateYears().map((afor, index) => (
+                  <option value={afor} key={index}>
+                    {afor}
+                  </option>
+                ))}
+              </Form.Select>
             </div>
           </div>
-          <div className="gap-3 hstack">
-            {" "}
-            <button
-              type="button"
-              className="btn border border border-secondary text-dark btn-sm"
-            >
-              Show in table
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary border-0 text-light btn-outline-danger btn-sm"
-              onClick={deleteAllEmployees}
-            >
-              Delete All
-            </button>
-          </div>
         </div>
-
-        <div className="col-9 mb-3" style={{ height: "250px" }}>
-          <h2 className="fs-6">
-            Appraisal database currently has {appraisal.length}{" "}
-            {appraisal.length === 1 ? "file" : "files"} as at{" "}
-            {new Date().toLocaleDateString()}.
-          </h2>
-
-          <div className="py-2 rounded-1 mb-2">
-            <small className="fs-6 fw-bold">Count</small>
-            <div style={{ height: "fit-content" }}>
-              {" "}
-              {[...Array(appraisalLength).keys()].map((element) => (
-                <PersonFill key={element} className="fs-3 text-secondary" />
-              ))}
-            </div>
-          </div>
-          <div className="hstack gap-3">
-            <button
-              type="button"
-              className="btn border border border-secondary text-dark btn-sm"
-            >
-              Show in table
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary border-0 text-light btn-outline-danger btn-sm"
-              onClick={deleteAllAppraisals}
-            >
-              Delete All
-            </button>
-          </div>
-        </div>
+        <AppraisalManagement
+          appraisalData={data}
+          selectedDepartment={selectedDepartment}
+          selectedMonth={selectedMonth}
+          selectedYear={selectedYear}
+          token={accessToken}
+        />
       </Container>
     </>
   );
