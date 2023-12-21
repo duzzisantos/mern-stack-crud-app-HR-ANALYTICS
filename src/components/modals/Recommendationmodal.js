@@ -18,6 +18,8 @@ const RecommendationModal = ({
   averageScore,
   employeeID,
   user,
+  month,
+  year,
 }) => {
   const [accessToken, setAccessToken] = useState("");
 
@@ -65,6 +67,8 @@ const RecommendationModal = ({
             <small className="fw-semibold">
               Average Appraisal Score: {averageScore}
             </small>
+            <small className="fw-semibold">Month: {month}</small>
+            <small className="fw-semibold">Year: {year}</small>
           </div>
           <div className="col-12 py-3">
             {appraisalData

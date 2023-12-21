@@ -9,17 +9,21 @@ const League = ({ filteredData, employeeData, user }) => {
     employee: "",
     employeeID: 0,
     average: 0,
+    month: "",
+    year: 0,
   });
   const handleClose = () => {
     setShowModal(false);
   };
 
-  const handleShow = (ID, firstName, lastName, average) => {
+  const handleShow = (ID, firstName, lastName, average, month, year) => {
     setShowModal(true);
     setSelectedProps({
       employee: `${firstName} ${lastName}`,
       employeeID: ID,
       average: average,
+      month: month,
+      year: year,
     });
   };
 
@@ -70,6 +74,8 @@ const League = ({ filteredData, employeeData, user }) => {
                   firstName,
                   lastName,
                   ID,
+                  month,
+                  year,
                 } = element;
                 return (
                   <tr key={index}>
@@ -111,7 +117,9 @@ const League = ({ filteredData, employeeData, user }) => {
                               responsibility,
                               delivery,
                               punctuality
-                            )
+                            ),
+                            month,
+                            year
                           )
                         }
                       >
@@ -132,6 +140,8 @@ const League = ({ filteredData, employeeData, user }) => {
               appraisalData={filteredData}
               averageScore={selectedProps.average}
               user={user}
+              month={selectedProps.month}
+              year={selectedProps.year}
             />
           )}
         </section>
