@@ -1,72 +1,54 @@
 import { useEffect, useState } from "react";
-import http from "../components/http-config";
-import axios from "axios";
+
+import { monthsArray, generateYears } from "../utils/dropDownOptions";
 import { Alert, Container, Form } from "react-bootstrap";
 import ProgressComponent from "../components/ProgressComponent";
 import HRComments from "../components/HRComments";
 import EmployeeProfile from "../components/EmployeeProfile";
 import PerformanceHistory from "../components/PerformanceHistory";
 import { getAvailableYears } from "../utils/getChartLabels";
-const DashBoard = () => {
-  const [graphData, setGraphData] = useState([]);
-  const [employee, setEmployee] = useState([]);
+import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
+import useGetEmployeeData from "../http-methods/getEmployeeData";
+const DashBoard = ({ user }) => {
+  const [accessToken, setAccessToken] = useState("");
   const [search, setSearch] = useState("");
   const [selectMonth, setSelectMonth] = useState("");
   const [selectYear, setSelectYear] = useState("");
   const [graphYear, setGraphYear] = useState("");
 
-  const getData = async () => {
-    try {
-      const res = await axios.get(http.appraisalURL);
-      setGraphData(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const getEmployee = async () => {
-    try {
-      const res = await axios.get(http.registerURL);
-      setEmployee(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
+  //Helps to obtain an persist user access token
   useEffect(() => {
-    getData();
-    getEmployee();
-  }, []);
+    user &&
+      user
+        .getIdToken()
+        .then((token) => setAccessToken(token))
+        .catch((err) => console.warn(err.message));
+  }, [user]);
 
-  const monthsArray = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+  const getAppraisal = useGetEmployeeAppraisal(accessToken);
+  const getEmployee = useGetEmployeeData(accessToken);
 
-  //Get years you want to map on options element for querying appraisal period
-  const startYear = 2015;
-  const nextFifteenYears = 2030;
-  const years = [];
+  const { isLoading, isError, data } = getAppraisal;
 
-  for (let year = startYear; year <= nextFifteenYears; year++) {
-    years.push(year);
+  //Error handler for two API datasets being consumed
+  if (isLoading || getEmployee.isLoading) {
+    return <Alert>Resources are still loading...</Alert>;
+  } else if (isError || getEmployee.isError) {
+    return <Alert variant="warning">Error in loading resources </Alert>;
+  } else if (
+    !data ||
+    data === undefined ||
+    getEmployee.data === undefined ||
+    !getEmployee.data
+  ) {
+    return <Alert>Resource data is unavailable</Alert>;
   }
 
-  const filteredEmployees = employee.filter((element) =>
+  const filteredEmployees = getEmployee.data.filter((element) =>
     search === element.ID.toString() ? element : !element
   );
 
-  const filteredAppraisal = graphData.filter((element) =>
+  const filteredAppraisal = data.filter((element) =>
     search === element.ID.toString() &&
     selectMonth.match(new RegExp(`${element.month}`, "i")) &&
     selectYear.match(new RegExp(`${element.year}`, "i"))
@@ -77,7 +59,7 @@ const DashBoard = () => {
   const noItemsFoundYet =
     !filteredAppraisal.length && !filteredEmployees.length;
 
-  const labels = getAvailableYears(graphData);
+  const labels = getAvailableYears(data);
   return (
     <>
       <Container
@@ -122,7 +104,7 @@ const DashBoard = () => {
                 name="selected-year"
                 onChange={(e) => setSelectYear(e.target.value)}
               >
-                {years.map((element, index) => (
+                {generateYears().map((element, index) => (
                   <option key={index} value={element}>
                     {element}
                   </option>
@@ -174,7 +156,7 @@ const DashBoard = () => {
                 >
                   <PerformanceHistory
                     years={labels}
-                    chartData={graphData}
+                    chartData={data}
                     employeeId={search}
                     graphYear={graphYear}
                     setGraphYear={(e) => setGraphYear(e.target.value)}

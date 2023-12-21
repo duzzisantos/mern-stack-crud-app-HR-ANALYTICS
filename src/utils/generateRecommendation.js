@@ -1,3 +1,13 @@
+/**
+ * These five functions suggest training and behavioural improvements based on appraisal score range and recommendations
+ * Contained in the HR Recommendation policy document
+ *
+ * @param {array} recommendations
+ * @param {string} category
+ * @param {number} appraisalScore
+ * @returns suggestions
+ */
+
 function getDelivery(recommendations, category, appraisalScore) {
   const suggestions = [];
   for (const group of recommendations) {

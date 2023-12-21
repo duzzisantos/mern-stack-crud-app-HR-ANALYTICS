@@ -5,7 +5,7 @@ import { auth } from "./auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Register from "./menu/Register";
 import Appraisal from "./menu/Appraisal";
-import DashBoard from "./menu/Dashboard";
+import DashBoard from "./menu/DashBoard";
 import EmployeeList from "./menu/Employees";
 import UpdateEmployee from "./menu/ManageEmployees";
 import Login from "./auth/login";
@@ -39,7 +39,7 @@ function App() {
             <Route path="auth/settings" element={<Settings />} />
             <Route path="auth/register" element={<Register />} />
             <Route path="auth/appraisal" element={<Appraisal user={user} />} />
-            <Route path="auth/dashboard" element={<DashBoard />} />
+            <Route path="auth/dashboard" element={<DashBoard user={user} />} />
             <Route
               path="auth/league-table"
               element={<LeagueTable user={user} />}
