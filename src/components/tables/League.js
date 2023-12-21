@@ -3,7 +3,7 @@ import { Button, Table } from "react-bootstrap";
 import { ThreeDotsVertical } from "react-bootstrap-icons";
 import RecommendationModal from "../modals/Recommendationmodal";
 
-const League = ({ filteredData, employeeData }) => {
+const League = ({ filteredData, employeeData, user }) => {
   const [showmodal, setShowModal] = useState(false);
   const [selectedProps, setSelectedProps] = useState({
     employee: "",
@@ -131,6 +131,7 @@ const League = ({ filteredData, employeeData }) => {
               employee={selectedProps.employee}
               appraisalData={filteredData}
               averageScore={selectedProps.average}
+              user={user}
             />
           )}
         </section>

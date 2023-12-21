@@ -10,7 +10,7 @@ import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import TopThree from "../components/TopThree";
 import League from "../components/tables/League";
 
-const LeagueTable = () => {
+const LeagueTable = ({ user }) => {
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
   const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
   const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
@@ -137,7 +137,11 @@ const LeagueTable = () => {
             filteredData={getSortedEmployees.slice(0, 3)}
             employeeData={data}
           />
-          <League filteredData={getSortedEmployees} employeeData={data} />
+          <League
+            filteredData={getSortedEmployees}
+            employeeData={data}
+            user={user}
+          />
         </div>
       </Container>
     </>

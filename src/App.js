@@ -40,7 +40,10 @@ function App() {
             <Route path="auth/register" element={<Register />} />
             <Route path="auth/appraisal" element={<Appraisal user={user} />} />
             <Route path="auth/dashboard" element={<DashBoard />} />
-            <Route path="auth/league-table" element={<LeagueTable />} />
+            <Route
+              path="auth/league-table"
+              element={<LeagueTable user={user} />}
+            />
             <Route
               path="auth/recommendations"
               element={<RecommendationForm user={user} />}
