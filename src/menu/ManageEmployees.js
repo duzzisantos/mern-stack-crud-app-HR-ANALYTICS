@@ -37,7 +37,6 @@ const ManageEmployees = ({ user }) => {
       }
     )
       .then((res) => {
-        console.log({ ID: params.ID });
         const employeeData = res.data;
         setStaffID(employeeData.ID);
         setFirstName(employeeData.firstName);

@@ -17,7 +17,7 @@ const http = {
   recommendationURL: `http://localhost:${apiPort}/api/recommendations`,
   registerURLServer: `https://${serverHost}/api/register`,
   appraiseURLServer: `https://${serverHost}/api/appraisal`,
-  recommendationURLServer: `https://${serverHost}/api/recommendation`,
+  recommendationURLServer: `https://${serverHost}/api/recommendations`,
 };
 
 export default http;
