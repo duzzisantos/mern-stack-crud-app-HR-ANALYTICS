@@ -3,8 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { auth } from "./auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Register from "./menu/Register";
 import Appraisal from "./menu/Appraisal";
+import AddEmployee from "./menu/AddEmployee";
 import DashBoard from "./menu/DashBoard";
 import EmployeeList from "./menu/Employees";
 import UpdateEmployee from "./menu/ManageEmployees";
@@ -37,7 +37,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="reset" element={<Reset />} />
           <Route path="auth/settings" element={<Settings user={user} />} />
-          <Route path="auth/register" element={<Register user={user} />} />
+          <Route path="auth/register" element={<AddEmployee user={user} />} />
           <Route path="auth/appraisal" element={<Appraisal user={user} />} />
           <Route path="auth/dashboard" element={<DashBoard user={user} />} />
           <Route

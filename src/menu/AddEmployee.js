@@ -3,7 +3,7 @@ import http from "../components/http-config";
 
 import { Button, Container, Form } from "react-bootstrap";
 
-const Register = ({ user }) => {
+const AddEmployee = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
   const [fillForm, setFillForm] = useState({
     ID: Date.now(),
@@ -195,4 +195,4 @@ const Register = ({ user }) => {
   );
 };
 
-export default Register;
+export default AddEmployee;
