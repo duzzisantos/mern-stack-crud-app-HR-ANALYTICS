@@ -36,8 +36,8 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="reset" element={<Reset />} />
-          <Route path="auth/settings" element={<Settings />} />
-          <Route path="auth/register" element={<Register />} />
+          <Route path="auth/settings" element={<Settings user={user} />} />
+          <Route path="auth/register" element={<Register user={user} />} />
           <Route path="auth/appraisal" element={<Appraisal user={user} />} />
           <Route path="auth/dashboard" element={<DashBoard user={user} />} />
           <Route
@@ -51,7 +51,7 @@ function App() {
           <Route path="auth/table/*" element={<EmployeeList />} />
           <Route
             path="auth/table/update-employee/:ID"
-            element={<UpdateEmployee />}
+            element={<UpdateEmployee user={user} />}
           />
         </Routes>
       </QueryClientProvider>

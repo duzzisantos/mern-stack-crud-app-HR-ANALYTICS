@@ -22,7 +22,6 @@ import {
   PersonPlus,
   PieChart,
   Power,
-  Screwdriver,
   Table,
 } from "react-bootstrap-icons";
 
@@ -100,16 +99,13 @@ const Auth = () => {
                     style={{ width: "200px" }}
                   >
                     <Nav.Link href="/auth/settings" className="text-light">
-                      <PeopleFill /> Head Count
+                      <PeopleFill /> HR Management
                     </Nav.Link>
                     <Nav.Link
                       href="/auth/recommendations"
                       className="text-light"
                     >
                       <Mortarboard /> HR Recommendations
-                    </Nav.Link>
-                    <Nav.Link href="/auth/auditors" className="text-light">
-                      <Screwdriver /> Auditors
                     </Nav.Link>
                   </Dropdown.Menu>
                 </Dropdown>

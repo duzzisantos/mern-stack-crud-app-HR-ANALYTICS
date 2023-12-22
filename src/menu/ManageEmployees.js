@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { ArrowLeft } from "react-bootstrap-icons";
+import http from "../components/http-config";
 
-const UpdateEmployee = () => {
+const UpdateEmployee = ({ user }) => {
+  const [accessToken, setAccessToken] = useState("");
   const params = useParams();
   const navigate = useNavigate();
   const [ID, setStaffID] = useState(0);
@@ -21,8 +22,14 @@ const UpdateEmployee = () => {
   //Get request
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8080/api/register/${params.ID}`)
+    user && user.getIdToken().then((token) => setAccessToken(token));
+  }, [user]);
+
+  useEffect(() => {
+    const { get, registerURL } = http;
+    get(`${registerURL}/${params.ID}`, {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    })
       .then((res) => {
         console.log({ ID: params.ID });
         const employeeData = res.data;
@@ -40,12 +47,14 @@ const UpdateEmployee = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [params.ID]);
+  }, [params.ID, accessToken]);
 
   //Put request
   const handleUpdate = () => {
-    axios
-      .put(`http://localhost:8080/api/register/${params.ID}`, {
+    const { update, registerURL } = http;
+    update(
+      `${registerURL}/${params.ID}`,
+      {
         ID,
         firstName,
         lastName,
@@ -56,7 +65,9 @@ const UpdateEmployee = () => {
         contractType,
         dateEmployment,
         photo,
-      })
+      },
+      { headers: { Authorization: `Bearer ${accessToken}` } }
+    )
       .then((res) => {
         console.log(res.statusText);
         navigate("/table/:ID");

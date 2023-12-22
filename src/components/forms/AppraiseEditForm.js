@@ -77,7 +77,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
   return (
     <div className="">
       <form
-        className="w-100 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+        className="w-100 py-3 rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
         encType="multipart/formdata"
       >
         <h1 className="fs-2 fw-bold">Update Appraisal</h1>

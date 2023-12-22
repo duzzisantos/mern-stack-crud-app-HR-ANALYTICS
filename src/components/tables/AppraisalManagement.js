@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Alert, Button, Table } from "react-bootstrap";
 import { Pencil, Trash } from "react-bootstrap-icons";
 import AppraisalEditModal from "../modals/AppraisalEditModal";
+import AppraisalDeleteModal from "../modals/AppraisalDelete";
 
 const AppraisalManagement = ({
   appraisalData,
@@ -11,7 +12,9 @@ const AppraisalManagement = ({
   token,
 }) => {
   const [show, setShow] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [chooseID, setChooseID] = useState("");
+
   const handleClose = () => {
     setShow(false);
   };
@@ -19,6 +22,15 @@ const AppraisalManagement = ({
   const handleShow = (id) => {
     setShow(true);
     setChooseID(id);
+  };
+
+  const handleShowDelete = (id) => {
+    setShowDelete(true);
+    setChooseID(id);
+  };
+
+  const handleCloseDelete = () => {
+    setShowDelete(false);
   };
   const filteredData = appraisalData.filter(
     (element) =>
@@ -67,6 +79,7 @@ const AppraisalManagement = ({
                 <Button
                   variant="transparent"
                   className="btn btn-outline-danger border-0 text-outline-light"
+                  onClick={(id) => handleShowDelete(element._id)}
                 >
                   <Trash />
                 </Button>
@@ -88,6 +101,14 @@ const AppraisalManagement = ({
           selectedID={chooseID}
           token={token}
           appraisalData={filteredData}
+        />
+      )}
+
+      {showDelete && (
+        <AppraisalDeleteModal
+          handleClose={handleCloseDelete}
+          show={showDelete}
+          selectedID={chooseID}
         />
       )}
     </div>

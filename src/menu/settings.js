@@ -8,6 +8,7 @@ import {
 } from "../utils/dropDownOptions";
 import useEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import AppraisalManagement from "../components/tables/AppraisalManagement";
+import HeadCount from "../components/HeadCount";
 
 const Settings = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -110,6 +111,11 @@ const Settings = ({ user }) => {
           selectedMonth={selectedMonth}
           selectedYear={selectedYear}
           token={accessToken}
+        />
+
+        <HeadCount
+          selectedDepartment={selectedDepartment}
+          appraisalData={data}
         />
       </Container>
     </>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
 
 import { Button, Container, Form } from "react-bootstrap";
 
-const Register = () => {
+const Register = ({ user }) => {
+  const [accessToken, setAccessToken] = useState("");
   const [fillForm, setFillForm] = useState({
     ID: Date.now(),
     firstName: "",
@@ -17,9 +18,22 @@ const Register = () => {
     photo: "",
   });
 
+  useEffect(() => {
+    user &&
+      user
+        .getIdToken()
+        .then((token) => setAccessToken(token))
+        .catch((err) => console.warn(err.message));
+  }, [user]);
+
   const handleSubmit = () => {
     http
-      .post(http.registerURL, fillForm, http.headers)
+      .post(http.registerURL, fillForm, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
       .then((res) => {
         console.log(res.statusText);
       })

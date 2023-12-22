@@ -1,5 +1,6 @@
 const useMutate = (
   postObject,
+  objectId,
   accessToken,
   mutationFunction,
   method,
@@ -9,7 +10,7 @@ const useMutate = (
   return mutationFunction(
     async (updateObject = postObject) => {
       try {
-        const response = await method(endPoint, updateObject, {
+        const response = await method(`${endPoint}/${objectId}`, updateObject, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
@@ -39,4 +40,4 @@ const useMutate = (
   );
 };
 
-export { useMutate };
+export default useMutate;
