@@ -1,7 +1,7 @@
 const EmployeeProfile = ({ employee }) => {
   return (
     <div
-      className="d-flex flex-column p-4 gap-3  shadow-sm rounded-1 col-lg-4"
+      className="d-flex flex-column p-4 gap-3  shadow-sm rounded-1 col-lg-4 col-md-10 col-sm-12"
       style={{ height: "600px" }}
     >
       <div className="d-flex flex-column gap-3">

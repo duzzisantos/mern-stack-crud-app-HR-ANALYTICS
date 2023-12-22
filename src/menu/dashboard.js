@@ -74,13 +74,13 @@ const DashBoard = ({ user }) => {
     <>
       <Container
         fluid
-        className="col-12 d-flex justify-content-between gap-2"
+        className="col-lg-12 col-md-10 col-sm-9 d-flex flex-wrap d-flex justify-content-between gap-2"
         style={{ height: "fit-content" }}
       >
-        <main className="col-11 d-flex flex-column gap-3 py-4">
+        <main className="col-10 d-flex flex-column gap-3 py-4">
           <h1 className="fs-2 fw-bold text-center">Appraisal Dashboard</h1>
-          <div className="d-flex justify-content-center gap-3 fw-bold">
-            <div className="col-2">
+          <div className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column">
+            <div className="col-lg-2 col-sm-10">
               <Form.Label htmlFor="employee-id">Employee ID</Form.Label>
               <Form.Control
                 size="sm"
@@ -90,7 +90,7 @@ const DashBoard = ({ user }) => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <div className="col-2">
+            <div className="col-lg-2 col-sm-10">
               {" "}
               <Form.Label htmlFor="employee-month">Month</Form.Label>
               <Form.Select
@@ -107,7 +107,7 @@ const DashBoard = ({ user }) => {
                 ))}
               </Form.Select>
             </div>
-            <div className="col-2">
+            <div className="col-lg-2 col-sm-10">
               <Form.Label htmlFor="employee-year">Year</Form.Label>
               <Form.Select
                 size="sm"
@@ -137,7 +137,7 @@ const DashBoard = ({ user }) => {
               </Alert>
             ) : (
               <>
-                <div className="col-12 d-flex flex-nowrap p-1 gap-1 justify-content-between">
+                <div className="col-12 d-flex flex-lg-row flex-sm-column p-1 gap-1 justify-content-between">
                   {filteredAppraisal.map((item, index) => {
                     const {
                       quantityOfWork,

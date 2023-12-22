@@ -159,8 +159,8 @@ const RecommendationForm = ({ user }) => {
 
   return (
     <>
-      <Container className="col-12 col-md-10 d-flex">
-        <main className="col-12">
+      <Container fluid className="col-12 col-md-10 d-flex">
+        <main className="col-lg-12 col-sm-10">
           <h1 className="fs-2 text-center mt-3 fw-bold">
             Recommendation Policy
           </h1>
@@ -181,7 +181,7 @@ const RecommendationForm = ({ user }) => {
                 id="carousel-slide-recommendation-form"
                 slide={false}
                 text="Quality of work"
-                className="p-5 border border-1 shadow-sm rounded-2"
+                className="p-lg-5 p-sm-0 border border-1 shadow-sm rounded-2"
                 controls="as button"
                 variant="dark"
                 activeIndex={index}
@@ -189,7 +189,7 @@ const RecommendationForm = ({ user }) => {
               >
                 {Object.entries(formData).map(([category, levels]) => (
                   <CarouselItem key={category} interval={300000}>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex p-sm-2 justify-content-between">
                       <h2 className="fs-5 fw-bold text-capitalize text-center">
                         {getFormCategory(category)}
                       </h2>
@@ -231,7 +231,7 @@ const RecommendationForm = ({ user }) => {
                         ))}
                       </div>
                     ))}
-                    <div className="d-flex justify-content-end">
+                    <div className="d-flex justify-content-end p-sm-2">
                       <small>
                         {index + 1} of {Object.entries(formData).length}
                       </small>
@@ -252,7 +252,7 @@ const RecommendationForm = ({ user }) => {
             />
           )}
         </main>
-        <div className="col-1 mt-3 mx-0">
+        <div className="col-lg-1 col-sm-2 mt-3 mx-0">
           <Button
             variant="transparent"
             className="border border-secondary"

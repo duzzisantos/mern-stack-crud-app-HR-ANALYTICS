@@ -72,7 +72,7 @@ const Appraisal = ({ user }) => {
     <>
       <Container
         fluid
-        className="d-flex justify-content-center py-4 gap-4 overflow-hidden"
+        className="d-flex flex-lg-row flex-sm-column flex-md-column justify-content-center py-4 gap-4 overflow-hidden"
       >
         <ShowEmployees
           employeeData={(!isLoading || !isError || !data === undefined) && data}

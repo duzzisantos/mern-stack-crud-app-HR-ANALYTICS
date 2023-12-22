@@ -66,10 +66,14 @@ const Auth = () => {
             {" "}
             Keffi <FontAwesomeIcon icon={faRing} />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            as={"button"}
+            className=" border-0 text-bg-secondary"
+          />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="d-flex py-3 col-12 px-3 hstack justify-content-between text-light">
-              <Nav.Item className="hstack gap-3">
+            <Nav className="gap-2">
+              <Nav.Item className="me-auto vstack d-flex flex-lg-nowrap flex-lg-row flex-sm-wrap flex-sm-column gap-1 text-start">
                 <Nav.Link href="/auth/register" className="text-light">
                   <PersonPlus /> Add Employee
                 </Nav.Link>
@@ -86,7 +90,7 @@ const Auth = () => {
                   <Table /> League Table
                 </Nav.Link>
 
-                <Dropdown>
+                <Dropdown className="mt-2">
                   <Dropdown.Toggle
                     variant="success"
                     size="sm"
@@ -111,7 +115,7 @@ const Auth = () => {
                 </Dropdown>
               </Nav.Item>
 
-              <Nav.Item className="d-flex hstack gap-2 ms-auto">
+              <Nav.Item className="d-flex hstack gap-2">
                 <li>{user?.email ?? name}</li>
                 <Button
                   size="sm"

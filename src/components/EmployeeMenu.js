@@ -1,8 +1,17 @@
-import { FormLabel, FormSelect, Offcanvas, Stack } from "react-bootstrap";
+import {
+  Button,
+  FormLabel,
+  FormSelect,
+  Offcanvas,
+  Stack,
+} from "react-bootstrap";
 import { departments } from "../utils/dropDownOptions";
 import { useState } from "react";
+import { handleCopyElement } from "../utils/handleCopyElement";
+import { Clipboard } from "react-bootstrap-icons";
 const EmployeeMenu = ({ data, show, handleClose }) => {
   const [selected, setSelected] = useState("IT");
+  const [isCopyID, setIsCopyID] = useState(false);
   return (
     <Offcanvas placement="end" show={show} onHide={handleClose}>
       <Offcanvas.Header closeButton>
@@ -30,16 +39,38 @@ const EmployeeMenu = ({ data, show, handleClose }) => {
               {data
                 .filter((element) => selected.includes(element.department))
                 .map((item, index) => (
-                  <ul key={index}>
-                    <li>
-                      <b>Name:</b> {item.firstName} {item.lastName}
-                    </li>
-                    <li>
-                      <b>Employee ID:</b> {item.ID}
-                    </li>
-                  </ul>
+                  <article key={index}>
+                    <ul>
+                      <li>
+                        <b>Name:</b> {item.firstName} {item.lastName}
+                      </li>
+                      <li>
+                        <label className="fw-semibold">Employee ID:</label>
+                        <input
+                          type="text"
+                          className="form-control-sm w-50 mx-2 border-0"
+                          id={`employee-id-${item.ID}`}
+                          value={`${item.ID}`}
+                          readOnly
+                        />
+                        <Button
+                          size="sm"
+                          variant="transparent"
+                          onClick={() =>
+                            handleCopyElement(
+                              `employee-id-${item.ID}`,
+                              setIsCopyID
+                            )
+                          }
+                        >
+                          <Clipboard />
+                        </Button>
+                      </li>
+                    </ul>
+                  </article>
                 ))}
             </div>
+            <small>{isCopyID}</small>
           </Stack>
         </section>
       </Offcanvas.Body>

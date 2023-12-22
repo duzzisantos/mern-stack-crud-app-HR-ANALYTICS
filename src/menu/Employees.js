@@ -1,35 +1,51 @@
 import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
 import { departments } from "../utils/dropDownOptions";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 import { Alert, Button, Form, Stack } from "react-bootstrap";
+import useGetEmployeeData from "../http-methods/getEmployeeData";
 
-const EmployeeList = () => {
-  const [list, setList] = useState([]);
+const EmployeeList = ({ user }) => {
+  const [accessToken, setAccessToken] = useState("");
   const [selection, setSelection] = useState(departments[0]);
-
-  const getEmployeeData = async () => {
-    try {
-      const res = await http.get(http.registerURL, http.headers);
-      console.log(res.statusText);
-      console.log(res.data);
-      setList(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const getEmployees = useGetEmployeeData(accessToken);
 
   useEffect(() => {
-    getEmployeeData();
-  }, []);
+    user &&
+      user
+        .getIdToken()
+        .then((token) => setAccessToken(token))
+        .catch((err) => console.warn(err.message));
+  }, [user]);
+
+  const { isLoading, isError, data, refetch } = getEmployees;
+
+  if (isLoading) {
+    return <Alert>Page is currently loading</Alert>;
+  } else if (isError) {
+    <Alert variant="warning">
+      Error in loading resources{" "}
+      <Button
+        variant="secondary"
+        onClick={() => {
+          refetch();
+        }}
+      >
+        Reload
+      </Button>
+    </Alert>;
+  } else if (!data || data === undefined) {
+    <Alert>Data is unavailable at the moment. Please try again later.</Alert>;
+  }
 
   const handleDelete = (_id) => {
-    axios
-      .delete("http://localhost:8080/api/register/" + _id)
+    const { delete: deleteAxios, registerURL, headers } = http;
+    deleteAxios(
+      `${registerURL}/${_id}`,
+      (headers.Authorization = `Bearer ${accessToken}`)
+    )
       .then((res) => {
-        getEmployeeData();
         console.log(res.statusText);
       })
       .catch((err) => {
@@ -62,7 +78,7 @@ const EmployeeList = () => {
         </div>
 
         <div className="d-flex flex-wrap p-4 col-12 gap-3">
-          {list
+          {data
             .filter((item) =>
               selection === "default"
                 ? !item
@@ -113,7 +129,7 @@ const EmployeeList = () => {
                 </Stack>
               </fieldset>
             ))}
-          {!list.filter((el) =>
+          {!data.filter((el) =>
             selection.match(new RegExp(`${el.department}`), "gi")
           ).length && (
             <Alert variant="warning" className="col-12">

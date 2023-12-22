@@ -3,7 +3,7 @@ import { getEmployeeDetails } from "../utils/getEmployeeDetails";
 
 const TopThree = ({ filteredData, employeeData }) => {
   return (
-    <div className="col-9 col-md-12 d-flex justify-content-center py-2 px-2 hstack gap-3 my-4">
+    <div className="col-lg-12 col-md-12 d-flex flex-lg-row flex-sm-column justify-content-center py-2 px-2 hstack gap-3 my-4">
       {filteredData.map((person, outerIndex) => (
         <Card
           key={outerIndex}

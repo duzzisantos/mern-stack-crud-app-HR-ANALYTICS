@@ -35,7 +35,7 @@ const ShowEmployees = ({ employeeData }) => {
   }, [employeeData, selectedEmployee]);
 
   return (
-    <div className="d-flex flex-column col-lg-3 gap-3 border border-secondary-subtle h-100 p-3 rounded-2">
+    <div className="d-flex flex-column col-lg-3 col-sm-10 col-md-10 gap-3 border border-secondary-subtle h-100 p-3 rounded-2">
       <h2 className="fs-5 fw-bold">Search and copy employee details</h2>
       <div className="my-3">
         <Form.Label htmlFor="show-employee-department">
@@ -78,6 +78,7 @@ const ShowEmployees = ({ employeeData }) => {
               type="text"
               value={`${details?.employeeID ?? ""}`}
               id="employee-id-input"
+              readOnly
             />{" "}
             <Button
               variant="transparent"
@@ -98,6 +99,7 @@ const ShowEmployees = ({ employeeData }) => {
               className="border-bottom border-0 rounded-0"
               value={`${details?.firstName ?? ""}`}
               id="employee-firstName-input"
+              readOnly
             />{" "}
             <Button
               variant="transparent"
@@ -120,6 +122,7 @@ const ShowEmployees = ({ employeeData }) => {
               className="border-bottom border-0 rounded-0"
               value={`${details?.lastName ?? ""}`}
               id="employee-lastName-input"
+              readOnly
             />{" "}
             <Button
               variant="transparent"

@@ -59,6 +59,7 @@ const MonthOnMonth = ({ chartData, employeeId, setGraphYear, graphYear }) => {
           value={graphYear}
           onChange={setGraphYear}
         >
+          <option>Select</option>
           {uniqueYears.map((el, i) => (
             <option key={i} value={el}>
               {el}

@@ -46,7 +46,7 @@ const League = ({ filteredData, employeeData, user }) => {
   return (
     <>
       {filteredData.length ? (
-        <section className="col-9 col-md-12 my-5 p-5 text-secondary">
+        <section className="col-lg-12 col-md-12 col-sm-12 my-5 p-5 text-secondary">
           <h2 className="fs-4 fw-bold">League Standings</h2>
           <Table bordered responsive hover>
             <thead>

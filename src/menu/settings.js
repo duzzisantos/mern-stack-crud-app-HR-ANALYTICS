@@ -45,7 +45,7 @@ const Settings = ({ user }) => {
       >
         <h1 className="fw-bold fs-2">HR Management</h1>
         <div className="d-flex justify-content-center mt-2">
-          <div className="hstack gap-5">
+          <div className="hstack gap-3">
             <div>
               <Form.Label className="fw-bold w-75" htmlFor="department">
                 Department:{" "}
