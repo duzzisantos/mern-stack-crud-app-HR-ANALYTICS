@@ -57,13 +57,13 @@ const AddEmployee = ({ user }) => {
 
   return (
     <>
-      <Container fluid className="d-flex justify-content-center py-4">
+      <Container fluid className="col-12 d-flex justify-content-center py-4">
         <form
           className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
         >
-          <h1 className="fs-2 fw-bold">Register new employee</h1>
+          <h1 className="fs-4 fw-bold">Add new employee</h1>
           <div className="col-9">
             <Form.Label htmlFor="ID">Staff ID</Form.Label>
             <Form.Control
