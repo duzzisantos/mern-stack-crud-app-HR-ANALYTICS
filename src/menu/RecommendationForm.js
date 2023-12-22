@@ -136,14 +136,22 @@ const RecommendationForm = ({ user }) => {
     }));
   };
 
+  //Check if local or production
+  const isLocal = process.env.NODE_ENV === "development";
+  const isProduction = process.env.NODE_ENV === "production";
+
   const handleSubmit = async () => {
-    const { post, recommendationURL } = http;
-    post(recommendationURL, JSON.stringify(formData), {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const { post, recommendationURL, recommendationURLServer } = http;
+    post(
+      isLocal ? recommendationURL : isProduction && recommendationURLServer,
+      JSON.stringify(formData),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
   };
 
   const { isLoading, isError, data } = getRecommendations;

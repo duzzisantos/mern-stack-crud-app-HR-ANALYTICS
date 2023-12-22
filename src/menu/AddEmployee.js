@@ -26,14 +26,18 @@ const AddEmployee = ({ user }) => {
         .catch((err) => console.warn(err.message));
   }, [user]);
 
+  const isLocal = process.env.NODE_ENV === "development";
+  const isProduction = process.env.NODE_ENV === "production";
+
   const handleSubmit = () => {
-    http
-      .post(http.registerURL, fillForm, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
+    const { post, registerURL, registerURLServer } = http;
+
+    post(isLocal ? registerURL : isProduction && registerURLServer, fillForm, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
       .then((res) => {
         console.log(res.statusText);
       })

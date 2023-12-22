@@ -2,13 +2,18 @@ import { useQuery } from "react-query";
 import http from "../components/http-config";
 
 const getEmployeeData = async (accessToken) => {
-  const { get, registerURL } = http;
+  const { get, registerURL, registerURLServer } = http;
+  const isLocal = process.env.NODE_ENV === "development";
+  const isProduction = process.env.NODE_ENV === "production";
   try {
-    const response = await get(registerURL, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    const response = await get(
+      isLocal ? registerURL : isProduction && registerURLServer,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
     if (response.status !== 200) {
       throw new Error(`${response.status} cause: ${response.statusText}`);
     } else {

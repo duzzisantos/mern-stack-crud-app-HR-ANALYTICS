@@ -40,9 +40,16 @@ const EmployeeList = ({ user }) => {
   }
 
   const handleDelete = (_id) => {
-    const { delete: deleteAxios, registerURL, headers } = http;
+    const isLocal = process.env.NODE_ENV === "development";
+    const isProduction = process.env.NODE_ENV === "production";
+    const {
+      delete: deleteAxios,
+      registerURL,
+      registerURLServer,
+      headers,
+    } = http;
     deleteAxios(
-      `${registerURL}/${_id}`,
+      `${isLocal ? registerURL : isProduction && registerURLServer}/${_id}`,
       (headers.Authorization = `Bearer ${accessToken}`)
     )
       .then((res) => {

@@ -20,16 +20,22 @@ const ManageEmployees = ({ user }) => {
   const [photo, setPhoto] = useState("");
 
   //Get request
-
+  const isLocal = process.env.NODE_ENV === "development";
+  const isProduction = process.env.NODE_ENV === "production";
   useEffect(() => {
     user && user.getIdToken().then((token) => setAccessToken(token));
   }, [user]);
 
   useEffect(() => {
-    const { get, registerURL } = http;
-    get(`${registerURL}/${params.ID}`, {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    })
+    const { get, registerURL, registerURLServer } = http;
+    get(
+      `${isLocal ? registerURL : isProduction && registerURLServer}/${
+        params.ID
+      }`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    )
       .then((res) => {
         console.log({ ID: params.ID });
         const employeeData = res.data;
@@ -47,13 +53,15 @@ const ManageEmployees = ({ user }) => {
       .catch((err) => {
         console.log(err);
       });
-  }, [params.ID, accessToken]);
+  }, [params.ID, accessToken, isLocal, isProduction]);
 
   //Put request
   const handleUpdate = () => {
-    const { update, registerURL } = http;
+    const { update, registerURL, registerURLServer } = http;
     update(
-      `${registerURL}/${params.ID}`,
+      `${isLocal ? registerURL : isProduction && registerURLServer}/${
+        params.ID
+      }`,
       {
         ID,
         firstName,
