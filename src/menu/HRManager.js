@@ -10,7 +10,7 @@ import useEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import AppraisalManagement from "../components/tables/AppraisalManagement";
 import HeadCount from "../components/HeadCount";
 
-const Settings = ({ user }) => {
+const HRManager = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
   const getAppraisal = useEmployeeAppraisal(accessToken);
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
@@ -122,4 +122,4 @@ const Settings = ({ user }) => {
   );
 };
 
-export default Settings;
+export default HRManager;

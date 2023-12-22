@@ -13,7 +13,7 @@ import EmployeeList from "./menu/EmployeeList";
 import LeagueTable from "./menu/LeagueTable";
 import ManageEmployees from "./menu/ManageEmployees";
 import RecommendationForm from "./menu/RecommendationForm";
-import Settings from "./menu/Settings";
+import HRManager from "./menu/HRManager";
 
 import { Alert } from "react-bootstrap";
 import Auth from "./auth/auth";
@@ -37,7 +37,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="reset" element={<Reset />} />
-          <Route path="auth/settings" element={<Settings user={user} />} />
+          <Route path="auth/settings" element={<HRManager user={user} />} />
           <Route path="auth/register" element={<AddEmployee user={user} />} />
           <Route
             path="auth/appraisal"
