@@ -48,7 +48,7 @@ function App() {
             path="auth/recommendations"
             element={<RecommendationForm user={user} />}
           />
-          <Route path="auth/table/*" element={<EmployeeList />} />
+          <Route path="auth/table/*" element={<EmployeeList user={user} />} />
           <Route
             path="auth/table/update-employee/:ID"
             element={<UpdateEmployee user={user} />}
