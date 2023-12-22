@@ -11,8 +11,7 @@ const EmployeeProfile = ({ employee }) => {
             {employee.map((element, i) => (
               <ul key={i}>
                 <li>
-                  Name:
-                  {element.firstName} {element.lastName}
+                  Name: {element.firstName} {element.lastName}
                 </li>
 
                 <li>Contract Type: {element.contractType}</li>

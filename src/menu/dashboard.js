@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-
 import { monthsArray, generateYears } from "../utils/dropDownOptions";
-import { Alert, Container, Form } from "react-bootstrap";
+import { Alert, Button, Container, Form } from "react-bootstrap";
 import ProgressComponent from "../components/ProgressComponent";
 import HRComments from "../components/HRComments";
 import EmployeeProfile from "../components/EmployeeProfile";
@@ -9,12 +8,15 @@ import PerformanceHistory from "../components/PerformanceHistory";
 import { getAvailableYears } from "../utils/getChartLabels";
 import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
+import { List } from "react-bootstrap-icons";
+import EmployeeMenu from "../components/EmployeeMenu";
 const DashBoard = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
   const [search, setSearch] = useState("");
   const [selectMonth, setSelectMonth] = useState("");
   const [selectYear, setSelectYear] = useState("");
   const [graphYear, setGraphYear] = useState("");
+  const [show, setShow] = useState(false);
 
   //Helps to obtain an persist user access token
   useEffect(() => {
@@ -60,14 +62,22 @@ const DashBoard = ({ user }) => {
     !filteredAppraisal.length && !filteredEmployees.length;
 
   const labels = getAvailableYears(data);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleShow = () => {
+    setShow(true);
+  };
   return (
     <>
       <Container
         fluid
-        className="col-12 d-flex justify-content-center"
+        className="col-12 d-flex justify-content-between gap-2"
         style={{ height: "fit-content" }}
       >
-        <div className="col-lg-9 d-flex flex-column gap-3 py-4">
+        <main className="col-11 d-flex flex-column gap-3 py-4">
           <h1 className="fs-2 fw-bold text-center">Appraisal Dashboard</h1>
           <div className="d-flex justify-content-center gap-3 fw-bold">
             <div className="col-2">
@@ -89,6 +99,7 @@ const DashBoard = ({ user }) => {
                 name="selected-month"
                 onChange={(e) => setSelectMonth(e.target.value)}
               >
+                <option>Select</option>
                 {monthsArray.map((item) => (
                   <option key={item} value={item}>
                     {item}
@@ -104,6 +115,7 @@ const DashBoard = ({ user }) => {
                 name="selected-year"
                 onChange={(e) => setSelectYear(e.target.value)}
               >
+                <option>Select</option>
                 {generateYears().map((element, index) => (
                   <option key={index} value={element}>
                     {element}
@@ -116,8 +128,12 @@ const DashBoard = ({ user }) => {
           <div>
             {noItemsFoundYet ? (
               <Alert variant="warning" className="col-12">
-                Search for employees by their correct ID. Either that or ensure
-                that the employee ID, year and month values are correct.
+                Select employee ID from{" "}
+                <kbd className="bg-transparent text-dark border border-secondary">
+                  <List /> Employees
+                </kbd>{" "}
+                menu. Search for employees by their correct ID. Either that or
+                ensure that the employee ID, year and month values are correct.
               </Alert>
             ) : (
               <>
@@ -165,7 +181,24 @@ const DashBoard = ({ user }) => {
               </>
             )}
           </div>
+        </main>
+        <div className="col-1 py-4 mh-100">
+          <Button
+            variant="trasnsparent"
+            className=" border border-secondary"
+            onClick={handleShow}
+          >
+            <List /> Employees
+          </Button>
         </div>
+
+        {show && (
+          <EmployeeMenu
+            show={show}
+            data={getEmployee.data}
+            handleClose={handleClose}
+          />
+        )}
       </Container>
     </>
   );
