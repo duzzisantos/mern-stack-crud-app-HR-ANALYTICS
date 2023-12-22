@@ -23,7 +23,7 @@ const monthsArray = [
 ];
 
 function generateYears() {
-  const startYear = 2023;
+  const startYear = 2022;
   const nextFifteenYears = 2038;
   const years = [];
 

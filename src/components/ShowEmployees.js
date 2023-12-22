@@ -1,11 +1,15 @@
 import { useMemo, useState } from "react";
 import { departments } from "../utils/dropDownOptions";
 import { Button, Form } from "react-bootstrap";
-import { Clipboard } from "react-bootstrap-icons";
+import { Clipboard, ClipboardCheckFill } from "react-bootstrap-icons";
+import { handleCopyElement } from "../utils/handleCopyElement";
 
 const ShowEmployees = ({ employeeData }) => {
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [isCopyID, setCopyID] = useState(false);
+  const [isCopyFirstName, setCopyFirstName] = useState(false);
+  const [isCopyLastName, setCopyLastName] = useState(false);
 
   const getDepartmentEmployees = () => {
     return employeeData
@@ -42,6 +46,7 @@ const ShowEmployees = ({ employeeData }) => {
           value={selectedDepartment}
           onChange={(e) => setSelectedDepartment(e.target.value)}
         >
+          <option>Select</option>
           {departments.map((dep, i) => (
             <option value={dep} key={i}>
               {dep}
@@ -56,6 +61,7 @@ const ShowEmployees = ({ employeeData }) => {
           value={selectedEmployee}
           onChange={(e) => setSelectedEmployee(e.target.value)}
         >
+          <option>Select</option>
           {getDepartmentEmployees().map((dep, i) => (
             <option value={dep} key={i}>
               {dep}
@@ -64,26 +70,69 @@ const ShowEmployees = ({ employeeData }) => {
         </Form.Select>
       </div>
       <output className="my-3 shadow-sm rounded-2 border">
-        <ol className="my-3 mx-2">
-          <li className="d-flex justify-content-between mb-2">
-            {details?.employeeID}
-            <Button variant="transparent" className="btn btn-sm text-secondary">
-              <Clipboard />
+        <ol className="my-3 mx-2 gap-2 vstack">
+          <li className="d-flex justify-content-between hstack gap-2">
+            <label>ID: </label>
+            <input
+              className="border-bottom border-0 rounded-0"
+              type="text"
+              value={`${details?.employeeID ?? ""}`}
+              id="employee-id-input"
+            />{" "}
+            <Button
+              variant="transparent"
+              className="btn btn-sm text-secondary"
+              onClick={() => handleCopyElement("employee-id-input", setCopyID)}
+            >
+              {isCopyID ? (
+                <ClipboardCheckFill className="text-success" />
+              ) : (
+                <Clipboard />
+              )}
             </Button>
           </li>
-          <li className="d-flex justify-content-between">
-            {details?.firstName}{" "}
+          <li className="d-flex justify-content-between hstack gap-2">
+            <label>First: </label>
+            <input
+              type="text"
+              className="border-bottom border-0 rounded-0"
+              value={`${details?.firstName ?? ""}`}
+              id="employee-firstName-input"
+            />{" "}
             <Button
               variant="transparent"
               className="btn btn-sm mb-2 text-secondary"
+              onClick={() =>
+                handleCopyElement("employee-firstName-input", setCopyFirstName)
+              }
             >
-              <Clipboard />
+              {isCopyFirstName ? (
+                <ClipboardCheckFill className="text-success" />
+              ) : (
+                <Clipboard />
+              )}
             </Button>
           </li>
-          <li className="d-flex justify-content-between">
-            {details?.lastName}{" "}
-            <Button variant="transparent" className="btn btn-sm text-secondary">
-              <Clipboard />
+          <li className="d-flex justify-content-between hstack gap-2">
+            <label>Last: </label>
+            <input
+              type="text"
+              className="border-bottom border-0 rounded-0"
+              value={`${details?.lastName ?? ""}`}
+              id="employee-lastName-input"
+            />{" "}
+            <Button
+              variant="transparent"
+              className="btn btn-sm mb-2 text-secondary"
+              onClick={() =>
+                handleCopyElement("employee-lastName-input", setCopyLastName)
+              }
+            >
+              {isCopyLastName ? (
+                <ClipboardCheckFill className="text-success" />
+              ) : (
+                <Clipboard />
+              )}
             </Button>
           </li>
         </ol>

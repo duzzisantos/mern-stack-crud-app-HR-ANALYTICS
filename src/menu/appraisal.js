@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
-import { monthsArray } from "../utils/dropDownOptions";
+import { departments, monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
@@ -94,9 +94,7 @@ const Appraisal = ({ user }) => {
                 setAppraise({ ...appraise, month: e.target.value })
               }
             >
-              <option name="Select" disabled>
-                --Select--
-              </option>
+              <option name="Select">Select</option>
               {monthsArray.map((element, i) => (
                 <option key={i} value={element}>
                   {element}
@@ -125,13 +123,10 @@ const Appraisal = ({ user }) => {
                 setAppraise({ ...appraise, department: e.target.value })
               }
             >
-              <option name="default">--Select--</option>
-              <option name="IT">IT</option>
-              <option name="Admin">Admin</option>
-              <option name="Procurement">Procurement</option>
-              <option name="Finance">Finance</option>
-              <option name="Operations">Operations</option>
-              <option name="Customer service">Customer service</option>
+              <option name="default">Select</option>
+              {departments.map((item, i) => (
+                <option key={i}>{item}</option>
+              ))}
             </Form.Select>
           </div>
           <div className="col-9">
