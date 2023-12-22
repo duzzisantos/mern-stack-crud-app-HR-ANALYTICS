@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { ArrowLeft } from "react-bootstrap-icons";
 import http from "../components/http-config";
 
-const UpdateEmployee = ({ user }) => {
+const ManageEmployees = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
   const params = useParams();
   const navigate = useNavigate();
@@ -200,4 +200,4 @@ const UpdateEmployee = ({ user }) => {
   );
 };
 
-export default UpdateEmployee;
+export default ManageEmployees;

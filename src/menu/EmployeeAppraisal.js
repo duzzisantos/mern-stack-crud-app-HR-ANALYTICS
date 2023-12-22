@@ -5,7 +5,7 @@ import useGetEmployeeData from "../http-methods/getEmployeeData";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
 
-const Appraisal = ({ user }) => {
+const EmployeeAppraisal = ({ user }) => {
   const today = new Date();
   const [accessToken, setAccessToken] = useState("");
 
@@ -281,4 +281,4 @@ const Appraisal = ({ user }) => {
   );
 };
 
-export default Appraisal;
+export default EmployeeAppraisal;

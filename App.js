@@ -3,17 +3,18 @@ import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { auth } from "./auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Appraisal from "./menu/Appraisal";
-import AddEmployee from "./menu/AddEmployee";
-import DashBoard from "./menu/DashBoard";
-import EmployeeList from "./menu/Employees";
-import UpdateEmployee from "./menu/ManageEmployees";
 import Login from "./auth/login";
 import SignUp from "./auth/signup";
 import Reset from "./auth/reset";
-import Settings from "./menu/Settings";
-import LeagueTable from "./menu/LeagueTable";
-import RecommendationForm from "./menu/RecommendationForm";
+import AddEmployee from "./src/menu/AddEmployee";
+import AppraisalDashboard from "./src/menu/AppraisalDashboard";
+import EmployeeAppraisal from "./src/menu/EmployeeAppraisal";
+import EmployeeList from "./src/menu/EmployeeList";
+import LeagueTable from "./src/menu/LeagueTable";
+import ManageEmployees from "./src/menu/ManageEmployees";
+import RecommendationForm from "./src/menu/RecommendationForm";
+import Settings from "./src/menu/Settings";
+
 import { Alert } from "react-bootstrap";
 import Auth from "./auth/auth";
 
@@ -38,8 +39,14 @@ function App() {
           <Route path="reset" element={<Reset />} />
           <Route path="auth/settings" element={<Settings user={user} />} />
           <Route path="auth/register" element={<AddEmployee user={user} />} />
-          <Route path="auth/appraisal" element={<Appraisal user={user} />} />
-          <Route path="auth/dashboard" element={<DashBoard user={user} />} />
+          <Route
+            path="auth/appraisal"
+            element={<EmployeeAppraisal user={user} />}
+          />
+          <Route
+            path="auth/dashboard"
+            element={<AppraisalDashboard user={user} />}
+          />
           <Route
             path="auth/league-table"
             element={<LeagueTable user={user} />}
@@ -51,7 +58,7 @@ function App() {
           <Route path="auth/table/*" element={<EmployeeList user={user} />} />
           <Route
             path="auth/table/update-employee/:ID"
-            element={<UpdateEmployee user={user} />}
+            element={<ManageEmployees user={user} />}
           />
         </Routes>
       </QueryClientProvider>

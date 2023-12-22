@@ -10,7 +10,8 @@ import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import { List } from "react-bootstrap-icons";
 import EmployeeMenu from "../components/EmployeeMenu";
-const DashBoard = ({ user }) => {
+
+const AppraisalDashboard = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
   const [search, setSearch] = useState("");
   const [selectMonth, setSelectMonth] = useState("");
@@ -78,7 +79,9 @@ const DashBoard = ({ user }) => {
         style={{ height: "fit-content" }}
       >
         <main className="col-10 d-flex flex-column gap-3 py-4">
-          <h1 className="fs-2 fw-bold text-center">Appraisal Dashboard</h1>
+          <h1 className="fs-2 fw-bold text-center">
+            Appraisal AppraisalDashboard
+          </h1>
           <div className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column">
             <div className="col-lg-2 col-sm-10">
               <Form.Label htmlFor="employee-id">Employee ID</Form.Label>
@@ -204,4 +207,4 @@ const DashBoard = ({ user }) => {
   );
 };
 
-export default DashBoard;
+export default AppraisalDashboard;
