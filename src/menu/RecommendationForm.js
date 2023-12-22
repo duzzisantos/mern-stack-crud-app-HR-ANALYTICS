@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import http from "../components/http-config";
+
 import {
   Form,
   Button,
@@ -25,6 +26,16 @@ const RecommendationForm = ({ user }) => {
       user.getIdToken().then((token) => setAccessToken(token));
     }
   });
+
+  //Improves UX for the carousel form - so that user is automatically scrolled to the
+  //submit button on the last index of the carousel
+
+  useEffect(() => {
+    let lastIndex = 5;
+    if (index + 1 <= lastIndex) {
+      window.scrollTo(0, document.body.scrollTop);
+    }
+  }, [index]);
 
   // State to hold form data
   const [formData, setFormData] = useState({
@@ -167,6 +178,7 @@ const RecommendationForm = ({ user }) => {
           <div className="d-flex justify-content-center mt-3 p-3">
             <Form id="carousel-form" onSubmit={handleSubmit} className="col-9">
               <Carousel
+                id="carousel-slide-recommendation-form"
                 slide={false}
                 text="Quality of work"
                 className="p-5 border border-1 shadow-sm rounded-2"

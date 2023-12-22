@@ -30,31 +30,30 @@ function App() {
             Verifying Authentication....
           </Alert>
         )}
-        {user && (
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="reset" element={<Reset />} />
-            <Route path="auth/settings" element={<Settings />} />
-            <Route path="auth/register" element={<Register />} />
-            <Route path="auth/appraisal" element={<Appraisal user={user} />} />
-            <Route path="auth/dashboard" element={<DashBoard user={user} />} />
-            <Route
-              path="auth/league-table"
-              element={<LeagueTable user={user} />}
-            />
-            <Route
-              path="auth/recommendations"
-              element={<RecommendationForm user={user} />}
-            />
-            <Route path="auth/table/*" element={<EmployeeList />} />
-            <Route
-              path="auth/table/update-employee/:ID"
-              element={<UpdateEmployee />}
-            />
-          </Routes>
-        )}
+
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="reset" element={<Reset />} />
+          <Route path="auth/settings" element={<Settings />} />
+          <Route path="auth/register" element={<Register />} />
+          <Route path="auth/appraisal" element={<Appraisal user={user} />} />
+          <Route path="auth/dashboard" element={<DashBoard user={user} />} />
+          <Route
+            path="auth/league-table"
+            element={<LeagueTable user={user} />}
+          />
+          <Route
+            path="auth/recommendations"
+            element={<RecommendationForm user={user} />}
+          />
+          <Route path="auth/table/*" element={<EmployeeList />} />
+          <Route
+            path="auth/table/update-employee/:ID"
+            element={<UpdateEmployee />}
+          />
+        </Routes>
       </QueryClientProvider>
     </div>
   );
