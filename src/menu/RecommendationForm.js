@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { getFormLevel, getFormCategory } from "../utils/editFormTitles";
 import useRecommendation from "../http-methods/getRecommendations";
-import DisplayRecommendations from "../components/recommendationForms/DisplayRecommendation";
+import DisplayRecommendations from "../components/RecommendationForms/DisplayRecommendation";
 import { List } from "react-bootstrap-icons";
 
 const RecommendationForm = ({ user }) => {

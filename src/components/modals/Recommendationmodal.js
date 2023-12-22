@@ -1,5 +1,5 @@
 import { Modal, Button, Alert } from "react-bootstrap";
-import DetailsSummary from "../recommendationForms/DetailsSummary";
+import DetailsSummary from "../RecommendationForms/DetailsSummary";
 import useRecommendations from "../../http-methods/getRecommendations";
 import { useEffect, useState } from "react";
 import {
