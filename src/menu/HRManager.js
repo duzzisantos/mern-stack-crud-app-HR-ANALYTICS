@@ -9,6 +9,7 @@ import {
 import useEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import AppraisalManagement from "../components/tables/AppraisalManagement";
 import HeadCount from "../components/HeadCount";
+import Auth from "../auth/auth";
 
 const HRManager = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -39,6 +40,7 @@ const HRManager = ({ user }) => {
 
   return (
     <>
+      <Auth />
       <Container
         fluid
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center col-9"

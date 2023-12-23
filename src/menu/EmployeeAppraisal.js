@@ -4,6 +4,7 @@ import { departments, monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
+import Auth from "../auth/auth";
 
 const EmployeeAppraisal = ({ user }) => {
   const today = new Date();
@@ -72,6 +73,7 @@ const EmployeeAppraisal = ({ user }) => {
 
   return (
     <>
+      <Auth />
       <Container
         fluid
         className="d-flex flex-lg-row flex-sm-column flex-md-column justify-content-center py-4 gap-4 overflow-hidden"

@@ -16,7 +16,6 @@ import RecommendationForm from "./menu/RecommendationForm";
 import HRManager from "./menu/HRManager";
 
 import { Alert } from "react-bootstrap";
-import Auth from "./auth/auth";
 
 function App() {
   const [user, loading] = useAuthState(auth);
@@ -24,7 +23,6 @@ function App() {
 
   return (
     <div className="App">
-      {user && <Auth />}
       <QueryClientProvider client={queryClient} contextSharing={true}>
         {loading && (
           <Alert className="fs-5 fw-semibold">

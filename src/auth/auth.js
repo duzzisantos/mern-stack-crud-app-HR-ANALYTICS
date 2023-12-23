@@ -115,7 +115,7 @@ const Auth = () => {
                 </Dropdown>
               </Nav.Item>
 
-              <Nav.Item className="d-flex hstack gap-2">
+              <Nav.Item className="d-flex hstack gap-2 mx-lg-5">
                 <li>{user?.email ?? name}</li>
                 <Button
                   size="sm"

@@ -13,6 +13,7 @@ import { getFormLevel, getFormCategory } from "../utils/editFormTitles";
 import useRecommendation from "../http-methods/getRecommendations";
 import DisplayRecommendations from "../components/RecommendationForms/DisplayRecommendation";
 import { List } from "react-bootstrap-icons";
+import Auth from "../auth/auth";
 
 const RecommendationForm = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -167,6 +168,7 @@ const RecommendationForm = ({ user }) => {
 
   return (
     <>
+      <Auth />
       <Container fluid className="col-12 col-md-10 d-flex">
         <main className="col-lg-12 col-sm-10">
           <h1 className="fs-2 text-center mt-3 fw-bold">

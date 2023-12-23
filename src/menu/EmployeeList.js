@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import { Alert, Button, Form, Stack } from "react-bootstrap";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
+import Auth from "../auth/auth";
 
 const EmployeeList = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -62,6 +63,7 @@ const EmployeeList = ({ user }) => {
 
   return (
     <>
+      <Auth />
       <div className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center">
         <h1 className="fs-2 fw-bold">Employee List</h1>
         <div className="col-lg-6 col-md-10 d-flex justify-content-center">

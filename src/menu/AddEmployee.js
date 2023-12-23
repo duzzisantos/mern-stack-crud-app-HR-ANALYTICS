@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
 
 import { Button, Container, Form } from "react-bootstrap";
+import Auth from "../auth/auth";
 
 const AddEmployee = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -57,6 +58,7 @@ const AddEmployee = ({ user }) => {
 
   return (
     <>
+      <Auth />
       <Container fluid className="col-12 d-flex justify-content-center py-4">
         <form
           className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"

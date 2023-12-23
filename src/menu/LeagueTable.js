@@ -10,6 +10,7 @@ import useGetEmployeeData from "../http-methods/getEmployeeData";
 import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import TopThree from "../components/TopThree";
 import League from "../components/tables/League";
+import Auth from "../auth/auth";
 
 const LeagueTable = ({ user }) => {
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
@@ -65,6 +66,7 @@ const LeagueTable = ({ user }) => {
 
   return (
     <>
+      <Auth />
       <Container
         fluid
         className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center"

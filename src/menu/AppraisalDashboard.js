@@ -10,6 +10,7 @@ import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import { List } from "react-bootstrap-icons";
 import EmployeeMenu from "../components/EmployeeMenu";
+import Auth from "../auth/auth";
 
 const AppraisalDashboard = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -73,6 +74,7 @@ const AppraisalDashboard = ({ user }) => {
   };
   return (
     <>
+      <Auth />
       <Container
         fluid
         className="col-lg-12 col-md-10 col-sm-9 d-flex flex-wrap d-flex justify-content-between gap-2"
