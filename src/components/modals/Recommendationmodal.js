@@ -134,7 +134,7 @@ const RecommendationModal = ({
         </section>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="success">Send as email</Button>
+        {/* <Button variant="success">Send as email</Button> */}
         <Button
           variant="secondary"
           className="border-0 btn-outline-danger text-light"

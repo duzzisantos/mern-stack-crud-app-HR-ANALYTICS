@@ -75,6 +75,7 @@ const EmployeeAppraisal = ({ user }) => {
     <>
       <Auth />
       <Container
+        id="appraisal-wrapper"
         fluid
         className="d-flex flex-lg-row flex-sm-column flex-md-column justify-content-center py-4 gap-4 overflow-hidden"
       >

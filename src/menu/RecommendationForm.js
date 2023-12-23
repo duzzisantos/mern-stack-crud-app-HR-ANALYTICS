@@ -169,13 +169,16 @@ const RecommendationForm = ({ user }) => {
   return (
     <>
       <Auth />
-      <Container fluid className="col-12 col-md-10 d-flex">
+      <Container
+        fluid
+        className="col-lg-12 col-md-10 col-sm-9 d-flex flex-wrap d-flex justify-content-between gap-2"
+      >
         <main className="col-lg-12 col-sm-10">
-          <h1 className="fs-2 text-center mt-3 fw-bold">
+          <h1 className="fs-2 text-center mt-3 fw-bold h-one-spaced">
             Recommendation Policy
           </h1>
           <div className="d-flex justify-content-center">
-            <div className="col-6 p-2 my-3 shadow-sm border-5 border-start border-info">
+            <div className="col-6 p-2 my-5 shadow-sm border-5 border-start border-info">
               <h2 className="fs-5 fw-bold">Tips</h2>
               <p>
                 If you want to provide multiple recommendations per field, make
@@ -262,7 +265,7 @@ const RecommendationForm = ({ user }) => {
             />
           )}
         </main>
-        <div className="col-lg-1 col-sm-2 mt-3 mx-0">
+        <div className="col-lg-1 col-sm-2 mt-3 me-0 position-absolute">
           <Button
             variant="transparent"
             className="border border-secondary"

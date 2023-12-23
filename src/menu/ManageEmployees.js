@@ -99,11 +99,11 @@ const ManageEmployees = ({ user }) => {
       <Auth />
       <div className="d-flex justify-content-center py-4 container-fluid">
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="col-lg-6 col-md-12 col-sm-12 px-5 py-3 border shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
           onSubmit={(ID, e) => handleUpdate(ID, e)}
           encType="multipart/formdata"
         >
-          <h1 className="fs-2 fw-bold">Modify Employee Record</h1>
+          <h1 className="fs-2 fw-bold">Edit Employee Record</h1>
           <div className="col-9 gap-3 d-flex flex-column justify-content-center">
             <Form.Label htmlFor="ID">Staff ID</Form.Label>
             <Form.Control

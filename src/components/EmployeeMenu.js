@@ -13,7 +13,7 @@ const EmployeeMenu = ({ data, show, handleClose }) => {
   const [selected, setSelected] = useState("IT");
   const [isCopyID, setIsCopyID] = useState(false);
   return (
-    <Offcanvas placement="end" show={show} onHide={handleClose}>
+    <Offcanvas placement="start" show={show} onHide={handleClose}>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Search Employees</Offcanvas.Title>
       </Offcanvas.Header>

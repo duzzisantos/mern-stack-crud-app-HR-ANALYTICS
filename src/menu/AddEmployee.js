@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import http from "../components/http-config";
 
-import { Button, Container, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import Auth from "../auth/auth";
 
 const AddEmployee = ({ user }) => {
@@ -59,14 +59,15 @@ const AddEmployee = ({ user }) => {
   return (
     <>
       <Auth />
-      <Container fluid className="col-12 d-flex justify-content-center py-4">
+      <div className="d-flex justify-content-center py-4 container-fluid">
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="col-lg-6 col-md-12 col-sm-12 px-5 py-3 border shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
         >
           <h1 className="fs-4 fw-bold">Add new employee</h1>
-          <div className="col-9">
+
+          <div className="col-9 gap-3 d-flex flex-column justify-content-center">
             <Form.Label htmlFor="ID">Staff ID</Form.Label>
             <Form.Control
               id="ID"
@@ -76,8 +77,7 @@ const AddEmployee = ({ user }) => {
               value={fillForm.ID}
               onChange={(e) => setFillForm({ ...fillForm, ID: e.target.value })}
             />
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="firstName">First Name</Form.Label>
             <Form.Control
               id="firstName"
@@ -88,8 +88,7 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, firstName: e.target.value })
               }
             />
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="lastName">Last Name</Form.Label>
             <Form.Control
               id="lastName"
@@ -100,8 +99,7 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, lastName: e.target.value })
               }
             />
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Control
               id="email"
@@ -112,8 +110,7 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, email: e.target.value })
               }
             />
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="role">Role</Form.Label>
             <Form.Control
               id="role"
@@ -124,9 +121,7 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, role: e.target.value })
               }
             />
-          </div>
 
-          <div className="col-9">
             <Form.Label htmlFor="department">Department</Form.Label>
             <Form.Select
               id="department"
@@ -141,8 +136,7 @@ const AddEmployee = ({ user }) => {
                 </option>
               ))}
             </Form.Select>
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="dateBirth">Date of Birth</Form.Label>
             <Form.Control
               id="dateBirth"
@@ -153,8 +147,7 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, dateBirth: e.target.value })
               }
             />
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="contractType">Contract Type</Form.Label>
             <Form.Control
               id="contractType"
@@ -165,8 +158,7 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, contractType: e.target.value })
               }
             />
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="dateEmployment">Date of Employment</Form.Label>
             <Form.Control
               id="dateEmployment"
@@ -177,8 +169,7 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, dateEmployment: e.target.value })
               }
             />
-          </div>
-          <div className="col-9">
+
             <Form.Label htmlFor="photo">Photo</Form.Label>
             <Form.Control
               id="photo"
@@ -189,14 +180,15 @@ const AddEmployee = ({ user }) => {
                 setFillForm({ ...fillForm, photo: e.target.value })
               }
             />
-          </div>
-          <div className="col-9">
-            <Button type="submit" variant="success">
-              Submit
-            </Button>
+
+            <div className="col-9 justify-content-between d-flex">
+              <Button type="submit" variant="success">
+                Submit
+              </Button>
+            </div>
           </div>
         </form>
-      </Container>
+      </div>
     </>
   );
 };

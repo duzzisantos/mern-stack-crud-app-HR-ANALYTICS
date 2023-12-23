@@ -80,11 +80,12 @@ const AppraisalDashboard = ({ user }) => {
         className="col-lg-12 col-md-10 col-sm-9 d-flex flex-wrap d-flex justify-content-between gap-2"
         style={{ height: "fit-content" }}
       >
-        <main className="col-10 d-flex flex-column gap-3 py-4">
-          <h1 className="fs-2 fw-bold text-center">
-            Appraisal AppraisalDashboard
-          </h1>
-          <div className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column">
+        <main className="col-sm-12 col-lg-12 d-flex flex-column gap-3 py-4">
+          <h1 className="fs-2 fw-bold text-center">Appraisal Dashboard</h1>
+          <div
+            id="dashboard-selector"
+            className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column"
+          >
             <div className="col-lg-2 col-sm-10">
               <Form.Label htmlFor="employee-id">Employee ID</Form.Label>
               <Form.Control
@@ -135,14 +136,17 @@ const AppraisalDashboard = ({ user }) => {
               <Alert variant="warning" className="col-12">
                 Select employee ID from{" "}
                 <kbd className="bg-transparent text-dark border border-secondary">
-                  <List /> Employees
+                  <List /> Menu
                 </kbd>{" "}
                 menu. Search for employees by their correct ID. Either that or
                 ensure that the employee ID, year and month values are correct.
               </Alert>
             ) : (
               <>
-                <div className="col-12 d-flex flex-lg-row flex-sm-column p-1 gap-1 justify-content-between">
+                <div
+                  id="dashboard-wrapper"
+                  className="col-12 d-flex flex-lg-row flex-sm-column p-1 gap-1 justify-content-between"
+                >
                   {filteredAppraisal.map((item, index) => {
                     const {
                       quantityOfWork,
@@ -187,13 +191,13 @@ const AppraisalDashboard = ({ user }) => {
             )}
           </div>
         </main>
-        <div className="col-1 py-4 mh-100">
+        <div className="col-lg-1 py-4 mh-100 me-0 position-absolute ">
           <Button
             variant="trasnsparent"
             className=" border border-secondary"
             onClick={handleShow}
           >
-            <List /> Employees
+            <List /> Menu
           </Button>
         </div>
 

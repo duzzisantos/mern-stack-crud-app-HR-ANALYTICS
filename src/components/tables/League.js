@@ -46,9 +46,9 @@ const League = ({ filteredData, employeeData, user }) => {
   return (
     <>
       {filteredData.length ? (
-        <section className="col-lg-12 col-md-12 col-sm-12 my-5 p-5 text-secondary">
+        <div className="table-responsive col-12 my-4">
           <h2 className="fs-4 fw-bold">League Standings</h2>
-          <Table bordered responsive hover>
+          <Table size="sm" bordered hover responsive>
             <thead>
               <tr>
                 <th>Position</th>
@@ -131,6 +131,7 @@ const League = ({ filteredData, employeeData, user }) => {
               })}
             </tbody>
           </Table>
+
           {showmodal && (
             <RecommendationModal
               show={showmodal}
@@ -144,7 +145,7 @@ const League = ({ filteredData, employeeData, user }) => {
               year={selectedProps.year}
             />
           )}
-        </section>
+        </div>
       ) : null}
     </>
   );

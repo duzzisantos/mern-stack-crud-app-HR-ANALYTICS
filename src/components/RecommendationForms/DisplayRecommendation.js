@@ -3,7 +3,7 @@ import { getFormCategory, getFormLevel } from "../../utils/editFormTitles";
 
 const DisplayRecommendations = ({ data, show, handleClose }) => {
   return (
-    <Offcanvas placement="end" show={show} onHide={handleClose}>
+    <Offcanvas placement="start" show={show} onHide={handleClose}>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Recommendation Policy</Offcanvas.Title>
       </Offcanvas.Header>

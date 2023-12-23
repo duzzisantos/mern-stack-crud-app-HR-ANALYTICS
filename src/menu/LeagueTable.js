@@ -67,14 +67,10 @@ const LeagueTable = ({ user }) => {
   return (
     <>
       <Auth />
-      <Container
-        fluid
-        className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center"
-        style={{ height: "fit-content" }}
-      >
+      <Container className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center col-9">
         <h1 className="fs-2 fw-bold">League Table - {selectedDepartment}</h1>
         <div className="d-flex justify-content-center mt-2">
-          <div className="hstack gap-5">
+          <div className="hstack gap-2">
             <div>
               <Form.Label className="fw-bold w-75" htmlFor="department">
                 Department:{" "}
@@ -135,7 +131,7 @@ const LeagueTable = ({ user }) => {
           </div>
         </div>
 
-        <div className="col-lg-10 col-sm-10">
+        <div className="col-lg-10 col-sm-10 small-screen-display">
           <TopThree
             filteredData={getSortedEmployees.slice(0, 3)}
             employeeData={data}
