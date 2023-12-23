@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { departments } from "../utils/dropDownOptions";
 import { Button, Form } from "react-bootstrap";
-import { Clipboard, ClipboardCheckFill } from "react-bootstrap-icons";
+import { Clipboard } from "react-bootstrap-icons";
 import { handleCopyElement } from "../utils/handleCopyElement";
 
 const ShowEmployees = ({ employeeData }) => {
@@ -85,11 +85,7 @@ const ShowEmployees = ({ employeeData }) => {
               className="btn btn-sm text-secondary"
               onClick={() => handleCopyElement("employee-id-input", setCopyID)}
             >
-              {isCopyID ? (
-                <ClipboardCheckFill className="text-success" />
-              ) : (
-                <Clipboard />
-              )}
+              <Clipboard />
             </Button>
           </li>
           <li className="d-flex justify-content-between hstack gap-2">
@@ -108,11 +104,7 @@ const ShowEmployees = ({ employeeData }) => {
                 handleCopyElement("employee-firstName-input", setCopyFirstName)
               }
             >
-              {isCopyFirstName ? (
-                <ClipboardCheckFill className="text-success" />
-              ) : (
-                <Clipboard />
-              )}
+              <Clipboard />
             </Button>
           </li>
           <li className="d-flex justify-content-between hstack gap-2">
@@ -131,15 +123,12 @@ const ShowEmployees = ({ employeeData }) => {
                 handleCopyElement("employee-lastName-input", setCopyLastName)
               }
             >
-              {isCopyLastName ? (
-                <ClipboardCheckFill className="text-success" />
-              ) : (
-                <Clipboard />
-              )}
+              <Clipboard />
             </Button>
           </li>
         </ol>
       </output>
+      {isCopyFirstName && isCopyID && isCopyLastName}
     </div>
   );
 };
