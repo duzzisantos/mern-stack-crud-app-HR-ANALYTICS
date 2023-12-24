@@ -56,7 +56,7 @@ const Login = () => {
             <Button
               onClick={() => signInWithGoogle()}
               variant="transparent"
-              className="text-dark border border-secondary border-2"
+              className="text-secondary border border-secondary border-2"
             >
               Login with <Google />
             </Button>

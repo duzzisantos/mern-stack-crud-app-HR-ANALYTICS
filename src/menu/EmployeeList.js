@@ -117,12 +117,12 @@ const EmployeeList = ({ user }) => {
                 <Stack direction="horizontal" gap={2}>
                   <Button
                     size="sm"
-                    className="bg-transparent text-dark border border-secondary btn-outline-success"
+                    className="bg-transparent text-secondary border border-secondary btn-outline-success"
                     title={`Update ${item.firstName}`}
                   >
                     <Link
                       to={`update-employee/${item._id}`}
-                      className="text-dark text-decoration-none"
+                      className="text-secondary text-decoration-none"
                     >
                       Edit
                     </Link>
