@@ -8,7 +8,8 @@ const getApiHeaders = (accessToken) => {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Bearer ${accessToken}`,
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin":
+        serverHost ?? `http://localhost:${apiPort}`,
       "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
     },
   };
