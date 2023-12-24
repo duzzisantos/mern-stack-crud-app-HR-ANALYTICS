@@ -13,7 +13,7 @@ const DisplayRecommendations = ({ data, show, handleClose }) => {
             HR Recommendations set by your company
           </h6>
           <Stack gap={3}>
-            {Object.entries(data[0])
+            {Object.entries(data.reverse()[0]) //We want the latest recommendation to be in use, while retaining older documents
               .filter(
                 ([key]) =>
                   key !== "_id" &&
