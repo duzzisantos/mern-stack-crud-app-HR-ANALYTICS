@@ -54,7 +54,7 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   background: #a2a2a2;
 }
 
-/* Responsiveness - especially for smaller phones like iPhone 11, 10 etc */
+/*Responsiveness - especially for smaller phones like iPhone 11, 10 etc */
 
 @media screen and (max-width: 500px) {
   #appraisal-wrapper {
