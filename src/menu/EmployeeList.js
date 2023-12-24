@@ -51,7 +51,7 @@ const EmployeeList = ({ user }) => {
     } = http;
     deleteAxios(
       `${isLocal ? registerURL : isProduction && registerURLServer}/${_id}`,
-      (headers.Authorization = `Bearer ${accessToken}`)
+      headers(accessToken)
     )
       .then((res) => {
         console.log(res.statusText);

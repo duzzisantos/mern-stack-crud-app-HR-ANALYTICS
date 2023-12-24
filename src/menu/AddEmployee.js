@@ -31,14 +31,13 @@ const AddEmployee = ({ user }) => {
   const isProduction = process.env.NODE_ENV === "production";
 
   const handleSubmit = () => {
-    const { post, registerURL, registerURLServer } = http;
+    const { post, registerURL, registerURLServer, headers } = http;
 
-    post(isLocal ? registerURL : isProduction && registerURLServer, fillForm, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    post(
+      isLocal ? registerURL : isProduction && registerURLServer,
+      fillForm,
+      headers(accessToken)
+    )
       .then((res) => {
         console.log(res.statusText);
       })

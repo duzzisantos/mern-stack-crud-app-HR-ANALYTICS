@@ -142,16 +142,11 @@ const RecommendationForm = ({ user }) => {
   const isProduction = process.env.NODE_ENV === "production";
 
   const handleSubmit = async () => {
-    const { post, recommendationURL, recommendationURLServer } = http;
+    const { post, recommendationURL, recommendationURLServer, headers } = http;
     post(
       isLocal ? recommendationURL : isProduction && recommendationURLServer,
       JSON.stringify(formData),
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+      headers(accessToken)
     );
   };
 

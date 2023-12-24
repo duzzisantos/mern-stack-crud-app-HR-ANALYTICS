@@ -42,13 +42,12 @@ const EmployeeAppraisal = ({ user }) => {
   const handleSubmit = () => {
     const isLocal = process.env.NODE_ENV === "development";
     const isProduction = process.env.NODE_ENV === "production";
-    const { post, appraisalURL, appraiseURLServer } = http;
-    post(isLocal ? appraisalURL : isProduction && appraiseURLServer, appraise, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    const { post, appraisalURL, appraiseURLServer, headers } = http;
+    post(
+      isLocal ? appraisalURL : isProduction && appraiseURLServer,
+      appraise,
+      headers(accessToken)
+    )
       .then((res) => {
         console.log(res.statusText);
       })

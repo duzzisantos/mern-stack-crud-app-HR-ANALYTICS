@@ -57,7 +57,7 @@ const ManageEmployees = ({ user }) => {
 
   //Put request
   const handleUpdate = () => {
-    const { update, registerURL, registerURLServer } = http;
+    const { update, registerURL, registerURLServer, headers } = http;
     update(
       `${isLocal ? registerURL : isProduction && registerURLServer}/${
         params.ID
@@ -74,7 +74,7 @@ const ManageEmployees = ({ user }) => {
         dateEmployment,
         photo,
       },
-      { headers: { Authorization: `Bearer ${accessToken}` } }
+      headers(accessToken)
     )
       .then((res) => {
         console.log(res.statusText);

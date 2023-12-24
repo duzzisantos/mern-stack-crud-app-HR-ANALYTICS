@@ -2,19 +2,14 @@ import { useQuery } from "react-query";
 import http from "../components/http-config";
 
 const getRecommendations = async (accessToken) => {
-  const { get, recommendationURL, recommendationURLServer } = http;
+  const { get, recommendationURL, recommendationURLServer, headers } = http;
 
   const isLocal = process.env.NODE_ENV === "development";
   const isProduction = process.env.NODE_ENV === "production";
   try {
     const response = await get(
       isLocal ? recommendationURL : isProduction && recommendationURLServer,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+      headers(accessToken)
     );
 
     if (response.status !== 200) {

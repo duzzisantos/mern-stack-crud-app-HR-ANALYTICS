@@ -2,18 +2,13 @@ import { useQuery } from "react-query";
 import http from "../components/http-config";
 
 const getEmployeeAppraisal = async (accessToken) => {
-  const { appraisalURL, get, appraiseURLServer } = http;
+  const { appraisalURL, get, appraiseURLServer, headers } = http;
   const isLocal = process.env.NODE_ENV === "development";
   const isProduction = process.env.NODE_ENV === "production";
   try {
     const response = await get(
       isLocal ? appraisalURL : isProduction && appraiseURLServer,
-      {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+      headers(accessToken)
     );
     if (response.status !== 200) {
       throw new Error(`${response.status} cause: ${response.statusText}`);
