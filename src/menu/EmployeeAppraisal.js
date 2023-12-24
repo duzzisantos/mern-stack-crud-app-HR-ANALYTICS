@@ -39,6 +39,7 @@ const EmployeeAppraisal = ({ user }) => {
         .catch((err) => console.warn(err));
   }, [user]);
 
+  //Submits appraisal update
   const handleSubmit = () => {
     const isLocal = process.env.NODE_ENV === "development";
     const isProduction = process.env.NODE_ENV === "production";
