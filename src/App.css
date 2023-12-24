@@ -81,10 +81,6 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
     width: 100% !important;
   }
 
-  /* #league-table-wrapper {
-    display: none !important;
-  } */
-
   #carousel-slide-recommendation-form {
     width: 70vw;
     padding: 10px 10px;
