@@ -45,7 +45,7 @@
 
     let currentTime = new Date(Date.now()).getHours();
 
-    if (currentTime > 0 && currentTime < 18) {
+    if (currentTime > 6 && currentTime < 18) {
       mainDocument.setAttribute("data-bs-theme", "");
     } else {
       mainDocument.setAttribute("data-bs-theme", "black" || "dark");
