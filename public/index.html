@@ -45,10 +45,10 @@
 
     let currentTime = new Date(Date.now()).getHours();
 
-    if (currentTime > 6 && currentTime < 18) {
-      mainDocument.setAttribute("data-bs-theme", "");
+    if (currentTime >= 6 && currentTime <= 18) {
+      mainDocument.setAttribute("data-bs-theme", "light");
     } else {
-      mainDocument.setAttribute("data-bs-theme", "black" || "dark");
+      mainDocument.setAttribute("data-bs-theme", "dark");
     }
   </script>
 </html>
