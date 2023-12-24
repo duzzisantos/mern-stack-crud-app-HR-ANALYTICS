@@ -40,10 +40,15 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
     }
   }, [found]);
 
-  const handleSubmit = () => {
-    const { update, appraisalURL } = http;
+  const isLocal = process.env.NODE_ENV === "development";
+  const isProduction = process.env.NODE_ENV === "production";
+
+  const handleSubmit = (id) => {
+    const { update, appraisalURL, appraiseURLServer, headers } = http;
     update(
-      `${appraisalURL}/${selectedID}`,
+      isLocal
+        ? appraisalURL + "/" + id
+        : isProduction && appraiseURLServer + "/" + id,
       {
         month,
         year,
@@ -59,12 +64,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
         supervisorComment,
         hrComment,
       },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
+      headers(accessToken)
     )
       .then((res) => {
         console.log(res.statusText);
@@ -248,7 +248,11 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
           />
         </div>
         <div className="col-9">
-          <Button className="btn-success" type="button" onClick={handleSubmit}>
+          <Button
+            className="btn-success"
+            type="button"
+            onClick={(id) => handleSubmit(selectedID)}
+          >
             Submit
           </Button>
         </div>

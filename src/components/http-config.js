@@ -1,6 +1,5 @@
 import axios from "axios";
 
-const apiPort = process.env.REACT_APP_API_PORT;
 const serverHost = process.env.REACT_APP_SERVER_HOST;
 
 const getApiHeaders = (accessToken) => {
@@ -8,8 +7,7 @@ const getApiHeaders = (accessToken) => {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Bearer ${accessToken}`,
-      "Access-Control-Allow-Origin":
-        serverHost ?? `http://localhost:${apiPort}`,
+      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
     },
   };
@@ -21,9 +19,9 @@ const http = {
   update: axios.put,
   headers: (accessToken) => getApiHeaders(accessToken),
 
-  registerURL: `http://localhost:${apiPort}/api/register`,
-  appraisalURL: `http://localhost:${apiPort}/api/appraisal`,
-  recommendationURL: `http://localhost:${apiPort}/api/recommendations`,
+  registerURL: `http://localhost:8080/api/register`,
+  appraisalURL: `http://localhost:8080/api/appraisal`,
+  recommendationURL: `http://localhost:8080/api/recommendations`,
   registerURLServer: `${serverHost}/api/register`,
   appraiseURLServer: `${serverHost}/api/appraisal`,
   recommendationURLServer: `${serverHost}/api/recommendations`,

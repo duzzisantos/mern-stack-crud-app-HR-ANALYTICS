@@ -3,7 +3,7 @@ import useMutate from "../../http-methods/useMutate";
 import { useMutation, useQueryClient } from "react-query";
 import http from "../http-config";
 const AppraisalDeleteModal = ({ show, handleClose, selectedID, token }) => {
-  const { delete: axiosDelete, appraisalURL } = http;
+  const { delete: axiosDelete, appraisalURL, appraiseURLServer } = http;
   const queryClient = useQueryClient();
 
   const handleSettled = () => {
@@ -15,7 +15,7 @@ const AppraisalDeleteModal = ({ show, handleClose, selectedID, token }) => {
     token,
     useMutation,
     axiosDelete,
-    appraisalURL,
+    appraisalURL ?? appraiseURLServer,
     handleSettled
   );
 
