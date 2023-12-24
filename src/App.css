@@ -51,7 +51,7 @@ input[type="range"]:focus {
 }
 
 input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: #ccc;
+  background: #a2a2a2;
 }
 
 /* Responsiveness - especially for smaller phones like iPhone 11, 10 etc */
