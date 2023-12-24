@@ -9,7 +9,7 @@ const getApiHeaders = (accessToken) => {
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Bearer ${accessToken}`,
       "Access-Control-Allow-Origin":
-        serverHost ?? `https://localhost:${apiPort}`,
+        serverHost ?? `http://localhost:${apiPort}`,
       "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
     },
   };
@@ -21,9 +21,9 @@ const http = {
   update: axios.put,
   headers: (accessToken) => getApiHeaders(accessToken),
 
-  registerURL: `https://localhost:${apiPort}/api/register`,
-  appraisalURL: `https://localhost:${apiPort}/api/appraisal`,
-  recommendationURL: `https://localhost:${apiPort}/api/recommendations`,
+  registerURL: `http://localhost:${apiPort}/api/register`,
+  appraisalURL: `http://localhost:${apiPort}/api/appraisal`,
+  recommendationURL: `http://localhost:${apiPort}/api/recommendations`,
   registerURLServer: `${serverHost}/api/register`,
   appraiseURLServer: `${serverHost}/api/appraisal`,
   recommendationURLServer: `${serverHost}/api/recommendations`,
