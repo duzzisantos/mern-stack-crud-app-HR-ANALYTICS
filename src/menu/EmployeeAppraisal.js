@@ -259,7 +259,9 @@ const EmployeeAppraisal = ({ user }) => {
             </Form.Label>
             <Form.Control
               required
-              type="textarea"
+              type="text"
+              as={"textarea"}
+              rows={3}
               id="supervisorComment"
               name="supervisorComment"
               value={appraise.supervisorComment}
@@ -272,7 +274,9 @@ const EmployeeAppraisal = ({ user }) => {
             <Form.Label htmlFor="hrComment">HR Comment</Form.Label>
             <Form.Control
               required
-              type="textarea"
+              type="text"
+              rows={3}
+              as={"textarea"}
               id="hrComment"
               name="hrComment"
               value={appraise.hrComment}

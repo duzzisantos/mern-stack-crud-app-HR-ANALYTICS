@@ -101,6 +101,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
         <div className="col-9">
           <Form.Label htmlFor="year">Year</Form.Label>
           <Form.Control
+            required
             id="year"
             name="year"
             type="text"
@@ -127,6 +128,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
         <div className="col-9">
           <Form.Label htmlFor="ID1">Staff ID</Form.Label>
           <Form.Control
+            required
             id="ID"
             name="ID"
             type="number"
@@ -138,6 +140,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
           {" "}
           <Form.Label htmlFor="firstName">First Name</Form.Label>
           <Form.Control
+            required
             id="firstName"
             name="firstName"
             type="text"
@@ -148,6 +151,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
         <div className="col-9">
           <Form.Label htmlFor="lastName">Last Name</Form.Label>
           <Form.Control
+            required
             id="lastName"
             name="lastName"
             type="text"
@@ -230,7 +234,10 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             Supervisor Comment
           </Form.Label>
           <Form.Control
-            type="textarea"
+            required
+            type="text"
+            as={"textarea"}
+            rows={3}
             id="supervisorComment"
             name="supervisorComment"
             value={supervisorComment}
@@ -240,7 +247,10 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
         <div className="col-9 mb-3">
           <Form.Label htmlFor="hrComment">HR Comment</Form.Label>
           <Form.Control
-            type="textarea"
+            required
+            type="text"
+            as={"textarea"}
+            rows={3}
             id="hrComment"
             name="hrComment"
             value={hrComment}
