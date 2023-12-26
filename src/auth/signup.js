@@ -38,6 +38,7 @@ const SignUp = () => {
         <h2 className="fs-3 text-center">Sign up</h2>
         <Form.Label htmlFor="fullName">Full Name</Form.Label>
         <Form.Control
+          required
           type="text"
           id="fullName"
           value={name}
@@ -45,6 +46,7 @@ const SignUp = () => {
         />
         <Form.Label htmlFor="email">Email</Form.Label>
         <Form.Control
+          required
           type="text"
           id="email"
           value={email}
@@ -52,6 +54,7 @@ const SignUp = () => {
         />
         <Form.Label htmlFor="password">Password</Form.Label>
         <Form.Control
+          required
           type="password"
           id="password"
           value={password}

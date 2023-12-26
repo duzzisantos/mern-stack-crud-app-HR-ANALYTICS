@@ -69,6 +69,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-sm-12 col-12">
             <Form.Label htmlFor="ID">Staff ID</Form.Label>
             <Form.Control
+              required
               id="ID"
               name="ID"
               type="number"
@@ -80,6 +81,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-sm-12 col-12">
             <Form.Label htmlFor="firstName">First Name</Form.Label>
             <Form.Control
+              required
               id="firstName"
               name="firstName"
               type="text"
@@ -92,6 +94,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-12 col-sm-12">
             <Form.Label htmlFor="lastName">Last Name</Form.Label>
             <Form.Control
+              required
               id="lastName"
               name="lastName"
               type="text"
@@ -104,6 +107,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-12 col-sm-12">
             <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Control
+              required
               id="email"
               name="email"
               type="text"
@@ -116,6 +120,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-12 col-sm-12">
             <Form.Label htmlFor="role">Role</Form.Label>
             <Form.Control
+              required
               id="role"
               name="role"
               type="text"
@@ -145,6 +150,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-12 col-sm-12">
             <Form.Label htmlFor="dateBirth">Date of Birth</Form.Label>
             <Form.Control
+              required
               id="dateBirth"
               name="dateBirth"
               type="date"
@@ -157,6 +163,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-12 col-sm-12">
             <Form.Label htmlFor="contractType">Contract Type</Form.Label>
             <Form.Control
+              required
               id="contractType"
               name="contractType"
               type="text"
@@ -169,6 +176,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-12 col-sm-12">
             <Form.Label htmlFor="dateEmployment">Date of Employment</Form.Label>
             <Form.Control
+              required
               id="dateEmployment"
               name="dateEmployment"
               type="date"
@@ -181,6 +189,7 @@ const AddEmployee = ({ user }) => {
           <div className="col-12 col-sm-12">
             <Form.Label htmlFor="photo">Photo</Form.Label>
             <Form.Control
+              required
               id="photo"
               name="photo"
               type="text"

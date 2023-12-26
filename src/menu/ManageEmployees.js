@@ -107,6 +107,7 @@ const ManageEmployees = ({ user }) => {
           <div className="col-9 gap-3 d-flex flex-column justify-content-center">
             <Form.Label htmlFor="ID">Staff ID</Form.Label>
             <Form.Control
+              required
               id="ID"
               name="ID"
               type="number"
@@ -116,6 +117,7 @@ const ManageEmployees = ({ user }) => {
             />
             <Form.Label htmlFor="firstName">First Name</Form.Label>
             <Form.Control
+              required
               id="firstName"
               name="firstName"
               type="text"
@@ -124,6 +126,7 @@ const ManageEmployees = ({ user }) => {
             />
             <Form.Label htmlFor="lastName">Last Name</Form.Label>
             <Form.Control
+              required
               id="lastName"
               name="lastName"
               type="text"
@@ -132,6 +135,7 @@ const ManageEmployees = ({ user }) => {
             />
             <Form.Label htmlFor="email">Email</Form.Label>
             <Form.Control
+              required
               id="email"
               name="email"
               type="text"
@@ -140,6 +144,7 @@ const ManageEmployees = ({ user }) => {
             />
             <Form.Label htmlFor="role">Role</Form.Label>
             <Form.Control
+              required
               id="role"
               name="role"
               type="text"
@@ -160,6 +165,7 @@ const ManageEmployees = ({ user }) => {
             </Form.Select>
             <Form.Label htmlFor="dateBirth">Date of Birth</Form.Label>
             <Form.Control
+              required
               id="dateBirth"
               name="dateBirth"
               type="date"
@@ -168,6 +174,7 @@ const ManageEmployees = ({ user }) => {
             />
             <Form.Label htmlFor="contractType">Contract Type</Form.Label>
             <Form.Control
+              required
               id="contractType"
               name="contractType"
               type="text"
@@ -176,6 +183,7 @@ const ManageEmployees = ({ user }) => {
             />
             <Form.Label htmlFor="dateEmployment">Date of Employment</Form.Label>
             <Form.Control
+              required
               id="dateEmployment"
               name="dateEmployment"
               type="date"
@@ -184,6 +192,7 @@ const ManageEmployees = ({ user }) => {
             />
             <Form.Label htmlFor="photo">Photo</Form.Label>
             <Form.Control
+              required
               id="photo"
               name="photo"
               type="text"

@@ -220,6 +220,7 @@ const RecommendationForm = ({ user }) => {
                               {field}
                             </Form.Label>
                             <Form.Control
+                              required
                               id={`${category}-${level}-${field}`}
                               as={"textarea"}
                               name={value}

@@ -26,6 +26,7 @@ const Reset = () => {
       <Form className="col-lg-6 col-sm-9 mt-3 p-4 smaller-box-full shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
         <h2 className="fs-3 text-center">Reset password</h2>
         <Form.Control
+          required
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
