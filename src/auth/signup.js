@@ -34,7 +34,7 @@ const SignUp = () => {
         Keffi <FontAwesomeIcon icon={faRing} />
       </h1>
 
-      <Form className="col-lg-6 col-sm-9 mt-3 p-4 shadow-lg rounded-2 gap-3 justify-content-center d-flex flex-column">
+      <Form className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
         <h2 className="fs-3 text-center">Sign up</h2>
         <Form.Label htmlFor="fullName">Full Name</Form.Label>
         <Form.Control
@@ -58,7 +58,7 @@ const SignUp = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <div className="d-flex justify-content-between py-2 hstack">
+        <div className="d-flex py-2 vstack gap-3">
           <Button className="btn-success" onClick={register}>
             Sign up
           </Button>

@@ -23,7 +23,7 @@ const Reset = () => {
       <h1 className="mt-3 fs-2">
         Keffi <FontAwesomeIcon icon={faRing} />
       </h1>
-      <Form className="col-lg-6 col-sm-9 mt-3 p-4 shadow-lg rounded-2 gap-3 justify-content-center d-flex flex-column">
+      <Form className="col-lg-6 col-sm-9 mt-3 p-4 smaller-box-full shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
         <h2 className="fs-3 text-center">Reset password</h2>
         <Form.Control
           type="text"
@@ -31,7 +31,7 @@ const Reset = () => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="E-mail Address"
         />
-        <div className="d-flex justify-content-between py-2 hstack ">
+        <div className="d-flex flex-column py-2 vstack gap-3 ">
           <Button
             className="btn-success"
             onClick={() => sendPasswordReset(email)}

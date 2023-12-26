@@ -26,7 +26,7 @@ const Login = () => {
       <h1 className="mt-3 fs-2">
         Keffi <FontAwesomeIcon icon={faRing} />
       </h1>
-      <Form className="col-lg-6 col-sm-9 mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
+      <Form className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
         <h2 className="fs-3 text-center">Login</h2>
         <Form.Label htmlFor="login-email">Email</Form.Label>
         <Form.Control
@@ -61,18 +61,18 @@ const Login = () => {
               Login with <Google />
             </Button>
           </div>
-          <div className="gap-3 hstack">
-            <span>
-              <Link to="reset" className="link" title="Reset password">
-                Forgot Password?
-              </Link>
-            </span>
-            <span>
-              <Link to="signup" className="link" title="Create an account">
-                Do not have an account?
-              </Link>
-            </span>
-          </div>
+        </div>
+        <div className="gap-3 hstack">
+          <span>
+            <Link to="reset" className="link" title="Reset password">
+              Forgot Password?
+            </Link>
+          </span>
+          <span>
+            <Link to="signup" className="link" title="Create an account">
+              Do not have an account?
+            </Link>
+          </span>
         </div>
       </Form>
     </div>

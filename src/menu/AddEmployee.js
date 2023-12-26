@@ -60,7 +60,7 @@ const AddEmployee = ({ user }) => {
       <Auth />
       <Container fluid className="col-12 d-flex justify-content-center py-4">
         <form
-          className="col-lg-6 col-md-12 col-sm-12 px-5 py-3 border shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
+          className="col-lg-6 col-md-12 col-sm-12 px-5 py-3 smaller-box-full shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
         >
