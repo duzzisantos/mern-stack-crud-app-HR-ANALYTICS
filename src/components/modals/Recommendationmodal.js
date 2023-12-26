@@ -62,7 +62,7 @@ const RecommendationModal = ({
           <h4 className="text-start fs-5 mb-3">
             General recommendations for {employee}
           </h4>
-          <div className="d-flex flex-column gap-2 border-start border-5 border-secondary px-2 shadow-sm col-6 mb-3">
+          <div className="d-flex flex-column gap-2 border-start border-5 border-secondary px-2 shadow-sm col-6 smaller-box-full mb-3">
             <small className="fw-semibold">Employee ID: {employeeID}</small>
             <small className="fw-semibold">
               Average Appraisal Score: {averageScore}
