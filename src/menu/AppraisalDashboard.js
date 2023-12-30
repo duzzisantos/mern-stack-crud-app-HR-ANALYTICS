@@ -49,11 +49,11 @@ const AppraisalDashboard = ({ user }) => {
   }
 
   const filteredEmployees = getEmployee.data.filter((element) =>
-    search === element.ID.toString() ? element : !element
+    search.match(new RegExp(`${element.ID}`)) ? element : !element
   );
 
   const filteredAppraisal = data.filter((element) =>
-    search === element.ID.toString() &&
+    search.match(new RegExp(`${element.ID}`)) &&
     selectMonth.match(new RegExp(`${element.month}`, "i")) &&
     selectYear.match(new RegExp(`${element.year}`, "i"))
       ? element
