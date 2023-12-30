@@ -1,8 +1,8 @@
 import React from "react";
 import { PersonFill } from "react-bootstrap-icons";
 
-const HeadCount = ({ appraisalData, selectedDepartment }) => {
-  const filteredData = appraisalData.filter((file) =>
+const HeadCount = ({ employeeData, selectedDepartment }) => {
+  const filteredData = employeeData.filter((file) =>
     selectedDepartment.includes(file.department)
   );
   return (

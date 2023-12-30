@@ -7,6 +7,7 @@ import {
   departments,
 } from "../utils/dropDownOptions";
 import useEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
+import useGetEmployeeData from "../http-methods/getEmployeeData";
 import AppraisalManagement from "../components/tables/AppraisalManagement";
 import HeadCount from "../components/HeadCount";
 import Auth from "../auth/auth";
@@ -14,6 +15,7 @@ import Auth from "../auth/auth";
 const HRManager = ({ user }) => {
   const [accessToken, setAccessToken] = useState("");
   const getAppraisal = useEmployeeAppraisal(accessToken);
+  const getEmployees = useGetEmployeeData(accessToken);
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
   const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
   const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
@@ -25,16 +27,21 @@ const HRManager = ({ user }) => {
   const { isLoading, isError, data, refetch } = getAppraisal;
 
   //Handle error before consuming data from use query hook
-  if (isError) {
+  if (isError || getEmployees.isError) {
     return (
       <Alert variant="warning">
         Error in loading data{" "}
         <Button onClick={() => refetch}>Reload data</Button>
       </Alert>
     );
-  } else if (isLoading) {
+  } else if (isLoading || getEmployees.isLoading) {
     return <Alert>Employee list and departments are loading</Alert>;
-  } else if (!data || data === undefined) {
+  } else if (
+    !data ||
+    data === undefined ||
+    !getEmployees.data ||
+    getEmployees.data === undefined
+  ) {
     return <Alert>Data is unavailable at the moment</Alert>;
   }
 
@@ -117,7 +124,7 @@ const HRManager = ({ user }) => {
 
         <HeadCount
           selectedDepartment={selectedDepartment}
-          appraisalData={data}
+          employeeData={getEmployees.data}
         />
       </Container>
     </>
