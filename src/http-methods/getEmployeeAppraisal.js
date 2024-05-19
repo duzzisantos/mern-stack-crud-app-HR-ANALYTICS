@@ -29,7 +29,6 @@ const useGetEmployeeAppraisal = (accessToken) => {
       refetchInterval: false,
       refetchIntervalInBackground: false,
       refetchOnMount: false,
-      staleTime: 30000,
     }
   );
 };

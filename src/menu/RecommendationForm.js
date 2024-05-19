@@ -16,17 +16,9 @@ import { List } from "react-bootstrap-icons";
 import Auth from "../auth/auth";
 
 const RecommendationForm = ({ user }) => {
-  const [accessToken, setAccessToken] = useState("");
   const [index, setIndex] = useState(0);
   const [showoffCanvas, setShowoffCanvas] = useState(false);
-  const getRecommendations = useRecommendation(accessToken);
-
-  //Obtain and use access token
-  useEffect(() => {
-    if (user) {
-      user.getIdToken().then((token) => setAccessToken(token));
-    }
-  });
+  const getRecommendations = useRecommendation(user?.accessToken);
 
   //Improves UX for the carousel form - so that user is automatically scrolled to the
   //submit button on the last index of the carousel
@@ -146,7 +138,7 @@ const RecommendationForm = ({ user }) => {
     post(
       isLocal ? recommendationURL : isProduction && recommendationURLServer,
       JSON.stringify(formData),
-      headers(accessToken)
+      headers(user?.accessToken)
     );
   };
 

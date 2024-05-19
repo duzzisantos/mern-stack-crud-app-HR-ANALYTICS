@@ -6,7 +6,6 @@ import http from "../components/http-config";
 import Auth from "../auth/auth";
 
 const ManageEmployees = ({ user }) => {
-  const [accessToken, setAccessToken] = useState("");
   const params = useParams();
   const navigate = useNavigate();
   const [ID, setStaffID] = useState(0);
@@ -23,9 +22,8 @@ const ManageEmployees = ({ user }) => {
   //Get request
   const isLocal = process.env.NODE_ENV === "development";
   const isProduction = process.env.NODE_ENV === "production";
-  useEffect(() => {
-    user && user.getIdToken().then((token) => setAccessToken(token));
-  }, [user]);
+
+  const accessToken = user?.accessToken;
 
   useEffect(() => {
     const { get, registerURL, registerURLServer } = http;

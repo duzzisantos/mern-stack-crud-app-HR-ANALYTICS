@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import http from "../components/http-config";
 
 import { Button, Container, Form } from "react-bootstrap";
 import Auth from "../auth/auth";
 
 const AddEmployee = ({ user }) => {
-  const [accessToken, setAccessToken] = useState("");
+  const accessToken = user?.accessToken;
   const [fillForm, setFillForm] = useState({
     ID: Date.now(),
     firstName: "",
@@ -18,14 +18,6 @@ const AddEmployee = ({ user }) => {
     dateEmployment: "",
     photo: "",
   });
-
-  useEffect(() => {
-    user &&
-      user
-        .getIdToken()
-        .then((token) => setAccessToken(token))
-        .catch((err) => console.warn(err.message));
-  }, [user]);
 
   const isLocal = process.env.NODE_ENV === "development";
   const isProduction = process.env.NODE_ENV === "production";

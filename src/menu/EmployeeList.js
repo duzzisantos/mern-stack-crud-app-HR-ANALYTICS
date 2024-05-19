@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import http from "../components/http-config";
 import { departments } from "../utils/dropDownOptions";
 import { Link } from "react-router-dom";
@@ -8,17 +8,9 @@ import useGetEmployeeData from "../http-methods/getEmployeeData";
 import Auth from "../auth/auth";
 
 const EmployeeList = ({ user }) => {
-  const [accessToken, setAccessToken] = useState("");
+  const accessToken = user?.accessToken;
   const [selection, setSelection] = useState(departments[0]);
   const getEmployees = useGetEmployeeData(accessToken);
-
-  useEffect(() => {
-    user &&
-      user
-        .getIdToken()
-        .then((token) => setAccessToken(token))
-        .catch((err) => console.warn(err.message));
-  }, [user]);
 
   const { isLoading, isError, data, refetch } = getEmployees;
 

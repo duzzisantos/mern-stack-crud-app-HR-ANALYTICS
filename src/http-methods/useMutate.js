@@ -13,6 +13,7 @@ const useMutate = (
         const response = await method(`${endPoint}/${objectId}`, updateObject, {
           headers: {
             "Content-Type": "application/json",
+            Accpet: "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
         });

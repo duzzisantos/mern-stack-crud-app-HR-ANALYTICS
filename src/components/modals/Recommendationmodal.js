@@ -1,7 +1,6 @@
 import { Modal, Button, Alert } from "react-bootstrap";
 import DetailsSummary from "../RecommendationForms/DetailsSummary";
 import useRecommendations from "../../http-methods/getRecommendations";
-import { useEffect, useState } from "react";
 import {
   getDelivery,
   getPunctuality,
@@ -21,11 +20,7 @@ const RecommendationModal = ({
   month,
   year,
 }) => {
-  const [accessToken, setAccessToken] = useState("");
-
-  useEffect(() => {
-    user && user.getIdToken().then((token) => setAccessToken(token));
-  });
+  const accessToken = user?.accessToken;
 
   const getRecommendations = useRecommendations(accessToken);
   const { isLoading, isError, refetch, data } = getRecommendations;

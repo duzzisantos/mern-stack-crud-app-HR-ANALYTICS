@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 
 import {
@@ -13,11 +13,12 @@ import League from "../components/tables/League";
 import Auth from "../auth/auth";
 
 const LeagueTable = ({ user }) => {
+  const token = user?.accessToken;
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
   const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
   const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
-  const getEmployees = useGetEmployeeData();
-  const getAppraisal = useGetEmployeeAppraisal();
+  const getEmployees = useGetEmployeeData(token);
+  const getAppraisal = useGetEmployeeAppraisal(token);
   const { isError, isLoading, refetch, data } = getEmployees;
 
   if (isLoading || getAppraisal.isLoading) {
@@ -131,7 +132,7 @@ const LeagueTable = ({ user }) => {
           </div>
         </div>
 
-        <div className="col-lg-10 col-sm-10 small-screen-display">
+        <div className="col-lg-12 col-md-10  col-sm-10 small-screen-display">
           <TopThree
             filteredData={getSortedEmployees.slice(0, 3)}
             employeeData={data}
@@ -147,4 +148,4 @@ const LeagueTable = ({ user }) => {
   );
 };
 
-export default LeagueTable;
+export default React.memo(LeagueTable);

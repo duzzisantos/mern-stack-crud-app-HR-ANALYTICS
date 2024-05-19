@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container, Alert, Button, Form } from "react-bootstrap";
 
 import {
@@ -13,16 +13,12 @@ import HeadCount from "../components/HeadCount";
 import Auth from "../auth/auth";
 
 const HRManager = ({ user }) => {
-  const [accessToken, setAccessToken] = useState("");
+  const accessToken = user?.accessToken;
   const getAppraisal = useEmployeeAppraisal(accessToken);
   const getEmployees = useGetEmployeeData(accessToken);
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
   const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
   const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
-
-  useEffect(() => {
-    user && user.getIdToken().then((token) => setAccessToken(token));
-  }, [user]);
 
   const { isLoading, isError, data, refetch } = getAppraisal;
 

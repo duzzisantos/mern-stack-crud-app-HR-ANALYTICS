@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { monthsArray, generateYears } from "../utils/dropDownOptions";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ProgressComponent from "../components/ProgressComponent";
@@ -13,21 +13,12 @@ import EmployeeMenu from "../components/EmployeeMenu";
 import Auth from "../auth/auth";
 
 const AppraisalDashboard = ({ user }) => {
-  const [accessToken, setAccessToken] = useState("");
+  const accessToken = user?.accessToken;
   const [search, setSearch] = useState("");
   const [selectMonth, setSelectMonth] = useState("");
   const [selectYear, setSelectYear] = useState("");
   const [graphYear, setGraphYear] = useState("");
   const [show, setShow] = useState(false);
-
-  //Helps to obtain an persist user access token
-  useEffect(() => {
-    user &&
-      user
-        .getIdToken()
-        .then((token) => setAccessToken(token))
-        .catch((err) => console.warn(err.message));
-  }, [user]);
 
   const getAppraisal = useGetEmployeeAppraisal(accessToken);
   const getEmployee = useGetEmployeeData(accessToken);

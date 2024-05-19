@@ -6,8 +6,8 @@ const getApiHeaders = (accessToken) => {
   return {
     headers: {
       Authorization: `Bearer ${accessToken}`,
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
   };
 };

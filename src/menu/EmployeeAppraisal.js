@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import http from "../components/http-config";
 import { departments, monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
@@ -8,7 +8,7 @@ import Auth from "../auth/auth";
 
 const EmployeeAppraisal = ({ user }) => {
   const today = new Date();
-  const [accessToken, setAccessToken] = useState("");
+  const accessToken = user?.accessToken;
 
   const currentYear = today.getFullYear();
   const getEmployees = useGetEmployeeData(accessToken);
@@ -30,14 +30,6 @@ const EmployeeAppraisal = ({ user }) => {
   });
 
   const { isError, isLoading, refetch, data } = getEmployees;
-
-  useEffect(() => {
-    user &&
-      user
-        .getIdToken()
-        .then((token) => setAccessToken(token))
-        .catch((err) => console.warn(err));
-  }, [user]);
 
   //Submits appraisal update
   const handleSubmit = () => {

@@ -52,8 +52,7 @@ const TopThree = ({ filteredData, employeeData }) => {
       ))}
       {!filteredData.length && (
         <Alert variant="warning" className="col-9">
-          Unfortunately, that query does not exist. Please try another filter
-          combination using the dropdown options above.
+          Please search item from filter.
         </Alert>
       )}
     </div>
