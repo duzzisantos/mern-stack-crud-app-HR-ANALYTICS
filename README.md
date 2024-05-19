@@ -25,6 +25,7 @@ Keffi HR Analytics application
 5. Firebase
 6. React Router Dom
 7. CSS
+8. React Query
 
 ## How to start the app on local host
 1. Ensure your development environment variables and configurations are ready
