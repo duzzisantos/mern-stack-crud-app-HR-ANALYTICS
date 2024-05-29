@@ -8,7 +8,12 @@ import PerformanceHistory from "../components/PerformanceHistory";
 import { getAvailableYears } from "../utils/getChartLabels";
 import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
-import { List } from "react-bootstrap-icons";
+import {
+  Calendar,
+  CalendarMonth,
+  List,
+  PersonBadge,
+} from "react-bootstrap-icons";
 import EmployeeMenu from "../components/EmployeeMenu";
 import Auth from "../auth/auth";
 
@@ -68,17 +73,16 @@ const AppraisalDashboard = ({ user }) => {
       <Auth />
       <Container
         fluid
-        className="col-lg-12 col-md-10 col-sm-9 d-flex flex-wrap d-flex justify-content-between gap-2"
+        className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center"
         style={{ height: "fit-content" }}
       >
-        <main className="col-sm-12 col-lg-12 d-flex flex-column gap-3 py-4">
+        <main className="col-sm-10 col-lg-10 col-md-10 mx-lg-auto mx-md-auto d-flex flex-column gap-3 py-4">
           <h1 className="fs-2 fw-bold text-center">Appraisal Dashboard</h1>
-          <div
-            id="dashboard-selector"
-            className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column"
-          >
-            <div className="col-lg-2 col-sm-10">
-              <Form.Label htmlFor="employee-id">Employee ID</Form.Label>
+          <div className="d-flex flex-lg-row mx-auto justify-content-center gap-3 fw-bold flex-sm-column col-lg-10 col-sm-10 col-md-10">
+            <div className="col-lg-3 col-md-10 col-sm-10">
+              <Form.Label htmlFor="employee-id">
+                <PersonBadge /> Employee ID
+              </Form.Label>
               <Form.Control
                 size="sm"
                 id="employee-id"
@@ -87,9 +91,11 @@ const AppraisalDashboard = ({ user }) => {
                 onChange={(e) => setSearch(e.target.value)}
               />
             </div>
-            <div className="col-lg-2 col-sm-10">
+            <div className="col-lg-3 col-md-10 col-sm-10">
               {" "}
-              <Form.Label htmlFor="employee-month">Month</Form.Label>
+              <Form.Label htmlFor="employee-month">
+                <CalendarMonth /> Month
+              </Form.Label>
               <Form.Select
                 size="sm"
                 id="employee-month"
@@ -104,8 +110,10 @@ const AppraisalDashboard = ({ user }) => {
                 ))}
               </Form.Select>
             </div>
-            <div className="col-lg-2 col-sm-10">
-              <Form.Label htmlFor="employee-year">Year</Form.Label>
+            <div className="col-lg-3 col-md-10 col-sm-10">
+              <Form.Label htmlFor="employee-year">
+                <Calendar /> Year
+              </Form.Label>
               <Form.Select
                 size="sm"
                 id="employee-year"
@@ -124,7 +132,7 @@ const AppraisalDashboard = ({ user }) => {
 
           <div>
             {noItemsFoundYet ? (
-              <Alert variant="warning" className="col-12">
+              <Alert variant="warning">
                 Select employee ID from{" "}
                 <kbd className="bg-transparent text-dark border border-secondary">
                   <List /> Menu
@@ -136,8 +144,17 @@ const AppraisalDashboard = ({ user }) => {
               <>
                 <div
                   id="dashboard-wrapper"
-                  className="col-12 d-flex flex-lg-row flex-sm-column p-1 gap-1 justify-content-between"
+                  className="col-lg-12 col-md-10 d-flex flex-lg-column gap-3 flex-sm-column p-4 mx-md-auto"
                 >
+                  <div className="col-lg-1 me-0">
+                    <Button
+                      variant="trasnsparent"
+                      className=" border border-secondary"
+                      onClick={handleShow}
+                    >
+                      <List /> Menu
+                    </Button>
+                  </div>
                   {filteredAppraisal.map((item, index) => {
                     const {
                       quantityOfWork,
@@ -182,15 +199,6 @@ const AppraisalDashboard = ({ user }) => {
             )}
           </div>
         </main>
-        <div className="col-lg-1 py-4 mh-100 me-0 position-absolute ">
-          <Button
-            variant="trasnsparent"
-            className=" border border-secondary"
-            onClick={handleShow}
-          >
-            <List /> Menu
-          </Button>
-        </div>
 
         {show && (
           <EmployeeMenu

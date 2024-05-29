@@ -3,9 +3,15 @@ import http from "../components/http-config";
 import { departments } from "../utils/dropDownOptions";
 import { Link } from "react-router-dom";
 
-import { Alert, Button, Form, Stack } from "react-bootstrap";
+import { Alert, Button, Container, Form, Stack } from "react-bootstrap";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import Auth from "../auth/auth";
+import {
+  Filter,
+  PencilSquare,
+  PersonFill,
+  Trash2Fill,
+} from "react-bootstrap-icons";
 
 const EmployeeList = ({ user }) => {
   const accessToken = user?.accessToken;
@@ -56,12 +62,15 @@ const EmployeeList = ({ user }) => {
   return (
     <>
       <Auth />
-      <div className="container-fluid pt-4 col-12 d-flex flex-column justify-content-center align-items-center">
+      <Container
+        fluid
+        className="pt-4 px-4 col-lg-10 col-md-10 col-sm-10 d-flex flex-column justify-content-center align-items-center"
+      >
         <h1 className="fs-2 fw-bold">Employee List</h1>
-        <div className="col-lg-6 col-md-10 d-flex justify-content-center">
-          <div className="hstack gap-2 col-lg-6 col-md-12 mt-3">
+        <div className="col-lg-6 col-md-10 col-sm-12 d-flex justify-content-center">
+          <div className="d-flex flex-lg-row flex-sm-column col-lg-10 col-md-10 col-sm-10 mt-3">
             <Form.Label className="fw-bold w-75" htmlFor="department">
-              Filter by department:{" "}
+              <Filter /> Filter by department:{" "}
             </Form.Label>
 
             <Form.Select
@@ -93,7 +102,7 @@ const EmployeeList = ({ user }) => {
                 key={item._id}
               >
                 <span className="text-dark fw-bold">
-                  {item.firstName} {item.lastName}
+                  <PersonFill /> {item.firstName} {item.lastName}
                 </span>
 
                 <ul className="data-list lh-lg">
@@ -116,7 +125,7 @@ const EmployeeList = ({ user }) => {
                       to={`update-employee/${item._id}`}
                       className="text-secondary text-decoration-none"
                     >
-                      Edit
+                      <PencilSquare />
                     </Link>
                   </Button>
                   <Button
@@ -125,7 +134,7 @@ const EmployeeList = ({ user }) => {
                     onClick={(_id) => handleDelete(item._id)}
                     title={`Delete ${item.firstName}`}
                   >
-                    Delete
+                    <Trash2Fill />
                   </Button>
                 </Stack>
               </fieldset>
@@ -140,7 +149,7 @@ const EmployeeList = ({ user }) => {
             </Alert>
           )}
         </div>
-      </div>
+      </Container>
     </>
   );
 };

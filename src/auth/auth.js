@@ -55,12 +55,7 @@ const Auth = () => {
 
   return (
     <>
-      <Navbar
-        expand="lg"
-        className="bg-dark text-light w-100 shadow-sm"
-        sticky="top"
-        style={{ height: "fit-content" }}
-      >
+      <Navbar expand="lg" className="bg-dark text-light shadow-sm" sticky="top">
         <Container>
           <Navbar.Brand href="/auth/league-table" className="text-light">
             {" "}

@@ -14,7 +14,7 @@ const PerformanceHistory = ({
   return (
     <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
       <Tab eventKey="Annual" title="Year on Year">
-        <div className="col-12 d-flex justify-content-center">
+        <div className="col-12 d-flex justify-content-center px-4">
           <YearOnYear
             chartData={chartData}
             employeeId={employeeId}

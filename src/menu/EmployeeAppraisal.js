@@ -5,6 +5,16 @@ import useGetEmployeeData from "../http-methods/getEmployeeData";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
 import Auth from "../auth/auth";
+import {
+  Calendar2Fill,
+  CalendarMonthFill,
+  ChatDots,
+  ChatFill,
+  PeopleFill,
+  PersonBadge,
+  PersonFill,
+  StarFill,
+} from "react-bootstrap-icons";
 
 const EmployeeAppraisal = ({ user }) => {
   const today = new Date();
@@ -69,20 +79,22 @@ const EmployeeAppraisal = ({ user }) => {
       <Container
         id="appraisal-wrapper"
         fluid
-        className="d-flex flex-lg-row flex-sm-column flex-md-column justify-content-center py-4 gap-4 overflow-hidden"
+        className="d-flex flex-lg-row flex-sm-column flex-md-column col-lg-10 col-sm-10 col-md-10 px-5 pt-4 gap-5 overflow-hidden"
       >
         <ShowEmployees
           employeeData={(!isLoading || !isError || !data === undefined) && data}
         />
 
         <form
-          className="col-lg-6 col-sm-12 py-3 rounded-3 shadow-sm d-flex flex-column border gap-3 justify-content-center align-items-center"
+          className="mb-4 col-lg-6 col-sm-10 col-md-10 py-3 rounded-3 shadow-sm d-flex flex-column gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
         >
           <h1 className="fs-2 fw-bold">Appraise Employee</h1>
           <div className="col-9">
-            <Form.Label htmlFor="month">Month</Form.Label>
+            <Form.Label htmlFor="month">
+              <CalendarMonthFill /> Month
+            </Form.Label>
             <Form.Select
               className="selection"
               id="month"
@@ -100,7 +112,9 @@ const EmployeeAppraisal = ({ user }) => {
             </Form.Select>
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="year">Year</Form.Label>
+            <Form.Label htmlFor="year">
+              <Calendar2Fill /> Year
+            </Form.Label>
             <Form.Control
               required
               id="year"
@@ -113,7 +127,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="department">Department</Form.Label>
+            <Form.Label htmlFor="department">
+              <PeopleFill /> Department
+            </Form.Label>
             <Form.Select
               id="department"
               value={appraise.department}
@@ -128,7 +144,9 @@ const EmployeeAppraisal = ({ user }) => {
             </Form.Select>
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="ID1">Staff ID</Form.Label>
+            <Form.Label htmlFor="ID1">
+              <PersonBadge /> Staff ID
+            </Form.Label>
             <Form.Control
               required
               id="ID"
@@ -140,7 +158,9 @@ const EmployeeAppraisal = ({ user }) => {
           </div>
           <div className="col-9">
             {" "}
-            <Form.Label htmlFor="firstName">First Name</Form.Label>
+            <Form.Label htmlFor="firstName">
+              <PersonFill /> First Name
+            </Form.Label>
             <Form.Control
               required
               id="firstName"
@@ -153,7 +173,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="lastName">Last Name</Form.Label>
+            <Form.Label htmlFor="lastName">
+              <PersonFill /> Last Name
+            </Form.Label>
             <Form.Control
               required
               id="lastName"
@@ -166,7 +188,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="qtyWork">Quality of Work</Form.Label>
+            <Form.Label htmlFor="qtyWork">
+              <StarFill /> Quality of Work
+            </Form.Label>
             <Form.Range
               className="border-0"
               id="qtyWork"
@@ -182,7 +206,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="delivery">Delivery</Form.Label>
+            <Form.Label htmlFor="delivery">
+              <StarFill /> Delivery
+            </Form.Label>
             <Form.Range
               className="border-0"
               id="delivery"
@@ -198,7 +224,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="responsibility">Responsibility</Form.Label>
+            <Form.Label htmlFor="responsibility">
+              <StarFill /> Responsibility
+            </Form.Label>
             <Form.Range
               className="border-0"
               id="responsibility"
@@ -214,7 +242,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="qntyWork">Quantity of Work</Form.Label>
+            <Form.Label htmlFor="qntyWork">
+              <StarFill /> Quantity of Work
+            </Form.Label>
             <Form.Range
               className="border-0"
               id="qntyWork"
@@ -230,7 +260,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9">
-            <Form.Label htmlFor="punctuality">Punctuality</Form.Label>
+            <Form.Label htmlFor="punctuality">
+              <StarFill /> Punctuality
+            </Form.Label>
             <Form.Range
               className="border-0"
               id="punctuality"
@@ -247,7 +279,7 @@ const EmployeeAppraisal = ({ user }) => {
           </div>
           <div className="col-9">
             <Form.Label htmlFor="superVisorComment">
-              Supervisor Comment
+              <ChatFill /> Supervisor Comment
             </Form.Label>
             <Form.Control
               required
@@ -263,7 +295,9 @@ const EmployeeAppraisal = ({ user }) => {
             />
           </div>
           <div className="col-9 mb-3">
-            <Form.Label htmlFor="hrComment">HR Comment</Form.Label>
+            <Form.Label htmlFor="hrComment">
+              <ChatDots /> HR Comment
+            </Form.Label>
             <Form.Control
               required
               type="text"

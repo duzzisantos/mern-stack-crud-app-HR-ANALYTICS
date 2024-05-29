@@ -158,12 +158,13 @@ const RecommendationForm = ({ user }) => {
       <Auth />
       <Container
         fluid
-        className="col-lg-12 col-md-10 col-sm-9 d-flex flex-wrap d-flex justify-content-between gap-2"
+        className="col-lg-12 col-md-10 col-sm-10 d-flex flex-wrap d-flex justify-content-between gap-2"
       >
         <main className="col-lg-12 col-sm-10">
           <h1 className="fs-2 text-center mt-3 fw-bold h-one-spaced">
             Recommendation Policy
           </h1>
+
           <div className="d-flex justify-content-center">
             <div className="col-6 p-2 my-5 shadow-sm border-5 border-start border-info">
               <h2 className="fs-5 fw-bold">Tips</h2>
@@ -176,7 +177,15 @@ const RecommendationForm = ({ user }) => {
           </div>
 
           <div className="d-flex justify-content-center mt-3 p-3">
-            <Form id="carousel-form" onSubmit={handleSubmit} className="col-9">
+            <Form id="carousel-form" onSubmit={handleSubmit} className="col-8">
+              <Button
+                variant="transparent"
+                className="border border-secondary my-3"
+                onClick={handleShowOffcanvas}
+                title="View HR Recommendation Policy"
+              >
+                <List /> Read
+              </Button>
               <Carousel
                 id="carousel-slide-recommendation-form"
                 slide={false}
@@ -253,16 +262,6 @@ const RecommendationForm = ({ user }) => {
             />
           )}
         </main>
-        <div className="col-lg-1 col-sm-2 mt-3 me-0 position-absolute">
-          <Button
-            variant="transparent"
-            className="border border-secondary"
-            onClick={handleShowOffcanvas}
-            title="View HR Recommendation Policy"
-          >
-            <List /> Read
-          </Button>
-        </div>
       </Container>
     </>
   );

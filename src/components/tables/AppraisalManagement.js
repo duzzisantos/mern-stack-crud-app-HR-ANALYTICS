@@ -40,7 +40,7 @@ const AppraisalManagement = ({
   );
 
   return (
-    <div className="table-responsive col-12 my-4">
+    <div className="table-responsive col-lg-10 col-md-12 col-sm-12 mx-auto px-5 my-4">
       <h2 className="fs-5 fw-bold">Appraisal Management</h2>
       <Table responsive bordered>
         <thead>

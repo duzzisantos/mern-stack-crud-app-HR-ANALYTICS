@@ -11,6 +11,7 @@ import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import TopThree from "../components/TopThree";
 import League from "../components/tables/League";
 import Auth from "../auth/auth";
+import { Calendar, CalendarMonthFill, PeopleFill } from "react-bootstrap-icons";
 
 const LeagueTable = ({ user }) => {
   const token = user?.accessToken;
@@ -68,67 +69,72 @@ const LeagueTable = ({ user }) => {
   return (
     <>
       <Auth />
-      <Container className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center col-9">
-        <h1 className="fs-2 fw-bold">League Table - {selectedDepartment}</h1>
-        <div className="d-flex justify-content-center mt-2">
-          <div className="hstack gap-2">
-            <div>
-              <Form.Label className="fw-bold w-75" htmlFor="department">
-                Department:{" "}
-              </Form.Label>
+      <Container
+        fluid
+        className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center"
+      >
+        <h1 className="fs-2 fw-bold">League Table</h1>
 
-              <Form.Select
-                size="sm"
-                id="department"
-                name="department"
-                value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
-              >
-                {departments.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </Form.Select>
-            </div>
-            <div>
-              {" "}
-              <Form.Label className="fw-bold w-75" htmlFor="league-month">
-                Month
-              </Form.Label>
-              <Form.Select
-                size="sm"
-                id="league-month"
-                name="league-month"
-                value={selectedMonth}
-                onChange={(e) => setSelectedMonth(e.target.value)}
-              >
-                {monthsArray.map((onwa) => (
-                  <option value={onwa} key={onwa}>
-                    {onwa}
-                  </option>
-                ))}
-              </Form.Select>
-            </div>
+        <div className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column col-lg-10 col-sm-10 col-md-10">
+          <div className="col-lg-3 col-md-10 col-sm-10">
+            <Form.Label className="fw-bold" htmlFor="department">
+              <PeopleFill /> Department:{" "}
+            </Form.Label>
 
-            <div>
-              <Form.Label className="fw-bold w-75" htmlFor="league-year">
-                Year
-              </Form.Label>
-              <Form.Select
-                size="sm"
-                id="league-year"
-                name="league-year"
-                value={selectedYear}
-                onChange={(e) => setSelectedYear(e.target.value)}
-              >
-                {generateYears().map((afor, index) => (
-                  <option value={afor} key={index}>
-                    {afor}
-                  </option>
-                ))}
-              </Form.Select>
-            </div>
+            <Form.Select
+              size="sm"
+              id="department"
+              name="department"
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+            >
+              <option>Please Select</option>
+              {departments.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </Form.Select>
+          </div>
+          <div className="col-lg-3 col-sm-10 col-md-10">
+            {" "}
+            <Form.Label className="fw-bold" htmlFor="league-month">
+              <CalendarMonthFill /> Month
+            </Form.Label>
+            <Form.Select
+              size="sm"
+              id="league-month"
+              name="league-month"
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+            >
+              <option>Please Select</option>
+              {monthsArray.map((onwa) => (
+                <option value={onwa} key={onwa}>
+                  {onwa}
+                </option>
+              ))}
+            </Form.Select>
+          </div>
+
+          <div className="col-lg-3 col-sm-10 col-md-10">
+            <Form.Label className="fw-bold" htmlFor="league-year">
+              <Calendar /> Year
+            </Form.Label>
+            <Form.Select
+              size="sm"
+              id="league-year"
+              name="league-year"
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+            >
+              <option>Please Select</option>
+              {generateYears().map((afor, index) => (
+                <option value={afor} key={index}>
+                  {afor}
+                </option>
+              ))}
+            </Form.Select>
           </div>
         </div>
 
@@ -137,12 +143,12 @@ const LeagueTable = ({ user }) => {
             filteredData={getSortedEmployees.slice(0, 3)}
             employeeData={data}
           />
-          <League
-            filteredData={getSortedEmployees}
-            employeeData={data}
-            user={user}
-          />
         </div>
+        <League
+          filteredData={getSortedEmployees}
+          employeeData={data}
+          user={user}
+        />
       </Container>
     </>
   );

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { departments } from "../utils/dropDownOptions";
 import { Button, Form } from "react-bootstrap";
-import { Clipboard } from "react-bootstrap-icons";
+import { Clipboard, PeopleFill, PersonFill } from "react-bootstrap-icons";
 import { handleCopyElement } from "../utils/handleCopyElement";
 
 const ShowEmployees = ({ employeeData }) => {
@@ -35,11 +35,11 @@ const ShowEmployees = ({ employeeData }) => {
   }, [employeeData, selectedEmployee]);
 
   return (
-    <div className="d-flex flex-column col-lg-3 col-sm-10 col-md-10 gap-3 border border-secondary-subtle h-100 p-3 rounded-2">
+    <div className="d-flex flex-column col-lg-4 col-sm-10 col-md-10 gap-3 shadow-sm h-100 p-3 rounded-2">
       <h2 className="fs-5 fw-bold">Search and copy employee details</h2>
       <div className="my-3">
         <Form.Label htmlFor="show-employee-department">
-          By Department
+          <PeopleFill /> By Department
         </Form.Label>
         <Form.Select
           id="show-employee-department"
@@ -55,7 +55,9 @@ const ShowEmployees = ({ employeeData }) => {
         </Form.Select>
       </div>
       <div>
-        <Form.Label htmlFor="show-employee">By Employee</Form.Label>
+        <Form.Label htmlFor="show-employee">
+          <PersonFill /> By Employee
+        </Form.Label>
         <Form.Select
           id="show-employee"
           value={selectedEmployee}
