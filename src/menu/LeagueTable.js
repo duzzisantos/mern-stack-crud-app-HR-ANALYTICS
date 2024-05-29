@@ -14,9 +14,9 @@ import { Calendar, CalendarMonthFill, PeopleFill } from "react-bootstrap-icons";
 
 const LeagueTable = ({ user }) => {
   const token = user?.accessToken;
-  const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
-  const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
-  const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
+  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
   const { employees } = useGetEmployeeData(token);
   const { appraisal } = useGetEmployeeAppraisal(token);
 

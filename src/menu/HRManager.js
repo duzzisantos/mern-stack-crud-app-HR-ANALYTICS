@@ -16,9 +16,9 @@ const HRManager = ({ user }) => {
   const accessToken = user?.accessToken;
   const { appraisal } = useEmployeeAppraisal(accessToken);
   const { employees } = useGetEmployeeData(accessToken);
-  const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
-  const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
-  const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
+  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
 
   return (
     <>
