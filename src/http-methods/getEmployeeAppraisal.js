@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import http from "../components/http-config";
 
 const useGetEmployeeAppraisal = (accessToken) => {
-  const [appraisal, getAppraisal] = useState([]);
+  const [appraisal, setEmployeeAppraisal] = useState([]);
   const getEmployeeAppraisal = useCallback(async () => {
     const { appraisalURL, get, appraiseURLServer, headers } = http;
     const isLocal = process.env.NODE_ENV === "development";
@@ -15,7 +15,7 @@ const useGetEmployeeAppraisal = (accessToken) => {
       if (response.status !== 200) {
         throw new Error(`${response.status} cause: ${response.statusText}`);
       } else {
-        return response.data;
+        setEmployeeAppraisal(response.data);
       }
     } catch (err) {
       console.warn(err.message);
@@ -26,7 +26,7 @@ const useGetEmployeeAppraisal = (accessToken) => {
     getEmployeeAppraisal();
   }, [getEmployeeAppraisal]);
 
-  return { appraisal, refetchAppraisal: getAppraisal };
+  return { appraisal, refetchAppraisal: getEmployeeAppraisal };
 };
 
 export default useGetEmployeeAppraisal;
