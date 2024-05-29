@@ -10,7 +10,7 @@ import useEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import AppraisalManagement from "../components/tables/AppraisalManagement";
 import HeadCount from "../components/HeadCount";
-import Auth from "../auth/auth";
+import { Calendar, CalendarMonthFill, PeopleFill } from "react-bootstrap-icons";
 
 const HRManager = ({ user }) => {
   const accessToken = user?.accessToken;
@@ -43,7 +43,6 @@ const HRManager = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center"
@@ -53,7 +52,7 @@ const HRManager = ({ user }) => {
         <div className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column col-lg-10 col-sm-10 col-md-10">
           <div className="col-lg-3 col-md-10 col-sm-10">
             <Form.Label className="fw-bold" htmlFor="department">
-              Department:{" "}
+              <PeopleFill /> Department:{" "}
             </Form.Label>
 
             <Form.Select
@@ -63,6 +62,7 @@ const HRManager = ({ user }) => {
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
             >
+              <option>Please Select</option>
               {departments.map((item) => (
                 <option key={item} value={item}>
                   {item}
@@ -73,7 +73,7 @@ const HRManager = ({ user }) => {
           <div className="col-lg-3 col-md-10 col-sm-10">
             {" "}
             <Form.Label className="fw-bold" htmlFor="league-month">
-              Month
+              <CalendarMonthFill /> Month
             </Form.Label>
             <Form.Select
               size="sm"
@@ -82,6 +82,7 @@ const HRManager = ({ user }) => {
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
             >
+              <option>Please Select</option>
               {monthsArray.map((onwa) => (
                 <option value={onwa} key={onwa}>
                   {onwa}
@@ -92,7 +93,7 @@ const HRManager = ({ user }) => {
 
           <div className="col-lg-3 col-md-10 col-sm-10">
             <Form.Label className="fw-bold" htmlFor="league-year">
-              Year
+              <Calendar /> Year
             </Form.Label>
             <Form.Select
               size="sm"
@@ -101,6 +102,7 @@ const HRManager = ({ user }) => {
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
             >
+              <option>Please Select</option>
               {generateYears().map((afor, index) => (
                 <option value={afor} key={index}>
                   {afor}

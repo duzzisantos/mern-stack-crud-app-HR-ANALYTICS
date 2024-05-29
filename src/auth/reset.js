@@ -20,11 +20,11 @@ const Reset = () => {
 
   return (
     <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h1 className="mt-3 fs-2">
-        Keffi <FontAwesomeIcon icon={faRing} />
+      <h1 className="mt-3 fs-2 fw-bolder">
+        <FontAwesomeIcon icon={faRing} /> Keffi
       </h1>
       <Form className="col-lg-6 col-sm-9 mt-3 p-4 smaller-box-full shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
-        <h2 className="fs-3 text-center">Reset password</h2>
+        <h2 className="fs-3 text-center fw-bold">Reset password</h2>
         <Form.Control
           required
           type="text"
@@ -34,8 +34,9 @@ const Reset = () => {
         />
         <div className="d-flex flex-column py-2 vstack gap-3 ">
           <Button
-            className="btn-success"
+            className="btn-success w-25"
             onClick={() => sendPasswordReset(email)}
+            disabled={email === ""}
           >
             Reset
           </Button>

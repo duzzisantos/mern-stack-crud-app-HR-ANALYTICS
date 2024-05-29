@@ -13,7 +13,6 @@ import { getFormLevel, getFormCategory } from "../utils/editFormTitles";
 import useRecommendation from "../http-methods/getRecommendations";
 import DisplayRecommendations from "../components/RecommendationForms/DisplayRecommendation";
 import { List } from "react-bootstrap-icons";
-import Auth from "../auth/auth";
 
 const RecommendationForm = ({ user }) => {
   const [index, setIndex] = useState(0);
@@ -155,7 +154,6 @@ const RecommendationForm = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="col-lg-12 col-md-10 col-sm-10 d-flex flex-wrap d-flex justify-content-between gap-2"

@@ -15,7 +15,6 @@ import {
   PersonBadge,
 } from "react-bootstrap-icons";
 import EmployeeMenu from "../components/EmployeeMenu";
-import Auth from "../auth/auth";
 
 const AppraisalDashboard = ({ user }) => {
   const accessToken = user?.accessToken;
@@ -70,7 +69,6 @@ const AppraisalDashboard = ({ user }) => {
   };
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center"
@@ -130,15 +128,25 @@ const AppraisalDashboard = ({ user }) => {
             </div>
           </div>
 
+          <div className="col-lg-1 mx-4">
+            <Button
+              variant="trasnsparent"
+              className=" border border-secondary"
+              onClick={handleShow}
+            >
+              <List /> Menu
+            </Button>
+          </div>
           <div>
             {noItemsFoundYet ? (
               <Alert variant="warning">
                 Select employee ID from{" "}
                 <kbd className="bg-transparent text-dark border border-secondary">
                   <List /> Menu
-                </kbd>{" "}
-                menu. Search for employees by their correct ID. Either that or
-                ensure that the employee ID, year and month values are correct.
+                </kbd>
+                {". "}
+                Search for employees by their correct ID. Either that or ensure
+                that the employee ID, year and month values are correct.
               </Alert>
             ) : (
               <>
@@ -146,15 +154,6 @@ const AppraisalDashboard = ({ user }) => {
                   id="dashboard-wrapper"
                   className="col-lg-12 col-md-10 d-flex flex-lg-column gap-3 flex-sm-column p-4 mx-md-auto"
                 >
-                  <div className="col-lg-1 me-0">
-                    <Button
-                      variant="trasnsparent"
-                      className=" border border-secondary"
-                      onClick={handleShow}
-                    >
-                      <List /> Menu
-                    </Button>
-                  </div>
                   {filteredAppraisal.map((item, index) => {
                     const {
                       quantityOfWork,

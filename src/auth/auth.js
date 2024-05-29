@@ -27,7 +27,7 @@ import {
 
 library.add(faPowerOff, faUser, faBars);
 
-const Auth = () => {
+const Navigation = () => {
   const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
@@ -49,17 +49,22 @@ const Auth = () => {
       return;
     } else if (!user) {
       fetchUserName();
-      return navigate("/");
+      return navigate("/login");
     }
   });
+
+  const handleLogOut = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <>
       <Navbar expand="lg" className="bg-dark text-light shadow-sm" sticky="top">
         <Container>
-          <Navbar.Brand href="/auth/league-table" className="text-light">
+          <Navbar.Brand href="/league-table" className="text-light fw-bolder">
             {" "}
-            Keffi <FontAwesomeIcon icon={faRing} />
+            <FontAwesomeIcon icon={faRing} /> KEFFI
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
@@ -69,19 +74,19 @@ const Auth = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="gap-2">
               <Nav.Item className="me-auto vstack d-flex flex-lg-nowrap flex-lg-row flex-sm-wrap flex-sm-column gap-1 text-start">
-                <Nav.Link href="/auth/register" className="text-light">
+                <Nav.Link href="/register" className="text-light">
                   <PersonPlus /> Add Employee
                 </Nav.Link>
-                <Nav.Link href="/auth/table" className="text-light">
+                <Nav.Link href="/table" className="text-light">
                   <People /> Employee Hub
                 </Nav.Link>
-                <Nav.Link href="/auth/appraisal" className="text-light">
+                <Nav.Link href="/appraisal" className="text-light">
                   <CheckSquareFill /> Appraisal
                 </Nav.Link>
-                <Nav.Link href="/auth/dashboard" className="text-light">
+                <Nav.Link href="/dashboard" className="text-light">
                   <PieChart /> Dashboard
                 </Nav.Link>
-                <Nav.Link href="/auth/league-table" className="text-light">
+                <Nav.Link href="/league-table" className="text-light">
                   <Table /> League Table
                 </Nav.Link>
 
@@ -97,13 +102,10 @@ const Auth = () => {
                     className="bg-dark shadow-lg"
                     style={{ width: "200px" }}
                   >
-                    <Nav.Link href="/auth/settings" className="text-light">
+                    <Nav.Link href="/settings" className="text-light">
                       <PeopleFill /> HR Management
                     </Nav.Link>
-                    <Nav.Link
-                      href="/auth/recommendations"
-                      className="text-light"
-                    >
+                    <Nav.Link href="/recommendations" className="text-light">
                       <Mortarboard /> HR Recommendations
                     </Nav.Link>
                   </Dropdown.Menu>
@@ -116,7 +118,7 @@ const Auth = () => {
                   size="sm"
                   variant="secondary"
                   className="text-light text-light btn-outline-danger border-0"
-                  onClick={logout}
+                  onClick={handleLogOut}
                   title="Log out"
                 >
                   <Power /> Logout
@@ -130,4 +132,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Navigation;

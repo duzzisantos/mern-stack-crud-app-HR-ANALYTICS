@@ -4,7 +4,7 @@ import { departments, monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
 import { Alert, Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
-import Auth from "../auth/auth";
+
 import {
   Calendar2Fill,
   CalendarMonthFill,
@@ -75,7 +75,6 @@ const EmployeeAppraisal = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <Container
         id="appraisal-wrapper"
         fluid

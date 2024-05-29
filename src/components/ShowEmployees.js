@@ -71,7 +71,7 @@ const ShowEmployees = ({ employeeData }) => {
           ))}
         </Form.Select>
       </div>
-      <output className="my-3 shadow-sm rounded-2 border">
+      <output className="my-3 shadow-lg rounded-0 border-start border-5 border-success">
         <ol className="my-3 mx-2 gap-2 vstack">
           <li className="d-flex justify-content-between hstack gap-2">
             <label>ID: </label>

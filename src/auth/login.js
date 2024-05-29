@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRing } from "@fortawesome/free-solid-svg-icons";
-import { Google } from "react-bootstrap-icons";
+import { At, Google, ShieldLockFill } from "react-bootstrap-icons";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,16 +19,18 @@ const Login = () => {
     if (loading) {
       return;
     }
-    if (user) navigate("/auth/register");
+    if (user) navigate("/league-table");
   });
   return (
     <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h1 className="mt-3 fs-2">
-        Keffi <FontAwesomeIcon icon={faRing} />
+      <h1 className="mt-3 fs-2 fw-bolder">
+        <FontAwesomeIcon icon={faRing} /> KEFFI
       </h1>
       <Form className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
-        <h2 className="fs-3 text-center">Login</h2>
-        <Form.Label htmlFor="login-email">Email</Form.Label>
+        <h2 className="fs-3 text-center fw-bold">Login</h2>
+        <Form.Label htmlFor="login-email">
+          <At /> Email
+        </Form.Label>
         <Form.Control
           type="text"
           id="login-email"
@@ -36,7 +38,9 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
           title="Enter email address"
         />{" "}
-        <Form.Label htmlFor="login-password">Password</Form.Label>
+        <Form.Label htmlFor="login-password">
+          <ShieldLockFill /> Password
+        </Form.Label>
         <Form.Control
           type="password"
           id="login-password"
@@ -50,6 +54,7 @@ const Login = () => {
               className="btn-success"
               onClick={() => logInWithEmailAndPassword(email, password)}
               title="Login"
+              disabled={email === "" || password === ""}
             >
               Login
             </Button>
@@ -64,14 +69,9 @@ const Login = () => {
         </div>
         <div className="gap-3 hstack">
           <span>
-            <Link to="reset" className="link" title="Reset password">
-              Forgot Password?
-            </Link>
-          </span>
-          <span>
-            <Link to="signup" className="link" title="Create an account">
+            <a href="/signup" className="link" title="Create an account">
               Do not have an account?
-            </Link>
+            </a>
           </span>
         </div>
       </Form>

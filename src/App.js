@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Login from "./auth/login";
 import SignUp from "./auth/signup";
 import Reset from "./auth/reset";
+import Navigation from "./auth/auth";
 import AddEmployee from "./menu/AddEmployee";
 import AppraisalDashboard from "./menu/AppraisalDashboard";
 import EmployeeAppraisal from "./menu/EmployeeAppraisal";
@@ -19,8 +20,14 @@ import { Alert } from "react-bootstrap";
 
 function App() {
   const [user, loading] = useAuthState(auth);
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      staleTime: 300000,
+      refetchOnInterval: false,
+    },
+  });
 
+  const { pathname } = window.location;
   return (
     <div className="App">
       <QueryClientProvider client={queryClient} contextSharing={true}>
@@ -29,35 +36,46 @@ function App() {
             Verifying Authentication....
           </Alert>
         )}
+        {user && <Navigation />}
 
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="reset" element={<Reset />} />
-          <Route path="auth/settings" element={<HRManager user={user} />} />
-          <Route path="auth/register" element={<AddEmployee user={user} />} />
-          <Route
-            path="auth/appraisal"
-            element={<EmployeeAppraisal user={user} />}
-          />
-          <Route
-            path="auth/dashboard"
-            element={<AppraisalDashboard user={user} />}
-          />
-          <Route
-            path="auth/league-table"
-            element={<LeagueTable user={user} />}
-          />
-          <Route
-            path="auth/recommendations"
-            element={<RecommendationForm user={user} />}
-          />
-          <Route path="auth/table/*" element={<EmployeeList user={user} />} />
-          <Route
-            path="auth/table/update-employee/:ID"
-            element={<ManageEmployees user={user} />}
-          />
+          {!user && pathname === "/signup" && (
+            <Route path="/signup" element={<SignUp />} />
+          )}
+          {!user && pathname === "/login" && (
+            <Route path="/login" element={<Login />} />
+          )}
+          {!user && pathname === "/" && <Route path="/" element={<Login />} />}
+          {user && (
+            <>
+              <Route path="/" element={<LeagueTable />} />
+
+              <Route path="reset" element={<Reset />} />
+              <Route path="settings" element={<HRManager user={user} />} />
+              <Route path="register" element={<AddEmployee user={user} />} />
+              <Route
+                path="appraisal"
+                element={<EmployeeAppraisal user={user} />}
+              />
+              <Route
+                path="dashboard"
+                element={<AppraisalDashboard user={user} />}
+              />
+              <Route
+                path="league-table"
+                element={<LeagueTable user={user} />}
+              />
+              <Route
+                path="recommendations"
+                element={<RecommendationForm user={user} />}
+              />
+              <Route path="table/*" element={<EmployeeList user={user} />} />
+              <Route
+                path="table/update-employee/:ID"
+                element={<ManageEmployees user={user} />}
+              />
+            </>
+          )}
         </Routes>
       </QueryClientProvider>
     </div>

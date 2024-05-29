@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { ArrowLeft } from "react-bootstrap-icons";
 import http from "../components/http-config";
-import Auth from "../auth/auth";
 
 const ManageEmployees = ({ user }) => {
   const params = useParams();
@@ -94,7 +93,6 @@ const ManageEmployees = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <div className="d-flex justify-content-center py-4 container-fluid">
         <form
           className="col-lg-6 col-md-12 col-sm-12 smaller-box-full px-5 py-3 border shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"

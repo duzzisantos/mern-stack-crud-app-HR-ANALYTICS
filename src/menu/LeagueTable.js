@@ -10,7 +10,6 @@ import useGetEmployeeData from "../http-methods/getEmployeeData";
 import useGetEmployeeAppraisal from "../http-methods/getEmployeeAppraisal";
 import TopThree from "../components/TopThree";
 import League from "../components/tables/League";
-import Auth from "../auth/auth";
 import { Calendar, CalendarMonthFill, PeopleFill } from "react-bootstrap-icons";
 
 const LeagueTable = ({ user }) => {
@@ -68,7 +67,6 @@ const LeagueTable = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center"

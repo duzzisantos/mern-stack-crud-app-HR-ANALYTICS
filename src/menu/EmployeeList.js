@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { Alert, Button, Container, Form, Stack } from "react-bootstrap";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
-import Auth from "../auth/auth";
+
 import {
   Filter,
   PencilSquare,
@@ -61,7 +61,6 @@ const EmployeeList = ({ user }) => {
 
   return (
     <>
-      <Auth />
       <Container
         fluid
         className="pt-4 px-4 col-lg-10 col-md-10 col-sm-10 d-flex flex-column justify-content-center align-items-center"
@@ -78,6 +77,7 @@ const EmployeeList = ({ user }) => {
               name="department"
               onChange={(e) => setSelection(e.target.value)}
             >
+              <option>Please Select</option>
               {departments.map((item) => (
                 <option key={item} value={item}>
                   {item}

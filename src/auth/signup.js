@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword } from "./firebase";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRing } from "@fortawesome/free-solid-svg-icons";
+import { At, Person, ShieldLockFill } from "react-bootstrap-icons";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -25,18 +26,20 @@ const SignUp = () => {
     if (loading) {
       return;
     } else if (user) {
-      navigate("/");
+      navigate("/league-table");
     }
   });
   return (
     <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h1 className="mt-3 fs-2">
-        Keffi <FontAwesomeIcon icon={faRing} />
+      <h1 className="mt-3 fs-2 fw-bolder">
+        <FontAwesomeIcon icon={faRing} /> KEFFI
       </h1>
 
       <Form className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
-        <h2 className="fs-3 text-center">Sign up</h2>
-        <Form.Label htmlFor="fullName">Full Name</Form.Label>
+        <h2 className="fs-3 text-center fw-bold">Sign up</h2>
+        <Form.Label htmlFor="fullName">
+          <Person /> Full Name
+        </Form.Label>
         <Form.Control
           required
           type="text"
@@ -44,7 +47,9 @@ const SignUp = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <Form.Label htmlFor="email">Email</Form.Label>
+        <Form.Label htmlFor="email">
+          <At /> Email
+        </Form.Label>
         <Form.Control
           required
           type="text"
@@ -52,7 +57,9 @@ const SignUp = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Form.Label htmlFor="password">Password</Form.Label>
+        <Form.Label htmlFor="password">
+          <ShieldLockFill /> Password
+        </Form.Label>
         <Form.Control
           required
           type="password"
@@ -62,14 +69,18 @@ const SignUp = () => {
         />
 
         <div className="d-flex py-2 vstack gap-3">
-          <Button className="btn-success" onClick={register}>
+          <Button
+            className="btn-success w-25"
+            onClick={register}
+            disabled={[email, password, name].some((el) => el === "")}
+          >
             Sign up
           </Button>
           <span>
             Already have an account?{" "}
-            <Link to="/" className="link">
+            <a href="/login" className="link">
               Login
-            </Link>{" "}
+            </a>{" "}
             now.
           </span>
         </div>
