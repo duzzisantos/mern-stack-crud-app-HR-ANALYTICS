@@ -1,4 +1,4 @@
-import { Modal, Button, Alert } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import DetailsSummary from "../RecommendationForms/DetailsSummary";
 import useRecommendations from "../../http-methods/getRecommendations";
 import {
@@ -22,23 +22,7 @@ const RecommendationModal = ({
 }) => {
   const accessToken = user?.accessToken;
 
-  const getRecommendations = useRecommendations(accessToken);
-  const { isLoading, isError, refetch, data } = getRecommendations;
-
-  if (isError) {
-    return (
-      <Alert variant="warning">
-        Error in loading recommendations data{" "}
-        <Button size="sm" variant="secondary" onClick={() => refetch}>
-          Refresh
-        </Button>
-      </Alert>
-    );
-  } else if (isLoading) {
-    return <Alert>Recommendations are loading...</Alert>;
-  } else if (!data || data === undefined) {
-    return <Alert>Recommendation data is unavailable at the moment</Alert>;
-  }
+  const { recommendations } = useRecommendations(accessToken);
 
   return (
     <Modal
@@ -82,7 +66,7 @@ const RecommendationModal = ({
                     title={"Quality of work"}
                     property={x.quality}
                     generatedRecommendation={getQualityOfWork(
-                      data,
+                      recommendations,
                       "qualityOfWork",
                       x.quality
                     )}
@@ -91,7 +75,7 @@ const RecommendationModal = ({
                     title={"Quantity of work"}
                     property={x.quantity}
                     generatedRecommendation={getQuantityOfWork(
-                      data,
+                      recommendations,
                       "quantityOfWork",
                       x.quantity
                     )}
@@ -100,7 +84,7 @@ const RecommendationModal = ({
                     title={"Responsibility"}
                     property={x.responsibility}
                     generatedRecommendation={getResponsibility(
-                      data,
+                      recommendations,
                       "responsibility",
                       x.responsibility
                     )}
@@ -109,7 +93,7 @@ const RecommendationModal = ({
                     title={"Punctuality"}
                     property={x.punctuality}
                     generatedRecommendation={getPunctuality(
-                      data,
+                      recommendations,
                       "punctuality",
                       x.punctuality
                     )}
@@ -118,7 +102,7 @@ const RecommendationModal = ({
                     title={"Delivery"}
                     property={x.delivery}
                     generatedRecommendation={getDelivery(
-                      data,
+                      recommendations,
                       "delivery",
                       x.delivery
                     )}

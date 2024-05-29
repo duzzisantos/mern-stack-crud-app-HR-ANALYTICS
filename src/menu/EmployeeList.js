@@ -16,27 +16,7 @@ import {
 const EmployeeList = ({ user }) => {
   const accessToken = user?.accessToken;
   const [selection, setSelection] = useState(departments[0]);
-  const getEmployees = useGetEmployeeData(accessToken);
-
-  const { isLoading, isError, data, refetch } = getEmployees;
-
-  if (isLoading) {
-    return <Alert>Page is currently loading</Alert>;
-  } else if (isError) {
-    <Alert variant="warning">
-      Error in loading resources{" "}
-      <Button
-        variant="secondary"
-        onClick={() => {
-          refetch();
-        }}
-      >
-        Reload
-      </Button>
-    </Alert>;
-  } else if (!data || data === undefined) {
-    <Alert>Data is unavailable at the moment. Please try again later.</Alert>;
-  }
+  const { employees } = useGetEmployeeData(accessToken);
 
   const handleDelete = (_id) => {
     const isLocal = process.env.NODE_ENV === "development";
@@ -88,7 +68,7 @@ const EmployeeList = ({ user }) => {
         </div>
 
         <div className="d-flex flex-wrap p-4 col-12 gap-3">
-          {data
+          {employees
             .filter((item) =>
               selection === "default"
                 ? !item
@@ -139,7 +119,7 @@ const EmployeeList = ({ user }) => {
                 </Stack>
               </fieldset>
             ))}
-          {!data.filter((el) =>
+          {!employees.filter((el) =>
             selection.match(new RegExp(`${el.department}`), "gi")
           ).length && (
             <Alert variant="warning" className="col-12">

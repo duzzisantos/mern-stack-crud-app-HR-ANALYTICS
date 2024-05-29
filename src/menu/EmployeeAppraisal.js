@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import http from "../components/http-config";
 import { departments, monthsArray } from "../utils/dropDownOptions";
 import useGetEmployeeData from "../http-methods/getEmployeeData";
-import { Alert, Button, Container, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import ShowEmployees from "../components/ShowEmployees";
 
 import {
@@ -21,7 +21,7 @@ const EmployeeAppraisal = ({ user }) => {
   const accessToken = user?.accessToken;
 
   const currentYear = today.getFullYear();
-  const getEmployees = useGetEmployeeData(accessToken);
+  const { employees } = useGetEmployeeData(accessToken);
 
   const [appraise, setAppraise] = useState({
     month: "January",
@@ -38,8 +38,6 @@ const EmployeeAppraisal = ({ user }) => {
     supervisorComment: "",
     hrComment: "",
   });
-
-  const { isError, isLoading, refetch, data } = getEmployees;
 
   //Submits appraisal update
   const handleSubmit = () => {
@@ -59,20 +57,6 @@ const EmployeeAppraisal = ({ user }) => {
       });
   };
 
-  //Handle error before consuming data from use query hook
-  if (isError) {
-    return (
-      <Alert variant="warning">
-        Error in loading data{" "}
-        <Button onClick={() => refetch}>Reload data</Button>
-      </Alert>
-    );
-  } else if (isLoading) {
-    return <Alert>Employee list and departments are loading</Alert>;
-  } else if (!data || data === undefined) {
-    return <Alert>Data is unavailable at the moment</Alert>;
-  }
-
   return (
     <>
       <Container
@@ -80,9 +64,7 @@ const EmployeeAppraisal = ({ user }) => {
         fluid
         className="d-flex flex-lg-row flex-sm-column flex-md-column col-lg-10 col-sm-10 col-md-10 px-5 pt-4 gap-5 overflow-hidden"
       >
-        <ShowEmployees
-          employeeData={(!isLoading || !isError || !data === undefined) && data}
-        />
+        <ShowEmployees employeeData={employees} />
 
         <form
           className="mb-4 col-lg-6 col-sm-10 col-md-10 py-3 rounded-3 shadow-sm d-flex flex-column gap-3 justify-content-center align-items-center"

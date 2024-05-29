@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Alert, Button, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 
 import {
   monthsArray,
@@ -14,32 +14,11 @@ import { Calendar, CalendarMonthFill, PeopleFill } from "react-bootstrap-icons";
 
 const HRManager = ({ user }) => {
   const accessToken = user?.accessToken;
-  const getAppraisal = useEmployeeAppraisal(accessToken);
-  const getEmployees = useGetEmployeeData(accessToken);
+  const { appraisal } = useEmployeeAppraisal(accessToken);
+  const { employees } = useGetEmployeeData(accessToken);
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
   const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
   const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
-
-  const { isLoading, isError, data, refetch } = getAppraisal;
-
-  //Handle error before consuming data from use query hook
-  if (isError || getEmployees.isError) {
-    return (
-      <Alert variant="warning">
-        Error in loading data{" "}
-        <Button onClick={() => refetch}>Reload data</Button>
-      </Alert>
-    );
-  } else if (isLoading || getEmployees.isLoading) {
-    return <Alert>Employee list and departments are loading</Alert>;
-  } else if (
-    !data ||
-    data === undefined ||
-    !getEmployees.data ||
-    getEmployees.data === undefined
-  ) {
-    return <Alert>Data is unavailable at the moment</Alert>;
-  }
 
   return (
     <>
@@ -113,7 +92,7 @@ const HRManager = ({ user }) => {
         </div>
 
         <AppraisalManagement
-          appraisalData={data}
+          appraisalData={appraisal}
           selectedDepartment={selectedDepartment}
           selectedMonth={selectedMonth}
           selectedYear={selectedYear}
@@ -122,7 +101,7 @@ const HRManager = ({ user }) => {
 
         <HeadCount
           selectedDepartment={selectedDepartment}
-          employeeData={getEmployees.data}
+          employeeData={employees}
         />
       </Container>
     </>

@@ -1,27 +1,9 @@
 import { Modal, Button } from "react-bootstrap";
-import useMutate from "../../http-methods/useMutate";
-import { useMutation, useQueryClient } from "react-query";
+import handleModifyContent from "../../http-methods/useMutate";
 import http from "../http-config";
 const AppraisalDeleteModal = ({ show, handleClose, selectedID, token }) => {
   const { delete: axiosDelete, appraisalURL, appraiseURLServer } = http;
-  const queryClient = useQueryClient();
 
-  const handleSettled = () => {
-    queryClient.invalidateQueries(["EmployeeAppraisal"]);
-  };
-  const mutation = useMutate(
-    {},
-    selectedID,
-    token,
-    useMutation,
-    axiosDelete,
-    appraisalURL ?? appraiseURLServer,
-    handleSettled
-  );
-
-  const handleDelete = () => {
-    mutation.mutate({ selectedID });
-  };
   return (
     <Modal
       show={show}
@@ -47,7 +29,13 @@ const AppraisalDeleteModal = ({ show, handleClose, selectedID, token }) => {
         <Button
           variant="secondary"
           className="border-0 btn-outline-danger text-light"
-          onClick={handleDelete}
+          onClick={handleModifyContent(
+            {},
+            selectedID,
+            token,
+            axiosDelete,
+            appraisalURL ?? appraiseURLServer
+          )}
         >
           Delete
         </Button>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 
 import {
   monthsArray,
@@ -17,35 +17,10 @@ const LeagueTable = ({ user }) => {
   const [selectedDepartment, setSelectedDepartment] = useState(departments[0]);
   const [selectedMonth, setSelectedMonth] = useState(monthsArray[0]);
   const [selectedYear, setSelectedYear] = useState(generateYears()[0]);
-  const getEmployees = useGetEmployeeData(token);
-  const getAppraisal = useGetEmployeeAppraisal(token);
-  const { isError, isLoading, refetch, data } = getEmployees;
+  const { employees } = useGetEmployeeData(token);
+  const { appraisal } = useGetEmployeeAppraisal(token);
 
-  if (isLoading || getAppraisal.isLoading) {
-    return <Alert>Page is currently loading</Alert>;
-  } else if (isError || getAppraisal.isError) {
-    <Alert variant="warning">
-      Error in loading resources{" "}
-      <Button
-        variant="secondary"
-        onClick={() => {
-          refetch();
-          getAppraisal.refetch();
-        }}
-      >
-        Reload
-      </Button>
-    </Alert>;
-  } else if (
-    !data ||
-    data === undefined ||
-    !getAppraisal.data ||
-    getAppraisal.data === undefined
-  ) {
-    <Alert>Data is unavailable at the moment. Please try again later.</Alert>;
-  }
-
-  const filteredDataByDepartment = getAppraisal.data.filter(
+  const filteredDataByDepartment = appraisal.filter(
     (element) =>
       selectedDepartment.match(new RegExp(`${element.department}`), "gi") &&
       selectedMonth.match(new RegExp(`${element.month}`), "gi") &&
@@ -139,12 +114,12 @@ const LeagueTable = ({ user }) => {
         <div className="col-lg-12 col-md-10  col-sm-10 small-screen-display">
           <TopThree
             filteredData={getSortedEmployees.slice(0, 3)}
-            employeeData={data}
+            employeeData={employees}
           />
         </div>
         <League
           filteredData={getSortedEmployees}
-          employeeData={data}
+          employeeData={employees}
           user={user}
         />
       </Container>
@@ -152,4 +127,4 @@ const LeagueTable = ({ user }) => {
   );
 };
 
-export default React.memo(LeagueTable);
+export default LeagueTable;

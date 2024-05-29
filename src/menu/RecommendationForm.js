@@ -7,7 +7,6 @@ import {
   Container,
   Carousel,
   CarouselItem,
-  Alert,
 } from "react-bootstrap";
 import { getFormLevel, getFormCategory } from "../utils/editFormTitles";
 import useRecommendation from "../http-methods/getRecommendations";
@@ -17,7 +16,7 @@ import { List } from "react-bootstrap-icons";
 const RecommendationForm = ({ user }) => {
   const [index, setIndex] = useState(0);
   const [showoffCanvas, setShowoffCanvas] = useState(false);
-  const getRecommendations = useRecommendation(user?.accessToken);
+  const { recommendations } = useRecommendation(user?.accessToken);
 
   //Improves UX for the carousel form - so that user is automatically scrolled to the
   //submit button on the last index of the carousel
@@ -141,17 +140,6 @@ const RecommendationForm = ({ user }) => {
     );
   };
 
-  const { isLoading, isError, data } = getRecommendations;
-
-  //Error handler for two API datasets being consumed
-  if (isLoading) {
-    return <Alert>Resources are still loading...</Alert>;
-  } else if (isError) {
-    return <Alert variant="warning">Error in loading resources </Alert>;
-  } else if (!data || data === undefined) {
-    return <Alert>Resource data is unavailable</Alert>;
-  }
-
   return (
     <>
       <Container
@@ -256,7 +244,7 @@ const RecommendationForm = ({ user }) => {
             <DisplayRecommendations
               show={showoffCanvas}
               handleClose={handleClose}
-              data={data}
+              data={recommendations}
             />
           )}
         </main>

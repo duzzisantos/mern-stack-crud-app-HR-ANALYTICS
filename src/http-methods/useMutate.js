@@ -1,44 +1,23 @@
-const useMutate = (
-  postObject,
+const handleModifyContent = (
+  updateObject,
   objectId,
   accessToken,
-  mutationFunction,
   method,
-  endPoint,
-  getHandleSettled
+  endPoint
 ) => {
-  return mutationFunction(
-    async (updateObject = postObject) => {
-      try {
-        const response = await method(`${endPoint}/${objectId}`, updateObject, {
-          headers: {
-            "Content-Type": "application/json",
-            Accpet: "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        if (response.status !== 200) {
-          throw new Error(
-            `Error Code: ${response.status}, Cause: ${response.statusText}`
-          );
-        } else {
-          return response.data;
-        }
-      } catch (err) {
-        console.error(err.message);
-        throw err;
-      }
+  method(`${endPoint}/${objectId}`, updateObject, {
+    headers: {
+      "Content-Type": "application/json",
+      Accpet: "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
-    {
-      onSettled: (data, err) => {
-        if (data) {
-          return { success: true, data: getHandleSettled() };
-        } else {
-          return { success: false, error: err.message };
-        }
-      },
-    }
-  );
+  })
+    .then((res) => {
+      console.log(res.status);
+    })
+    .catch((err) => {
+      console.warn(err.message);
+    });
 };
 
-export default useMutate;
+export default handleModifyContent;

@@ -24,30 +24,14 @@ const AppraisalDashboard = ({ user }) => {
   const [graphYear, setGraphYear] = useState("");
   const [show, setShow] = useState(false);
 
-  const getAppraisal = useGetEmployeeAppraisal(accessToken);
-  const getEmployee = useGetEmployeeData(accessToken);
+  const { appraisal } = useGetEmployeeAppraisal(accessToken);
+  const { employees } = useGetEmployeeData(accessToken);
 
-  const { isLoading, isError, data } = getAppraisal;
-
-  //Error handler for two API datasets being consumed
-  if (isLoading || getEmployee.isLoading) {
-    return <Alert>Resources are still loading...</Alert>;
-  } else if (isError || getEmployee.isError) {
-    return <Alert variant="warning">Error in loading resources </Alert>;
-  } else if (
-    !data ||
-    data === undefined ||
-    getEmployee.data === undefined ||
-    !getEmployee.data
-  ) {
-    return <Alert>Resource data is unavailable</Alert>;
-  }
-
-  const filteredEmployees = getEmployee.data.filter((element) =>
+  const filteredEmployees = employees.filter((element) =>
     search.match(new RegExp(`${element.ID}`)) ? element : !element
   );
 
-  const filteredAppraisal = data.filter((element) =>
+  const filteredAppraisal = appraisal.filter((element) =>
     search.match(new RegExp(`${element.ID}`)) &&
     selectMonth.match(new RegExp(`${element.month}`, "i")) &&
     selectYear.match(new RegExp(`${element.year}`, "i"))
@@ -58,7 +42,7 @@ const AppraisalDashboard = ({ user }) => {
   const noItemsFoundYet =
     !filteredAppraisal.length && !filteredEmployees.length;
 
-  const labels = getAvailableYears(data);
+  const labels = getAvailableYears(appraisal);
 
   const handleClose = () => {
     setShow(false);
@@ -131,7 +115,7 @@ const AppraisalDashboard = ({ user }) => {
           <div className="col-lg-1 mx-4">
             <Button
               variant="trasnsparent"
-              className=" border border-secondary"
+              className=" border border-secondary text-wrap"
               onClick={handleShow}
             >
               <List /> Menu
@@ -188,7 +172,7 @@ const AppraisalDashboard = ({ user }) => {
                 >
                   <PerformanceHistory
                     years={labels}
-                    chartData={data}
+                    chartData={appraisal}
                     employeeId={search}
                     graphYear={graphYear}
                     setGraphYear={(e) => setGraphYear(e.target.value)}
@@ -202,7 +186,7 @@ const AppraisalDashboard = ({ user }) => {
         {show && (
           <EmployeeMenu
             show={show}
-            data={getEmployee.data}
+            data={employees}
             handleClose={handleClose}
           />
         )}
