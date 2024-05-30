@@ -124,7 +124,7 @@ const EmployeeList = ({ user }) => {
           {!employees.filter((el) =>
             selection.match(new RegExp(`${el.department}`), "gi")
           ).length && (
-            <Alert variant="warning" className="col-12">
+            <Alert variant="warning" className="col-12 mt-3">
               No data to display in this selected department. Please contact the
               administrator, or give it time until the data is ready. If you are
               admin, you may start adding data!
