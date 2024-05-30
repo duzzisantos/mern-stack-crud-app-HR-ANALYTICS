@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const serverHost = process.env.REACT_APP_SERVER_HOST;
+const serverHost = process.env.REACT_APP_SERVER;
+const localhost = process.env.REACT_APP_LOCAL;
 
 const getApiHeaders = (accessToken) => {
   return {
@@ -18,9 +19,9 @@ const http = {
   update: axios.put,
   headers: (accessToken) => getApiHeaders(accessToken),
 
-  registerURL: `http://localhost:8080/api/register`,
-  appraisalURL: `http://localhost:8080/api/appraisal`,
-  recommendationURL: `http://localhost:8080/api/recommendations`,
+  registerURL: `${localhost}/api/register`,
+  appraisalURL: `${localhost}/api/appraisal`,
+  recommendationURL: `${localhost}/api/recommendations`,
   registerURLServer: `${serverHost}/api/register`,
   appraiseURLServer: `${serverHost}/api/appraisal`,
   recommendationURLServer: `${serverHost}/api/recommendations`,
