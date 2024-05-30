@@ -140,6 +140,7 @@ const AppraisalDashboard = ({ user }) => {
                 id="dashboard-wrapper"
                 className="col-lg-12 col-md-10 d-flex flex-lg-column gap-3 flex-sm-column mx-md-auto"
               >
+                <EmployeeProfile employee={filteredEmployees} />
                 {filteredAppraisal.map((item, index) => {
                   const {
                     quantityOfWork,
@@ -166,7 +167,6 @@ const AppraisalDashboard = ({ user }) => {
                     superVisorComments={item.supervisorComment}
                   />
                 ))}
-                <EmployeeProfile employee={filteredEmployees} />
               </div>
               <div
                 className="shadow-sm py-2 mt-5"

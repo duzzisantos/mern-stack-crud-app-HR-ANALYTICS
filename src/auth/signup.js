@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Button, Form } from "react-bootstrap";
+import { Button, Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword } from "./firebase";
 import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRing } from "@fortawesome/free-solid-svg-icons";
-import { At, Person, ShieldLockFill } from "react-bootstrap-icons";
+import { At, PersonFillGear, ShieldLockFill } from "react-bootstrap-icons";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -30,15 +30,21 @@ const SignUp = () => {
     }
   });
   return (
-    <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
+    <Container
+      fluid
+      className=" d-flex flex-column col-12  justify-content-center align-items-center"
+    >
       <h1 className="mt-3 fs-2 fw-bolder">
         <FontAwesomeIcon icon={faRing} /> KEFFI
       </h1>
 
-      <Form className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
+      <Form
+        id="signup-form"
+        className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column"
+      >
         <h2 className="fs-3 text-center fw-bold">Sign up</h2>
-        <Form.Label htmlFor="fullName">
-          <Person /> Full Name
+        <Form.Label htmlFor="fullName" className="fw-bold">
+          <PersonFillGear /> Full Name
         </Form.Label>
         <Form.Control
           required
@@ -47,7 +53,7 @@ const SignUp = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <Form.Label htmlFor="email">
+        <Form.Label htmlFor="email" className="fw-bold">
           <At /> Email
         </Form.Label>
         <Form.Control
@@ -57,7 +63,7 @@ const SignUp = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <Form.Label htmlFor="password">
+        <Form.Label htmlFor="password" className="fw-bold">
           <ShieldLockFill /> Password
         </Form.Label>
         <Form.Control
@@ -78,14 +84,14 @@ const SignUp = () => {
           </Button>
           <span>
             Already have an account?{" "}
-            <a href="/login" className="link">
+            <a href="/login" className="link fw-bold text-decoration-none">
               Login
             </a>{" "}
             now.
           </span>
         </div>
       </Form>
-    </div>
+    </Container>
   );
 };
 

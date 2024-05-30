@@ -62,7 +62,9 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   #dashboard-progress,
   #league-table-wrapper,
   #hr-table-wrapper,
-  #carousel-form {
+  #carousel-form,
+  #login-form,
+  #signup-form {
     width: 100% !important;
   }
 

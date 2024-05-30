@@ -77,11 +77,11 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
   return (
     <div className="">
       <form
-        className="w-100 py-3 rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
+        className="py-3 rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
         encType="multipart/formdata"
       >
         <h1 className="fs-2 fw-bold">Update Appraisal</h1>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="month">Month</Form.Label>
           <Form.Select
             className="selection"
@@ -98,7 +98,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             ))}
           </Form.Select>
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="year">Year</Form.Label>
           <Form.Control
             required
@@ -109,7 +109,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setYear(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="department">Department</Form.Label>
           <Form.Select
             id="department"
@@ -125,7 +125,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             <option name="Customer service">Customer service</option>
           </Form.Select>
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="ID1">Staff ID</Form.Label>
           <Form.Control
             required
@@ -136,7 +136,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setID(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           {" "}
           <Form.Label htmlFor="firstName">First Name</Form.Label>
           <Form.Control
@@ -148,7 +148,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="lastName">Last Name</Form.Label>
           <Form.Control
             required
@@ -159,7 +159,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="qtyWork">Quality of Work</Form.Label>
           <Form.Range
             className="border-0"
@@ -173,7 +173,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setQualityOfWork(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="delivery">Delivery</Form.Label>
           <Form.Range
             className="border-0"
@@ -187,7 +187,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setDelivery(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="responsibility">Responsibility</Form.Label>
           <Form.Range
             className="border-0"
@@ -201,7 +201,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setResponsibility(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="qntyWork">Quantity of Work</Form.Label>
           <Form.Range
             className="border-0"
@@ -215,7 +215,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setQuantityOfWork(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="punctuality">Punctuality</Form.Label>
           <Form.Range
             className="border-0"
@@ -229,7 +229,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setPunctuality(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Form.Label htmlFor="superVisorComment">
             Supervisor Comment
           </Form.Label>
@@ -244,7 +244,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setSupervisorComment(e.target.value)}
           />
         </div>
-        <div className="col-9 mb-3">
+        <div className="col-12 mb-3">
           <Form.Label htmlFor="hrComment">HR Comment</Form.Label>
           <Form.Control
             required
@@ -257,7 +257,7 @@ const AppriaseEditForm = ({ accessToken, selectedID, appraisalData }) => {
             onChange={(e) => setHRComment(e.target.value)}
           />
         </div>
-        <div className="col-9">
+        <div className="col-12">
           <Button
             className="btn-success"
             type="button"

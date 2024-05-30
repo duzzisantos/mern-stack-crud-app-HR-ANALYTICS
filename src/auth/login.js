@@ -26,9 +26,12 @@ const Login = () => {
       <h1 className="mt-3 fs-2 fw-bolder">
         <FontAwesomeIcon icon={faRing} /> KEFFI
       </h1>
-      <Form className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column">
+      <Form
+        id="login-form"
+        className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column"
+      >
         <h2 className="fs-3 text-center fw-bold">Login</h2>
-        <Form.Label htmlFor="login-email">
+        <Form.Label htmlFor="login-email" className="fw-bold">
           <At /> Email
         </Form.Label>
         <Form.Control
@@ -38,7 +41,7 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
           title="Enter email address"
         />{" "}
-        <Form.Label htmlFor="login-password">
+        <Form.Label htmlFor="login-password" className="fw-bold">
           <ShieldLockFill /> Password
         </Form.Label>
         <Form.Control
@@ -61,7 +64,7 @@ const Login = () => {
             <Button
               onClick={() => signInWithGoogle()}
               variant="transparent"
-              className="text-secondary border border-secondary border-2"
+              className="text-secondary border border-secondary"
             >
               Login with <Google />
             </Button>
@@ -69,7 +72,11 @@ const Login = () => {
         </div>
         <div className="gap-3 hstack">
           <span>
-            <a href="/signup" className="link" title="Create an account">
+            <a
+              href="/signup"
+              className="link fw-bold text-decoration-none"
+              title="Create an account"
+            >
               Do not have an account?
             </a>
           </span>
