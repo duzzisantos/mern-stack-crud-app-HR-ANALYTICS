@@ -24,11 +24,14 @@ const HRManager = ({ user }) => {
     <>
       <Container
         fluid
-        className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center"
+        className="py-4 d-flex flex-column gap-3 col-sm-10 col-lg-12 col-md-10 mx-lg-auto mx-md-auto"
       >
-        <h1 className="fw-bold fs-2">HR Management</h1>
+        <h1 className="fw-bold fs-2 mx-auto">HR Management</h1>
 
-        <div className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column col-lg-10 col-sm-10 col-md-10">
+        <div
+          className="d-flex flex-lg-row mx-auto justify-content-center gap-3 fw-bold flex-sm-column col-lg-10 col-sm-10 col-md-10"
+          id="hr-manager-filter"
+        >
           <div className="col-lg-3 col-md-10 col-sm-10">
             <Form.Label className="fw-bold" htmlFor="department">
               <PeopleFill /> Department:{" "}
@@ -91,18 +94,20 @@ const HRManager = ({ user }) => {
           </div>
         </div>
 
-        <AppraisalManagement
-          appraisalData={appraisal}
-          selectedDepartment={selectedDepartment}
-          selectedMonth={selectedMonth}
-          selectedYear={selectedYear}
-          token={accessToken}
-        />
+        <div className="hr-table-wrapper">
+          <AppraisalManagement
+            appraisalData={appraisal}
+            selectedDepartment={selectedDepartment}
+            selectedMonth={selectedMonth}
+            selectedYear={selectedYear}
+            token={accessToken}
+          />
 
-        <HeadCount
-          selectedDepartment={selectedDepartment}
-          employeeData={employees}
-        />
+          <HeadCount
+            selectedDepartment={selectedDepartment}
+            employeeData={employees}
+          />
+        </div>
       </Container>
     </>
   );

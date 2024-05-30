@@ -44,11 +44,14 @@ const LeagueTable = ({ user }) => {
     <>
       <Container
         fluid
-        className="py-4 d-flex flex-column gap-3 justify-content-center align-items-center"
+        className="py-4 d-flex flex-column gap-3 col-sm-10 col-lg-12 col-md-10 mx-lg-auto mx-md-auto"
       >
-        <h1 className="fs-2 fw-bold">League Table</h1>
+        <h1 className="fs-2 fw-bold mx-auto">League Table</h1>
 
-        <div className="d-flex flex-lg-row justify-content-center gap-3 fw-bold flex-sm-column col-lg-10 col-sm-10 col-md-10">
+        <div
+          className="d-flex flex-lg-row mx-auto justify-content-center gap-3 fw-bold flex-sm-column col-lg-10 col-sm-10 col-md-10"
+          id="league-table-filter"
+        >
           <div className="col-lg-3 col-md-10 col-sm-10">
             <Form.Label className="fw-bold" htmlFor="department">
               <PeopleFill /> Department:{" "}
@@ -111,17 +114,20 @@ const LeagueTable = ({ user }) => {
           </div>
         </div>
 
-        <div className="col-lg-12 col-md-10  col-sm-10 small-screen-display">
+        <div
+          className="col-lg-12 col-md-10  col-sm-12"
+          id="league-table-wrapper"
+        >
           <TopThree
             filteredData={getSortedEmployees.slice(0, 3)}
             employeeData={employees}
           />
+          <League
+            filteredData={getSortedEmployees}
+            employeeData={employees}
+            user={user}
+          />
         </div>
-        <League
-          filteredData={getSortedEmployees}
-          employeeData={employees}
-          user={user}
-        />
       </Container>
     </>
   );

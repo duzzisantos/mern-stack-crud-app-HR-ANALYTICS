@@ -8,7 +8,7 @@ const HeadCount = ({ employeeData, selectedDepartment }) => {
   return (
     <React.Fragment>
       {filteredData.length ? (
-        <div className=" col-lg-10 col-md-12 col-sm-12 mx-auto px-5 my-4">
+        <div className=" col-lg-10 col-md-12 col-sm-12 mx-auto px-lg-5 my-4">
           <h2 className="fs-5 fw-bold">Head Count</h2>
           <div className="d-flex flex-wrap hstack gap-2 ">
             {filteredData.map((item) => (

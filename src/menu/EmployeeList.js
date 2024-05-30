@@ -46,28 +46,30 @@ const EmployeeList = ({ user }) => {
         className="pt-4 px-4 col-lg-10 col-md-10 col-sm-10 d-flex flex-column justify-content-center align-items-center"
       >
         <h1 className="fs-2 fw-bold">Employee List</h1>
-        <div className="col-lg-6 col-md-10 col-sm-12 d-flex justify-content-center">
-          <div className="d-flex flex-lg-row flex-sm-column col-lg-10 col-md-10 col-sm-10 mt-3">
-            <Form.Label className="fw-bold w-75" htmlFor="department">
-              <Filter /> Filter by department:{" "}
-            </Form.Label>
 
-            <Form.Select
-              id="department"
-              name="department"
-              onChange={(e) => setSelection(e.target.value)}
-            >
-              <option>Please Select</option>
-              {departments.map((item) => (
-                <option key={item} value={item}>
-                  {item}
-                </option>
-              ))}
-            </Form.Select>
-          </div>
+        <div
+          className="d-flex flex-lg-row flex-sm-column col-lg-4 col-md-10 col-sm-10  mt-3"
+          id="department-filter"
+        >
+          <Form.Label className="fw-bold w-100 mt-2 gap-2" htmlFor="department">
+            <Filter /> Filter by department:{" "}
+          </Form.Label>
+
+          <Form.Select
+            id="department"
+            name="department"
+            onChange={(e) => setSelection(e.target.value)}
+          >
+            <option>Please Select</option>
+            {departments.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </Form.Select>
         </div>
 
-        <div className="d-flex flex-wrap p-4 col-12 gap-3">
+        <div className="d-flex flex-wrap col-lg-12 col-md-10 col-sm-10 gap-3 mb-3">
           {employees
             .filter((item) =>
               selection === "default"
@@ -78,7 +80,7 @@ const EmployeeList = ({ user }) => {
             )
             .map((item) => (
               <fieldset
-                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm p-3"
+                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm p-3 personnel-card"
                 key={item._id}
               >
                 <span className="text-dark fw-bold">

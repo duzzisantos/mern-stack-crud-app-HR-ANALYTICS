@@ -3,11 +3,14 @@ import { getEmployeeDetails } from "../utils/getEmployeeDetails";
 
 const TopThree = ({ filteredData, employeeData }) => {
   return (
-    <div className="col-lg-12 small-screen-display col-md-12 d-flex flex-lg-row flex-sm-column justify-content-center py-2 px-2 hstack gap-3 my-4">
+    <div
+      className="col-lg-12 col-md-12 d-flex flex-lg-row flex-sm-column justify-content-center py-2 px-2 hstack gap-3 my-4"
+      id="top-three-wrapper"
+    >
       {filteredData.map((person, outerIndex) => (
         <Card
           key={outerIndex}
-          className="col-lg-3 small-screen-display smaller-box-full col-md-4 col-sm-12 p-2 shadow-sm border-0"
+          className="col-lg-3 small-screen-display smaller-box-full col-md-10 col-sm-12 p-2 shadow-sm border-0 medal-cards"
         >
           <Card.Header className="text-center bg-transparent border-0 me-4">
             <h5 className="fs-6 fw-semibold text-secondary">
@@ -51,7 +54,7 @@ const TopThree = ({ filteredData, employeeData }) => {
         </Card>
       ))}
       {!filteredData.length && (
-        <Alert variant="warning" className="col-9">
+        <Alert variant="warning" className="col-lg-10 col-sm-10 backup-100">
           Please search item from filter.
         </Alert>
       )}

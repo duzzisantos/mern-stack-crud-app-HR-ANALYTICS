@@ -56,37 +56,38 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 
 /*Responsiveness - especially for smaller phones like iPhone 11, 10 etc */
 
-@media screen and (max-width: 500px) {
-  #appraisal-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  #dashboard-selector {
-    padding-top: 40px !important;
-  }
-
-  #dashboard-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .small-screen-display {
-    display: flex !important;
-    width: 100% !important;
-    flex-direction: column !important;
-  }
-
-  .smaller-box-full {
+@media screen and (max-width: 600px) {
+  #add-employee,
+  #appraisal-form,
+  #dashboard-progress,
+  #league-table-wrapper,
+  #hr-table-wrapper,
+  #carousel-form {
     width: 100% !important;
   }
 
-  #carousel-slide-recommendation-form {
-    width: 70vw;
-    padding: 10px 10px;
+  #department-filter,
+  #dashboard-filter,
+  #dashboard-wrapper,
+  #league-table-filter,
+  #hr-manager-filter {
+    flex-direction: column !important;
+    width: 100% !important;
   }
 
-  .h-one-spaced {
-    margin-left: 60px !important;
+  .personnel-card,
+  .medal-cards,
+  .backup-100 {
+    width: 100% !important;
+  }
+
+  #appraisal-wrapper,
+  #top-three-wrapper {
+    flex-direction: column !important;
+  }
+
+  #dashboard-menu {
+    margin-left: 0px !important;
+    margin-top: 10px !important;
   }
 }

@@ -62,7 +62,7 @@ const EmployeeAppraisal = ({ user }) => {
       <Container
         id="appraisal-wrapper"
         fluid
-        className="d-flex flex-lg-row flex-sm-column flex-md-column col-lg-10 col-sm-10 col-md-10 px-5 pt-4 gap-5 overflow-hidden"
+        className="d-flex flex-lg-row flex-sm-column flex-md-column col-lg-10 col-sm-12 col-md-12 pt-4 gap-5 overflow-hidden"
       >
         <ShowEmployees employeeData={employees} />
 
@@ -70,9 +70,10 @@ const EmployeeAppraisal = ({ user }) => {
           className="mb-4 col-lg-6 col-sm-10 col-md-10 py-3 rounded-3 shadow-sm d-flex flex-column gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
+          id="appraisal-form"
         >
           <h1 className="fs-2 fw-bold">Appraise Employee</h1>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="month">
               <CalendarMonthFill /> Month
             </Form.Label>
@@ -92,7 +93,7 @@ const EmployeeAppraisal = ({ user }) => {
               ))}
             </Form.Select>
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="year">
               <Calendar2Fill /> Year
             </Form.Label>
@@ -107,7 +108,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="department">
               <PeopleFill /> Department
             </Form.Label>
@@ -124,7 +125,7 @@ const EmployeeAppraisal = ({ user }) => {
               ))}
             </Form.Select>
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="ID1">
               <PersonBadge /> Staff ID
             </Form.Label>
@@ -137,7 +138,7 @@ const EmployeeAppraisal = ({ user }) => {
               onChange={(e) => setAppraise({ ...appraise, ID: e.target.value })}
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             {" "}
             <Form.Label htmlFor="firstName">
               <PersonFill /> First Name
@@ -153,7 +154,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="lastName">
               <PersonFill /> Last Name
             </Form.Label>
@@ -168,7 +169,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="qtyWork">
               <StarFill /> Quality of Work
             </Form.Label>
@@ -186,7 +187,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="delivery">
               <StarFill /> Delivery
             </Form.Label>
@@ -204,7 +205,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="responsibility">
               <StarFill /> Responsibility
             </Form.Label>
@@ -222,7 +223,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="qntyWork">
               <StarFill /> Quantity of Work
             </Form.Label>
@@ -240,7 +241,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="punctuality">
               <StarFill /> Punctuality
             </Form.Label>
@@ -258,7 +259,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Form.Label htmlFor="superVisorComment">
               <ChatFill /> Supervisor Comment
             </Form.Label>
@@ -275,7 +276,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9 mb-3">
+          <div className="col-11 mb-3">
             <Form.Label htmlFor="hrComment">
               <ChatDots /> HR Comment
             </Form.Label>
@@ -292,7 +293,7 @@ const EmployeeAppraisal = ({ user }) => {
               }
             />
           </div>
-          <div className="col-9">
+          <div className="col-11">
             <Button className="btn-success" type="submit">
               Submit
             </Button>
