@@ -95,12 +95,12 @@ const ManageEmployees = ({ user }) => {
     <>
       <div className="d-flex justify-content-center py-4 container-fluid text-primary-emphasis">
         <form
-          className="col-lg-6 col-md-12 col-sm-12 smaller-box-full px-5 py-3 border shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
+          className="border border-success-subtle bg-success-subtle col-lg-6 col-md-12 col-sm-12 smaller-box-full px-5 py-3 border shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
           onSubmit={(ID, e) => handleUpdate(ID, e)}
           encType="multipart/formdata"
         >
           <h1 className="fs-2 fw-bold">Edit Employee Record</h1>
-          <div className="col-9 gap-3 d-flex flex-column justify-content-center">
+          <div className="col-12 gap-3 d-flex flex-column justify-content-center">
             <Form.Label htmlFor="ID">Staff ID</Form.Label>
             <Form.Control
               required
@@ -196,7 +196,7 @@ const ManageEmployees = ({ user }) => {
               onChange={(e) => setPhoto(e.target.value)}
             />
           </div>
-          <div className="col-9 justify-content-between d-flex">
+          <div className="col-12 justify-content-between d-flex">
             <Button type="submit" variant="success">
               Submit
             </Button>
