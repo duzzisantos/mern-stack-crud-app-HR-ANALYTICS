@@ -1,6 +1,6 @@
 const EmployeeProfile = ({ employee }) => {
   return (
-    <div className="d-flex flex-column p-4 gap-3  shadow-sm rounded-1 col-lg-12 col-md-10 col-sm-10">
+    <div className="d-flex flex-column p-4 gap-3 bg-success-subtle border border-success shadow-sm rounded-2 col-lg-12 col-md-10 col-sm-10">
       <div className="d-flex flex-column gap-3">
         <small className="fw-bold">Employee Details</small>
         <div className="p-2">

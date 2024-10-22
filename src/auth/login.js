@@ -23,15 +23,20 @@ const Login = () => {
   });
   return (
     <div className="container-fluid d-flex flex-column col-12  justify-content-center align-items-center">
-      <h1 className="mt-3 fs-2 fw-bolder">
+      <h1 className="mt-3 fs-2 fw-bolder text-primary-emphasis">
         <FontAwesomeIcon icon={faRing} /> KEFFI
       </h1>
       <Form
         id="login-form"
-        className="col-lg-6 col-sm-12 smaller-box-full mt-3 p-4 shadow-sm rounded-2 gap-3 justify-content-center d-flex flex-column"
+        className="col-lg-6 col-sm-12 mt-3 p-4 bg-success-subtle shadow-lg border border-2 border-success-subtle rounded-3 gap-3 justify-content-center d-flex flex-column"
       >
-        <h2 className="fs-3 text-center fw-bold">Login</h2>
-        <Form.Label htmlFor="login-email" className="fw-bold">
+        <h2 className="fs-3 text-center fw-bold text-primary-emphasis">
+          Login
+        </h2>
+        <Form.Label
+          htmlFor="login-email"
+          className="fw-bold text-primary-emphasis"
+        >
           <At /> Email
         </Form.Label>
         <Form.Control
@@ -41,7 +46,10 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
           title="Enter email address"
         />{" "}
-        <Form.Label htmlFor="login-password" className="fw-bold">
+        <Form.Label
+          htmlFor="login-password"
+          className="fw-bold text-primary-emphasis"
+        >
           <ShieldLockFill /> Password
         </Form.Label>
         <Form.Control
@@ -74,7 +82,7 @@ const Login = () => {
           <span>
             <a
               href="/signup"
-              className="link fw-bold text-decoration-none"
+              className="link text-decoration-none text-primary"
               title="Create an account"
             >
               Do not have an account?

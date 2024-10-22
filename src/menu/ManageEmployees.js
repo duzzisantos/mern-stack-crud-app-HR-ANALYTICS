@@ -93,7 +93,7 @@ const ManageEmployees = ({ user }) => {
 
   return (
     <>
-      <div className="d-flex justify-content-center py-4 container-fluid">
+      <div className="d-flex justify-content-center py-4 container-fluid text-primary-emphasis">
         <form
           className="col-lg-6 col-md-12 col-sm-12 smaller-box-full px-5 py-3 border shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
           onSubmit={(ID, e) => handleUpdate(ID, e)}

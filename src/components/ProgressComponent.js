@@ -9,7 +9,7 @@ const ProgressComponent = ({
 }) => {
   return (
     <div
-      className="d-flex flex-column gap-4 p-4 shadow-sm col-lg-12 col-md-10 col-sm-10 fw-bold"
+      className="d-flex flex-column gap-4 p-4 shadow-sm col-lg-12 col-md-10 col-sm-10 fw-bold border border-success-subtle rounded-2"
       id="dashboard-progress"
     >
       <small>Quality of work</small>

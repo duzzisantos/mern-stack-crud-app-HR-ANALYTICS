@@ -144,7 +144,7 @@ const RecommendationForm = ({ user }) => {
     <>
       <Container
         fluid
-        className="py-4 d-flex flex-column gap-3 col-sm-10 col-lg-12 col-md-10 mx-lg-auto mx-md-auto"
+        className="text-primary-emphasis py-4 d-flex flex-column gap-3 col-sm-10 col-lg-12 col-md-10 mx-lg-auto mx-md-auto"
       >
         <h1 className="fs-2 text-center mt-3 fw-bold h-one-spaced">
           Recommendation Policy

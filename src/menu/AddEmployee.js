@@ -48,10 +48,13 @@ const AddEmployee = ({ user }) => {
 
   return (
     <>
-      <Container fluid className=" d-flex justify-content-center py-4">
+      <Container
+        fluid
+        className=" d-flex justify-content-center py-4 text-primary-emphasis"
+      >
         <form
           id="add-employee"
-          className="col-lg-6 col-md-12 col-sm-12 px-4 py-3 smaller-box-full shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
+          className="bg-success-subtle border border-1  border-success col-lg-6 col-md-12 col-sm-12 px-4 py-3 smaller-box-full shadow-sm rounded-3 d-flex flex-column gap-3 justify-content-center align-items-center"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
         >

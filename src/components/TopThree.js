@@ -10,7 +10,7 @@ const TopThree = ({ filteredData, employeeData }) => {
       {filteredData.map((person, outerIndex) => (
         <Card
           key={outerIndex}
-          className="col-lg-3 small-screen-display smaller-box-full col-md-10 col-sm-12 p-2 shadow-sm border-0 medal-cards"
+          className="col-lg-3 bg-success-subtle border border-success small-screen-display smaller-box-full col-md-10 col-sm-12 p-2 shadow-sm  medal-cards"
         >
           <Card.Header className="text-center bg-transparent border-0 me-4">
             <h5 className="fs-6 fw-semibold text-secondary">

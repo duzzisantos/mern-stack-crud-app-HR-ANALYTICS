@@ -55,7 +55,7 @@ const AppraisalDashboard = ({ user }) => {
     <>
       <Container
         fluid
-        className="py-4 d-flex flex-column gap-3 col-sm-10 col-md-10 mx-lg-auto mx-md-auto"
+        className="py-4 d-flex flex-column gap-3 col-sm-10 col-md-10 mx-lg-auto mx-md-auto text-primary-emphasis"
         style={{ height: "fit-content" }}
       >
         <h1 className="fs-2 fw-bold text-center">Appraisal Dashboard</h1>

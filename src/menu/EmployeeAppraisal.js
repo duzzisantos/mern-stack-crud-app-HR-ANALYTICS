@@ -62,12 +62,12 @@ const EmployeeAppraisal = ({ user }) => {
       <Container
         id="appraisal-wrapper"
         fluid
-        className="d-flex flex-lg-row flex-sm-column flex-md-column col-lg-10 col-sm-12 col-md-12 pt-4 gap-5 overflow-hidden"
+        className="d-flex flex-lg-row flex-sm-column flex-md-column text-primary-emphasis col-lg-10 col-sm-12 col-md-12 pt-4 gap-5 overflow-hidden"
       >
         <ShowEmployees employeeData={employees} />
 
         <form
-          className="mb-4 col-lg-6 col-sm-10 col-md-10 py-3 rounded-3 shadow-sm d-flex flex-column gap-3 justify-content-center align-items-center"
+          className="mb-4 col-lg-6 col-sm-10 col-md-10 py-3 rounded-3 shadow-sm d-flex flex-column gap-3 justify-content-center align-items-center bg-success-subtle border border-success"
           encType="multipart/formdata"
           onSubmit={handleSubmit}
           id="appraisal-form"

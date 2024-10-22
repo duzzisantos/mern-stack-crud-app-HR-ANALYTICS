@@ -43,7 +43,7 @@ const EmployeeList = ({ user }) => {
     <>
       <Container
         fluid
-        className="pt-4 px-4 col-lg-10 col-md-10 col-sm-10 d-flex flex-column justify-content-center align-items-center"
+        className="text-primary-emphasis pt-4 px-4 col-lg-10 col-md-10 col-sm-10 d-flex flex-column justify-content-center align-items-center"
       >
         <h1 className="fs-2 fw-bold">Employee List</h1>
 
@@ -80,7 +80,7 @@ const EmployeeList = ({ user }) => {
             )
             .map((item) => (
               <fieldset
-                className="col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm p-3 personnel-card"
+                className="personnel-card col-lg-3 col-md-6 col-sm-12 mt-3 shadow-sm p-3 bg-success-subtle border border-1 border-success rounded-2"
                 key={item._id}
               >
                 <span className="text-dark fw-bold">
@@ -98,18 +98,14 @@ const EmployeeList = ({ user }) => {
                   <li>Date of employment: {item.dateEmployment}</li>
                 </ul>
                 <Stack direction="horizontal" gap={2}>
-                  <Button
-                    size="sm"
-                    className="bg-transparent text-secondary border border-secondary btn-outline-success"
+                  <Link
+                    to={`update-employee/${item._id}`}
+                    className="btn text-light btn-sm btn-secondary border-0 btn-outline-success"
                     title={`Update ${item.firstName}`}
                   >
-                    <Link
-                      to={`update-employee/${item._id}`}
-                      className="text-secondary text-decoration-none"
-                    >
-                      <PencilSquare />
-                    </Link>
-                  </Button>
+                    <PencilSquare />
+                  </Link>
+
                   <Button
                     size="sm"
                     className="btn-secondary text-light border-0 btn-outline-danger"

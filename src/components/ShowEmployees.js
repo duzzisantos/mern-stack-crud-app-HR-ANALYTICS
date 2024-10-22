@@ -35,7 +35,7 @@ const ShowEmployees = ({ employeeData }) => {
   }, [employeeData, selectedEmployee]);
 
   return (
-    <div className="d-flex flex-column col-lg-4 col-sm-10 col-md-10 gap-3 shadow-sm h-100 p-3 rounded-2">
+    <div className="d-flex flex-column col-lg-4 col-sm-10 col-md-10 gap-3 shadow-sm h-100 p-3 rounded-2 bg-success-subtle border-success border ">
       <h2 className="fs-5 fw-bold">Search and copy employee details</h2>
       <div className="my-3">
         <Form.Label htmlFor="show-employee-department">
@@ -71,7 +71,7 @@ const ShowEmployees = ({ employeeData }) => {
           ))}
         </Form.Select>
       </div>
-      <output className="my-3 shadow-lg rounded-0 border-start border-5 border-success">
+      <output className="my-3 shadow-lg rounded-0 border-start border-5 border-primary">
         <ol className="my-3 mx-2 gap-2 vstack">
           <li className="d-flex justify-content-between hstack gap-2">
             <label>ID: </label>

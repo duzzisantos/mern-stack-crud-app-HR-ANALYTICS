@@ -5,10 +5,12 @@ const DisplayRecommendations = ({ data, show, handleClose }) => {
   return (
     <Offcanvas placement="start" show={show} onHide={handleClose}>
       <Offcanvas.Header closeButton>
-        <Offcanvas.Title>Recommendation Policy</Offcanvas.Title>
+        <Offcanvas.Title className="text-emphasis-primary">
+          Recommendation Policy
+        </Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <section>
+        <section className="text-emphasis-primary">
           <h6 className="fw-semibold">
             HR Recommendations set by your company
           </h6>
